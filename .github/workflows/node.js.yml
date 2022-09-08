@@ -9,14 +9,14 @@ on:
     pull_request:
         branches: ["main", "deployment"]
 
+defaults:
+    run:
+      shell: bash
+      working-directory: scripts
+
 jobs:
-    build:
+    unitTests:
         runs-on: ubuntu-latest
-        env:
-            working-directory: ./usg-website
-        defaults:
-            run:
-                working-directory: ${{env.working-directory}}
 
         strategy:
             matrix:
@@ -31,5 +31,8 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
             - run: npm ci
+            working-directory: ./usg-website
             - run: npm run build --if-present
+            working-directory: ./usg-website
             - run: npm test
+            working-directory: ./usg-website
