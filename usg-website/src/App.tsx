@@ -10,6 +10,9 @@ function App() {
         <p>
           We are USG! 🎮
         </p>
+        <p>
+          Our Website will be up soon!
+        </p>
       </header>
     </div>
   );
