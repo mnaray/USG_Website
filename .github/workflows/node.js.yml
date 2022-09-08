@@ -16,7 +16,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./usg-website
+        working-directory: './usg-website'
 
     strategy:
       matrix:
