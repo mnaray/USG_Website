@@ -12,11 +12,11 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        env:
+            working-directory: ./usg-website
         defaults:
-            uses:
-                working-directory: ./usg-website/
             run:
-                working-directory: ./usg-website/
+                working-directory: ${{env.working-directory}}
 
         strategy:
             matrix:
