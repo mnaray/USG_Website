@@ -13,6 +13,8 @@ jobs:
     build:
         runs-on: ubuntu-latest
         defaults:
+            uses:
+                working-directory: ./usg-website/
             run:
                 working-directory: ./usg-website/
 
