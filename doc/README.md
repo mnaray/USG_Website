@@ -5,6 +5,7 @@
 - [USG Homepage Docs](#usg-homepage-docs)
     - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [Einleitung](#einleitung)
+    - [Technologienat uns Anforderugen gestellt und wir werden ihre Anforderungen erwartungsgemäss umsetzten. Sie möchten](#technologienat-uns-anforderugen-gestellt-und-wir-werden-ihre-anforderungen-erwartungsgemäss-umsetzten-sie-möchten)
   - [Lokale Entwicklungsumgebung einrichten](#lokale-entwicklungsumgebung-einrichten)
     - [Vorbereitung](#vorbereitung)
     - [NPM Installation](#npm-installation)
@@ -20,7 +21,17 @@
 
 ## Einleitung
 
-lorem ipsum dolor sit amet
+Wir haben im Lernatelier im Projekt LA1301 eine Webseite für USG (United Swiss Gaming) erstellt. Der "Leader" von USG hat uns beauftragt, für USG eine dynamische Webseite zu erstellen. Unser Kunde möchte neue Nutzer auf die Organisation aufmerksam machen und neue Nutzer anwerben.
+
+### Technologienat uns Anforderugen gestellt und wir werden ihre Anforderungen erwartungsgemäss umsetzten. Sie möchten
+
+Wir erstellen eine dynamische Webseite mit React und Typescript. NodeJS verwenden wir
+
+als Runtime für den Reactserver und JEST für das Unit Testing.
+
+[NodeJS](https://nodejjs.org/en/about/), [React](https://reactjs.org), [TypeScript(tsx)](https://www.typescriptlang.org) und [JEST](https://jestjs.io)
+
+**Diese Webeite wurde erstellt von [@mnaray](https://github.com/mnaray), [@TheSolian](https://github.com/TheSolian) und [@h0peRL](https://github.com/h0peRL).**
 
 ## Lokale Entwicklungsumgebung einrichten
 
