@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logos/logo.svg';
 import './App.css';
+import logo from './logos/USG_Logo_Transparent_PNG.png';
 
 function App() {
   return (
