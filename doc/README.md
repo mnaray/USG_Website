@@ -18,6 +18,8 @@
       - [Mustercomponent](#mustercomponent-1)
     - [Footer](#footer)
       - [Mustercomponent](#mustercomponent-2)
+    - [Pages](#pages)
+      - [PageNotFound.tsx](#pagenotfoundtsx)
     - [Other / Invisible](#other--invisible)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
@@ -105,15 +107,37 @@ lorem ipsum dolor sit amet
 lorem ipsum dolor sit amet
 lorem ipsum dolor sit amet
 
+### Pages
+
+#### PageNotFound.tsx
+
+lorem ipsum dolor sit amet
+lorem ipsum dolor sit amet
+lorem ipsum dolor sit amet
+
 ### Other / Invisible
 
 #### index.tsx
 
-[index.tsx](../usg-website/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
+[index.tsx](../usg-website/src/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
 
 In unserem Fall wird die [Router.tsx](#routertsx) Komponente geladen, welches dann den Rest der Arbeit übernimmt.
 
-Auf der letzten Zeile werden Performance-Statistiken in der Webkonsole geloggt.  
+Auf der letzten Zeile werden Performance-Statistiken in der Webkonsole geloggt.
 Diese Methode wird nach der Entwicklungsphase entfernt.
 
 #### Router.tsx
+
+[Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowerRouter, Routes und Route von react-router-dom, damit es ein client-sided-routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.
+
+Die Routerkomponente gibt einen BrowserRouter mit den vorgegebenen Routen zurück. Diese können dann in der Search-Bar abgerufen werden.
+
+Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponente}`, welches beim Abruf des Pfades geladen wird.
+
+`path="/"` ist der Pfad für die Homepage der Website. Diese Route wird abgerufen, wenn man nichts (oder nur "/") hinter der Domain der Seite eingibt.
+
+`path="myRouteName"` ist der Pfad für eine Unterseite von `path="/"`. Sie wird normalerweise direkt unter `path="/"` eingefügt, wenn man eine Layout-Komponente hat.
+
+> Ein Beispiel ist [hier](https://isotropic.co/react-multiple-pages/) zu finden. (gemeint ist Punkt 4. und 5.)
+
+`path="*"` sind alle Pfade, welche nicht existieren. In unserem Fall laden wir [PageNotFound.tsx](#pagenotfoundtsx), ume dem User eine 404-Meldung zu geben.
