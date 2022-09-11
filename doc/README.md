@@ -119,8 +119,26 @@ lorem ipsum dolor sit amet
 
 #### index.tsx
 
-```tsx:../usg-website/src/index.tsx
+```ts
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './css/index.css';
+import Router from "./pages/Router";
+import reportWebVitals from './reportWebVitals';
 
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <Router />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals(console.log);
 ```
 
 [index.tsx](../usg-website/src/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
@@ -132,8 +150,24 @@ Diese Methode wird nach der Entwicklungsphase entfernt.
 
 #### Router.tsx
 
-```tsx:../usg-website/src/pages/Router.tsx
+```ts
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PageNotFound from "./PageNotFound";
+import App from "./App";
 
+function Router() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="*" element={<PageNotFound />} />
+            </Routes>
+        </BrowserRouter>
+    );
+}
+
+export default Router;
 ```
 
 [Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowerRouter, Routes und Route von react-router-dom, damit es ein client-sided-routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.
