@@ -18,6 +18,9 @@
       - [Mustercomponent](#mustercomponent-1)
     - [Footer](#footer)
       - [Mustercomponent](#mustercomponent-2)
+    - [Other / Invisible](#other--invisible)
+      - [index.tsx](#indextsx)
+      - [Router.tsx](#routertsx)
 
 ## Einleitung
 
@@ -51,29 +54,29 @@ lorem ipsum dolor sit amet
 
 
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
-| :--------- | ----------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                   |
-| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                             |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                  |
+| :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
+| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                    |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
-| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                       |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                         |
+| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                          |
 | 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />***(Gestaltung in Zusammenarbeit mit dem Kunden)***                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
 | 9        | M               | funk.             | Eine Homepage ist vorhanden.                                                                                                                                   |
 | 10       | M               | funk.             | Die Homepage soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                         |
+| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                          |
 | 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Homepage vorhanden.                                                                                               |
-| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                              |
-| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                               |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                    |
+| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                               |
+| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                      |
 | 16       | M               | funk.             | Auf der Kontaktseite sollen die Kontaktdaten des Teambesitzers stehen.                                                                                         |
 | 17       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                           |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                        |
+| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                            |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                          |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
 | 21       | M               | funk.             | Die entsprechenden Sozialen Medien sind verlinkt                                                                                                               |
-| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />***(Genaue Umsetzung no zu Besprechen mit dem Kunden)***                                     |
+| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />***(Genaue Umsetzung no zu Besprechen mit dem Kunden)***                                       |
 | 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden.<br />***(Genaue Umsetzung no zu Besprechen mit dem Kunden)***                                        |
 
 ## Components
@@ -101,3 +104,16 @@ lorem ipsum dolor sit amet
 lorem ipsum dolor sit amet
 lorem ipsum dolor sit amet
 lorem ipsum dolor sit amet
+
+### Other / Invisible
+
+#### index.tsx
+
+[index.tsx](../usg-website/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
+
+In unserem Fall wird die [Router.tsx](#routertsx) Komponente geladen, welches dann den Rest der Arbeit übernimmt.
+
+Auf der letzten Zeile werden Performance-Statistiken in der Webkonsole geloggt.  
+Diese Methode wird nach der Entwicklungsphase entfernt.
+
+#### Router.tsx
