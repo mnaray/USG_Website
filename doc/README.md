@@ -119,6 +119,10 @@ lorem ipsum dolor sit amet
 
 #### index.tsx
 
+```tsx:../usg-website/src/index.tsx
+
+```
+
 [index.tsx](../usg-website/src/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
 
 In unserem Fall wird die [Router.tsx](#routertsx) Komponente geladen, welches dann den Rest der Arbeit übernimmt.
@@ -127,6 +131,10 @@ Auf der letzten Zeile werden Performance-Statistiken in der Webkonsole geloggt.
 Diese Methode wird nach der Entwicklungsphase entfernt.
 
 #### Router.tsx
+
+```tsx:../usg-website/src/pages/Router.tsx
+
+```
 
 [Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowerRouter, Routes und Route von react-router-dom, damit es ein client-sided-routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.
 
