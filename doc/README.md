@@ -3,7 +3,7 @@
 ### Inhaltsverzeichnis
 
 - [USG Homepage Docs](#usg-homepage-docs)
-  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [Einleitung](#einleitung)
     - [Technologien](#technologien)
   - [Lokale Entwicklungsumgebung einrichten](#lokale-entwicklungsumgebung-einrichten)
@@ -38,7 +38,6 @@ Wir erstellen eine dynamische Webseite mit React und Typescript. NodeJS verwende
 
 Unter anderem werden wir vorübergehend eine Art von Forms für alles (Bewerbungsformular, Kontaktformular, etc.) verwenden. Je nach Bedarf und Wachstum der Seite wird eventuell ein Backend für die API und Datenbank hinzugefügt.
 
-**Diese Webeite wurde erstellt von [@mnaray](https://github.com/mnaray), [@TheSolian](https://github.com/TheSolian) und [@h0peRL](https://github.com/h0peRL).**
 
 ## Lokale Entwicklungsumgebung einrichten
 
