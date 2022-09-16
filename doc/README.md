@@ -12,6 +12,15 @@
     - [Vorbereitung](#vorbereitung)
     - [NPM Installation](#npm-installation)
     - [Lokalen Server starten](#lokalen-server-starten)
+  - [Kontribution](#kontribution)
+    - [Allgemeines](#allgemeines)
+      - [Sprache](#sprache)
+      - [Audit und Snyk](#audit-und-snyk)
+    - [Pull Requests](#pull-requests)
+      - [Intern](#intern)
+      - [Extern](#extern)
+    - [Code Reviews](#code-reviews)
+    - [Workflows](#workflows)
   - [Anforderungen](#anforderungen)
   - [Components](#components)
     - [Header](#header)
@@ -76,7 +85,7 @@ Man kann nun beginnen, ein Mockup für viele verschiedene Sachen zu erstellen.
 
 Zur Vorbereitung für alles muss man das Repository forken, falls man kein eingetragener Contributor ist. So erstellt man eine eigene Kopie vom Repo, in der man dann die Änderungen umsetzen kann.
 
-![](assets/20220912_191512_fork.jpg)
+![fork](assets/20220912_191512_fork.jpg)
 
 Als nächstes muss die Repo geclonet werden. Danach kann man die Working-Directory zum geclonten Repo wechseln, um in dieser dann die Änderungen vorzunehmen.
 
@@ -117,6 +126,61 @@ Ansonsten kann man mit dem nächsten Befehl auch einen statischen Server verwend
 ```bash
 npm run build
 ```
+
+## Kontribution
+
+Wir bitten alle Kontributoren/Kollaboratoren die folgenden Guidelines zu befolgen. Kontributionen, welche die Konventionen nicht einhalten, werden nicht akzeptiert.
+
+### Allgemeines
+
+#### Sprache
+
+Grundsätzlich ist die Sprache für dieses Projekt Hochdeutsch. Kommunikation und Dokumentation soll möglichst formell geführt werden. Unangemessene oder provokante Ausdrücke werden nicht tolleriert.
+
+Commitnachrichten und Pull Requests sind alternativ auch auf Englisch erlaubt, solange die Verständlichkeit nicht beeinträchtigt wird.
+
+#### Audit und Snyk
+
+`npm audit` und [Snyk](https://snyk.io) warnen vor einer nth-check Vulnerability. Diese gilt es zu ignorieren bis ein offizieller fix gefunden wird.
+
+Andere Vulnerabilities gilt es schnellst möglich zu beheben.
+
+### Pull Requests
+
+#### Intern
+
+Interne Pull Requests sind obligatorisch, da der main Branch geschützt ist. Pull Request fürs Deployment müssen durch den Code-Owner bestätigt werden.
+
+Alle normalen Pull Requests benötigen ein Code-Review, damit sie gemerget werden können.
+
+Es soll sichergestellt werden, dass Pull Requests in Verbindung mit Issues korrekt verlinkt werden, damit das Issue beim Merge automatisch geschlossen wird.
+
+#### Extern
+
+Mit externen Pull Requests meinen wir Pull Requests, welche von nicht Kollaboratoren des Repos erstellt wurden.
+
+Kontributionen externer Personen sollen via Fork in einer Pull Request vorgeschlagen werden. Hierfür sind die folgenden Schritte zu befolgen. (als Hilfe)
+
+1. Zuerst muss ein Fork des originalen Projekts erstellt werden. Um diesen Fork nicht immer neu erstellen zu müssen, kann man mit dem "Sync"-Button auf dem Fork alle Erneuerungen seit dem letzten Fork kopieren.
+   ![fork](assets/20220912_191512_fork.jpg)
+2. Nun können Commits auf dem Fork gemacht werden.
+3. Wenn alle nötigen Änderungen vorgenommen wurden, kann die Fork-Version mit der originalen gemerget werden.
+4. Dies kann man tun, indem man eine Pull Request (in der Originalrepo) von einem Branch des Forks zu einem Branch des originals macht. Dazu kann man einen kleinen, blauen Text bei der Erstellung anklicken.
+5. Die Pull Request soll im originalen Repo angezeigt werden. (ggf. kann man sie noch mit einem Issue verlinken)
+
+### Code Reviews
+
+Damit ein Code Review vollständig ist, müssen alle Änderungen (ausgenommen automatischen, z.B. package-lock.json) vom Reviewer untersucht werden.
+
+Unter anderem ist der Reviewer auch dafür verantwortlich eine lokale Instanz der Applikation laufen zu lassen. Diese darf keine Errormeldungen vorweisen, damit ein Approval gegeben werden darf.
+
+### Workflows
+
+Für dieses Repository ist ein Workflow unter GitHub-Actions eingestellt. Dieser ist dafür zuständig, bei jeder Pull Request die Unit Tests automatisch auszuführen.
+
+Wenn ein Workflow nicht erfolgreich ist, kann nicht gemerget werden. Es müssen Änderungen vorgenommen werden, bis alle Tests erfolgreich sind.
+
+Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies ist mit dem `npm test` Befehl möglich. Dieser Soll selbsterklärend sein, ansonsten bitte nachfragen oder sonst informieren.
 
 ## Anforderungen
 
