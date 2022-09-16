@@ -4,6 +4,11 @@
 
 Eine genaue Dokumentation des Projekts ist [hier](./doc/README.md) zu finden.
 
+## Kontributionen
+
+Es gilt für Kontributionen die Kontributionsguidelines zu befolgen.
+Diese sind [hier](./doc/README.md#kontribution) zu finden.
+
 ## Einleitung
 
 Wir erstellen diese Webseite für die E-Sports-Gruppe USG (United Swiss Gaming). Der Leiter von USG hat uns beauftragt, eine Webseite zu erstellen. Unser Kunde (der Leiter) möchte neue Nutzer auf die Organisation aufmerksam machen und diese dann anwerben.
@@ -16,5 +21,4 @@ Wir erstellen eine dynamische Webseite mit React und Typescript. NodeJS verwende
 
 [NodeJS](https://nodejjs.org/en/about/), [React](https://reactjs.org), [TypeScript(tsx)](https://www.typescriptlang.org) und [JEST](https://jestjs.io)
 
-Unter anderem werden wir vorübergehend eine Art von Forms für alles (Bewerbungsformular, Kontaktformular, etc.) verwenden. Je nach Bedarf und Wachstum der Seite wird eventuell ein Backend für die API und Datenbank hinzugefügt.
-
+Unter anderem werden wir vorübergehend Google Forms für alles (Bewerbungsformular, Kontaktformular, etc.) verwenden. Je nach Bedarf und Wachstum der Seite wird ein Backend für die API und Datenbank hinzugefügt.
