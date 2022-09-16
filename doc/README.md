@@ -129,7 +129,7 @@ npm run build
 
 ## Kontribution
 
-Wir bitten alle Kontributoren/Kollaboratoren die folgenden Guidelines zu befolgen. Kontributionen, welche die Konventionen nicht einhalten werden nicht akzeptiert.
+Wir bitten alle Kontributoren/Kollaboratoren die folgenden Guidelines zu befolgen. Kontributionen, welche die Konventionen nicht einhalten, werden nicht akzeptiert.
 
 ### Allgemeines
 
