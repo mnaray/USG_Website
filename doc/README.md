@@ -66,6 +66,10 @@ Unser Team:
 
 ### Ein Mockup mit [draw.io](https://app.diagrams.net) erstellen.
 
+Wir haben unser Mockup mit [draw.io](https://app.diagrams.net) erstelt und empfehlen es auch sehr, dass man Low-Fi Mockups ebenfalls damit erstellt. Dafür muss man die Seite aufrufen (oben mehrmals verlinkt) und auf neues Diagramm erstellen klicken. Nun kann man selber wählen, welche Designs man verwenden will. Das ist jedem das seine.
+
+Man kann nun beginnen, ein Mockup für viele verschiedene Sachen zu erstellen.
+
 ## Lokale Entwicklungsumgebung einrichten
 
 ### Vorbereitung
