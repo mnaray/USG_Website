@@ -103,7 +103,7 @@ Wir bitten alle Kontributoren/Kollaboratoren die folgenden Guidelines zu befolge
 
 #### Sprache
 
-Grundsätzlich ist die Sprache für dieses Projekt Hochdeutsch. Kommunikation und Dokumentation soll möglichst formell geführt werden.
+Grundsätzlich ist die Sprache für dieses Projekt Hochdeutsch. Kommunikation und Dokumentation soll möglichst formell geführt werden. Unangemessene oder provokante Ausdrücke werden nicht tolleriert.
 
 Commitnachrichten und Pull Requests sind alternativ auch auf Englisch erlaubt, solange die Verständlichkeit nicht beeinträchtigt wird.
 
