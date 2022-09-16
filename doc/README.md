@@ -6,6 +6,8 @@
     - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [Einleitung](#einleitung)
     - [Technologien](#technologien)
+  - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
+    - [Ein Mockup mit draw.io erstellen.](#ein-mockup-mit-drawio-erstellen)
   - [Lokale Entwicklungsumgebung einrichten](#lokale-entwicklungsumgebung-einrichten)
     - [Vorbereitung](#vorbereitung)
     - [NPM Installation](#npm-installation)
@@ -39,22 +41,28 @@ Wir erstellen eine dynamische Webseite mit React und Typescript. NodeJS verwende
 Unter anderem werden wir vorübergehend eine Art von Forms für alles (Bewerbungsformular, Kontaktformular, etc.) verwenden. Je nach Bedarf und Wachstum der Seite wird eventuell ein Backend für die API und Datenbank hinzugefügt.
 
 ## Erstellung des Mockups mit dem Kunden
+
 Um sich ein ausgeprägtes Bild von der Webseite zu machen, haben wir uns dazu entschieden, mit dem Kunden zusammen ein Low-Fi Mockup zu erstellen. Dazu haben wir uns in einem Meeting online verabredet und haben dann zusammen das Grundgerüst des Designs für die Webseite erstellt. In dem Prozess kam es schon zu den ersten Entscheidungen, die wir trafen, die dann auch im Endergebnis erscheinen werden. Wir haben für die Erstellung des Low-Fi Mockups [draw.io](https://app.diagrams.net) verwendet. Wir haben dann dem Kunden kontinuierlich Designvorschläge gemacht und er hat uns seine Meinung dazu gesagt. In den meisten Fällen gefiel ihm unsere Vorschläge. In dem Meeting ist dann folgendes Reultat erschienen:
 
 Homepage:
+
 ![Homepage](assets/Lo-Fi_USG-Homepage.drawio.png)
 
 Feed:
+
 ![Feed](assets/Lo-Fi_USG-Feed.drawio.png)
 
 Kontakt:
+
 ![Kontakt](assets/Lo-Fi_USG-Kontakt.drawio.png)
 
 Ueber uns:
-![Ueber uns](assets/Lo-Fi_USG-Über Uns.drawio.png)
+
+![Ueber uns](assets/Lo-Fi_USG-Ueber%20Uns.drawio.png)
 
 Unser Team:
-![Unser Team](assets/Lo-Fi_USG-Unser Team.drawio.png)
+
+![Unser Team](assets/Lo-Fi_USG-Unser%20Team.drawio.png)
 
 ### Ein Mockup mit [draw.io](https://app.diagrams.net) erstellen.
 
@@ -108,32 +116,31 @@ npm run build
 
 ## Anforderungen
 
-
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
-| :--------- | ----------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                   |
-| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                             |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                  |
+| :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
+| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                    |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
-| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                       |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                         |
-| 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />***(Gestaltung in Zusammenarbeit mit dem Kunden)***                                             |
+| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                          |
+| 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />**_(Gestaltung in Zusammenarbeit mit dem Kunden)_**                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
 | 9        | M               | funk.             | Eine Homepage ist vorhanden.                                                                                                                                   |
 | 10       | M               | funk.             | Die Homepage soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                         |
+| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                          |
 | 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Homepage vorhanden.                                                                                               |
-| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                              |
-| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                               |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                    |
+| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                               |
+| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                      |
 | 16       | M               | funk.             | Auf der Kontaktseite sollen die Kontaktdaten des Teambesitzers stehen.                                                                                         |
 | 17       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                           |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                        |
+| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                            |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                          |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
 | 21       | M               | funk.             | Die entsprechenden Sozialen Medien sind verlinkt                                                                                                               |
-| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />***(Genaue Umsetzung no zu Besprechen mit dem Kunden)***                                     |
-| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden.<br />***(Genaue Umsetzung no zu Besprechen mit dem Kunden)***                                        |
+| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                       |
+| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                        |
 
 ## Components
 
@@ -174,14 +181,14 @@ lorem ipsum dolor sit amet
 #### index.tsx
 
 ```ts
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './css/index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./css/index.css";
 import Router from "./pages/Router";
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
@@ -205,20 +212,20 @@ Diese Methode wird nach der Entwicklungsphase entfernt.
 #### Router.tsx
 
 ```ts
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageNotFound from "./PageNotFound";
 import App from "./App";
 
 function Router() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="*" element={<PageNotFound />} />
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default Router;
