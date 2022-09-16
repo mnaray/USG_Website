@@ -34,6 +34,7 @@
     - [Other / Invisible](#other--invisible)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
+  - [Rechtliches](#rechtliches)
 
 ## Einleitung
 
@@ -184,6 +185,7 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
+
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
 | :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
@@ -312,3 +314,12 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 > Ein Beispiel ist [hier](https://isotropic.co/react-multiple-pages/) zu finden. (gemeint ist Punkt 4. und 5.)
 
 `path="*"` sind alle Pfade, welche nicht existieren. In unserem Fall laden wir [PageNotFound.tsx](#pagenotfoundtsx), ume dem User eine 404-Meldung zu geben.
+
+## Rechtliches
+
+Alle Rechte zu dieser Software sind Herrn Nikola Knezevic vorbehalten.
+
+Jeder Besitzer einer Kopie dieser ist gemäss der MIT-Lizenz verpflichtet sicherzustellen, dass die Lizenz mit dem passenden Copyright in seiner Kopie zu finden ist.
+
+> **DISCLAIMER**:
+> Die MIT-Lizenz ist eine Copyright Lizenz, welche den Quellcode offenbart. Hier ist keine Rede von Copyleft.

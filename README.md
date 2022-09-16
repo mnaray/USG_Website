@@ -22,3 +22,5 @@ Wir erstellen eine dynamische Webseite mit React und Typescript. NodeJS verwende
 [NodeJS](https://nodejjs.org/en/about/), [React](https://reactjs.org), [TypeScript(tsx)](https://www.typescriptlang.org) und [JEST](https://jestjs.io)
 
 Unter anderem werden wir vorübergehend Google Forms für alles (Bewerbungsformular, Kontaktformular, etc.) verwenden. Je nach Bedarf und Wachstum der Seite wird ein Backend für die API und Datenbank hinzugefügt.
+
+*Copyright (c) 2022 Nikola Knezevic*
