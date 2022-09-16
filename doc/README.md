@@ -40,8 +40,21 @@ Unter anderem werden wir vorübergehend eine Art von Forms für alles (Bewerbung
 
 ## Erstellung des Mockups mit dem Kunden
 Um sich ein ausgeprägtes Bild von der Webseite zu machen, haben wir uns dazu entschieden, mit dem Kunden zusammen ein Low-Fi Mockup zu erstellen. Dazu haben wir uns in einem Meeting online verabredet und haben dann zusammen das Grundgerüst des Designs für die Webseite erstellt. In dem Prozess kam es schon zu den ersten Entscheidungen, die wir trafen, die dann auch im Endergebnis erscheinen werden. Wir haben für die Erstellung des Low-Fi Mockups [draw.io](https://app.diagrams.net) verwendet. Wir haben dann dem Kunden kontinuierlich Designvorschläge gemacht und er hat uns seine Meinung dazu gesagt. In den meisten Fällen gefiel ihm unsere Vorschläge. In dem Meeting ist dann folgendes Reultat erschienen:
+
 Homepage:
 ![Homepage](assets/Lo-Fi_USG-Homepage.drawio.png)
+
+Feed:
+![Feed](assets/Lo-Fi_USG-Feed.drawio.png)
+
+Kontakt:
+![Kontakt](assets/Lo-Fi_USG-Kontakt.drawio.png)
+
+Ueber uns:
+![Ueber uns](assets/Lo-Fi_USG-Über Uns.drawio.png)
+
+Unser Team:
+![Unser Team](assets/Lo-Fi_USG-Unser Team.drawio.png)
 
 ### Ein Mockup mit [draw.io](https://app.diagrams.net) erstellen.
 
