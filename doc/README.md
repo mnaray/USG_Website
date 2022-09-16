@@ -38,6 +38,11 @@ Wir erstellen eine dynamische Webseite mit React und Typescript. NodeJS verwende
 
 Unter anderem werden wir vorübergehend eine Art von Forms für alles (Bewerbungsformular, Kontaktformular, etc.) verwenden. Je nach Bedarf und Wachstum der Seite wird eventuell ein Backend für die API und Datenbank hinzugefügt.
 
+## Erstellung des Mockups mit dem Kunden
+Um sich ein ausgeprägtes Bild von der Webseite zu machen, haben wir uns dazu entschieden, mit dem Kunden zusammen ein Low-Fi Mockup zu erstellen. Dazu haben wir uns in einem Meeting online verabredet und haben dann zusammen das Grundgerüst des Designs für die Webseite erstellt. In dem Prozess kam es schon zu den ersten Entscheidungen, die wir trafen, die dann auch im Endergebnis erscheinen werden. Wir haben für die Erstellung des Low-Fi Mockups [draw.io](https://app.diagrams.net) verwendet. Wir haben dann dem Kunden kontinuierlich Designvorschläge gemacht und er hat uns seine Meinung dazu gesagt. In den meisten Fällen gefiel ihm unsere Vorschläge. In dem Meeting ist dann folgendes Reultat erschienen:
+
+
+### Ein Mockup mit [draw.io](https://app.diagrams.net) erstellen.
 
 ## Lokale Entwicklungsumgebung einrichten
 
