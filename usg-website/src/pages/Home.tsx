@@ -2,7 +2,7 @@ import React from "react";
 import "../css/tailwind.css";
 import Logo from "./components/Logo";
 
-function App() {
+function Home() {
   return (
     <div className="text-center">
       <header className="app-header">
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
