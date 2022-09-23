@@ -3,7 +3,7 @@
 ### Inhaltsverzeichnis
 
 - [USG Homepage Docs](#usg-homepage-docs)
-    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [Einleitung](#einleitung)
     - [Technologien](#technologien)
   - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
@@ -246,6 +246,22 @@ export default Logo
 > Beim Rendern in Testfällen ist zu beachten, dass die Komponente Link nie ohne einen Router aufgerufen werden kann. Um dies zu beheben, muss man folgenden Wrapper hinzufügen:
 >
 > `render(<App />, {wrapper: BrowserRouter});`
+
+### Slogan
+
+```ts
+import React from 'react'
+
+function Slogan() {
+  return (
+    <p>We are United. We are Swiss. We are Gamers</p>
+  )
+}
+
+export default Slogan
+```
+
+[Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
 
 ### Main/Aside
 
