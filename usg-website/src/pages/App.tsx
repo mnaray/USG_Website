@@ -1,12 +1,12 @@
 import React from 'react';
 import '../css/App.css';
-import logo from '../logos/USG_Logo_Transparent_PNG.png';
+import Logo from './components/Logo';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Logo />
         <p>
           We are USG! 🎮
         </p>
