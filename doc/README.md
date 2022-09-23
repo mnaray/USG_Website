@@ -3,7 +3,7 @@
 ### Inhaltsverzeichnis
 
 - [USG Homepage Docs](#usg-homepage-docs)
-  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [Einleitung](#einleitung)
     - [Technologien](#technologien)
   - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
