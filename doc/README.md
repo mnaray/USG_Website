@@ -241,6 +241,12 @@ export default Logo
 
 [Logo.tsx](../usg-website/src/pages/components/Logo.tsx) nimmt die PNG-Datei des Logos, und gibt dieses in Form einer React Komponente zurück. Um den IMG-Tag herum ist eine Link Komponente, die dafür sorgt, dass man zur Homepage weitergeleitet wird wenn man darauf klickt.
 
+> **Wichitg:**
+>
+> Beim Rendern in Testfällen ist zu beachten, dass die Komponente Link nie ohne einen Router aufgerufen werden kann. Um dies zu beheben, muss man folgenden Wrapper hinzufügen:
+>
+> `render(<App />, {wrapper: BrowserRouter});`
+
 ### Main/Aside
 
 #### Mustercomponent
