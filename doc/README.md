@@ -24,11 +24,11 @@
   - [Anforderungen](#anforderungen)
   - [Components](#components)
     - [Header](#header)
-      - [Mustercomponent](#mustercomponent)
+      - [Logo.tsx](#logotsx)
     - [Main/Aside](#mainaside)
-      - [Mustercomponent](#mustercomponent-1)
+      - [Mustercomponent](#mustercomponent)
     - [Footer](#footer)
-      - [Mustercomponent](#mustercomponent-2)
+      - [Mustercomponent](#mustercomponent-1)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
     - [Other / Invisible](#other--invisible)
@@ -216,11 +216,36 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ### Header
 
-#### Mustercomponent
+#### Logo.tsx
 
-lorem ipsum dolor sit amet
-lorem ipsum dolor sit amet
-lorem ipsum dolor sit amet
+```ts
+
+
+import React from "react"
+import { Link } from "react-router-dom"
+import "../../css/App.css"
+import LogoImage from "../../logos/USG_Logo_Transparent_PNG.png"
+
+function Logo() {
+  return (
+    <div>
+      <Link to="/">
+        <img src={LogoImage} alt="Logo" className="App-logo"></img>
+      </Link>
+    </div>
+  )
+}
+
+export default Logo
+```
+
+[Logo.tsx](../usg-website/src/pages/components/Logo.tsx) nimmt die PNG-Datei des Logos, und gibt dieses in Form einer React Komponente zurück. Um den IMG-Tag herum ist eine Link Komponente, die dafür sorgt, dass man zur Homepage weitergeleitet wird wenn man darauf klickt.
+
+> **Wichitg:**
+>
+> Beim Rendern in Testfällen ist zu beachten, dass die Komponente Link nie ohne einen Router aufgerufen werden kann. Um dies zu beheben, muss man folgenden Wrapper hinzufügen:
+>
+> `render(<App />, {wrapper: BrowserRouter});`
 
 ### Main/Aside
 
