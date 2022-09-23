@@ -7,8 +7,10 @@ function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="*" element={<PageNotFound />} />
+                <Route path='/'>
+                    <Route index element={<App />} />
+                    <Route path='*' element={<PageNotFound />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     );

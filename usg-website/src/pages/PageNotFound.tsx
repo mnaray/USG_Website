@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/App.css';
-// import logo from '../logos/USG_Logo_Transparent_PNG.png';
 import Logo from './components/Logo';
 
 function PageNotFound() {
