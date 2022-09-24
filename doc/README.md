@@ -247,6 +247,22 @@ export default Logo
 >
 > `render(<App />, {wrapper: BrowserRouter});`
 
+### Slogan
+
+```ts
+import React from 'react'
+
+function Slogan() {
+  return (
+    <p>We are United. We are Swiss. We are Gamers</p>
+  )
+}
+
+export default Slogan
+```
+
+[Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
+
 ### Main/Aside
 
 #### Mustercomponent

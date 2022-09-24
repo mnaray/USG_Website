@@ -2,7 +2,7 @@ import React from 'react'
 
 function Slogan() {
   return (
-    <p>We are United. We are Swiss. We are Gamers</p>
+    <p className='text-xl font-bold'>We are United. We are Swiss. We are Gamers</p>
   )
 }
 
