@@ -187,34 +187,34 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
-| :--------- | ----------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                   |
-| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                             |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                  |
+| :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
+| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                    |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
-| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                       |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                         |
+| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                          |
 | 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />**_(Gestaltung in Zusammenarbeit mit dem Kunden)_**                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
 | 9        | M               | funk.             | Eine Homepage ist vorhanden.                                                                                                                                   |
 | 10       | M               | funk.             | Die Homepage soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                         |
+| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                          |
 | 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Homepage vorhanden.                                                                                               |
-| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                              |
-| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                               |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                    |
+| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                               |
+| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                      |
 | 16       | M               | funk.             | Auf der Kontaktseite sollen die Kontaktdaten des Teambesitzers stehen.                                                                                         |
 | 17       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                           |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                        |
+| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                            |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                          |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
 | 21       | M               | funk.             | Die entsprechenden Sozialen Medien sind verlinkt                                                                                                               |
-| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                     |
+| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                       |
 | 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                        |
 
 ## Components
 
-### Header
+### Komponenten für die Seiten
 
 #### Logo.tsx
 
@@ -247,7 +247,7 @@ export default Logo
 >
 > `render(<App />, {wrapper: BrowserRouter});`
 
-### Slogan
+#### Slogan.tsx
 
 ```ts
 import React from 'react'
@@ -263,31 +263,60 @@ export default Slogan
 
 [Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
 
-### Main/Aside
+#### GoogleForms.tsx
 
-#### Mustercomponent
+```ts
+import React from 'react'
 
-lorem ipsum dolor sit amet
-lorem ipsum dolor sit amet
-lorem ipsum dolor sit amet
+interface Source {
+    url: string;
+}
 
-### Footer
+function GoogleForms(source: Source) {
+    return (
+        <iframe src={source.url} width="640" height="595" frameBorder="0" marginHeight={0} marginWidth={0} className="my-12 mx-6">
+            Wird geladen…
+        </iframe>
+    )
+}
 
-#### Mustercomponent
+export default GoogleForms
+```
 
-lorem ipsum dolor sit amet
-lorem ipsum dolor sit amet
-lorem ipsum dolor sit amet
+[GoogleForms.tsx](../usg-website/src/pages/components/GoogleForms.tsx) ist die Komponente, die verwendet wird, um Forms (Umfragen) von Google auf der Website einzubetten. Mit dem `url` Attribut kann eine URL zu der jeweiligen Forms von Google in die Komponente eingefügt werden. Dieses Formular wird dann auf der Webseite angezeigt. Jeder Nutzer kann sofort das Formular auf der Seite ausfüllen, ohne Redirects.
+
+Dies ist sehr angenehm und praktisch, da man sich keine neuen Konten oder Profile erstellen muss, nur ume eine kurze Frage (o.ä.) zu stellen. Somit ist die Wahrscheinlichkeit, dass ein Nutzer dieses Feature verwendet um einiges höher als mit einem Redirect.
+
+Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backen entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
 
 ### Pages
 
 #### PageNotFound.tsx
 
-lorem ipsum dolor sit amet
-lorem ipsum dolor sit amet
-lorem ipsum dolor sit amet
+```ts
+import React from 'react';
+import Logo from './components/Logo';
 
-### Other / Invisible
+function PageNotFound() {
+    return (
+        <div className='App'>
+            <header className="app-header">
+                <h1 className='text-red-600'>Error 404: Page not found!</h1>
+                <p>Bitte eine valide URL eingeben.</p>
+                <Logo />
+            </header>
+        </div>
+    );
+}
+
+export default PageNotFound;
+```
+
+[PageNotFound.tsx](../usg-website/src/pages/components/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
+
+Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#routertsx) sie nicht erkennt, wird man automatisch auf die 404-Seite weitergeleitet, da diese Route in diesem Fall nicht existiert.
+
+### Sonstiges / Unsichtbares
 
 #### index.tsx
 
