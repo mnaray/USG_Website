@@ -247,7 +247,7 @@ export default Logo
 >
 > `render(<App />, {wrapper: BrowserRouter});`
 
-#### Slogan
+#### Slogan.tsx
 
 ```ts
 import React from 'react'
@@ -262,6 +262,32 @@ export default Slogan
 ```
 
 [Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
+
+#### GoogleForms.tsx
+
+```ts
+import React from 'react'
+
+interface Source {
+    url: string;
+}
+
+function GoogleForms(source: Source) {
+    return (
+        <iframe src={source.url} width="640" height="595" frameBorder="0" marginHeight={0} marginWidth={0} className="my-12 mx-6">
+            Wird geladen…
+        </iframe>
+    )
+}
+
+export default GoogleForms
+```
+
+[GoogleForms.tsx](../usg-website/src/pages/components/GoogleForms.tsx) ist die Komponente, die verwendet wird, um Forms (Umfragen) von Google auf der Website einzubetten. Mit dem `url` Attribut kann eine URL zu der jeweiligen Forms von Google in die Komponente eingefügt werden. Dieses Formular wird dann auf der Webseite angezeigt. Jeder Nutzer kann sofort das Formular auf der Seite ausfüllen, ohne Redirects.
+
+Dies ist sehr angenehm und praktisch, da man sich keine neuen Konten oder Profile erstellen muss, nur ume eine kurze Frage (o.ä.) zu stellen. Somit ist die Wahrscheinlichkeit, dass ein Nutzer dieses Feature verwendet um einiges höher als mit einem Redirect.
+
+Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backen entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
 
 ### Pages
 
