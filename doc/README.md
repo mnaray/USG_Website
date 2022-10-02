@@ -27,6 +27,7 @@
       - [Logo.tsx](#logotsx)
       - [Slogan.tsx](#slogantsx)
       - [GoogleForms.tsx](#googleformstsx)
+      - [Navbar.tsx](#navbartsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
@@ -185,29 +186,29 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
-| :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
-| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                    |
+| :--------- | ----------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                   |
+| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                             |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                  |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
-| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                          |
+| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                       |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                         |
 | 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />**_(Gestaltung in Zusammenarbeit mit dem Kunden)_**                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
 | 9        | M               | funk.             | Eine Homepage ist vorhanden.                                                                                                                                   |
 | 10       | M               | funk.             | Die Homepage soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                          |
+| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                         |
 | 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Homepage vorhanden.                                                                                               |
-| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                               |
-| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                      |
+| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                              |
+| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                               |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                    |
 | 16       | M               | funk.             | Auf der Kontaktseite sollen die Kontaktdaten des Teambesitzers stehen.                                                                                         |
 | 17       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                            |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                          |
+| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                           |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                        |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
 | 21       | M               | funk.             | Die entsprechenden Sozialen Medien sind verlinkt                                                                                                               |
-| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                       |
+| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                     |
 | 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                        |
 
 ## Components
@@ -286,6 +287,72 @@ export default GoogleForms
 Dies ist sehr angenehm und praktisch, da man sich keine neuen Konten oder Profile erstellen muss, nur ume eine kurze Frage (o.ä.) zu stellen. Somit ist die Wahrscheinlichkeit, dass ein Nutzer dieses Feature verwendet um einiges höher als mit einem Redirect.
 
 Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backen entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
+
+#### Navbar.tsx
+
+```ts
+import React from 'react'
+import logo from "../../logos/cropped_logo.png";
+import { Link } from 'react-router-dom';
+import Button from './Button';
+
+
+function Navbar() {
+    return (
+        <header className='flex flex-row justify-between w-full p-5 items-center bg-black'>
+            <nav className='flex flex-row justify-start items-center'>
+                <div className='h-20 mr-10'>
+                    <Link to="/">
+                        <img
+                            src={logo}
+                            alt="Logo des Teams"
+                            className="hover:scale-110 transition-all duration-200 h-full"
+                        />
+                    </Link>
+                </div>
+                <ul className='flex flex-row align-middle space-x-5 text-white text-xl
+                                divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
+                                child:child:px-2 child:child:rounded child:child:text-center
+                                child:child-hover:bg-white child:child-hover:text-black
+                                child:child:transition-all child:child:duration-200'>
+                    <li>
+                        <div>
+                            <Link to="/">Home</Link>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <Link to="feed">Feed</Link>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <Link to="kontakt">Kontakt</Link>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <Link to="ueber-uns">Über Uns</Link>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <Link to="unser-team">Unser Team</Link>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <Button text='Mitglied werden' destination='kontakt/bewerben' />
+        </header>
+    )
+}
+
+export default Navbar
+```
+
+[Navbar.tsx](../usg-website/src/pages/components/Navbar.tsx) ist die Navigationsleiste der Seite. Alle grösseren Unterseiten sind durch sie erreichbar. Zusätzlich ist noch ein Knopf eingebaut, der direkt zum Bewerbungsformular führt.
+
+Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf *alle* `<li>`, welche sich drin befinden.
 
 ### Pages
 
