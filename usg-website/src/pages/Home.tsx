@@ -1,13 +1,15 @@
 import React from "react";
 import "../css/tailwind.css";
 import Logo from "./components/Logo";
+import Slogan from "./components/Slogan";
+import Willkommenstext from "./components/Willkommenstext";
 
 function Home() {
   return (
     <main>
       <Logo />
-      <p>We are USG! 🎮</p>
-      <p className="text-orange-600">Our Website will be up soon!</p>
+      <Slogan />
+      <Willkommenstext />
     </main>
   );
 }
