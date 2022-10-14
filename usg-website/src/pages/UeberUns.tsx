@@ -4,11 +4,11 @@ import Slogan from './components/Slogan';
 
 function UeberUns() {
   return (
-    <div className='app-header'>
+    <main>
       <Logo />
       <Slogan />
       <h1 className='text-pink-600'>Über Uns</h1>
-    </div>
+    </main>
   )
 }
 
