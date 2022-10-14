@@ -185,7 +185,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
-
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
 | :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
@@ -219,12 +218,10 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 #### Logo.tsx
 
 ```ts
-
-
-import React from "react"
-import { Link } from "react-router-dom"
-import "../../css/App.css"
-import LogoImage from "../../logos/USG_Logo_Transparent_PNG.png"
+import React from "react";
+import { Link } from "react-router-dom";
+import "../../css/App.css";
+import LogoImage from "../../logos/USG_Logo_Transparent_PNG.png";
 
 function Logo() {
   return (
@@ -233,10 +230,10 @@ function Logo() {
         <img src={LogoImage} alt="Logo" className="App-logo"></img>
       </Link>
     </div>
-  )
+  );
 }
 
-export default Logo
+export default Logo;
 ```
 
 [Logo.tsx](../usg-website/src/pages/components/Logo.tsx) nimmt die PNG-Datei des Logos, und gibt dieses in Form einer React Komponente zurück. Um den IMG-Tag herum ist eine Link Komponente, die dafür sorgt, dass man zur Homepage weitergeleitet wird wenn man darauf klickt.
@@ -250,15 +247,13 @@ export default Logo
 #### Slogan.tsx
 
 ```ts
-import React from 'react'
+import React from "react";
 
 function Slogan() {
-  return (
-    <p>We are United. We are Swiss. We are Gamers</p>
-  )
+  return <p>We are United. We are Swiss. We are Gamers</p>;
 }
 
-export default Slogan
+export default Slogan;
 ```
 
 [Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
@@ -266,21 +261,29 @@ export default Slogan
 #### GoogleForms.tsx
 
 ```ts
-import React from 'react'
+import React from "react";
 
 interface Source {
-    url: string;
+  url: string;
 }
 
 function GoogleForms(source: Source) {
-    return (
-        <iframe src={source.url} width="640" height="595" frameBorder="0" marginHeight={0} marginWidth={0} className="my-12 mx-6">
-            Wird geladen…
-        </iframe>
-    )
+  return (
+    <iframe
+      src={source.url}
+      width="640"
+      height="595"
+      frameBorder="0"
+      marginHeight={0}
+      marginWidth={0}
+      className="my-12 mx-6"
+    >
+      Wird geladen…
+    </iframe>
+  );
 }
 
-export default GoogleForms
+export default GoogleForms;
 ```
 
 [GoogleForms.tsx](../usg-website/src/pages/components/GoogleForms.tsx) ist die Komponente, die verwendet wird, um Forms (Umfragen) von Google auf der Website einzubetten. Mit dem `url` Attribut kann eine URL zu der jeweiligen Forms von Google in die Komponente eingefügt werden. Dieses Formular wird dann auf der Webseite angezeigt. Jeder Nutzer kann sofort das Formular auf der Seite ausfüllen, ohne Redirects.
@@ -294,19 +297,19 @@ Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Ba
 #### PageNotFound.tsx
 
 ```ts
-import React from 'react';
-import Logo from './components/Logo';
+import React from "react";
+import Logo from "./components/Logo";
 
 function PageNotFound() {
-    return (
-        <div className='App'>
-            <header className="app-header">
-                <h1 className='text-red-600'>Error 404: Page not found!</h1>
-                <p>Bitte eine valide URL eingeben.</p>
-                <Logo />
-            </header>
-        </div>
-    );
+  return (
+    <div className="App">
+      <header className="app-header">
+        <h1 className="text-red-600">Error 404: Page not found!</h1>
+        <p>Bitte eine valide URL eingeben.</p>
+        <Logo />
+      </header>
+    </div>
+  );
 }
 
 export default PageNotFound;
@@ -352,40 +355,39 @@ Diese Methode wird nach der Entwicklungsphase entfernt.
 #### Router.tsx
 
 ```ts
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Bewerben from './Bewerben';
-import Feed from './Feed';
+import Bewerben from "./Bewerben";
+import Feed from "./Feed";
 import Home from "./Home";
-import Kontakt from './Kontakt';
+import Kontakt from "./Kontakt";
 import PageNotFound from "./PageNotFound";
-import Scrims from './Scrims';
-import Team from './Team';
-import UeberUns from './UeberUns';
+import Scrims from "./Scrims";
+import Team from "./Team";
+import UeberUns from "./UeberUns";
 
 function Router() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/'>
-                    <Route index element={<Home />} />
-                    <Route path="feed" element={<Feed />} />
-                    <Route path="ueber-uns" element={<UeberUns />} />
-                    <Route path="unser-team" element={<Team />} />
-                    <Route path='*' element={<PageNotFound />} />
-                    <Route path='kontakt'>
-                        <Route index element={<Kontakt />} />
-                        <Route path='bewerben' element={<Bewerben />} />
-                        <Route path='scrim-us' element={<Scrims />} />
-                    </Route>
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="feed" element={<Feed />} />
+          <Route path="ueber-uns" element={<UeberUns />} />
+          <Route path="unser-team" element={<Team />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="kontakt">
+            <Route index element={<Kontakt />} />
+            <Route path="bewerben" element={<Bewerben />} />
+            <Route path="scrim-us" element={<Scrims />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default Router;
-
 ```
 
 [Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowserRouter, Routes und Route von react-router-dom, damit es ein Client-Sided-Routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.
@@ -403,6 +405,106 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 > Ein Beispiel ist [hier](https://isotropic.co/react-multiple-pages/) zu finden. (gemeint ist Punkt 4. und 5.)
 
 `path="*"` sind alle Pfade, welche nicht existieren. In unserem Fall laden wir [PageNotFound.tsx](#pagenotfoundtsx), um dem User eine 404-Meldung zu geben.
+
+### Membercard.tsx
+
+```ts
+import React from "react";
+import "../../css/index.css";
+
+interface membercard {
+  mbr: string;
+  name: string;
+  function: string;
+  comment?: string;
+}
+
+function Membercard(source: membercard) {
+  return (
+    <div className="flip-card m-10 rounded">
+      <div className="flip-card-inner rounded">
+        <div className="flip-card-front rounded">
+          <img
+            className="h-full w-full aspect-7/9"
+            src={source.mbr}
+            alt={"Picture of " + source.name}
+          />
+          <p className=" align-text-bottom ">{source.name}</p>
+        </div>
+        <div className="flip-card-back">
+          <h1 className="text-4xl">"{source.name}"</h1>
+          <p className="text-xl">{source.function}</p>
+          <p>About: </p>
+          <p className="text-lg">{source.comment}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Membercard;
+```
+
+[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
+
+Eine Membercard fordert folgende Properties:
+
+`mbr= {Foto.png}` Foto des Mitglieds.
+
+`name= "Pseudonym"` Pseudonym des Mitglieds.
+
+`function= "Mitglied"` Rolle des Mitglieds.
+
+`comment= "text..."` Kommentar über das Mitglied.
+
+Bei dem comment property ist noch speziell, dass es nullable(Man kann auch keinen Wert angeben) ist:
+
+```ts
+comment?: string; // Das Fragezeichen macht das property nullable.
+```
+
+### MembercardGrid.tsx
+
+```ts
+import React from "react";
+import Membercard from "./Membercard";
+import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
+
+function MembercardGrid() {
+  return (
+    <div className="flex flex-row">
+      <Membercard
+        mbr={MemberFoto}
+        name="Nikknez"
+        function="Mitglied"
+        comment="Er ist toll"
+      />
+      <Membercard
+        mbr={MemberFoto}
+        name="Pseudonym"
+        function="Mitglied"
+        comment="Comment"
+      />
+      <Membercard
+        mbr={MemberFoto}
+        name="Pseudonym"
+        function="Mitglied"
+        comment="Comment"
+      />
+      <Membercard
+        mbr={MemberFoto}
+        name="Pseudonym"
+        function="Mitglied"
+        comment="Comment"
+      />
+    </div>
+  );
+}
+
+export default MembercardGrid;
+```
+
+[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
 
 ## Rechtliches
 
