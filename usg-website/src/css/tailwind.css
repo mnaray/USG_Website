@@ -4,6 +4,6 @@
 
 @layer components {
     main {
-        @apply bg-slate-800 h-full flex flex-col justify-center items-center text-white text-3xl;
+        @apply bg-slate-800 h-full flex flex-col justify-center items-center text-white;
     }
 }
