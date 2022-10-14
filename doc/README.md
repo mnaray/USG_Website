@@ -319,93 +319,6 @@ export default PageNotFound;
 
 Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#routertsx) sie nicht erkennt, wird man automatisch auf die 404-Seite weitergeleitet, da diese Route in diesem Fall nicht existiert.
 
-### Sonstiges / Unsichtbares
-
-#### index.tsx
-
-```ts
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./css/index.css";
-import Router from "./pages/Router";
-import reportWebVitals from "./reportWebVitals";
-
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <Router />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
-```
-
-[index.tsx](../usg-website/src/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
-
-In unserem Fall wird die [Router.tsx](#routertsx) Komponente geladen, welches dann den Rest der Arbeit übernimmt.
-
-Auf der letzten Zeile werden Performance-Statistiken in der Webkonsole geloggt.
-Diese Methode wird nach der Entwicklungsphase entfernt.
-
-#### Router.tsx
-
-```ts
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Bewerben from "./Bewerben";
-import Feed from "./Feed";
-import Home from "./Home";
-import Kontakt from "./Kontakt";
-import PageNotFound from "./PageNotFound";
-import Scrims from "./Scrims";
-import Team from "./Team";
-import UeberUns from "./UeberUns";
-
-function Router() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/">
-          <Route index element={<Home />} />
-          <Route path="feed" element={<Feed />} />
-          <Route path="ueber-uns" element={<UeberUns />} />
-          <Route path="unser-team" element={<Team />} />
-          <Route path="*" element={<PageNotFound />} />
-          <Route path="kontakt">
-            <Route index element={<Kontakt />} />
-            <Route path="bewerben" element={<Bewerben />} />
-            <Route path="scrim-us" element={<Scrims />} />
-          </Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default Router;
-```
-
-[Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowserRouter, Routes und Route von react-router-dom, damit es ein Client-Sided-Routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.
-
-Die Routerkomponente gibt einen BrowserRouter mit den vorgegebenen Routen zurück. Diese können dann in der Search-Bar abgerufen werden.
-
-Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponente}`, welches beim Abruf des Pfades geladen wird.
-
-`path="/"` ist der Pfad für die Homepage der Website. Diese Route wird abgerufen, wenn man nichts (oder nur "/") hinter der Domain der Seite eingibt.
-
-`index` ist hierbei die Standarroute, die geladen wird, wenn man nichts nach dem `/` eingibt.
-
-`path="myRouteName"` ist der Pfad für eine andere Unterseite von `path="/"`. Sie wird normalerweise direkt unter der Standardroute eingefügt, wenn man eine Layout-Komponente hat.
-
-> Ein Beispiel ist [hier](https://isotropic.co/react-multiple-pages/) zu finden. (gemeint ist Punkt 4. und 5.)
-
-`path="*"` sind alle Pfade, welche nicht existieren. In unserem Fall laden wir [PageNotFound.tsx](#pagenotfoundtsx), um dem User eine 404-Meldung zu geben.
-
 ### Membercard.tsx
 
 ```ts
@@ -504,7 +417,94 @@ function MembercardGrid() {
 export default MembercardGrid;
 ```
 
-[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
+[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
+
+### Sonstiges / Unsichtbares
+
+#### index.tsx
+
+```ts
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./css/index.css";
+import Router from "./pages/Router";
+import reportWebVitals from "./reportWebVitals";
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <Router />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals(console.log);
+```
+
+[index.tsx](../usg-website/src/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
+
+In unserem Fall wird die [Router.tsx](#routertsx) Komponente geladen, welches dann den Rest der Arbeit übernimmt.
+
+Auf der letzten Zeile werden Performance-Statistiken in der Webkonsole geloggt.
+Diese Methode wird nach der Entwicklungsphase entfernt.
+
+#### Router.tsx
+
+```ts
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Bewerben from "./Bewerben";
+import Feed from "./Feed";
+import Home from "./Home";
+import Kontakt from "./Kontakt";
+import PageNotFound from "./PageNotFound";
+import Scrims from "./Scrims";
+import Team from "./Team";
+import UeberUns from "./UeberUns";
+
+function Router() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="feed" element={<Feed />} />
+          <Route path="ueber-uns" element={<UeberUns />} />
+          <Route path="unser-team" element={<Team />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="kontakt">
+            <Route index element={<Kontakt />} />
+            <Route path="bewerben" element={<Bewerben />} />
+            <Route path="scrim-us" element={<Scrims />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default Router;
+```
+
+[Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowserRouter, Routes und Route von react-router-dom, damit es ein Client-Sided-Routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.
+
+Die Routerkomponente gibt einen BrowserRouter mit den vorgegebenen Routen zurück. Diese können dann in der Search-Bar abgerufen werden.
+
+Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponente}`, welches beim Abruf des Pfades geladen wird.
+
+`path="/"` ist der Pfad für die Homepage der Website. Diese Route wird abgerufen, wenn man nichts (oder nur "/") hinter der Domain der Seite eingibt.
+
+`index` ist hierbei die Standarroute, die geladen wird, wenn man nichts nach dem `/` eingibt.
+
+`path="myRouteName"` ist der Pfad für eine andere Unterseite von `path="/"`. Sie wird normalerweise direkt unter der Standardroute eingefügt, wenn man eine Layout-Komponente hat.
+
+> Ein Beispiel ist [hier](https://isotropic.co/react-multiple-pages/) zu finden. (gemeint ist Punkt 4. und 5.)
+
+`path="*"` sind alle Pfade, welche nicht existieren. In unserem Fall laden wir [PageNotFound.tsx](#pagenotfoundtsx), um dem User eine 404-Meldung zu geben.
 
 ## Rechtliches
 
