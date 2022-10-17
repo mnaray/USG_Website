@@ -26,6 +26,7 @@
     - [Komponenten für die Seiten](#komponenten-für-die-seiten)
       - [Logo.tsx](#logotsx)
       - [Slogan.tsx](#slogantsx)
+      - [Button.tsx](#buttontsx)
       - [GoogleForms.tsx](#googleformstsx)
       - [Navbar.tsx](#navbartsx)
     - [Pages](#pages)
@@ -218,8 +219,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 #### Logo.tsx
 
 ```ts
-
-
 import React from "react"
 import { Link } from "react-router-dom"
 import "../../css/App.css"
@@ -249,12 +248,10 @@ export default Logo
 #### Slogan.tsx
 
 ```ts
-import React from 'react'
+import React from "react"
 
 function Slogan() {
-  return (
-    <p>We are United. We are Swiss. We are Gamers</p>
-  )
+  return <p>We are United. We are Swiss. We are Gamers</p>
 }
 
 export default Slogan
@@ -262,21 +259,59 @@ export default Slogan
 
 [Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
 
+#### Button.tsx
+
+```ts
+import React from "react";
+import { Link } from "react-router-dom";
+
+interface ButtonProps {
+  text: string;
+  destination: string;
+}
+
+function Button(props: ButtonProps) {
+  return (
+    <Link to={props.destination}>
+      <button className="bg-blue-600 text-white text-lg px-3 py-1 rounded
+                          hover:bg-blue-200 hover:text-black transition-all
+                          duration-200"
+        tabIndex={-1}>
+        {props.text}
+      </button>
+    </Link>
+  )
+}
+
+export default Button
+
+```
+
+* [ ] [Button.tsx](../usg-website/src/pages/components/Button.tsx) ist eine Komponente, die einen Button zurückgibt. Man muss der Komponente beim erstellen einen Anzeigetext geben und einen Ort an den man weitergeleitet wird. Es funktioniert eigentlich gleich wie ein Anchor-Tag in Html.
+
 #### GoogleForms.tsx
 
 ```ts
-import React from 'react'
+import React from "react"
 
 interface Source {
-    url: string;
+  url: string
 }
 
 function GoogleForms(source: Source) {
-    return (
-        <iframe src={source.url} width="640" height="595" frameBorder="0" marginHeight={0} marginWidth={0} className="my-12 mx-6">
-            Wird geladen…
-        </iframe>
-    )
+  return (
+    <iframe
+      src={source.url}
+      width="640"
+      height="595"
+      frameBorder="0"
+      marginHeight={0}
+      marginWidth={0}
+      className="my-12 mx-6"
+    >
+      Wird geladen…
+    </iframe>
+  )
 }
 
 export default GoogleForms
@@ -286,65 +321,66 @@ export default GoogleForms
 
 Dies ist sehr angenehm und praktisch, da man sich keine neuen Konten oder Profile erstellen muss, nur ume eine kurze Frage (o.ä.) zu stellen. Somit ist die Wahrscheinlichkeit, dass ein Nutzer dieses Feature verwendet um einiges höher als mit einem Redirect.
 
-Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backen entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
+Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backend entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
 
 #### Navbar.tsx
 
 ```ts
-import React from 'react'
-import logo from "../../logos/cropped_logo.png";
-import { Link } from 'react-router-dom';
-import Button from './Button';
-
+import React from "react"
+import logo from "../../logos/cropped_logo.png"
+import { Link } from "react-router-dom"
+import Button from "./Button"
 
 function Navbar() {
-    return (
-        <header className='flex flex-row justify-between w-full p-5 items-center bg-black'>
-            <nav className='flex flex-row justify-start items-center'>
-                <div className='h-20 mr-10'>
-                    <Link to="/">
-                        <img
-                            src={logo}
-                            alt="Logo des Teams"
-                            className="hover:scale-110 transition-all duration-200 h-full"
-                        />
-                    </Link>
-                </div>
-                <ul className='flex flex-row align-middle space-x-5 text-white text-xl
+  return (
+    <header className="flex flex-row justify-between w-full p-5 items-center bg-black">
+      <nav className="flex flex-row justify-start items-center">
+        <div className="h-20 mr-10">
+          <Link to="/">
+            <img
+              src={logo}
+              alt="Logo des Teams"
+              className="hover:scale-110 transition-all duration-200 h-full"
+            />
+          </Link>
+        </div>
+        <ul
+          className="flex flex-row align-middle space-x-5 text-white text-xl
                                 divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
                                 child:child:px-2 child:child:rounded child:child:text-center
                                 child:child-hover:bg-white child:child-hover:text-black
-                                child:child:transition-all child:child:duration-200'>
-                    <li>
-                        <div>
-                            <Link to="/">Home</Link>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <Link to="feed">Feed</Link>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <Link to="kontakt">Kontakt</Link>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <Link to="ueber-uns">Über Uns</Link>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <Link to="unser-team">Unser Team</Link>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-            <Button text='Mitglied werden' destination='kontakt/bewerben' />
-        </header>
-    )
+                                child:child:transition-all child:child:duration-200"
+        >
+          <li>
+            <div>
+              <Link to="/">Home</Link>
+            </div>
+          </li>
+          <li>
+            <div>
+              <Link to="feed">Feed</Link>
+            </div>
+          </li>
+          <li>
+            <div>
+              <Link to="kontakt">Kontakt</Link>
+            </div>
+          </li>
+          <li>
+            <div>
+              <Link to="ueber-uns">Über Uns</Link>
+            </div>
+          </li>
+          <li>
+            <div>
+              <Link to="unser-team">Unser Team</Link>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <Button text="Mitglied werden" destination="kontakt/bewerben" />
+    </header>
+  )
 }
 
 export default Navbar
@@ -352,29 +388,29 @@ export default Navbar
 
 [Navbar.tsx](../usg-website/src/pages/components/Navbar.tsx) ist die Navigationsleiste der Seite. Alle grösseren Unterseiten sind durch sie erreichbar. Zusätzlich ist noch ein Knopf eingebaut, der direkt zum Bewerbungsformular führt.
 
-Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf *alle* `<li>`, welche sich drin befinden.
+Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf _alle_ `<li>`, welche sich drin befinden.
 
 ### Pages
 
 #### PageNotFound.tsx
 
 ```ts
-import React from 'react';
-import Logo from './components/Logo';
+import React from "react"
+import Logo from "./components/Logo"
 
 function PageNotFound() {
-    return (
-        <div className='App'>
-            <header className="app-header">
-                <h1 className='text-red-600'>Error 404: Page not found!</h1>
-                <p>Bitte eine valide URL eingeben.</p>
-                <Logo />
-            </header>
-        </div>
-    );
+  return (
+    <div className="App">
+      <header className="app-header">
+        <h1 className="text-red-600">Error 404: Page not found!</h1>
+        <p>Bitte eine valide URL eingeben.</p>
+        <Logo />
+      </header>
+    </div>
+  )
 }
 
-export default PageNotFound;
+export default PageNotFound
 ```
 
 [PageNotFound.tsx](../usg-website/src/pages/components/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
@@ -386,25 +422,23 @@ Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#r
 #### index.tsx
 
 ```ts
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./css/index.css";
-import Router from "./pages/Router";
-import reportWebVitals from "./reportWebVitals";
+import React from "react"
+import ReactDOM from "react-dom/client"
+import "./css/index.css"
+import Router from "./pages/Router"
+import reportWebVitals from "./reportWebVitals"
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <React.StrictMode>
     <Router />
   </React.StrictMode>
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
+reportWebVitals(console.log)
 ```
 
 [index.tsx](../usg-website/src/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
@@ -417,40 +451,39 @@ Diese Methode wird nach der Entwicklungsphase entfernt.
 #### Router.tsx
 
 ```ts
-import React from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Bewerben from './Bewerben';
-import Feed from './Feed';
-import Home from "./Home";
-import Kontakt from './Kontakt';
-import PageNotFound from "./PageNotFound";
-import Scrims from './Scrims';
-import Team from './Team';
-import UeberUns from './UeberUns';
+import React from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Bewerben from "./Bewerben"
+import Feed from "./Feed"
+import Home from "./Home"
+import Kontakt from "./Kontakt"
+import PageNotFound from "./PageNotFound"
+import Scrims from "./Scrims"
+import Team from "./Team"
+import UeberUns from "./UeberUns"
 
 function Router() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/'>
-                    <Route index element={<Home />} />
-                    <Route path="feed" element={<Feed />} />
-                    <Route path="ueber-uns" element={<UeberUns />} />
-                    <Route path="unser-team" element={<Team />} />
-                    <Route path='*' element={<PageNotFound />} />
-                    <Route path='kontakt'>
-                        <Route index element={<Kontakt />} />
-                        <Route path='bewerben' element={<Bewerben />} />
-                        <Route path='scrim-us' element={<Scrims />} />
-                    </Route>
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="feed" element={<Feed />} />
+          <Route path="ueber-uns" element={<UeberUns />} />
+          <Route path="unser-team" element={<Team />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="kontakt">
+            <Route index element={<Kontakt />} />
+            <Route path="bewerben" element={<Bewerben />} />
+            <Route path="scrim-us" element={<Scrims />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default Router;
-
+export default Router
 ```
 
 [Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowserRouter, Routes und Route von react-router-dom, damit es ein Client-Sided-Routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.
