@@ -287,7 +287,7 @@ export default Button
 
 ```
 
-* [ ] [Button.tsx](../usg-website/src/pages/components/Button.tsx) ist eine Komponente, die einen Button zurückgibt. Man muss der Komponente beim erstellen einen Anzeigetext geben und einen Ort an den man weitergeleitet wird. Es funktioniert eigentlich gleich wie ein Anchor-Tag in Html.
+  [Button.tsx](../usg-website/src/pages/components/Button.tsx) ist eine Komponente, die einen Button zurückgibt. Man muss der Komponente beim erstellen einen Anzeigetext geben und einen Ort an den man weitergeleitet wird. Es funktioniert eigentlich gleich wie ein Anchor-Tag in Html.
 
 #### GoogleForms.tsx
 
