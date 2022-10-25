@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-    .app-header {
-        @apply bg-slate-800 h-100v flex flex-col justify-center items-center text-white text-3xl;
-    }
+  .app-header {
+    @apply bg-slate-800 h-100v flex flex-col justify-center items-center text-white text-3xl;
+  }
+
+  .feed-container {
+    width: 50%;
+  }
 }

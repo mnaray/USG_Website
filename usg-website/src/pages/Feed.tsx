@@ -1,13 +1,10 @@
-import React from 'react';
-import Logo from "./components/Logo";
-import Slogan from './components/Slogan';
+import React from "react"
+import TwitterFeed from "./components/TwitterFeed"
 
 function Feed() {
   return (
-    <div className='app-header'>
-      <Logo />
-      <Slogan />
-      <h1 className='text-pink-600'>Feed</h1>
+    <div className="app-header justify-start pt-36">
+      <TwitterFeed />
     </div>
   )
 }

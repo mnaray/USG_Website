@@ -1,13 +1,13 @@
-import React from 'react';
-import Logo from "./components/Logo";
-import Slogan from './components/Slogan';
+import React from "react"
+import Logo from "./components/Logo"
+import Slogan from "./components/Slogan"
 
 function Feed() {
   return (
-    <div className='app-header'>
+    <div className="app-header">
       <Logo />
       <Slogan />
-      <h1 className='text-pink-600'>Bewerben</h1>
+      <h1 className="text-pink-600">Bewerben</h1>
     </div>
   )
 }
