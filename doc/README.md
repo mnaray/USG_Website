@@ -31,6 +31,8 @@
       - [Navbar.tsx](#navbartsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
+    - [Membercard.tsx](#membercardtsx)
+    - [MembercardGrid.tsx](#membercardgridtsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
@@ -416,6 +418,109 @@ export default PageNotFound
 [PageNotFound.tsx](../usg-website/src/pages/components/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
 
 Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#routertsx) sie nicht erkennt, wird man automatisch auf die 404-Seite weitergeleitet, da diese Route in diesem Fall nicht existiert.
+
+### Membercard.tsx
+
+```ts
+import React from "react";
+import "../../css/index.css";
+
+interface membercard {
+  mbr: string;
+  name: string;
+  function: string;
+  comment?: string;
+}
+
+function Membercard(source: membercard) {
+  return (
+    <div className="flip-card m-10 rounded">
+      <div className="flip-card-inner rounded">
+        <div className="flip-card-front rounded">
+          <img
+            className="h-full w-full aspect-7/9"
+            src={source.mbr}
+            alt={"Picture of " + source.name}
+          />
+          <p className=" align-text-bottom ">{source.name}</p>
+        </div>
+        <div className="flip-card-back">
+          <h1 className="text-4xl">"{source.name}"</h1>
+          <p className="text-xl">{source.function}</p>
+          <p>About: </p>
+          <p className="text-lg">{source.comment}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Membercard;
+```
+
+[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
+
+Eine Membercard fordert folgende Properties:
+
+`mbr= {Foto.png}` Foto des Mitglieds.
+
+`name= "Pseudonym"` Pseudonym des Mitglieds.
+
+`function= "Mitglied"` Rolle des Mitglieds.
+
+`comment= "text..."` Kommentar über das Mitglied.
+
+Bei dem comment property ist noch speziell, dass es nullable(Man kann auch keinen Wert angeben) ist:
+
+```ts
+comment?: string; // Das Fragezeichen macht das property nullable.
+```
+
+### MembercardGrid.tsx
+
+```ts
+import React from "react";
+import Membercard from "./Membercard";
+import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
+
+function MembercardGrid() {
+  return (
+    <div className="flex flex-row">
+      <Membercard
+        mbr={MemberFoto}
+        name="Nikknez"
+        function="Mitglied"
+        comment="Er ist toll"
+      />
+      <Membercard
+        mbr={MemberFoto}
+        name="Pseudonym"
+        function="Mitglied"
+        comment="Comment"
+      />
+      <Membercard
+        mbr={MemberFoto}
+        name="Pseudonym"
+        function="Mitglied"
+        comment="Comment"
+      />
+      <Membercard
+        mbr={MemberFoto}
+        name="Pseudonym"
+        function="Mitglied"
+        comment="Comment"
+      />
+    </div>
+  );
+}
+
+export default MembercardGrid;
+```
+
+[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
+
+
+
 
 ### Sonstiges / Unsichtbares
 
