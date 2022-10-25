@@ -30,8 +30,10 @@
       - [GoogleForms.tsx](#googleformstsx)
       - [TwitterFeed.tsx](#twitterfeedtsx)
       - [Navbar.tsx](#navbartsx)
+      - [Willkommenstext.tsx](#willkommenstexttsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
+      - [Home.tsx](#hometsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
@@ -418,6 +420,33 @@ export default Navbar
 
 Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf _alle_ `<li>`, welche sich drin befinden.
 
+#### Willkommenstext.tsx
+
+```ts
+import React from 'react'
+
+function Willkommenstext() {
+    return (
+        <div className='text-3xl text-center w-1/3'>
+            <p className='mb-2'>
+                Willkommen auf unserer Homepage!
+            </p>
+            <p className='text-xl'>
+                Bewirb dich bei uns oder vordere uns zu einem Scrim heraus.
+                Du kannst aber auch ein wenig mehr über uns und unser Team
+                herausfinden.
+            </p>
+        </div>
+    )
+}
+
+export default Willkommenstext
+```
+
+[Willkommenstext.tsx](../usg-website/src/pages/components/Willkommenstext.tsx) beinhaltet ganz einfach den Willkommenstext auf der Startseite.
+
+Er besteht aus einem kleinen Paragraphen, welcher eine Art "Untertitel" beinhaltet. Unter anderem befindet sich auch noch ein kleiner Text unter dem Untertitel, welcher den Nutzer auf seine Möglichkeiten aufmerksam macht.
+
 ### Pages
 
 #### PageNotFound.tsx
@@ -441,9 +470,44 @@ function PageNotFound() {
 export default PageNotFound
 ```
 
-[PageNotFound.tsx](../usg-website/src/pages/components/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
+[PageNotFound.tsx](../usg-website/src/pages/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
 
 Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#routertsx) sie nicht erkennt, wird man automatisch auf die 404-Seite weitergeleitet, da diese Route in diesem Fall nicht existiert.
+
+#### Home.tsx
+
+```ts
+import React from "react";
+import "../css/tailwind.css";
+import Logo from "./components/Logo";
+import Slogan from "./components/Slogan";
+import Willkommenstext from "./components/Willkommenstext";
+import Button from "./components/Button";
+
+function Home() {
+  return (
+    <main>
+      <Logo />
+      <Slogan />
+      <Willkommenstext />
+      <div className="flex flex-row justify-evenly w-1/4 py-8">
+        <Button text="Bewirb Dich!" destination="kontakt/bewerben" />
+        <p className="text-2xl">,</p>
+        <Button text="Scrim Us!" destination="kontakt/scrim-us" />
+        <p className="text-2xl">oder</p>
+        <Button text="Über Uns" destination="ueber-uns" />
+      </div>
+    </main>
+  );
+}
+
+export default Home;
+
+```
+
+[Home.tsx](../usg-website/src/pages/Home.tsx) ist die Startseite der ganzen Webapp. Der Nutzer wird mit dem [Logo](#logotsx), dem [Slogan](#slogantsx), und dem [Willkommenstext](#willkommenstexttsx) begrüsst.
+
+Diesem werden seine Optionen durch einen kleinen Text vorgestellt und dann kann er unten zwischen den drei [Buttons](#buttontsx) wählen. Alternativ könnte man auch die [Navigationsleiste](#navbartsx) verwenden, um an diese Stellen auf der Seite zu gelangen.
 
 ### Sonstiges / Unsichtbares
 
