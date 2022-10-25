@@ -3,7 +3,7 @@
 ### Inhaltsverzeichnis
 
 - [USG Homepage Docs](#usg-homepage-docs)
-  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [Einleitung](#einleitung)
     - [Technologien](#technologien)
   - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
@@ -23,15 +23,15 @@
     - [Workflows](#workflows)
   - [Anforderungen](#anforderungen)
   - [Components](#components)
-    - [Header](#header)
+    - [Komponenten für die Seiten](#komponenten-für-die-seiten)
       - [Logo.tsx](#logotsx)
-    - [Main/Aside](#mainaside)
-      - [Mustercomponent](#mustercomponent)
-    - [Footer](#footer)
-      - [Mustercomponent](#mustercomponent-1)
+      - [Slogan.tsx](#slogantsx)
+      - [Button.tsx](#buttontsx)
+      - [GoogleForms.tsx](#googleformstsx)
+      - [Navbar.tsx](#navbartsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
-    - [Other / Invisible](#other--invisible)
+    - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
   - [Rechtliches](#rechtliches)
@@ -185,30 +185,31 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
+
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
-| :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
-| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                    |
+| :--------- | ----------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                   |
+| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                             |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                  |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
-| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                          |
+| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                       |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                         |
 | 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />**_(Gestaltung in Zusammenarbeit mit dem Kunden)_**                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
 | 9        | M               | funk.             | Eine Homepage ist vorhanden.                                                                                                                                   |
 | 10       | M               | funk.             | Die Homepage soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                          |
+| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                         |
 | 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Homepage vorhanden.                                                                                               |
-| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                               |
-| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                      |
+| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                              |
+| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                               |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                    |
 | 16       | M               | funk.             | Auf der Kontaktseite sollen die Kontaktdaten des Teambesitzers stehen.                                                                                         |
 | 17       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                            |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                          |
+| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                           |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                        |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
 | 21       | M               | funk.             | Die entsprechenden Sozialen Medien sind verlinkt                                                                                                               |
-| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                       |
+| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                     |
 | 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                        |
 
 ## Components
@@ -218,10 +219,10 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 #### Logo.tsx
 
 ```ts
-import React from "react";
-import { Link } from "react-router-dom";
-import "../../css/App.css";
-import LogoImage from "../../logos/USG_Logo_Transparent_PNG.png";
+import React from "react"
+import { Link } from "react-router-dom"
+import "../../css/App.css"
+import LogoImage from "../../logos/USG_Logo_Transparent_PNG.png"
 
 function Logo() {
   return (
@@ -230,10 +231,10 @@ function Logo() {
         <img src={LogoImage} alt="Logo" className="App-logo"></img>
       </Link>
     </div>
-  );
+  )
 }
 
-export default Logo;
+export default Logo
 ```
 
 [Logo.tsx](../usg-website/src/pages/components/Logo.tsx) nimmt die PNG-Datei des Logos, und gibt dieses in Form einer React Komponente zurück. Um den IMG-Tag herum ist eine Link Komponente, die dafür sorgt, dass man zur Homepage weitergeleitet wird wenn man darauf klickt.
@@ -247,24 +248,54 @@ export default Logo;
 #### Slogan.tsx
 
 ```ts
-import React from "react";
+import React from "react"
 
 function Slogan() {
-  return <p>We are United. We are Swiss. We are Gamers</p>;
+  return <p>We are United. We are Swiss. We are Gamers</p>
 }
 
-export default Slogan;
+export default Slogan
 ```
 
 [Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
 
-#### GoogleForms.tsx
+#### Button.tsx
 
 ```ts
 import React from "react";
+import { Link } from "react-router-dom";
+
+interface ButtonProps {
+  text: string;
+  destination: string;
+}
+
+function Button(props: ButtonProps) {
+  return (
+    <Link to={props.destination}>
+      <button className="bg-blue-600 text-white text-lg px-3 py-1 rounded
+                          hover:bg-blue-200 hover:text-black transition-all
+                          duration-200"
+        tabIndex={-1}>
+        {props.text}
+      </button>
+    </Link>
+  )
+}
+
+export default Button
+
+```
+
+  [Button.tsx](../usg-website/src/pages/components/Button.tsx) ist eine Komponente, die einen Button zurückgibt. Man muss der Komponente beim erstellen einen Anzeigetext geben und einen Ort an den man weitergeleitet wird. Es funktioniert eigentlich gleich wie ein Anchor-Tag in Html.
+
+#### GoogleForms.tsx
+
+```ts
+import React from "react"
 
 interface Source {
-  url: string;
+  url: string
 }
 
 function GoogleForms(source: Source) {
@@ -280,25 +311,92 @@ function GoogleForms(source: Source) {
     >
       Wird geladen…
     </iframe>
-  );
+  )
 }
 
-export default GoogleForms;
+export default GoogleForms
 ```
 
 [GoogleForms.tsx](../usg-website/src/pages/components/GoogleForms.tsx) ist die Komponente, die verwendet wird, um Forms (Umfragen) von Google auf der Website einzubetten. Mit dem `url` Attribut kann eine URL zu der jeweiligen Forms von Google in die Komponente eingefügt werden. Dieses Formular wird dann auf der Webseite angezeigt. Jeder Nutzer kann sofort das Formular auf der Seite ausfüllen, ohne Redirects.
 
 Dies ist sehr angenehm und praktisch, da man sich keine neuen Konten oder Profile erstellen muss, nur ume eine kurze Frage (o.ä.) zu stellen. Somit ist die Wahrscheinlichkeit, dass ein Nutzer dieses Feature verwendet um einiges höher als mit einem Redirect.
 
-Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backen entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
+Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backend entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
+
+#### Navbar.tsx
+
+```ts
+import React from "react"
+import logo from "../../logos/cropped_logo.png"
+import { Link } from "react-router-dom"
+import Button from "./Button"
+
+function Navbar() {
+  return (
+    <header className="flex flex-row justify-between w-full p-5 items-center bg-black">
+      <nav className="flex flex-row justify-start items-center">
+        <div className="h-20 mr-10">
+          <Link to="/">
+            <img
+              src={logo}
+              alt="Logo des Teams"
+              className="hover:scale-110 transition-all duration-200 h-full"
+            />
+          </Link>
+        </div>
+        <ul
+          className="flex flex-row align-middle space-x-5 text-white text-xl
+                                divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
+                                child:child:px-2 child:child:rounded child:child:text-center
+                                child:child-hover:bg-white child:child-hover:text-black
+                                child:child:transition-all child:child:duration-200"
+        >
+          <li>
+            <div>
+              <Link to="/">Home</Link>
+            </div>
+          </li>
+          <li>
+            <div>
+              <Link to="feed">Feed</Link>
+            </div>
+          </li>
+          <li>
+            <div>
+              <Link to="kontakt">Kontakt</Link>
+            </div>
+          </li>
+          <li>
+            <div>
+              <Link to="ueber-uns">Über Uns</Link>
+            </div>
+          </li>
+          <li>
+            <div>
+              <Link to="unser-team">Unser Team</Link>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <Button text="Mitglied werden" destination="kontakt/bewerben" />
+    </header>
+  )
+}
+
+export default Navbar
+```
+
+[Navbar.tsx](../usg-website/src/pages/components/Navbar.tsx) ist die Navigationsleiste der Seite. Alle grösseren Unterseiten sind durch sie erreichbar. Zusätzlich ist noch ein Knopf eingebaut, der direkt zum Bewerbungsformular führt.
+
+Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf _alle_ `<li>`, welche sich drin befinden.
 
 ### Pages
 
 #### PageNotFound.tsx
 
 ```ts
-import React from "react";
-import Logo from "./components/Logo";
+import React from "react"
+import Logo from "./components/Logo"
 
 function PageNotFound() {
   return (
@@ -309,140 +407,38 @@ function PageNotFound() {
         <Logo />
       </header>
     </div>
-  );
+  )
 }
 
-export default PageNotFound;
+export default PageNotFound
 ```
 
 [PageNotFound.tsx](../usg-website/src/pages/components/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
 
 Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#routertsx) sie nicht erkennt, wird man automatisch auf die 404-Seite weitergeleitet, da diese Route in diesem Fall nicht existiert.
 
-### Membercard.tsx
-
-```ts
-import React from "react";
-import "../../css/index.css";
-
-interface membercard {
-  mbr: string;
-  name: string;
-  function: string;
-  comment?: string;
-}
-
-function Membercard(source: membercard) {
-  return (
-    <div className="flip-card m-10 rounded">
-      <div className="flip-card-inner rounded">
-        <div className="flip-card-front rounded">
-          <img
-            className="h-full w-full aspect-7/9"
-            src={source.mbr}
-            alt={"Picture of " + source.name}
-          />
-          <p className=" align-text-bottom ">{source.name}</p>
-        </div>
-        <div className="flip-card-back">
-          <h1 className="text-4xl">"{source.name}"</h1>
-          <p className="text-xl">{source.function}</p>
-          <p>About: </p>
-          <p className="text-lg">{source.comment}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default Membercard;
-```
-
-[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
-
-Eine Membercard fordert folgende Properties:
-
-`mbr= {Foto.png}` Foto des Mitglieds.
-
-`name= "Pseudonym"` Pseudonym des Mitglieds.
-
-`function= "Mitglied"` Rolle des Mitglieds.
-
-`comment= "text..."` Kommentar über das Mitglied.
-
-Bei dem comment property ist noch speziell, dass es nullable(Man kann auch keinen Wert angeben) ist:
-
-```ts
-comment?: string; // Das Fragezeichen macht das property nullable.
-```
-
-### MembercardGrid.tsx
-
-```ts
-import React from "react";
-import Membercard from "./Membercard";
-import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
-
-function MembercardGrid() {
-  return (
-    <div className="flex flex-row">
-      <Membercard
-        mbr={MemberFoto}
-        name="Nikknez"
-        function="Mitglied"
-        comment="Er ist toll"
-      />
-      <Membercard
-        mbr={MemberFoto}
-        name="Pseudonym"
-        function="Mitglied"
-        comment="Comment"
-      />
-      <Membercard
-        mbr={MemberFoto}
-        name="Pseudonym"
-        function="Mitglied"
-        comment="Comment"
-      />
-      <Membercard
-        mbr={MemberFoto}
-        name="Pseudonym"
-        function="Mitglied"
-        comment="Comment"
-      />
-    </div>
-  );
-}
-
-export default MembercardGrid;
-```
-
-[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
-
 ### Sonstiges / Unsichtbares
 
 #### index.tsx
 
 ```ts
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./css/index.css";
-import Router from "./pages/Router";
-import reportWebVitals from "./reportWebVitals";
+import React from "react"
+import ReactDOM from "react-dom/client"
+import "./css/index.css"
+import Router from "./pages/Router"
+import reportWebVitals from "./reportWebVitals"
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <React.StrictMode>
     <Router />
   </React.StrictMode>
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
+reportWebVitals(console.log)
 ```
 
 [index.tsx](../usg-website/src/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
@@ -455,16 +451,16 @@ Diese Methode wird nach der Entwicklungsphase entfernt.
 #### Router.tsx
 
 ```ts
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Bewerben from "./Bewerben";
-import Feed from "./Feed";
-import Home from "./Home";
-import Kontakt from "./Kontakt";
-import PageNotFound from "./PageNotFound";
-import Scrims from "./Scrims";
-import Team from "./Team";
-import UeberUns from "./UeberUns";
+import React from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Bewerben from "./Bewerben"
+import Feed from "./Feed"
+import Home from "./Home"
+import Kontakt from "./Kontakt"
+import PageNotFound from "./PageNotFound"
+import Scrims from "./Scrims"
+import Team from "./Team"
+import UeberUns from "./UeberUns"
 
 function Router() {
   return (
@@ -484,10 +480,10 @@ function Router() {
         </Route>
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default Router;
+export default Router
 ```
 
 [Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowserRouter, Routes und Route von react-router-dom, damit es ein Client-Sided-Routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.

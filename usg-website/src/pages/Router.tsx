@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from './Layout';
 import Bewerben from './Bewerben';
 import Feed from './Feed';
 import Home from "./Home";
@@ -13,17 +14,17 @@ function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/'>
+                <Route path='/' element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path="feed" element={<Feed />} />
-                    <Route path="ueber-uns" element={<UeberUns />} />
-                    <Route path="unser-team" element={<Team />} />
-                    <Route path='*' element={<PageNotFound />} />
                     <Route path='kontakt'>
                         <Route index element={<Kontakt />} />
                         <Route path='bewerben' element={<Bewerben />} />
                         <Route path='scrim-us' element={<Scrims />} />
                     </Route>
+                    <Route path="ueber-uns" element={<UeberUns />} />
+                    <Route path="unser-team" element={<Team />} />
+                    <Route path='*' element={<PageNotFound />} />
                 </Route>
             </Routes>
         </BrowserRouter>
