@@ -4,11 +4,11 @@ import Slogan from './components/Slogan';
 
 function Feed() {
   return (
-    <div className='app-header'>
+    <main>
       <Logo />
       <Slogan />
       <h1 className='text-pink-600'>Feed</h1>
-    </div>
+    </main>
   )
 }
 

@@ -29,8 +29,10 @@
       - [Button.tsx](#buttontsx)
       - [GoogleForms.tsx](#googleformstsx)
       - [Navbar.tsx](#navbartsx)
+      - [Willkommenstext.tsx](#willkommenstexttsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
+      - [Home.tsx](#hometsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
@@ -187,29 +189,29 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
-| :--------- | ----------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                   |
-| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                             |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                  |
+| :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
+| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                    |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
-| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                       |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                         |
+| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                          |
 | 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />**_(Gestaltung in Zusammenarbeit mit dem Kunden)_**                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
 | 9        | M               | funk.             | Eine Homepage ist vorhanden.                                                                                                                                   |
 | 10       | M               | funk.             | Die Homepage soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                         |
+| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                          |
 | 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Homepage vorhanden.                                                                                               |
-| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                              |
-| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                               |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                    |
+| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                               |
+| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                      |
 | 16       | M               | funk.             | Auf der Kontaktseite sollen die Kontaktdaten des Teambesitzers stehen.                                                                                         |
 | 17       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                           |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                        |
+| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                            |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                          |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
 | 21       | M               | funk.             | Die entsprechenden Sozialen Medien sind verlinkt                                                                                                               |
-| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                     |
+| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                       |
 | 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                        |
 
 ## Components
@@ -390,6 +392,33 @@ export default Navbar
 
 Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf _alle_ `<li>`, welche sich drin befinden.
 
+#### Willkommenstext.tsx
+
+```ts
+import React from 'react'
+
+function Willkommenstext() {
+    return (
+        <div className='text-3xl text-center w-1/3'>
+            <p className='mb-2'>
+                Willkommen auf unserer Homepage!
+            </p>
+            <p className='text-xl'>
+                Bewirb dich bei uns oder vordere uns zu einem Scrim heraus.
+                Du kannst aber auch ein wenig mehr über uns und unser Team
+                herausfinden.
+            </p>
+        </div>
+    )
+}
+
+export default Willkommenstext
+```
+
+[Willkommenstext.tsx](../usg-website/src/pages/components/Willkommenstext.tsx) beinhaltet ganz einfach den Willkommenstext auf der Startseite.
+
+Er besteht aus einem kleinen Paragraphen, welcher eine Art "Untertitel" beinhaltet. Unter anderem befindet sich auch noch ein kleiner Text unter dem Untertitel, welcher den Nutzer auf seine Möglichkeiten aufmerksam macht.
+
 ### Pages
 
 #### PageNotFound.tsx
@@ -413,9 +442,44 @@ function PageNotFound() {
 export default PageNotFound
 ```
 
-[PageNotFound.tsx](../usg-website/src/pages/components/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
+[PageNotFound.tsx](../usg-website/src/pages/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
 
 Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#routertsx) sie nicht erkennt, wird man automatisch auf die 404-Seite weitergeleitet, da diese Route in diesem Fall nicht existiert.
+
+#### Home.tsx
+
+```ts
+import React from "react";
+import "../css/tailwind.css";
+import Logo from "./components/Logo";
+import Slogan from "./components/Slogan";
+import Willkommenstext from "./components/Willkommenstext";
+import Button from "./components/Button";
+
+function Home() {
+  return (
+    <main>
+      <Logo />
+      <Slogan />
+      <Willkommenstext />
+      <div className="flex flex-row justify-evenly w-1/4 py-8">
+        <Button text="Bewirb Dich!" destination="kontakt/bewerben" />
+        <p className="text-2xl">,</p>
+        <Button text="Scrim Us!" destination="kontakt/scrim-us" />
+        <p className="text-2xl">oder</p>
+        <Button text="Über Uns" destination="ueber-uns" />
+      </div>
+    </main>
+  );
+}
+
+export default Home;
+
+```
+
+[Home.tsx](../usg-website/src/pages/Home.tsx) ist die Startseite der ganzen Webapp. Der Nutzer wird mit dem [Logo](#logotsx), dem [Slogan](#slogantsx), und dem [Willkommenstext](#willkommenstexttsx) begrüsst.
+
+Diesem werden seine Optionen durch einen kleinen Text vorgestellt und dann kann er unten zwischen den drei [Buttons](#buttontsx) wählen. Alternativ könnte man auch die [Navigationsleiste](#navbartsx) verwenden, um an diese Stellen auf der Seite zu gelangen.
 
 ### Sonstiges / Unsichtbares
 
