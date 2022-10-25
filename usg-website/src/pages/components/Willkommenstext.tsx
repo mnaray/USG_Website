@@ -7,7 +7,7 @@ function Willkommenstext() {
                 Willkommen auf unserer Homepage!
             </p>
             <p className='text-xl'>
-                Bewirb dich bie uns oder vordere uns zu einem Scrim heraus.
+                Bewirb dich bei uns oder vordere uns zu einem Scrim heraus.
                 Du kannst aber auch ein wenig mehr über uns und unser Team
                 herausfinden.
             </p>
