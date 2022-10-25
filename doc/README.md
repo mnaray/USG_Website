@@ -378,7 +378,7 @@ function Willkommenstext() {
 export default Willkommenstext
 ```
 
-[Willkommenstext.tsx](../usg-website/src/pages/components/Willkommenstext.tsx) beinhaltet ganz einfach den Willkommenstext.
+[Willkommenstext.tsx](../usg-website/src/pages/components/Willkommenstext.tsx) beinhaltet ganz einfach den Willkommenstext auf der Startseite.
 
 Er besteht aus einem kleinen Paragraphen, welcher eine Art "Untertitel" beinhaltet. Unter anderem befindet sich auch noch ein kleiner Text unter dem Untertitel, welcher den Nutzer auf seine Möglichkeiten aufmerksam macht.
 
