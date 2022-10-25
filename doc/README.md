@@ -31,6 +31,7 @@
       - [Willkommenstext.tsx](#willkommenstexttsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
+      - [Home.tsx](#hometsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
@@ -405,9 +406,44 @@ function PageNotFound() {
 export default PageNotFound;
 ```
 
-[PageNotFound.tsx](../usg-website/src/pages/components/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
+[PageNotFound.tsx](../usg-website/src/pages/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
 
 Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#routertsx) sie nicht erkennt, wird man automatisch auf die 404-Seite weitergeleitet, da diese Route in diesem Fall nicht existiert.
+
+#### Home.tsx
+
+```ts
+import React from "react";
+import "../css/tailwind.css";
+import Logo from "./components/Logo";
+import Slogan from "./components/Slogan";
+import Willkommenstext from "./components/Willkommenstext";
+import Button from "./components/Button";
+
+function Home() {
+  return (
+    <main>
+      <Logo />
+      <Slogan />
+      <Willkommenstext />
+      <div className="flex flex-row justify-evenly w-1/4 py-8">
+        <Button text="Bewirb Dich!" destination="kontakt/bewerben" />
+        <p className="text-2xl">,</p>
+        <Button text="Scrim Us!" destination="kontakt/scrim-us" />
+        <p className="text-2xl">oder</p>
+        <Button text="Über Uns" destination="ueber-uns" />
+      </div>
+    </main>
+  );
+}
+
+export default Home;
+
+```
+
+[Home.tsx](../usg-website/src/pages/Home.tsx) ist die Startseite der ganzen Webapp. Der Nutzer wird mit dem [Logo](#logotsx), dem [Slogan](#slogantsx), und dem [Willkommenstext](#willkommenstexttsx) begrüsst.
+
+Diesem werden seine Optionen durch einen kleinen Text vorgestellt und dann kann er unten zwischen den drei [Buttons](#buttontsx) wählen. Alternativ könnte man auch die [Navigationsleiste](#navbartsx) verwenden, um an diese Stellen auf der Seite zu gelangen.
 
 ### Sonstiges / Unsichtbares
 
