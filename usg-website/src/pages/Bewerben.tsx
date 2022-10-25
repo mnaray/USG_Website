@@ -2,7 +2,7 @@ import React from "react"
 import Logo from "./components/Logo"
 import Slogan from "./components/Slogan"
 
-function Feed() {
+function Bewerben() {
   return (
     <div className="app-header">
       <Logo />
@@ -12,4 +12,4 @@ function Feed() {
   )
 }
 
-export default Feed
+export default Bewerben

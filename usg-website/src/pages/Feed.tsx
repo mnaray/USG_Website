@@ -3,9 +3,9 @@ import TwitterFeed from "./components/TwitterFeed"
 
 function Feed() {
   return (
-    <div className="app-header justify-start pt-36">
+    <main className="app-header justify-start pt-36">
       <TwitterFeed />
-    </div>
+    </main>
   )
 }
 
