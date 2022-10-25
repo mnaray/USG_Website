@@ -3,7 +3,7 @@
 ### Inhaltsverzeichnis
 
 - [USG Homepage Docs](#usg-homepage-docs)
-  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [Einleitung](#einleitung)
     - [Technologien](#technologien)
   - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
@@ -28,17 +28,17 @@
       - [Slogan.tsx](#slogantsx)
       - [Button.tsx](#buttontsx)
       - [GoogleForms.tsx](#googleformstsx)
+      - [TwitterFeed.tsx](#twitterfeedtsx)
       - [Navbar.tsx](#navbartsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
+      - [Feed.tsx](#feedtsx)
   - [Rechtliches](#rechtliches)
 
 ## Einleitung
-
-Wir erstellen diese Webseite für die E-Sports-Gruppe USG (United Swiss Gaming). Der Leiter von USG hat uns beauftragt, eine Webseite zu erstellen. Unser Kunde (der Leiter) möchte neue Nutzer auf die Organisation aufmerksam machen und diese dann anwerben.
 
 Die Seite soll über die Organisation und deren Mitglieder informieren und via einem Webhook für Twitter die Leser auf dem neusten Stand halten. Das Ziel ist dem Nutzer möglichst leicht, möglichst viel Übersicht zu geben. Dieser soll auch das Team kontaktieren und sich bewerben können.
 
@@ -323,11 +323,8 @@ Dies ist sehr angenehm und praktisch, da man sich keine neuen Konten oder Profil
 
 Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backend entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
 
-#### TwitterFeed.tsx
-
-[TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
-
 ```ts
+ts
 import React from "react"
 import { TwitterTimelineEmbed } from "react-twitter-embed"
 import "../../css/tailwind.css"
@@ -349,6 +346,10 @@ function TwitterFeed() {
 
 export default TwitterFeed
 ```
+
+#### TwitterFeed.tsx
+
+[TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
 
 #### Navbar.tsx
 
@@ -528,6 +529,25 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 > Ein Beispiel ist [hier](https://isotropic.co/react-multiple-pages/) zu finden. (gemeint ist Punkt 4. und 5.)
 
 `path="*"` sind alle Pfade, welche nicht existieren. In unserem Fall laden wir [PageNotFound.tsx](#pagenotfoundtsx), um dem User eine 404-Meldung zu geben.
+
+#### Feed.tsx
+
+```ts
+import React from "react"
+import TwitterFeed from "./components/TwitterFeed"
+
+function Feed() {
+  return (
+    <main className="app-header justify-start pt-36">
+      <TwitterFeed />
+    </main>
+  )
+}
+
+export default Feed
+```
+
+[Feed.tsx](../usg-website/src/pages/Feed.tsx) ist die Seite, in der der Twitter-Feed angezeigt wird. Dieser wird durch die TwitterFeed Komponente geladen, welche man innerhalb des Main-Tags sehen kann.
 
 ## Rechtliches
 
