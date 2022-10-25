@@ -3,9 +3,11 @@ import TwitterFeed from "./components/TwitterFeed"
 
 function Feed() {
   return (
-    <div className="app-header justify-start pt-36">
-      <TwitterFeed />
-    </div>
+    <main>
+      <Logo />
+      <Slogan />
+      <h1 className='text-pink-600'>Feed</h1>
+    </main>
   )
 }
 
