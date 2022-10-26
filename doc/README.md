@@ -28,16 +28,16 @@
       - [Slogan.tsx](#slogantsx)
       - [Button.tsx](#buttontsx)
       - [GoogleForms.tsx](#googleformstsx)
-      - [TwitterFeed.tsx](#twitterfeedtsx)
+      - [TwitterFeed](#twitterfeed)
       - [Navbar.tsx](#navbartsx)
       - [Willkommenstext.tsx](#willkommenstexttsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
       - [Home.tsx](#hometsx)
+      - [Feed.tsx](#feedtsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
-      - [Feed.tsx](#feedtsx)
   - [Rechtliches](#rechtliches)
 
 ## Einleitung
@@ -325,6 +325,8 @@ Dies ist sehr angenehm und praktisch, da man sich keine neuen Konten oder Profil
 
 Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backend entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
 
+#### TwitterFeed
+
 ```ts
 ts
 import React from "react"
@@ -348,8 +350,6 @@ function TwitterFeed() {
 
 export default TwitterFeed
 ```
-
-#### TwitterFeed.tsx
 
 [TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
 
@@ -423,21 +423,18 @@ Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden.
 #### Willkommenstext.tsx
 
 ```ts
-import React from 'react'
+import React from "react"
 
 function Willkommenstext() {
-    return (
-        <div className='text-3xl text-center w-1/3'>
-            <p className='mb-2'>
-                Willkommen auf unserer Homepage!
-            </p>
-            <p className='text-xl'>
-                Bewirb dich bei uns oder vordere uns zu einem Scrim heraus.
-                Du kannst aber auch ein wenig mehr über uns und unser Team
-                herausfinden.
-            </p>
-        </div>
-    )
+  return (
+    <div className="text-3xl text-center w-1/3">
+      <p className="mb-2">Willkommen auf unserer Homepage!</p>
+      <p className="text-xl">
+        Bewirb dich bei uns oder vordere uns zu einem Scrim heraus. Du kannst
+        aber auch ein wenig mehr über uns und unser Team herausfinden.
+      </p>
+    </div>
+  )
 }
 
 export default Willkommenstext
@@ -477,12 +474,12 @@ Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#r
 #### Home.tsx
 
 ```ts
-import React from "react";
-import "../css/tailwind.css";
-import Logo from "./components/Logo";
-import Slogan from "./components/Slogan";
-import Willkommenstext from "./components/Willkommenstext";
-import Button from "./components/Button";
+import React from "react"
+import "../css/tailwind.css"
+import Logo from "./components/Logo"
+import Slogan from "./components/Slogan"
+import Willkommenstext from "./components/Willkommenstext"
+import Button from "./components/Button"
 
 function Home() {
   return (
@@ -498,16 +495,34 @@ function Home() {
         <Button text="Über Uns" destination="ueber-uns" />
       </div>
     </main>
-  );
+  )
 }
 
-export default Home;
-
+export default Home
 ```
 
 [Home.tsx](../usg-website/src/pages/Home.tsx) ist die Startseite der ganzen Webapp. Der Nutzer wird mit dem [Logo](#logotsx), dem [Slogan](#slogantsx), und dem [Willkommenstext](#willkommenstexttsx) begrüsst.
 
 Diesem werden seine Optionen durch einen kleinen Text vorgestellt und dann kann er unten zwischen den drei [Buttons](#buttontsx) wählen. Alternativ könnte man auch die [Navigationsleiste](#navbartsx) verwenden, um an diese Stellen auf der Seite zu gelangen.
+
+#### Feed.tsx
+
+```ts
+import React from "react"
+import TwitterFeed from "./components/TwitterFeed"
+
+function Feed() {
+  return (
+    <main className="app-header justify-start pt-36">
+      <TwitterFeed />
+    </main>
+  )
+}
+
+export default Feed
+```
+
+[Feed.tsx](../usg-website/src/pages/Feed.tsx) ist die Seite, in der der [Twitter-Feed](#feedtsx) angezeigt wird. Dieser wird durch die TwitterFeed Komponente geladen, welche man innerhalb des Main-Tags sehen kann.
 
 ### Sonstiges / Unsichtbares
 
@@ -593,25 +608,6 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 > Ein Beispiel ist [hier](https://isotropic.co/react-multiple-pages/) zu finden. (gemeint ist Punkt 4. und 5.)
 
 `path="*"` sind alle Pfade, welche nicht existieren. In unserem Fall laden wir [PageNotFound.tsx](#pagenotfoundtsx), um dem User eine 404-Meldung zu geben.
-
-#### Feed.tsx
-
-```ts
-import React from "react"
-import TwitterFeed from "./components/TwitterFeed"
-
-function Feed() {
-  return (
-    <main className="app-header justify-start pt-36">
-      <TwitterFeed />
-    </main>
-  )
-}
-
-export default Feed
-```
-
-[Feed.tsx](../usg-website/src/pages/Feed.tsx) ist die Seite, in der der Twitter-Feed angezeigt wird. Dieser wird durch die TwitterFeed Komponente geladen, welche man innerhalb des Main-Tags sehen kann.
 
 ## Rechtliches
 
