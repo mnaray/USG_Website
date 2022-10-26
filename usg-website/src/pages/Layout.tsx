@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 
 function Layout(): JSX.Element {
     return (
-        <div className="min-h-screen">
+        <div className="h-full">
             <Navbar />
             <Outlet />
         </div>
