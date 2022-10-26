@@ -29,10 +29,10 @@
       - [Button.tsx](#buttontsx)
       - [GoogleForms.tsx](#googleformstsx)
       - [Navbar.tsx](#navbartsx)
+      - [Membercard.tsx](#membercardtsx)
+      - [MembercardGrid.tsx](#membercardgridtsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
-    - [Membercard.tsx](#membercardtsx)
-    - [MembercardGrid.tsx](#membercardgridtsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
@@ -392,34 +392,7 @@ export default Navbar
 
 Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf _alle_ `<li>`, welche sich drin befinden.
 
-### Pages
-
-#### PageNotFound.tsx
-
-```ts
-import React from "react"
-import Logo from "./components/Logo"
-
-function PageNotFound() {
-  return (
-    <div className="App">
-      <header className="app-header">
-        <h1 className="text-red-600">Error 404: Page not found!</h1>
-        <p>Bitte eine valide URL eingeben.</p>
-        <Logo />
-      </header>
-    </div>
-  )
-}
-
-export default PageNotFound
-```
-
-[PageNotFound.tsx](../usg-website/src/pages/components/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
-
-Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#routertsx) sie nicht erkennt, wird man automatisch auf die 404-Seite weitergeleitet, da diese Route in diesem Fall nicht existiert.
-
-### Membercard.tsx
+#### Membercard.tsx
 
 ```ts
 import React from "react";
@@ -476,7 +449,7 @@ Bei dem comment property ist noch speziell, dass es nullable(Man kann auch keine
 comment?: string; // Das Fragezeichen macht das property nullable.
 ```
 
-### MembercardGrid.tsx
+#### MembercardGrid.tsx
 
 ```ts
 import React from "react";
@@ -520,7 +493,32 @@ export default MembercardGrid;
 [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
 
 
+### Pages
 
+#### PageNotFound.tsx
+
+```ts
+import React from "react"
+import Logo from "./components/Logo"
+
+function PageNotFound() {
+  return (
+    <div className="App">
+      <header className="app-header">
+        <h1 className="text-red-600">Error 404: Page not found!</h1>
+        <p>Bitte eine valide URL eingeben.</p>
+        <Logo />
+      </header>
+    </div>
+  )
+}
+
+export default PageNotFound
+```
+
+[PageNotFound.tsx](../usg-website/src/pages/components/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
+
+Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#routertsx) sie nicht erkennt, wird man automatisch auf die 404-Seite weitergeleitet, da diese Route in diesem Fall nicht existiert.
 
 ### Sonstiges / Unsichtbares
 
