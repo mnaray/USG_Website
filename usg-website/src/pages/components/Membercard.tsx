@@ -18,7 +18,7 @@ function Membercard(source: membercard) {
             src={source.mbr}
             alt={"Picture of " + source.name}
           />
-          <p className=" align-text-bottom ">{source.name}</p>
+          <p className=" align-text-bottom text-2xl">{source.name}</p>
         </div>
         <div className="flip-card-back py-5">
           <h1 className="text-4xl">"{source.name}"</h1>
