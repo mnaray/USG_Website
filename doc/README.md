@@ -30,6 +30,8 @@
       - [GoogleForms.tsx](#googleformstsx)
       - [TwitterFeed.tsx](#twitterfeedtsx)
       - [Navbar.tsx](#navbartsx)
+      - [Membercard.tsx](#membercardtsx)
+      - [MembercardGrid.tsx](#membercardgridtsx)
       - [Willkommenstext.tsx](#willkommenstexttsx)
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
@@ -420,6 +422,106 @@ export default Navbar
 
 Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf _alle_ `<li>`, welche sich drin befinden.
 
+#### Membercard.tsx
+
+```ts
+import React from "react";
+import "../../css/index.css";
+
+interface membercard {
+  mbr: string;
+  name: string;
+  function: string;
+  comment?: string;
+}
+
+function Membercard(source: membercard) {
+  return (
+    <div className="flip-card m-10 rounded">
+      <div className="flip-card-inner rounded">
+        <div className="flip-card-front rounded">
+          <img
+            className="h-full w-full aspect-7/9"
+            src={source.mbr}
+            alt={"Picture of " + source.name}
+          />
+          <p className=" align-text-bottom ">{source.name}</p>
+        </div>
+        <div className="flip-card-back">
+          <h1 className="text-4xl">"{source.name}"</h1>
+          <p className="text-xl">{source.function}</p>
+          <p>About: </p>
+          <p className="text-lg">{source.comment}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Membercard;
+```
+
+[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
+
+Eine Membercard fordert folgende Properties:
+
+`mbr= {Foto.png}` Foto des Mitglieds.
+
+`name= "Pseudonym"` Pseudonym des Mitglieds.
+
+`function= "Mitglied"` Rolle des Mitglieds.
+
+`comment= "text..."` Kommentar über das Mitglied.
+
+Bei dem comment property ist noch speziell, dass es nullable(Man kann auch keinen Wert angeben) ist:
+
+```ts
+comment?: string; // Das Fragezeichen macht das property nullable.
+```
+
+#### MembercardGrid.tsx
+
+```ts
+import React from "react";
+import Membercard from "./Membercard";
+import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
+
+function MembercardGrid() {
+  return (
+    <div className="flex flex-row">
+      <Membercard
+        mbr={MemberFoto}
+        name="Nikknez"
+        function="Mitglied"
+        comment="Er ist toll"
+      />
+      <Membercard
+        mbr={MemberFoto}
+        name="Pseudonym"
+        function="Mitglied"
+        comment="Comment"
+      />
+      <Membercard
+        mbr={MemberFoto}
+        name="Pseudonym"
+        function="Mitglied"
+        comment="Comment"
+      />
+      <Membercard
+        mbr={MemberFoto}
+        name="Pseudonym"
+        function="Mitglied"
+        comment="Comment"
+      />
+    </div>
+  );
+}
+
+export default MembercardGrid;
+```
+
+[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
+
 #### Willkommenstext.tsx
 
 ```ts
@@ -490,11 +592,11 @@ function Home() {
       <Logo />
       <Slogan />
       <Willkommenstext />
-      <div className="flex flex-row justify-evenly w-1/4 py-8">
+      <div className="flex flex-row justify-evenly min-w-fit py-8">
         <Button text="Bewirb Dich!" destination="kontakt/bewerben" />
-        <p className="text-2xl">,</p>
+        <p className="text-2xl px-2">,</p>
         <Button text="Scrim Us!" destination="kontakt/scrim-us" />
-        <p className="text-2xl">oder</p>
+        <p className="text-2xl px-2">oder</p>
         <Button text="Über Uns" destination="ueber-uns" />
       </div>
     </main>
