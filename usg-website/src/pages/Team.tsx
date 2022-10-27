@@ -1,15 +1,12 @@
-import React from 'react';
-import Logo from "./components/Logo";
-import Slogan from './components/Slogan';
+import React from "react";
+import MembercardGrid from "./components/MembercardGrid";
 
 function Team() {
   return (
     <main>
-      <Logo />
-      <Slogan />
-      <h1 className='text-pink-600'>Unser Team</h1>
+      <MembercardGrid />
     </main>
-  )
+  );
 }
 
-export default Team
+export default Team;
