@@ -1,5 +1,4 @@
 import React from "react";
-import "../../css/index.css";
 
 interface membercard {
   mbr: string;
@@ -19,9 +18,9 @@ function Membercard(source: membercard) {
             src={source.mbr}
             alt={"Picture of " + source.name}
           />
-          <p className=" align-text-bottom text-2xl">{source.name}</p>
+          <p className="align-text-bottom text-2xl font-bold">{source.name}</p>
         </div>
-        <div className="flip-card-back rounded py-5">
+        <div className="flip-card-back rounded py-5 px-3 bg-slate-700">
           <h1 className="text-4xl">"{source.name}"</h1>
           <p className="text-xl">{source.function}</p>
           <p className="pt-2 font-medium">Teamrolle:</p>
