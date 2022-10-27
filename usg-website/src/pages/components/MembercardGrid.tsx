@@ -9,52 +9,69 @@ function MembercardGrid() {
         <Membercard
           mbr={MemberFoto}
           name="Nikknez"
-          function="Founder"
-          comment="R6-Team"
+          function="Inhaber, Teamleiter"
+          about="Leitet das Team, organisiert Trainings"
+          comment="Ingame-Leader / Support / Soft-Breach / Site-Set-Up"
         />
         <Membercard
           mbr={MemberFoto}
           name="LuschenHaur"
           function="Moderator"
-          comment="R6-Team"
+          about="Teamleiter"
+          comment="Entry-Frag / Anti-Breach"
         />
         <Membercard
           mbr={MemberFoto}
           name="Evody"
-          function="Moderator"
-          comment="R6-Team"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="zGruener"
-          function="Mitglied"
-          comment="R6-Team"
+          function="Management, Informatiker, Eventleiter, Ersatzspieler"
+          about="Leitet Events, Server und programmiert für das Team."
+          comment="Entry-Frag / Hard-Breacher / Traps"
         />
       </div>
       <div className="flex flex-row">
         <Membercard
           mbr={MemberFoto}
-          name="SKY"
-          function="Mitglied"
-          comment="R6-Team"
+          name="dissle"
+          function="Teamspieler"
+          about="Spielt für das Team als Hauptspieler."
+          comment="Hard-Breach-Support / Disruptor / Anti-Intel"
         />
         <Membercard
           mbr={MemberFoto}
-          name="dissle"
-          function="Mitglied"
-          comment="R6-Team"
+          name="Sky"
+          function="Teamspieler"
+          about="Spielt für das Team als Hauptspieler."
+          comment="Support / Intel-Gatherer / Roamer"
+        />
+        <Membercard
+          mbr={MemberFoto}
+          name="zGruener"
+          function="Teamspieler"
+          about="Spielt für das Team als Hauptspieler."
+          comment="Support / Intel-Gatherer"
+        />
+      </div>
+      <div className="flex flex-row">
+        <Membercard
+          mbr={MemberFoto}
+          name="MIgel"
+          function="Ersatzspieler"
+          about="Spielt für das Team als Ersatzspieler."
+          comment="Shield / Disruptor"
         />
         <Membercard
           mbr={MemberFoto}
           name="SemiColon"
-          function="Mitglied"
-          comment="R6-Ersatzspieler"
+          function="Ersatzspieler"
+          about="Spielt für das Team als Ersatzspieler."
+          comment="Angle-Watcher / Site-Set-Up"
         />
         <Membercard
           mbr={MemberFoto}
-          name="MIgel"
-          function="Mitglied"
-          comment="R6-Ersatzspieler"
+          name="BroBrot"
+          function="Ersatzspieler"
+          about="Spielt für das Team als Ersatzspieler."
+          comment="Intel / Disruptor"
         />
       </div>
     </div>

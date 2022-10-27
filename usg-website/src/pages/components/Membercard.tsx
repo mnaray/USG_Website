@@ -5,6 +5,7 @@ interface membercard {
   mbr: string;
   name: string;
   function: string;
+  about?: string;
   comment?: string;
 }
 
@@ -23,9 +24,9 @@ function Membercard(source: membercard) {
         <div className="flip-card-back py-5">
           <h1 className="text-4xl">"{source.name}"</h1>
           <p className="text-xl">{source.function}</p>
-          <p className="pt-3 pb-1 font-medium">About: </p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          <p className="text-lg">{source.comment}</p>
+          <p className="pt-2 font-medium">Teamrolle:</p>
+          <p className="pb-1 font-medium">{source.about}</p>
+          <p className="text-lg py-2">IG-Rolle: {source.comment}</p>
         </div>
       </div>
     </div>
