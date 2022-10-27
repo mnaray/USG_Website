@@ -1,9 +1,9 @@
-import React from "react";
-import "../css/tailwind.css";
-import Logo from "./components/Logo";
-import Slogan from "./components/Slogan";
-import Willkommenstext from "./components/Willkommenstext";
-import Button from "./components/Button";
+import React from "react"
+import "../css/tailwind.css"
+import Button from "./components/Button"
+import Logo from "./components/Logo"
+import Slogan from "./components/Slogan"
+import Willkommenstext from "./components/Willkommenstext"
 
 function Home() {
   return (
@@ -19,7 +19,7 @@ function Home() {
         <Button text="Über Uns" destination="ueber-uns" />
       </div>
     </main>
-  );
+  )
 }
 
-export default Home;
+export default Home

@@ -1,8 +1,8 @@
-import React from 'react';
-import Logo from "./components/Logo";
-import Slogan from './components/Slogan';
+import React from "react"
+import Logo from "./components/Logo"
+import Slogan from "./components/Slogan"
 
-function Feed() {
+function Bewerben() {
   return (
     <main>
       <Logo />
@@ -12,4 +12,4 @@ function Feed() {
   )
 }
 
-export default Feed
+export default Bewerben

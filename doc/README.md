@@ -28,6 +28,7 @@
       - [Slogan.tsx](#slogantsx)
       - [Button.tsx](#buttontsx)
       - [GoogleForms.tsx](#googleformstsx)
+      - [TwitterFeed](#twitterfeed)
       - [Navbar.tsx](#navbartsx)
       - [Membercard.tsx](#membercardtsx)
       - [MembercardGrid.tsx](#membercardgridtsx)
@@ -35,14 +36,13 @@
     - [Pages](#pages)
       - [PageNotFound.tsx](#pagenotfoundtsx)
       - [Home.tsx](#hometsx)
+      - [Feed.tsx](#feedtsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
   - [Rechtliches](#rechtliches)
 
 ## Einleitung
-
-Wir erstellen diese Webseite für die E-Sports-Gruppe USG (United Swiss Gaming). Der Leiter von USG hat uns beauftragt, eine Webseite zu erstellen. Unser Kunde (der Leiter) möchte neue Nutzer auf die Organisation aufmerksam machen und diese dann anwerben.
 
 Die Seite soll über die Organisation und deren Mitglieder informieren und via einem Webhook für Twitter die Leser auf dem neusten Stand halten. Das Ziel ist dem Nutzer möglichst leicht, möglichst viel Übersicht zu geben. Dieser soll auch das Team kontaktieren und sich bewerben können.
 
@@ -189,7 +189,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
-
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
 | :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
@@ -266,21 +265,23 @@ export default Slogan
 #### Button.tsx
 
 ```ts
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 interface ButtonProps {
-  text: string;
-  destination: string;
+  text: string
+  destination: string
 }
 
 function Button(props: ButtonProps) {
   return (
     <Link to={props.destination}>
-      <button className="bg-blue-600 text-white text-lg px-3 py-1 rounded
+      <button
+        className="bg-blue-600 text-white text-lg px-3 py-1 rounded
                           hover:bg-blue-200 hover:text-black transition-all
                           duration-200"
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         {props.text}
       </button>
     </Link>
@@ -288,10 +289,9 @@ function Button(props: ButtonProps) {
 }
 
 export default Button
-
 ```
 
-  [Button.tsx](../usg-website/src/pages/components/Button.tsx) ist eine Komponente, die einen Button zurückgibt. Man muss der Komponente beim erstellen einen Anzeigetext geben und einen Ort an den man weitergeleitet wird. Es funktioniert eigentlich gleich wie ein Anchor-Tag in Html.
+[Button.tsx](../usg-website/src/pages/components/Button.tsx) ist eine Komponente, die einen Button zurückgibt. Man muss der Komponente beim erstellen einen Anzeigetext geben und einen Ort an den man weitergeleitet wird. Es funktioniert eigentlich gleich wie ein Anchor-Tag in Html.
 
 #### GoogleForms.tsx
 
@@ -326,6 +326,34 @@ export default GoogleForms
 Dies ist sehr angenehm und praktisch, da man sich keine neuen Konten oder Profile erstellen muss, nur ume eine kurze Frage (o.ä.) zu stellen. Somit ist die Wahrscheinlichkeit, dass ein Nutzer dieses Feature verwendet um einiges höher als mit einem Redirect.
 
 Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Backend entwickeln müssen. Es bleibt bei einer einfachen Komponente, die sich sogar verändert, wenn der Administrator des Formulars etwas im jeweiligen Formular verwändert. Dies spart sehr viel Zeit und Probleme mit dem Datenschutz, da die Personendaten von Google behandelt werden.
+
+#### TwitterFeed
+
+```ts
+ts
+import React from "react"
+import { TwitterTimelineEmbed } from "react-twitter-embed"
+import "../../css/tailwind.css"
+
+function TwitterFeed() {
+  return (
+    <>
+      <h1 className="pb-24">Unser Feed</h1>
+      <div className="feed-container">
+        <TwitterTimelineEmbed
+          sourceType="profile"
+          screenName="usg_esports"
+          options={{ height: 600 }}
+        />
+      </div>
+    </>
+  )
+}
+
+export default TwitterFeed
+```
+
+[TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
 
 #### Navbar.tsx
 
@@ -497,21 +525,18 @@ export default MembercardGrid;
 #### Willkommenstext.tsx
 
 ```ts
-import React from 'react'
+import React from "react"
 
 function Willkommenstext() {
-    return (
-        <div className='text-3xl text-center w-1/3'>
-            <p className='mb-2'>
-                Willkommen auf unserer Homepage!
-            </p>
-            <p className='text-xl'>
-                Bewirb dich bei uns oder vordere uns zu einem Scrim heraus.
-                Du kannst aber auch ein wenig mehr über uns und unser Team
-                herausfinden.
-            </p>
-        </div>
-    )
+  return (
+    <div className="text-3xl text-center w-1/3">
+      <p className="mb-2">Willkommen auf unserer Homepage!</p>
+      <p className="text-xl">
+        Bewirb dich bei uns oder vordere uns zu einem Scrim heraus. Du kannst
+        aber auch ein wenig mehr über uns und unser Team herausfinden.
+      </p>
+    </div>
+  )
 }
 
 export default Willkommenstext
@@ -551,12 +576,12 @@ Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#r
 #### Home.tsx
 
 ```ts
-import React from "react";
-import "../css/tailwind.css";
-import Logo from "./components/Logo";
-import Slogan from "./components/Slogan";
-import Willkommenstext from "./components/Willkommenstext";
-import Button from "./components/Button";
+import React from "react"
+import "../css/tailwind.css"
+import Logo from "./components/Logo"
+import Slogan from "./components/Slogan"
+import Willkommenstext from "./components/Willkommenstext"
+import Button from "./components/Button"
 
 function Home() {
   return (
@@ -572,16 +597,34 @@ function Home() {
         <Button text="Über Uns" destination="ueber-uns" />
       </div>
     </main>
-  );
+  )
 }
 
-export default Home;
-
+export default Home
 ```
 
 [Home.tsx](../usg-website/src/pages/Home.tsx) ist die Startseite der ganzen Webapp. Der Nutzer wird mit dem [Logo](#logotsx), dem [Slogan](#slogantsx), und dem [Willkommenstext](#willkommenstexttsx) begrüsst.
 
 Diesem werden seine Optionen durch einen kleinen Text vorgestellt und dann kann er unten zwischen den drei [Buttons](#buttontsx) wählen. Alternativ könnte man auch die [Navigationsleiste](#navbartsx) verwenden, um an diese Stellen auf der Seite zu gelangen.
+
+#### Feed.tsx
+
+```ts
+import React from "react"
+import TwitterFeed from "./components/TwitterFeed"
+
+function Feed() {
+  return (
+    <main className="app-header justify-start pt-36">
+      <TwitterFeed />
+    </main>
+  )
+}
+
+export default Feed
+```
+
+[Feed.tsx](../usg-website/src/pages/Feed.tsx) ist die Seite, in der der [Twitter-Feed](#feedtsx) angezeigt wird. Dieser wird durch die TwitterFeed Komponente geladen, welche man innerhalb des Main-Tags sehen kann.
 
 ### Sonstiges / Unsichtbares
 
