@@ -23,7 +23,12 @@ function Membercard(source: membercard) {
         <div className="flip-card-back">
           <h1 className="text-4xl">"{source.name}"</h1>
           <p className="text-xl">{source.function}</p>
-          <p>About: </p>
+          <p>
+            About: Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Nulla deleniti culpa amet, aperiam temporibus ex accusantium
+            perspiciatis nisi similique quis! Impedit nesciunt nulla quam hic
+            deleniti illo quae beatae ipsum.{" "}
+          </p>
           <p className="text-lg">{source.comment}</p>
         </div>
       </div>
