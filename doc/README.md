@@ -37,6 +37,7 @@
       - [PageNotFound.tsx](#pagenotfoundtsx)
       - [Home.tsx](#hometsx)
       - [Feed.tsx](#feedtsx)
+      - [Kontakt.tsx](#kontakttsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
@@ -188,6 +189,7 @@ Wenn ein Workflow nicht erfolgreich ist, kann nicht gemerget werden. Es müssen 
 Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies ist mit dem `npm test` Befehl möglich. Dieser Soll selbsterklärend sein, ansonsten bitte nachfragen oder sonst informieren.
 
 ## Anforderungen
+
 
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
 | :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -625,6 +627,42 @@ export default Feed
 ```
 
 [Feed.tsx](../usg-website/src/pages/Feed.tsx) ist die Seite, in der der [Twitter-Feed](#feedtsx) angezeigt wird. Dieser wird durch die TwitterFeed Komponente geladen, welche man innerhalb des Main-Tags sehen kann.
+
+#### Kontakt.tsx
+
+```ts
+import React from 'react';
+import GoogleForms from './components/GoogleForms';
+import Button from './components/Button';
+
+function Kontakt() {
+  return (
+    <main>
+      <h1 className="text-3xl">Kontakt</h1>
+      <p className='text-xl text-justify w-1/3 py-8'>
+        Du kannst uns auf verschiedene Arten und Weisen kontaktieren. Um
+        dich bei uns zu bewerben, kannst du nach unten scrollen und unser
+        Formular ausfüllen. Wenn du gegen uns scrimmen willst, klickst du
+        auf den untenstehenden Button "Scrim Us!". Alternativ kannst du
+        uns auch auf Social-Media erreichen.
+      </p>
+      <div className="flex flex-row justify-evenly min-w-fit py-12">
+        <Button text='Bewirb Dich!' destination='bewerben' />
+        <p className='text-2xl px-3'>oder</p>
+        <Button text='Scrim Us!' destination='scrim-us' />
+      </div>
+      <h1 className='text-2xl pt-5'>Kontakformular allgemein</h1>
+      <GoogleForms url='https://docs.google.com/forms/d/e/1FAIpQLSes1z9E7D4g9afB-2oP27qLo1iv_mKeahRVAIIiJFQzR-JKmw/viewform?embedded=true' />
+    </main>
+  );
+}
+
+export default Kontakt
+```
+
+[Kontakt.tsx](../usg-website/src/pages/Kontakt.tsx) gibt dem Nutzer die Option, Kontakt mit dem Team via einem eingebetteten [Google Forms](#googleformstsx) aufzunehmen.
+
+Zusätzlich gibt es noch zwei [Buttons](#buttontsx), welche zu den zwei Unterseiten von Kontakt führen. So kann der Nutzer sich ohne grossen Aufwand spontan Bewerben oder das Team zu einem Scrim herausfordern.
 
 ### Sonstiges / Unsichtbares
 
