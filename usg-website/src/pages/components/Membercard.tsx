@@ -21,7 +21,7 @@ function Membercard(source: membercard) {
           />
           <p className=" align-text-bottom text-2xl">{source.name}</p>
         </div>
-        <div className="flip-card-back py-5">
+        <div className="flip-card-back rounded py-5">
           <h1 className="text-4xl">"{source.name}"</h1>
           <p className="text-xl">{source.function}</p>
           <p className="pt-2 font-medium">Teamrolle:</p>
