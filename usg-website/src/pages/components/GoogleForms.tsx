@@ -1,7 +1,7 @@
 import React from "react"
 
 interface Source {
-  url: string
+  url: string;
 }
 
 function GoogleForms(source: Source) {
