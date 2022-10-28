@@ -39,7 +39,9 @@
       - [Home.tsx](#hometsx)
       - [Feed.tsx](#feedtsx)
       - [Kontakt.tsx](#kontakttsx)
-      - [Ueber Uns](#ueber-uns)
+      - [Bewerben.tsx](#bewerbentsx)
+      - [Scrims.tsx](#scrimstsx)
+      - [UeberUns.tsx](#ueberunstsx)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
@@ -681,9 +683,71 @@ export default Kontakt;
 
 [Kontakt.tsx](../usg-website/src/pages/Kontakt.tsx) gibt dem Nutzer die Option, Kontakt mit dem Team via einem eingebetteten [Google Forms](#googleformstsx) aufzunehmen.
 
-Zusätzlich gibt es noch zwei [Buttons](#buttontsx), welche zu den zwei Unterseiten von Kontakt führen. So kann der Nutzer sich ohne grossen Aufwand spontan Bewerben oder das Team zu einem Scrim herausfordern.
+Zusätzlich gibt es noch zwei [Buttons](#buttontsx), welche zu den zwei Unterseiten von Kontakt führen. So kann der Nutzer sich ohne grossen Aufwand spontan [Bewerben](#bewerbentsx) oder das Team zu einem [Scrim hearausfordern](#scrimstsx).
 
-#### Ueber Uns
+#### Bewerben.tsx
+
+```ts
+import React from "react";
+import Title from "./components/Title";
+import GoogleForms from "./components/GoogleForms";
+
+function Bewerben() {
+  return (
+    <main>
+      <Title title="Bewerben" />
+      <p className="text-xl text-justify w-1/3 py-8">
+        Wenn du Lust hast bei unserem Team mitzuwirken, dann kannst du
+        dich gerne mit dem Formular unten bei uns bewerben.
+      </p>
+      <h1 className="text-2xl pt-5">Bewerbungsformular</h1>
+      <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLSf28NG92Ewt_RPfbBKdgmjTVSSyHpBZYSuxnhvuKw3XzxNHow/viewform?embedded=true" />
+    </main>
+  );
+}
+
+export default Bewerben
+
+```
+
+[Bewerben.tsx](../usg-website/src/pages/Bewerben.tsx) ermöglicht es dem Nutzer sich für das Team zu bewerben. Dies geschieht durch ein eingebettetes [Google Forms](#googleformstsx).
+
+#### Scrims.tsx
+
+```ts
+import React from 'react';
+import GoogleForms from './components/GoogleForms';
+
+function Scrims() {
+  return (
+    <main>
+      <h1 className="text-3xl pb-4">Scrim Us!</h1>
+      <p className="text-xl text-justify w-1/3 pb-8">
+        Wir sind gerne für Scrims verfügbar! Stelle uns einen Antrag mit
+        dem unteren Formular. Wir werden dann auf dich zukommen, um
+        genauere Details zu besprechen.
+      </p>
+      <h1 className="text-3xl pb-4">Was ist ein Scrim?</h1>
+      <p className="text-xl text-justify w-1/3 pb-8">
+        Ein Scrim ist eine Art kleines Turnier zwischen zwei Teams. Es
+        gibt keinen Preis, der einzige Zweck ist das Team zu trainieren
+        und neue Strategien zu testen.
+      </p>
+      <h1 className='text-2xl pt-5'>Scrim Beantragen</h1>
+      <GoogleForms url='https://docs.google.com/forms/d/e/1FAIpQLScUOb_E594BYsa4Vt5SzJ98VBiXxk5qnwZLluo0RwCQPRlv_g/viewform?embedded=true' />
+    </main>
+  );
+}
+
+export default Scrims
+
+```
+
+[Scrims.tsx](../usg-website/src/pages/Scrims.tsx) ist die Seite, welche zuständig für das Buchen von Scrims ist. Die Grundidee ist es, dem Nutzer die Möglichkeit zu geben mit uns in Kontakt zu treten, um ein Scrim festzulegen.
+
+Was genau ein Scrim ist, wird auch auf dieser Seite in einem Paragraphen beschrieben.
+
+#### UeberUns.tsx
 
 ```ts
 import React from "react";
