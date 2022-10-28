@@ -39,7 +39,7 @@ function Navbar() {
               <div>Kontakt</div>
             </li>
           </Link>
-          <Link to="ueber-und">
+          <Link to="ueber-uns">
             <li>
               <div>Über Uns</div>
             </li>
