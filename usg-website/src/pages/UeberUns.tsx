@@ -21,9 +21,9 @@ function UeberUns() {
           dem schweizerdeutschen Sprachraum.
         </p>
         <div className="flex flex-column">
-          <Button text="Bewirb Dich!" destination="kontakt/bewerben" />
+          <Button text="Bewirb Dich!" destination="../../../kontakt/bewerben" />
           <p className="text-2xl px-2">oder</p>
-          <Button text="Scrim Us!" destination="kontakt/scrim-us" />
+          <Button text="Scrim Us!" destination="../../../kontakt/scrim-us" />
         </div>
       </div>
     </main>
