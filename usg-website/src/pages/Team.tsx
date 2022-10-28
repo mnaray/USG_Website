@@ -1,11 +1,12 @@
-import React from "react";
-import MembercardGrid from "./components/MembercardGrid";
+import React from "react"
+import MembercardGrid from "./components/MembercardGrid"
+import Title from "./components/Title"
 
 function Team() {
   return (
     <main>
+      <Title title="Unser Team" />
       <div className="flex flex-col items-center w-1/3">
-        <p className="justify-center text-5xl m-5">Unser Team</p>
         <p className="justify-center text-lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
           libero magni et, fugit, aperiam ipsa fugiat dignissimos reprehenderit
@@ -15,7 +16,7 @@ function Team() {
       </div>
       <MembercardGrid />
     </main>
-  );
+  )
 }
 
-export default Team;
+export default Team

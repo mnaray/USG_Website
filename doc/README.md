@@ -26,6 +26,7 @@
     - [Komponenten für die Seiten](#komponenten-für-die-seiten)
       - [Logo.tsx](#logotsx)
       - [Slogan.tsx](#slogantsx)
+      - [Title.tsx](#titletsx)
       - [Button.tsx](#buttontsx)
       - [GoogleForms.tsx](#googleformstsx)
       - [TwitterFeed](#twitterfeed)
@@ -264,6 +265,24 @@ export default Slogan;
 
 [Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
 
+#### Title.tsx
+
+```ts
+import React from "react"
+
+interface TitleType {
+  title: string
+}
+
+function Title(text: TitleType) {
+  return <h1 className="text-3xl pb-8">{text.title}</h1>
+}
+
+export default Title
+```
+
+[Title.tsx](../usg-website/src/pages/components/Title.tsx) ist eine kleine Komponente, welche benutzt wird, um einen einheitlichen Titel auf jeder Seite zu gestalten. Mit dem "title" Attribut, kann die Nachrit individualisiert werden.
+
 #### Button.tsx
 
 ```ts
@@ -427,14 +446,14 @@ Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden.
 #### Membercard.tsx
 
 ```ts
-import React from "react";
-import "../../css/index.css";
+import React from "react"
+import "../../css/index.css"
 
 interface membercard {
-  mbr: string;
-  name: string;
-  function: string;
-  comment?: string;
+  mbr: string
+  name: string
+  function: string
+  comment?: string
 }
 
 function Membercard(source: membercard) {
@@ -457,10 +476,10 @@ function Membercard(source: membercard) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Membercard;
+export default Membercard
 ```
 
 [Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
@@ -484,9 +503,9 @@ comment?: string; // Das Fragezeichen macht das property nullable.
 #### MembercardGrid.tsx
 
 ```ts
-import React from "react";
-import Membercard from "./Membercard";
-import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
+import React from "react"
+import Membercard from "./Membercard"
+import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png"
 
 function MembercardGrid() {
   return (
@@ -516,10 +535,10 @@ function MembercardGrid() {
         comment="Comment"
       />
     </div>
-  );
+  )
 }
 
-export default MembercardGrid;
+export default MembercardGrid
 ```
 
 [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
@@ -631,9 +650,9 @@ export default Feed;
 #### Kontakt.tsx
 
 ```ts
-import React from "react";
-import GoogleForms from "./components/GoogleForms";
-import Button from "./components/Button";
+import React from "react"
+import GoogleForms from "./components/GoogleForms"
+import Button from "./components/Button"
 
 function Kontakt() {
   return (
@@ -654,7 +673,7 @@ function Kontakt() {
       <h1 className="text-2xl pt-5">Kontakformular allgemein</h1>
       <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLSes1z9E7D4g9afB-2oP27qLo1iv_mKeahRVAIIiJFQzR-JKmw/viewform?embedded=true" />
     </main>
-  );
+  )
 }
 
 export default Kontakt;

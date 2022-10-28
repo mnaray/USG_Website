@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./components/Button";
 
+
 function UeberUns() {
   return (
     <main>
@@ -29,5 +30,4 @@ function UeberUns() {
     </main>
   );
 }
-
-export default UeberUns;
+export default UeberUns
