@@ -1,6 +1,4 @@
 import React from "react";
-import Logo from "./components/Logo";
-import Slogan from "./components/Slogan";
 import Button from "./components/Button";
 
 function UeberUns() {
