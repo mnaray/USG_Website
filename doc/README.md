@@ -38,6 +38,7 @@
       - [Home.tsx](#hometsx)
       - [Feed.tsx](#feedtsx)
       - [Kontakt.tsx](#kontakttsx)
+      - [Ueber Uns](#ueber-uns)
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
@@ -190,7 +191,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
-
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
 | :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
@@ -224,10 +224,10 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 #### Logo.tsx
 
 ```ts
-import React from "react"
-import { Link } from "react-router-dom"
-import "../../css/App.css"
-import LogoImage from "../../logos/USG_Logo_Transparent_PNG.png"
+import React from "react";
+import { Link } from "react-router-dom";
+import "../../css/App.css";
+import LogoImage from "../../logos/USG_Logo_Transparent_PNG.png";
 
 function Logo() {
   return (
@@ -236,10 +236,10 @@ function Logo() {
         <img src={LogoImage} alt="Logo" className="App-logo"></img>
       </Link>
     </div>
-  )
+  );
 }
 
-export default Logo
+export default Logo;
 ```
 
 [Logo.tsx](../usg-website/src/pages/components/Logo.tsx) nimmt die PNG-Datei des Logos, und gibt dieses in Form einer React Komponente zurück. Um den IMG-Tag herum ist eine Link Komponente, die dafür sorgt, dass man zur Homepage weitergeleitet wird wenn man darauf klickt.
@@ -253,13 +253,13 @@ export default Logo
 #### Slogan.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 function Slogan() {
-  return <p>We are United. We are Swiss. We are Gamers</p>
+  return <p>We are United. We are Swiss. We are Gamers</p>;
 }
 
-export default Slogan
+export default Slogan;
 ```
 
 [Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
@@ -267,12 +267,12 @@ export default Slogan
 #### Button.tsx
 
 ```ts
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
 interface ButtonProps {
-  text: string
-  destination: string
+  text: string;
+  destination: string;
 }
 
 function Button(props: ButtonProps) {
@@ -287,10 +287,10 @@ function Button(props: ButtonProps) {
         {props.text}
       </button>
     </Link>
-  )
+  );
 }
 
-export default Button
+export default Button;
 ```
 
 [Button.tsx](../usg-website/src/pages/components/Button.tsx) ist eine Komponente, die einen Button zurückgibt. Man muss der Komponente beim erstellen einen Anzeigetext geben und einen Ort an den man weitergeleitet wird. Es funktioniert eigentlich gleich wie ein Anchor-Tag in Html.
@@ -298,10 +298,10 @@ export default Button
 #### GoogleForms.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 interface Source {
-  url: string
+  url: string;
 }
 
 function GoogleForms(source: Source) {
@@ -317,10 +317,10 @@ function GoogleForms(source: Source) {
     >
       Wird geladen…
     </iframe>
-  )
+  );
 }
 
-export default GoogleForms
+export default GoogleForms;
 ```
 
 [GoogleForms.tsx](../usg-website/src/pages/components/GoogleForms.tsx) ist die Komponente, die verwendet wird, um Forms (Umfragen) von Google auf der Website einzubetten. Mit dem `url` Attribut kann eine URL zu der jeweiligen Forms von Google in die Komponente eingefügt werden. Dieses Formular wird dann auf der Webseite angezeigt. Jeder Nutzer kann sofort das Formular auf der Seite ausfüllen, ohne Redirects.
@@ -332,10 +332,10 @@ Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Ba
 #### TwitterFeed
 
 ```ts
-ts
-import React from "react"
-import { TwitterTimelineEmbed } from "react-twitter-embed"
-import "../../css/tailwind.css"
+ts;
+import React from "react";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
+import "../../css/tailwind.css";
 
 function TwitterFeed() {
   return (
@@ -349,10 +349,10 @@ function TwitterFeed() {
         />
       </div>
     </>
-  )
+  );
 }
 
-export default TwitterFeed
+export default TwitterFeed;
 ```
 
 [TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
@@ -360,10 +360,10 @@ export default TwitterFeed
 #### Navbar.tsx
 
 ```ts
-import React from "react"
-import logo from "../../logos/cropped_logo.png"
-import { Link } from "react-router-dom"
-import Button from "./Button"
+import React from "react";
+import logo from "../../logos/cropped_logo.png";
+import { Link } from "react-router-dom";
+import Button from "./Button";
 
 function Navbar() {
   return (
@@ -414,10 +414,10 @@ function Navbar() {
       </nav>
       <Button text="Mitglied werden" destination="kontakt/bewerben" />
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
 ```
 
 [Navbar.tsx](../usg-website/src/pages/components/Navbar.tsx) ist die Navigationsleiste der Seite. Alle grösseren Unterseiten sind durch sie erreichbar. Zusätzlich ist noch ein Knopf eingebaut, der direkt zum Bewerbungsformular führt.
@@ -527,7 +527,7 @@ export default MembercardGrid;
 #### Willkommenstext.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 function Willkommenstext() {
   return (
@@ -538,10 +538,10 @@ function Willkommenstext() {
         aber auch ein wenig mehr über uns und unser Team herausfinden.
       </p>
     </div>
-  )
+  );
 }
 
-export default Willkommenstext
+export default Willkommenstext;
 ```
 
 [Willkommenstext.tsx](../usg-website/src/pages/components/Willkommenstext.tsx) beinhaltet ganz einfach den Willkommenstext auf der Startseite.
@@ -553,8 +553,8 @@ Er besteht aus einem kleinen Paragraphen, welcher eine Art "Untertitel" beinhalt
 #### PageNotFound.tsx
 
 ```ts
-import React from "react"
-import Logo from "./components/Logo"
+import React from "react";
+import Logo from "./components/Logo";
 
 function PageNotFound() {
   return (
@@ -565,10 +565,10 @@ function PageNotFound() {
         <Logo />
       </header>
     </div>
-  )
+  );
 }
 
-export default PageNotFound
+export default PageNotFound;
 ```
 
 [PageNotFound.tsx](../usg-website/src/pages/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
@@ -578,12 +578,12 @@ Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#r
 #### Home.tsx
 
 ```ts
-import React from "react"
-import "../css/tailwind.css"
-import Logo from "./components/Logo"
-import Slogan from "./components/Slogan"
-import Willkommenstext from "./components/Willkommenstext"
-import Button from "./components/Button"
+import React from "react";
+import "../css/tailwind.css";
+import Logo from "./components/Logo";
+import Slogan from "./components/Slogan";
+import Willkommenstext from "./components/Willkommenstext";
+import Button from "./components/Button";
 
 function Home() {
   return (
@@ -599,10 +599,10 @@ function Home() {
         <Button text="Über Uns" destination="ueber-uns" />
       </div>
     </main>
-  )
+  );
 }
 
-export default Home
+export default Home;
 ```
 
 [Home.tsx](../usg-website/src/pages/Home.tsx) ist die Startseite der ganzen Webapp. Der Nutzer wird mit dem [Logo](#logotsx), dem [Slogan](#slogantsx), und dem [Willkommenstext](#willkommenstexttsx) begrüsst.
@@ -612,18 +612,18 @@ Diesem werden seine Optionen durch einen kleinen Text vorgestellt und dann kann 
 #### Feed.tsx
 
 ```ts
-import React from "react"
-import TwitterFeed from "./components/TwitterFeed"
+import React from "react";
+import TwitterFeed from "./components/TwitterFeed";
 
 function Feed() {
   return (
     <main className="app-header justify-start pt-36">
       <TwitterFeed />
     </main>
-  )
+  );
 }
 
-export default Feed
+export default Feed;
 ```
 
 [Feed.tsx](../usg-website/src/pages/Feed.tsx) ist die Seite, in der der [Twitter-Feed](#feedtsx) angezeigt wird. Dieser wird durch die TwitterFeed Komponente geladen, welche man innerhalb des Main-Tags sehen kann.
@@ -631,36 +631,80 @@ export default Feed
 #### Kontakt.tsx
 
 ```ts
-import React from 'react';
-import GoogleForms from './components/GoogleForms';
-import Button from './components/Button';
+import React from "react";
+import GoogleForms from "./components/GoogleForms";
+import Button from "./components/Button";
 
 function Kontakt() {
   return (
     <main>
       <h1 className="text-3xl">Kontakt</h1>
-      <p className='text-xl text-justify w-1/3 py-8'>
-        Du kannst uns auf verschiedene Arten und Weisen kontaktieren. Um
-        dich bei uns zu bewerben, kannst du nach unten scrollen und unser
-        Formular ausfüllen. Wenn du gegen uns scrimmen willst, klickst du
-        auf den untenstehenden Button "Scrim Us!". Alternativ kannst du
-        uns auch auf Social-Media erreichen.
+      <p className="text-xl text-justify w-1/3 py-8">
+        Du kannst uns auf verschiedene Arten und Weisen kontaktieren. Um dich
+        bei uns zu bewerben, kannst du nach unten scrollen und unser Formular
+        ausfüllen. Wenn du gegen uns scrimmen willst, klickst du auf den
+        untenstehenden Button "Scrim Us!". Alternativ kannst du uns auch auf
+        Social-Media erreichen.
       </p>
       <div className="flex flex-row justify-evenly min-w-fit py-12">
-        <Button text='Bewirb Dich!' destination='bewerben' />
-        <p className='text-2xl px-3'>oder</p>
-        <Button text='Scrim Us!' destination='scrim-us' />
+        <Button text="Bewirb Dich!" destination="bewerben" />
+        <p className="text-2xl px-3">oder</p>
+        <Button text="Scrim Us!" destination="scrim-us" />
       </div>
-      <h1 className='text-2xl pt-5'>Kontakformular allgemein</h1>
-      <GoogleForms url='https://docs.google.com/forms/d/e/1FAIpQLSes1z9E7D4g9afB-2oP27qLo1iv_mKeahRVAIIiJFQzR-JKmw/viewform?embedded=true' />
+      <h1 className="text-2xl pt-5">Kontakformular allgemein</h1>
+      <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLSes1z9E7D4g9afB-2oP27qLo1iv_mKeahRVAIIiJFQzR-JKmw/viewform?embedded=true" />
     </main>
   );
 }
 
-export default Kontakt
+export default Kontakt;
 ```
 
 [Kontakt.tsx](../usg-website/src/pages/Kontakt.tsx) gibt dem Nutzer die Option, Kontakt mit dem Team via einem eingebetteten [Google Forms](#googleformstsx) aufzunehmen.
+
+Zusätzlich gibt es noch zwei [Buttons](#buttontsx), welche zu den zwei Unterseiten von Kontakt führen. So kann der Nutzer sich ohne grossen Aufwand spontan Bewerben oder das Team zu einem Scrim herausfordern.
+
+#### Ueber Uns
+
+```ts
+import React from "react";
+import Logo from "./components/Logo";
+import Slogan from "./components/Slogan";
+import Button from "./components/Button";
+
+function UeberUns() {
+  return (
+    <main>
+      <div className="flex flex-col items-center w-1/3">
+        <p className="justify-center text-5xl m-5">Über Uns</p>
+        <p className="py-5 justify-center text-center text-lg">
+          Wir sind ein neues Schweizer E-Sport-Team, welches Rainbow Six Siege
+          spielt. Wir suchen gerade aktiv nach Mitgliedern. Also falls ihr
+          Interesse an einem Anfang in der E-Sportszene habt, seid ihr hier
+          richtig. Wir bieten Freundlichkeit, keinen Druck, eine Mitgliedschaft
+          bei unserem ESports-Team. Wir haben keine Ranganforderung, somit kann
+          jeder von jedem lernen und man kann zusammen Spass haben. Bei uns
+          bieten wir Teamfähigkeit und Mut, wir bieten Fairness und Skill.
+          Gesucht sind Leute wie du!
+        </p>
+        <p className="py-3 justify-center text-center text-lg">
+          Das Team besteht derzeit aus 6 Personen. Wir suchen noch Personen aus
+          dem schweizerdeutschen Sprachraum.
+        </p>
+        <div className="flex flex-column">
+          <Button text="Bewirb Dich!" destination="kontakt/bewerben" />
+          <p className="text-2xl px-2">oder</p>
+          <Button text="Scrim Us!" destination="kontakt/scrim-us" />
+        </div>
+      </div>
+    </main>
+  );
+}
+
+export default UeberUns;
+```
+
+Mit [UeberUns.tsx](../usg-website/src/pages/UeberUns.tsx) erhält man einzelne Details zu dem USG-Team. Es wird erläutert wer sie sind und was sie machen.
 
 Zusätzlich gibt es noch zwei [Buttons](#buttontsx), welche zu den zwei Unterseiten von Kontakt führen. So kann der Nutzer sich ohne grossen Aufwand spontan Bewerben oder das Team zu einem Scrim herausfordern.
 
@@ -669,23 +713,25 @@ Zusätzlich gibt es noch zwei [Buttons](#buttontsx), welche zu den zwei Untersei
 #### index.tsx
 
 ```ts
-import React from "react"
-import ReactDOM from "react-dom/client"
-import "./css/index.css"
-import Router from "./pages/Router"
-import reportWebVitals from "./reportWebVitals"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./css/index.css";
+import Router from "./pages/Router";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <Router />
   </React.StrictMode>
-)
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log)
+reportWebVitals(console.log);
 ```
 
 [index.tsx](../usg-website/src/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
@@ -698,16 +744,16 @@ Diese Methode wird nach der Entwicklungsphase entfernt.
 #### Router.tsx
 
 ```ts
-import React from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Bewerben from "./Bewerben"
-import Feed from "./Feed"
-import Home from "./Home"
-import Kontakt from "./Kontakt"
-import PageNotFound from "./PageNotFound"
-import Scrims from "./Scrims"
-import Team from "./Team"
-import UeberUns from "./UeberUns"
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Bewerben from "./Bewerben";
+import Feed from "./Feed";
+import Home from "./Home";
+import Kontakt from "./Kontakt";
+import PageNotFound from "./PageNotFound";
+import Scrims from "./Scrims";
+import Team from "./Team";
+import UeberUns from "./UeberUns";
 
 function Router() {
   return (
@@ -727,10 +773,10 @@ function Router() {
         </Route>
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default Router
+export default Router;
 ```
 
 [Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowserRouter, Routes und Route von react-router-dom, damit es ein Client-Sided-Routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.
