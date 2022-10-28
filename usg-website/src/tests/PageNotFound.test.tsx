@@ -1,10 +1,10 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from '../pages/PageNotFound';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import PageNotFound from '../pages/PageNotFound';
 
 test('renders 404 page', () => {
-    render(<PageNotFound />);
+    render(<PageNotFound />, {wrapper: BrowserRouter});
     const errorText = screen.getByText(/Error 404: Page not found!/i);
     expect(errorText).toBeInTheDocument();
 });
