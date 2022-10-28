@@ -17,7 +17,7 @@ function Scrims() {
         und neue Strategien zu testen.
       </p>
       <h1 className='text-2xl pt-5'>Scrim Beantragen</h1>
-      <GoogleForms height={1000} url='https://docs.google.com/forms/d/e/1FAIpQLScUOb_E594BYsa4Vt5SzJ98VBiXxk5qnwZLluo0RwCQPRlv_g/viewform?embedded=true' />
+      <GoogleForms url='https://docs.google.com/forms/d/e/1FAIpQLScUOb_E594BYsa4Vt5SzJ98VBiXxk5qnwZLluo0RwCQPRlv_g/viewform?embedded=true' />
     </main>
   );
 }
