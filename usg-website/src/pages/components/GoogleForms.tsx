@@ -10,7 +10,7 @@ function GoogleForms(source: Source) {
       title="Google Forms embed"
       src={source.url}
       width="640"
-      height="595"
+      height="820"
       frameBorder="0"
       marginHeight={0}
       marginWidth={0}
