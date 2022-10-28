@@ -1,4 +1,4 @@
-# USG Website
+# [USG Website](https://usginfo.ch/)
 
 ## Dokumentation
 
