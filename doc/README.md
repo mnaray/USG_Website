@@ -22,6 +22,9 @@
     - [Code Reviews](#code-reviews)
     - [Workflows](#workflows)
   - [Anforderungen](#anforderungen)
+  - [Testen](#testen)
+    - [Testfälle](#testfälle)
+    - [Test](#test)
   - [Components](#components)
     - [Komponenten für die Seiten](#komponenten-für-die-seiten)
       - [Logo.tsx](#logotsx)
@@ -196,31 +199,62 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
+
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
 | :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und sind an den richtigen Ort verlinkt                                                                                        |
 | 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                    |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt. Jede Komponente ist dokumentiert.                                                                                  |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
 | 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                          |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet. Somit wirkt die Seite nicht monoton auf den User.                                               |
 | 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />**_(Gestaltung in Zusammenarbeit mit dem Kunden)_**                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
-| 9        | M               | funk.             | Eine Homepage ist vorhanden.                                                                                                                                   |
-| 10       | M               | funk.             | Die Homepage soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                          |
-| 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Homepage vorhanden.                                                                                               |
-| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                               |
+| 9        | M               | funk.             | Eine Homepage ist vorhanden und sie fürht zu den jeweiligen Unterseiten.                                                                                       |
+| 10       | M               | funk.             | Die Webseite soll dunkel (farbe) gestaltet sein.                                                                                                               |
+| 11       | M               | qual.             | Auf der Landingpage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                       |
+| 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Landingpage vorhanden.                                                                                            |
+| 13       | M               | funk.             | Es ist auf jeder Seite eine Navigationsleiste vorhanden.                                                                                                       |
 | 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                      |
-| 16       | M               | funk.             | Auf der Kontaktseite sollen die Kontaktdaten des Teambesitzers stehen.                                                                                         |
-| 17       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                            |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                          |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Landingpage.                                                                                                                   |
+| 16       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
+| 17       | M               | funk.             | Auf der Kontaktseite sind die jeweiligen Formulare für Scrims und Bewerbungen verlinkt.                                                                        |
+| 18       | K               | qual.             | Sonstige Kontaktmethoden sind eingebaut, falls gewünscht. (kein Wunsch, Stand 01.11.2022)                                                                      |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument mit dem Antrag des Kunden) vorzufinden sein.                                                |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
-| 21       | M               | funk.             | Die entsprechenden Sozialen Medien sind verlinkt                                                                                                               |
-| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                       |
-| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                        |
+| 21       | M               | funk.             | Twitter und Discordserver (Community) von USG sind auf der Seite verlinkt.                                                                                     |
+| 22       | M               | funk.             | Ein simpler Feed in Form von einem Twitter-Embed soll vorhanden sein.                                                                                          |
+| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden. Dies wird über das Twitter-Embed ermöglicht.                                                         |
+
+## Testen
+
+### Testfälle
+
+
+| Testf.-Nr. | Anf-Nr. | Verbereitung                                          | Testumgebung                                              | Eingabe                                                       | Erw. Ausgabe                                                                                                                             |
+| :--------: | ------- | :---------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+|    1.1     | 1       |                                                       | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                       | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                |
+|    2.1     | 3       |                                                       | Deployte Webseite im BrowserDeployte Webseit              | Für jede Komponente überprüfen, ob Doku vorhanden ist.        | Jede Komponente ist mit einem Codeblock und einer simplen Beschreibung dokumentiert und ist ganz am Anfang dieser verlinkt (File).       |
+|    3.1     | 4       | Tool für Responsivetests oder Smartphone vorbereiten. | Deployte Webseite im Browser oder Responsive-Testing-Tool | Seite in Mobil-Ansicht öffnen.                                | Alle Komponenten passen sich so an, dass die Seite übersichtlich bleibt in der Mobilansicht.                                             |
+|    4.1     | 5       |                                                       | Lo-Fi Mockup oder Deployte Webseite im Browser            | Einem Tester den Auftrag geben ein Scrim zu beantragen.       | Auftrag soll ohne Probleme ausgeführt werden können. Der Tester darf nicht zögern oder sich beschweren.                                  |
+|    5.1     | 6       |                                                       | Deployte Webseite im Browser                              | Alle Seiten miteinander vergleichen.                          | Nicht alle Schriftarten und -grössen sind gleich. Es gibt ab und zu Unterschiede, die Sinn machen. (z.B. Überschrift, Bemerkungen, etc.) |
+|    6.1     | 7, 10   |                                                       | Deployte Webseite im Browser                              | -                                                             | Alle Seiten haben einen eher Dunklen Hintergrund und eine helle Schrift.                                                                 |
+|    7.1     | 8       |                                                       | Deployte Webseite im Browser                              | -                                                             | Die angewendete Sprache ist Deutsch.                                                                                                     |
+|    8.1     | 9       |                                                       | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird. | Auf der Homepage sind Buttons und eine Navigationsleiste vorzufinden.                                                                    |
+|    9.1     | 11      |                                                       | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird. | Es soll ein Text mit einer Begrüssung und einem Logo vorzufinden sein.                                                                   |
+|    10.1    | 12      |                                                       | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird. | Auf der Homepage soll das Motto "We are United. We are Swiss. We are Gamers." vorzufinden sein.                                          |
+|    11.1    | 13      |                                                       | Deployte Webseite im Browser                              | Jede erreichbare unterseite öffnen.                           | Es muss überall eine Navigationsleiste haben.                                                                                            |
+|    12.1    | 14      |                                                       | Deployte Webseite im Browser                              | -                                                             | Es sind mindestens die Buttons "Über Uns", "Unser Team" und "Kontakt" in der Navigationsleiste vorhanden.                                |
+|    13.1    | 15      |                                                       | Deployte Webseite im Browser                              | Logo in der Navigationsleiste anklicken.                      | Der Nutzer wird wieder auf die Landingpage gebracht.                                                                                     |
+|    14.1    | 16      |                                                       | Deployte Webseite im Browser                              | Formular auf Kontaktseite ausfüllen und daten Absenden.       | Testdaten wurden erfolgreich abgeschickt.                                                                                                |
+|    15.1    | 17      |                                                       | Deployte Webseite im Browser                              | Buttons auf der Kontaktseite anklicken.                       | Es öffnet sich je eine Seite mit entsprechendem Formular.                                                                                |
+|    16.1    | 19      |                                                       | Deployte Webseite im Browser                              | Über-Uns-Seite öffnen.                                        | Auf der Über-Uns-Seite ist das bereitgestellte Zitat eingefügt.                                                                          |
+|    17.1    | 20      |                                                       | Deployte Webseite im Browser                              | Unser-Team-Seite öffnen und über eine beliebige Karte hovern. | Auf der Rückseite dieser Karte sind Name und Stelle im Team der entsprechenden Person vorzufinden.                                       |
+|    18.1    | 21      |                                                       | Deployte Webseite im Browser                              | Feed und Über-Uns öffnen.                                     | Twitter ist im Feed eingebettet und ein Einladungslink zum Discordserver ist unter Über-Uns hinterlegt.                                  |
+|    19.1    | 22, 23  |                                                       | Deployte Webseite im Browser                              | Feed öffnen.                                                  | Twitter-Embed mit den aktuellen Tweets wird angezeigt.                                                                                   |
+
+
+### Test
 
 ## Components
 
@@ -407,7 +441,7 @@ function Navbar() {
                                 divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
                                 child:child:px-2 child:child:rounded child:child:text-center
                                 child:child-hover:bg-white child:child-hover:text-black
-                   
+           
                        child:child:transition-all child:child:duration-200"
         >
           <Link to="/">
