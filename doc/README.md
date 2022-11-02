@@ -4,6 +4,13 @@
 
 - [USG Homepage Docs](#usg-homepage-docs)
     - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [IPERKA](#iperka)
+    - [Informieren](#informieren)
+    - [Planen](#planen)
+    - [Entscheiden](#entscheiden)
+    - [Realisieren](#realisieren)
+    - [Kontrollieren](#kontrollieren)
+    - [Auswerten](#auswerten)
   - [Einleitung](#einleitung)
     - [Technologien](#technologien)
   - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
@@ -25,6 +32,7 @@
   - [Testen](#testen)
     - [Testfälle](#testfälle)
     - [Testprotokoll](#testprotokoll)
+    - [Testbericht / Fazit](#testbericht--fazit)
   - [Components](#components)
     - [Komponenten für die Seiten](#komponenten-für-die-seiten)
       - [Logo.tsx](#logotsx)
@@ -49,6 +57,32 @@
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
   - [Rechtliches](#rechtliches)
+
+## IPERKA
+
+### Informieren
+- [Einleitung](#einleitung)
+- [README auf der Startseite des Repos](../README.md)
+- [Lokale Entwicklungsumgebung einrichten](#lokale-entwicklungsumgebung-einrichten)
+
+### Planen
+- [Einleitung](#einleitung)
+- [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
+
+### Entscheiden
+- [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
+- [Auftragsbeschreibungen vom Kunden](./kundenauftrag/)
+- [Anforderungen](#anforderungen)
+
+### Realisieren
+- [Kontribution](#kontribution)
+- [Components](#components)
+
+### Kontrollieren
+- [Testen](#testen)
+
+### Auswerten
+- [Testbericht / Fazit](#testbericht--fazit)
 
 ## Einleitung
 
@@ -274,6 +308,11 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 | 17.1       | OK                                      | @h0peRL, @m_naray |
 | 18.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
 | 19.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
+
+### Testbericht / Fazit
+Die entwickelte Applikation erfüllt die meisten Anforderungen (Stand 02.22.2022), die gestellt worden sind.
+
+Diese Anforderungen hätten alle innerhalb der 4 Wochen im Lernatelier (exkl. 2 Wochen Ferien) erfüllt werden können. Wir haben manche übersehen, da wir am Anfang keine Issues zu den jeweiligen Anforderungen erstellt haben.
 
 ## Components
 
