@@ -24,7 +24,7 @@
   - [Anforderungen](#anforderungen)
   - [Testen](#testen)
     - [Testfälle](#testfälle)
-    - [Test](#test)
+    - [Testprotokoll](#testprotokoll)
   - [Components](#components)
     - [Komponenten für die Seiten](#komponenten-für-die-seiten)
       - [Logo.tsx](#logotsx)
@@ -199,7 +199,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
-
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
 | :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1        | M               | funk.             | Alle Buttons sind funktionsfähig und sind an den richtigen Ort verlinkt                                                                                        |
@@ -230,7 +229,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ### Testfälle
 
-
 | Testf.-Nr. | Anf-Nr. | Verbereitung                                          | Testumgebung                                              | Eingabe                                                       | Erw. Ausgabe                                                                                                                             |
 | :--------: | ------- | :---------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 |    1.1     | 1       |                                                       | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                       | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                |
@@ -253,8 +251,29 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 |    18.1    | 21      |                                                       | Deployte Webseite im Browser                              | Feed und Über-Uns öffnen.                                     | Twitter ist im Feed eingebettet und ein Einladungslink zum Discordserver ist unter Über-Uns hinterlegt.                                  |
 |    19.1    | 22, 23  |                                                       | Deployte Webseite im Browser                              | Feed öffnen.                                                  | Twitter-Embed mit den aktuellen Tweets wird angezeigt.                                                                                   |
 
+### Testprotokoll
 
-### Test
+| Testf.-Nr. | Bericht                                 | Tester            |
+| ---------- | :-------------------------------------- | :---------------- |
+| 1.1        | OK                                      | @h0peRL, @m_naray |
+| 2.1        | N/OK, es fehlt Team.tsx.                | @h0peRL, @m_naray |
+| 3.1        | N/OK, Responsive nicht vorhanden.       | @h0peRL, @m_naray |
+| 4.1        | OK                                      | @h0peRL, @m_naray |
+| 5.1        | teilweise OK, überall der geliche Font. | @h0peRL, @m_naray |
+| 6.1        | OK                                      | @h0peRL, @m_naray |
+| 7.1        | OK                                      | @h0peRL, @m_naray |
+| 8.1        | OK                                      | @h0peRL, @m_naray |
+| 9.1        | OK                                      | @h0peRL, @m_naray |
+| 10.1       | OK                                      | @h0peRL, @m_naray |
+| 11.1       | OK                                      | @h0peRL, @m_naray |
+| 12.1       | OK                                      | @h0peRL, @m_naray |
+| 13.1       | OK                                      | @h0peRL, @m_naray |
+| 14.1       | OK                                      | @h0peRL, @m_naray |
+| 15.1       | OK                                      | @h0peRL, @m_naray |
+| 16.1       | OK                                      | @h0peRL, @m_naray |
+| 17.1       | OK                                      | @h0peRL, @m_naray |
+| 18.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
+| 19.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
 
 ## Components
 
@@ -263,9 +282,9 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 #### Logo.tsx
 
 ```ts
-import React from "react"
-import { Link } from "react-router-dom"
-import LogoImage from "../../logos/cropped_logo.png"
+import React from "react";
+import { Link } from "react-router-dom";
+import LogoImage from "../../logos/cropped_logo.png";
 
 function Logo() {
   return (
@@ -274,10 +293,10 @@ function Logo() {
         <img src={LogoImage} alt="Logo" className="h-72"></img>
       </Link>
     </div>
-  )
+  );
 }
 
-export default Logo
+export default Logo;
 ```
 
 [Logo.tsx](../usg-website/src/pages/components/Logo.tsx) nimmt die PNG-Datei des Logos, und gibt dieses in Form einer React Komponente zurück. Um den IMG-Tag herum ist eine Link Komponente, die dafür sorgt, dass man zur Homepage weitergeleitet wird wenn man darauf klickt.
@@ -291,17 +310,17 @@ export default Logo
 #### Slogan.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 function Slogan() {
   return (
     <p className="text-2xl font-bold my-8">
       We are United. We are Swiss. We are Gamers
     </p>
-  )
+  );
 }
 
-export default Slogan
+export default Slogan;
 ```
 
 [Slogan.tsx](../usg-website/src/pages/components/Slogan.tsx) ist eine kleine Komponente, welche den Slogan/das Motto des Teams beinhaltet.
@@ -309,17 +328,17 @@ export default Slogan
 #### Title.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 interface TitleType {
-  title: string
+  title: string;
 }
 
 function Title(text: TitleType) {
-  return <h1 className="text-3xl pb-8">{text.title}</h1>
+  return <h1 className="text-3xl pb-8">{text.title}</h1>;
 }
 
-export default Title
+export default Title;
 ```
 
 [Title.tsx](../usg-website/src/pages/components/Title.tsx) ist eine kleine Komponente, welche benutzt wird, um einen einheitlichen Titel auf jeder Seite zu gestalten. Mit dem "title" Attribut, kann die Nachrit individualisiert werden.
@@ -327,12 +346,12 @@ export default Title
 #### Button.tsx
 
 ```ts
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
 interface ButtonProps {
-  text: string
-  destination: string
+  text: string;
+  destination: string;
 }
 
 function Button(props: ButtonProps) {
@@ -347,10 +366,10 @@ function Button(props: ButtonProps) {
         {props.text}
       </button>
     </Link>
-  )
+  );
 }
 
-export default Button
+export default Button;
 ```
 
 [Button.tsx](../usg-website/src/pages/components/Button.tsx) ist eine Komponente, die einen Button zurückgibt. Man muss der Komponente beim erstellen einen Anzeigetext geben und einen Ort an den man weitergeleitet wird. Es funktioniert eigentlich gleich wie ein Anchor-Tag in Html.
@@ -358,10 +377,10 @@ export default Button
 #### GoogleForms.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 interface Source {
-  url: string
+  url: string;
 }
 
 function GoogleForms(source: Source) {
@@ -378,10 +397,10 @@ function GoogleForms(source: Source) {
     >
       Wird geladen…
     </iframe>
-  )
+  );
 }
 
-export default GoogleForms
+export default GoogleForms;
 ```
 
 [GoogleForms.tsx](../usg-website/src/pages/components/GoogleForms.tsx) ist die Komponente, die verwendet wird, um Forms (Umfragen) von Google auf der Website einzubetten. Mit dem `url` Attribut kann eine URL zu der jeweiligen Forms von Google in die Komponente eingefügt werden. Dieses Formular wird dann auf der Webseite angezeigt. Jeder Nutzer kann sofort das Formular auf der Seite ausfüllen, ohne Redirects.
@@ -393,8 +412,8 @@ Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Ba
 #### TwitterFeed
 
 ```ts
-import React from "react"
-import { TwitterTimelineEmbed } from "react-twitter-embed"
+import React from "react";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 function TwitterFeed() {
   return (
@@ -407,10 +426,10 @@ function TwitterFeed() {
         />
       </div>
     </>
-  )
+  );
 }
 
-export default TwitterFeed
+export default TwitterFeed;
 ```
 
 [TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
@@ -418,10 +437,10 @@ export default TwitterFeed
 #### Navbar.tsx
 
 ```ts
-import React from "react"
-import { Link } from "react-router-dom"
-import logo from "../../logos/cropped_logo.png"
-import Button from "./Button"
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../logos/cropped_logo.png";
+import Button from "./Button";
 
 function Navbar() {
   return (
@@ -441,7 +460,7 @@ function Navbar() {
                                 divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
                                 child:child:px-2 child:child:rounded child:child:text-center
                                 child:child-hover:bg-white child:child-hover:text-black
-           
+       
                        child:child:transition-all child:child:duration-200"
         >
           <Link to="/">
@@ -473,10 +492,10 @@ function Navbar() {
       </nav>
       <Button text="Mitglied werden" destination="kontakt/bewerben" />
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
 ```
 
 [Navbar.tsx](../usg-website/src/pages/components/Navbar.tsx) ist die Navigationsleiste der Seite. Alle grösseren Unterseiten sind durch sie erreichbar. Zusätzlich ist noch ein Knopf eingebaut, der direkt zum Bewerbungsformular führt.
@@ -486,14 +505,14 @@ Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden.
 #### Membercard.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 interface membercard {
-  mbr: string
-  name: string
-  function: string
-  about?: string
-  comment?: string
+  mbr: string;
+  name: string;
+  function: string;
+  about?: string;
+  comment?: string;
 }
 
 function Membercard(source: membercard) {
@@ -517,10 +536,10 @@ function Membercard(source: membercard) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Membercard
+export default Membercard;
 ```
 
 [Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
@@ -544,9 +563,9 @@ comment?: string; // Das Fragezeichen macht das property nullable.
 #### MembercardGrid.tsx
 
 ```ts
-import React from "react"
-import Membercard from "./Membercard"
-import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png"
+import React from "react";
+import Membercard from "./Membercard";
+import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
 
 function MembercardGrid() {
   return (
@@ -621,10 +640,10 @@ function MembercardGrid() {
         />
       </div>
     </div>
-  )
+  );
 }
 
-export default MembercardGrid
+export default MembercardGrid;
 ```
 
 [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
@@ -632,7 +651,7 @@ export default MembercardGrid
 #### Willkommenstext.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 function Willkommenstext() {
   return (
@@ -643,10 +662,10 @@ function Willkommenstext() {
         aber auch ein wenig mehr über uns und unser Team herausfinden.
       </p>
     </div>
-  )
+  );
 }
 
-export default Willkommenstext
+export default Willkommenstext;
 ```
 
 [Willkommenstext.tsx](../usg-website/src/pages/components/Willkommenstext.tsx) beinhaltet ganz einfach den Willkommenstext auf der Startseite.
@@ -658,8 +677,8 @@ Er besteht aus einem kleinen Paragraphen, welcher eine Art "Untertitel" beinhalt
 #### PageNotFound.tsx
 
 ```ts
-import React from "react"
-import Logo from "./components/Logo"
+import React from "react";
+import Logo from "./components/Logo";
 
 function PageNotFound() {
   return (
@@ -668,10 +687,10 @@ function PageNotFound() {
       <p>Bitte eine valide URL eingeben.</p>
       <Logo />
     </main>
-  )
+  );
 }
 
-export default PageNotFound
+export default PageNotFound;
 ```
 
 [PageNotFound.tsx](../usg-website/src/pages/PageNotFound.tsx) ist praktisch die 404-Seite der Webseite. Sie gibt einen kleinen Text zur Information aus und zeigt unten dran das [Logo](#logotsx) von USG. Mit einem Klick auf das Logo gelangt man wieder auf die Homepage.
@@ -681,12 +700,12 @@ Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#r
 #### Home.tsx
 
 ```ts
-import React from "react"
-import "../css/tailwind.css"
-import Button from "./components/Button"
-import Logo from "./components/Logo"
-import Slogan from "./components/Slogan"
-import Willkommenstext from "./components/Willkommenstext"
+import React from "react";
+import "../css/tailwind.css";
+import Button from "./components/Button";
+import Logo from "./components/Logo";
+import Slogan from "./components/Slogan";
+import Willkommenstext from "./components/Willkommenstext";
 
 function Home() {
   return (
@@ -702,10 +721,10 @@ function Home() {
         <Button text="Über Uns" destination="ueber-uns" />
       </div>
     </main>
-  )
+  );
 }
 
-export default Home
+export default Home;
 ```
 
 [Home.tsx](../usg-website/src/pages/Home.tsx) ist die Startseite der ganzen Webapp. Der Nutzer wird mit dem [Logo](#logotsx), dem [Slogan](#slogantsx), und dem [Willkommenstext](#willkommenstexttsx) begrüsst.
@@ -715,9 +734,9 @@ Diesem werden seine Optionen durch einen kleinen Text vorgestellt und dann kann 
 #### Feed.tsx
 
 ```ts
-import React from "react"
-import Title from "./components/Title"
-import TwitterFeed from "./components/TwitterFeed"
+import React from "react";
+import Title from "./components/Title";
+import TwitterFeed from "./components/TwitterFeed";
 
 function Feed() {
   return (
@@ -729,10 +748,10 @@ function Feed() {
       </p>
       <TwitterFeed />
     </main>
-  )
+  );
 }
 
-export default Feed
+export default Feed;
 ```
 
 [Feed.tsx](../usg-website/src/pages/Feed.tsx) ist die Seite, in der der [Twitter-Feed](#feedtsx) angezeigt wird. Dieser wird durch die TwitterFeed Komponente geladen, welche man innerhalb des Main-Tags sehen kann.
@@ -740,10 +759,10 @@ export default Feed
 #### Kontakt.tsx
 
 ```ts
-import React from "react"
-import Button from "./components/Button"
-import GoogleForms from "./components/GoogleForms"
-import Title from "./components/Title"
+import React from "react";
+import Button from "./components/Button";
+import GoogleForms from "./components/GoogleForms";
+import Title from "./components/Title";
 
 function Kontakt() {
   return (
@@ -764,10 +783,10 @@ function Kontakt() {
       <h1 className="text-2xl pt-5">Kontakformular allgemein</h1>
       <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLSes1z9E7D4g9afB-2oP27qLo1iv_mKeahRVAIIiJFQzR-JKmw/viewform?embedded=true" />
     </main>
-  )
+  );
 }
 
-export default Kontakt
+export default Kontakt;
 ```
 
 [Kontakt.tsx](../usg-website/src/pages/Kontakt.tsx) gibt dem Nutzer die Option, Kontakt mit dem Team via einem eingebetteten [Google Forms](#googleformstsx) aufzunehmen.
@@ -786,8 +805,8 @@ function Bewerben() {
     <main>
       <Title title="Bewerben" />
       <p className="text-xl text-justify w-1/3 py-8">
-        Wenn du Lust hast bei unserem Team mitzuwirken, dann kannst du
-        dich gerne mit dem Formular unten bei uns bewerben.
+        Wenn du Lust hast bei unserem Team mitzuwirken, dann kannst du dich
+        gerne mit dem Formular unten bei uns bewerben.
       </p>
       <h1 className="text-2xl pt-5">Bewerbungsformular</h1>
       <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLSf28NG92Ewt_RPfbBKdgmjTVSSyHpBZYSuxnhvuKw3XzxNHow/viewform?embedded=true" />
@@ -795,8 +814,7 @@ function Bewerben() {
   );
 }
 
-export default Bewerben
-
+export default Bewerben;
 ```
 
 [Bewerben.tsx](../usg-website/src/pages/Bewerben.tsx) ermöglicht es dem Nutzer sich für das Team zu bewerben. Dies geschieht durch ein eingebettetes [Google Forms](#googleformstsx).
@@ -804,32 +822,31 @@ export default Bewerben
 #### Scrims.tsx
 
 ```ts
-import React from 'react';
-import GoogleForms from './components/GoogleForms';
+import React from "react";
+import GoogleForms from "./components/GoogleForms";
 
 function Scrims() {
   return (
     <main>
       <h1 className="text-3xl pb-4">Scrim Us!</h1>
       <p className="text-xl text-justify w-1/3 pb-8">
-        Wir sind gerne für Scrims verfügbar! Stelle uns einen Antrag mit
-        dem unteren Formular. Wir werden dann auf dich zukommen, um
-        genauere Details zu besprechen.
+        Wir sind gerne für Scrims verfügbar! Stelle uns einen Antrag mit dem
+        unteren Formular. Wir werden dann auf dich zukommen, um genauere Details
+        zu besprechen.
       </p>
       <h1 className="text-3xl pb-4">Was ist ein Scrim?</h1>
       <p className="text-xl text-justify w-1/3 pb-8">
-        Ein Scrim ist eine Art kleines Turnier zwischen zwei Teams. Es
-        gibt keinen Preis, der einzige Zweck ist das Team zu trainieren
-        und neue Strategien zu testen.
+        Ein Scrim ist eine Art kleines Turnier zwischen zwei Teams. Es gibt
+        keinen Preis, der einzige Zweck ist das Team zu trainieren und neue
+        Strategien zu testen.
       </p>
-      <h1 className='text-2xl pt-5'>Scrim Beantragen</h1>
-      <GoogleForms url='https://docs.google.com/forms/d/e/1FAIpQLScUOb_E594BYsa4Vt5SzJ98VBiXxk5qnwZLluo0RwCQPRlv_g/viewform?embedded=true' />
+      <h1 className="text-2xl pt-5">Scrim Beantragen</h1>
+      <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLScUOb_E594BYsa4Vt5SzJ98VBiXxk5qnwZLluo0RwCQPRlv_g/viewform?embedded=true" />
     </main>
   );
 }
 
-export default Scrims
-
+export default Scrims;
 ```
 
 [Scrims.tsx](../usg-website/src/pages/Scrims.tsx) ist die Seite, welche zuständig für das Buchen von Scrims ist. Die Grundidee ist es, dem Nutzer die Möglichkeit zu geben mit uns in Kontakt zu treten, um ein Scrim festzulegen.
@@ -839,8 +856,8 @@ Was genau ein Scrim ist, wird auch auf dieser Seite in einem Paragraphen beschri
 #### UeberUns.tsx
 
 ```ts
-import React from "react"
-import Button from "./components/Button"
+import React from "react";
+import Button from "./components/Button";
 
 function UeberUns() {
   return (
@@ -868,9 +885,9 @@ function UeberUns() {
         </div>
       </div>
     </main>
-  )
+  );
 }
-export default UeberUns
+export default UeberUns;
 ```
 
 Mit [UeberUns.tsx](../usg-website/src/pages/UeberUns.tsx) erhält man einzelne Details zu dem USG-Team. Es wird erläutert wer sie sind und was sie machen.
@@ -882,23 +899,25 @@ Zusätzlich gibt es noch zwei [Buttons](#buttontsx), welche zu den zwei Untersei
 #### index.tsx
 
 ```ts
-import React from "react"
-import ReactDOM from "react-dom/client"
-import "./css/index.css"
-import Router from "./pages/Router"
-import reportWebVitals from "./reportWebVitals"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./css/index.css";
+import Router from "./pages/Router";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <Router />
   </React.StrictMode>
-)
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log)
+reportWebVitals(console.log);
 ```
 
 [index.tsx](../usg-website/src/index.tsx) nimmt das statische HTML Root-Element, um dieses dann zu modifizieren, indem es die aufgelisteten Komponenten unter `root.render();` ladet.
@@ -911,17 +930,17 @@ Diese Methode wird nach der Entwicklungsphase entfernt.
 #### Router.tsx
 
 ```ts
-import React from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Layout from "./Layout"
-import Bewerben from "./Bewerben"
-import Feed from "./Feed"
-import Home from "./Home"
-import Kontakt from "./Kontakt"
-import PageNotFound from "./PageNotFound"
-import Scrims from "./Scrims"
-import Team from "./Team"
-import UeberUns from "./UeberUns"
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./Layout";
+import Bewerben from "./Bewerben";
+import Feed from "./Feed";
+import Home from "./Home";
+import Kontakt from "./Kontakt";
+import PageNotFound from "./PageNotFound";
+import Scrims from "./Scrims";
+import Team from "./Team";
+import UeberUns from "./UeberUns";
 
 function Router() {
   return (
@@ -941,10 +960,10 @@ function Router() {
         </Route>
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default Router
+export default Router;
 ```
 
 [Router.tsx](../usg-website/src/pages/Router.tsx) wird von [index.tsx](#indextsx) geladen. Es importiert die Elemente BrowserRouter, Routes und Route von react-router-dom, damit es ein Client-Sided-Routing ermöglichen kann. Ansonsten wäre eine React-Applikation nur eine einzige Seite.
