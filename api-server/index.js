@@ -1,8 +1,12 @@
-// install express with `npm install express` 
-const express = require('express')
-const app = express()
+const express = require("express");
+// const { Deta } = require("deta");
 
-app.get('/', (req, res) => res.send('Hello World!'))
+// express
+const app = express();
+app.use(express.json()); // !!| ESSENTIAL FOR req |!!
+app.disable("etag"); // disables automatic caching
+
+app.get("/", (req, res) => res.send("This is the API for usginfo.ch"));
 
 // export 'app'
-module.exports = app
+module.exports = app;
