@@ -1,5 +1,11 @@
 const express = require("express");
-// const { Deta } = require("deta");
+const upload = require("express-fileupload");
+const { Deta } = require("deta");
+
+// deta
+const deta = Deta();
+const peopleDB = deta.Base("people");
+const imageFiles = deta.Drive("images");
 
 // express
 const app = express();
