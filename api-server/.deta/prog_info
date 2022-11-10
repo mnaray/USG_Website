@@ -1,0 +1,1 @@
+{"id":"efa6e76f-df5a-4154-ade1-667960a57055","space":37562,"runtime":"nodejs14.x","name":"api-server","path":"a4fny1","project":"a04owb9l","account":"144798365827","region":"eu-central-1","deps":["express@^4.18.2","deta@^1.1.0"],"envs":null,"public":true,"log_level":"debug","cron":""}
