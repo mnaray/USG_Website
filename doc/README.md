@@ -88,6 +88,7 @@
 - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
 - [Auftragsbeschreibungen vom Kunden](./kundenauftrag/)
 - [Anforderungen](#anforderungen)
+- [Testfälle](#testfälle)
 
 ### Realisieren
 
@@ -117,6 +118,8 @@
 ### Entscheiden
 
 - [Ergänzungsprojekt](#ergänzungsprojekt)
+- [Anforderungen](#anforderungen-1)
+- [Testfälle](#testfälle-1)
 
 ### Realisieren
 
