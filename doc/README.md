@@ -11,8 +11,16 @@
     - [Realisieren](#realisieren)
     - [Kontrollieren](#kontrollieren)
     - [Auswerten](#auswerten)
+  - [IPERKA Ergänzungsprojekt](#iperka-ergänzungsprojekt)
+    - [Informieren](#informieren-1)
+    - [Planen](#planen-1)
+    - [Entscheiden](#entscheiden-1)
+    - [Realisieren](#realisieren-1)
+    - [Kontrollieren](#kontrollieren-1)
+    - [Auswerten](#auswerten-1)
   - [Einleitung](#einleitung)
     - [Technologien](#technologien)
+    - [Ergänzungsprojekt](#ergänzungsprojekt)
   - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
     - [Ein Mockup mit draw.io erstellen.](#ein-mockup-mit-drawio-erstellen)
   - [Lokale Entwicklungsumgebung einrichten](#lokale-entwicklungsumgebung-einrichten)
@@ -61,28 +69,62 @@
 ## IPERKA
 
 ### Informieren
+
 - [Einleitung](#einleitung)
 - [README auf der Startseite des Repos](../README.md)
 - [Lokale Entwicklungsumgebung einrichten](#lokale-entwicklungsumgebung-einrichten)
 
 ### Planen
+
 - [Einleitung](#einleitung)
 - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
 
 ### Entscheiden
+
 - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
 - [Auftragsbeschreibungen vom Kunden](./kundenauftrag/)
 - [Anforderungen](#anforderungen)
 
 ### Realisieren
+
 - [Kontribution](#kontribution)
 - [Components](#components)
 
 ### Kontrollieren
+
 - [Testen](#testen)
 
 ### Auswerten
+
 - [Testbericht / Fazit](#testbericht--fazit)
+
+## IPERKA Ergänzungsprojekt
+
+### Informieren
+
+- [Ergänzungsprojekt](#ergänzungsprojekt)
+- [README auf der Startseite des Repos](../README.md)
+- [deta Dokumenation](https://docs.deta.sh/docs/home/)
+
+### Planen
+
+- [Ergänzungsprojekt](#ergänzungsprojekt)
+
+### Entscheiden
+
+- [Ergänzungsprojekt](#ergänzungsprojekt)
+
+### Realisieren
+
+- [Kontribution](#kontribution)
+
+### Kontrollieren
+
+
+
+### Auswerten
+
+
 
 ## Einleitung
 
@@ -94,9 +136,21 @@ Die Seite ist unter [usginfo.ch](https://usginfo.ch/) erreichbar.
 
 Wir erstellen eine dynamische Webseite mit React und Typescript. NodeJS verwenden wir als Runtime für den Reactserver und JEST für das Unit Testing.
 
-[NodeJS](https://nodejjs.org/en/about/), [React](https://reactjs.org), [TypeScript(tsx)](https://www.typescriptlang.org) und [JEST](https://jestjs.io)
+[Node](https://nodejjs.org/en/about/), [React](https://reactjs.org), [TypeScript(tsx)](https://www.typescriptlang.org) und [JEST](https://jestjs.io)
 
 Unter anderem werden wir vorübergehend eine Art von Forms für alles (Bewerbungsformular, Kontaktformular, etc.) verwenden. Je nach Bedarf und Wachstum der Seite wird eventuell ein Backend für die API und Datenbank hinzugefügt.
+
+### Ergänzungsprojekt
+
+Nachdem das grundlegende Frontend fertig gestellt wurde haben wir uns dafür entschieden diese Seite mit einem Backend zu ergänzen. Wir haben diesen Vorschlag an den Kunden gemacht und er war einverstanden.
+
+Diese Ergänzung der soll die Seite in eine Art CRUD verwandeln. Bisher ist der Inhalt statisch. Administratoren werden Mitglieder hinzufügen oder löschen können. Dies benötigt ein Login-System und eine Nutzerverwaltung mit Rollen.
+
+Um das alles zu realisieren, braucht das Backend eine API und eine Datenbank.
+
+Dafür werden wir folgende Technologien verwenden:
+
+[deta(Cloudhost)](https://www.deta.sh/) und [Express.js(API)](https://expressjs.com/de/) in Kombination mit [Node](https://nodejjs.org/en/about/)
 
 ## Erstellung des Mockups mit dem Kunden
 
@@ -233,6 +287,7 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
+
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
 | :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1        | M               | funk.             | Alle Buttons sind funktionsfähig und sind an den richtigen Ort verlinkt                                                                                        |
@@ -263,6 +318,7 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ### Testfälle
 
+
 | Testf.-Nr. | Anf-Nr. | Verbereitung                                          | Testumgebung                                              | Eingabe                                                       | Erw. Ausgabe                                                                                                                             |
 | :--------: | ------- | :---------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 |    1.1     | 1       |                                                       | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                       | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                |
@@ -287,6 +343,7 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ### Testprotokoll
 
+
 | Testf.-Nr. | Bericht                                 | Tester            |
 | ---------- | :-------------------------------------- | :---------------- |
 | 1.1        | OK                                      | @h0peRL, @m_naray |
@@ -310,6 +367,7 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 | 19.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
 
 ### Testbericht / Fazit
+
 Die entwickelte Applikation erfüllt die meisten Anforderungen (Stand 02.22.2022), die gestellt worden sind.
 
 Diese Anforderungen hätten alle innerhalb der 4 Wochen im Lernatelier (exkl. 2 Wochen Ferien) erfüllt werden können. Wir haben manche übersehen, da wir am Anfang keine Issues zu den jeweiligen Anforderungen erstellt haben.
@@ -499,7 +557,7 @@ function Navbar() {
                                 divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
                                 child:child:px-2 child:child:rounded child:child:text-center
                                 child:child-hover:bg-white child:child-hover:text-black
-       
+   
                        child:child:transition-all child:child:duration-200"
         >
           <Link to="/">
