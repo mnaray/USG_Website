@@ -64,6 +64,10 @@
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
+  - [Ergänzungsprojekt](#ergänzungsprojekt-1)
+    - [Anforderungen](#anforderungen-1)
+    - [Testen](#testen-1)
+      - [Testfälle](#testfälle-1)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -120,11 +124,7 @@
 
 ### Kontrollieren
 
-
-
 ### Auswerten
-
-
 
 ## Einleitung
 
@@ -319,7 +319,7 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 ### Testfälle
 
 
-| Testf.-Nr. | Anf-Nr. | Verbereitung                                          | Testumgebung                                              | Eingabe                                                       | Erw. Ausgabe                                                                                                                             |
+| Testf.-Nr. | Anf-Nr. | Vorbereitung                                          | Testumgebung                                              | Eingabe                                                       | Erw. Ausgabe                                                                                                                             |
 | :--------: | ------- | :---------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 |    1.1     | 1       |                                                       | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                       | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                |
 |    2.1     | 3       |                                                       | Deployte Webseite im BrowserDeployte Webseit              | Für jede Komponente überprüfen, ob Doku vorhanden ist.        | Jede Komponente ist mit einem Codeblock und einer simplen Beschreibung dokumentiert und ist ganz am Anfang dieser verlinkt (File).       |
@@ -1078,6 +1078,57 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 > Ein Beispiel ist [hier](https://isotropic.co/react-multiple-pages/) zu finden. (gemeint ist Punkt 4. und 5.)
 
 `path="*"` sind alle Pfade, welche nicht existieren. In unserem Fall laden wir [PageNotFound.tsx](#pagenotfoundtsx), um dem User eine 404-Meldung zu geben.
+
+## Ergänzungsprojekt
+
+> - Die Einleitung für dieses Projekt ist unter [Ergänzungsprojekt](#ergänzungsprojekt) zu finden.
+> - Das IPERKA ist unter [IPERKA Ergänzungsprojekt](#iperka-ergänzungsprojekt) zu finden.
+
+### Anforderungen
+
+
+| Anf.-Nr. | Muss/Kann | funk./qual. | Beschreibung                                                                         |
+| -------- | --------- | ----------- | ------------------------------------------------------------------------------------ |
+| 1        | Muss      | funk.       | Ein funktionales Loginsystem muss vorhanden sein                                     |
+| 2        | Muss      | funk.       | Datenbank mit Nutzern muss vorhanden sein                                            |
+| 3        | Muss      | funk.       | Nutzer sollen eine Rollen haben                                                      |
+| 4        | Muss      | funk.       | Ein GUI zur Bearbeitung der Daten soll vorhanden sein                                |
+| 5        | Muss      | funk.       | Nur Administratoren können dieses GUI bedienen                                       |
+| 6        | Muss      | funk.       | Mit dem GUI kann man neue Teammitglieder hinzufügen                                  |
+| 7        | Muss      | qual.       | Die Daten der Teammitglieder sollen per GUI bearbeitbar sein                         |
+| 8        | Muss      | funk.       | Man soll mit dem GUI einzelne Teammitglieder löschen können                          |
+| 9        | Muss      | funk.       | Es muss eine Datenbank vorhanden sein, die über die API zugänglich ist.              |
+| 10       | Muss      | funk.       | Das Frontend soll Daten aus dieser DB fetchen und sie in die Seite einbauen (mappen) |
+| 11       | Kann      | qual.       | Es sind keine statische Daten mehr im Frontend. (z.B. Anzahl Mitglieder)             |
+| 12       | Muss      | funk.       | Die Login-Datenbank ist nur für den Express-Server zugänglich. (mit API-Key)         |
+| 13       | Kann      | qual.       | Das Frontend soll neu ein Mobile-View haben (responsive)                             |
+| 14       | Muss      | qual.       | Die Teammitglieder sollen Bilder anstatt Logos auf den Karten bekommen               |
+| 15       | Kann      | qual.       | Alles Lorem Ipsum Text wird ersetzt.                                                 |
+| 16       | Muss      | funk.       | Alle Bilder sind auf einem Fileserver in der Cloud gespeichert                       |
+
+### Testen
+
+#### Testfälle
+
+
+| Tetf.-Nr. | Anf.-Nr.  | Vorbereitung                                          | Testumgebung                            | Eingabe                                          | Erw. Ausgabe                                                                           |
+| --------- | --------- | ----------------------------------------------------- | --------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| 1.1       | 1, 9      | Testnutzer auf DB erstellt                            | Loginseite                              | Logindaten                                       | Nutzer wird eingeloggt                                                                 |
+| 2.1       | 2, 9      | Testnutzer auf DB erstellt                            | API-Testumgebung (z.B. Postman)         | Get-Request für alle Nutzer                      | Array mit Nutzern wird zurückgegeben von der API                                       |
+| 3.1       | 3, 9      | Testnutzer auf DB erstellt mit Rolle                  | API-Testumgebung (z.B. Postman)         | Get-Request für spezifischen Nutzer              | Nutzer mit detaillierten Daten wird ausgegeben (keine Personendaten)                   |
+| 4.1       | 4, 9      | Admin auf DB erstellt und eingeloggt                  | Adminzone auf der Seite                 | -                                                | GUI wird angezeigt                                                                     |
+| 5.1       | 5         | Nicht anmelden                                        | Webseite                                | Adminzone aufrufen                               | keine Berechtigung oder 404                                                            |
+| 6.1       | 6, 9      | Admin auf DB erstellt und eingeloggt                  | Adminzone, Mitgliederverwaltung         | Daten eingeben und Teammitglied hinzufügen       | Mitglieder erscheint auf der Unser-Team Seite                                          |
+| 7.1       | 7, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied bearbeiten                              | Änderungen erscheinen auf der Unser-Team Seite                                         |
+| 8.1       | 8, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied entfernen/löschen                       | Mitglied verschwindet von der Unser-Team Seite                                         |
+| 9.1       | 10, 9     | Datenbank & API existieren                            | Webseite                                | Unser-Team Seite öffnen                          | Alle Mitglieder erscheinen                                                             |
+| 9.2       | 9, 10, 11 | Datenbank & API existieren                            | Webseite                                | Über Uns Seite öffnen                            | Anzahl Mitglieder unter dem Text stimmt immer.                                         |
+| 10.1      | 12        | Login-DB existiert                                    | API-Testumgebung (z.B. Postman)         | ohne Schlüssel die DB direkt abfragen (ohne API) | keine Berechtigung oder 404                                                            |
+| 10.2      | 12        | Login-DB existiert und Express-API ist funktionsfähig | API-Testumgebung (z.B. Postman)         | GET auf /login-access Pfad der API               | "true" für Zugriff, "false" für keinen Zugriff                                         |
+| 11.1      | 13        |                                                       | Mobiltelefon (oder Emulator im Browser) | Seite öffnen                                     | Alles ist gut lesbar. Nichts ist überlappend und nichts hat falsche Seitenverhältnisse |
+| 12.1      | 14        |                                                       | Webseite                                | Unser-Team öffnen                                | Bilder erscheinen anstatt Logos auf den Karten.                                        |
+| 13.1      | 15        |                                                       | Webseite                                | Webseite öffnen und jeden Text anschauen         | Kein Lorem Ipsum vorhanden                                                             |
+| 14.1      | 16        | Fileserver in der Cloud ist vorhanden                 | API-Testumgebung (z.B. Postman)         | GET für Bild von einem Teammitglied              | Entsprechendes Bild wird zurückgegeben.                                                |
 
 ## Rechtliches
 
