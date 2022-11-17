@@ -4,8 +4,23 @@
 
 - [USG Homepage Docs](#usg-homepage-docs)
     - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [IPERKA](#iperka)
+    - [Informieren](#informieren)
+    - [Planen](#planen)
+    - [Entscheiden](#entscheiden)
+    - [Realisieren](#realisieren)
+    - [Kontrollieren](#kontrollieren)
+    - [Auswerten](#auswerten)
+  - [IPERKA Ergänzungsprojekt](#iperka-ergänzungsprojekt)
+    - [Informieren](#informieren-1)
+    - [Planen](#planen-1)
+    - [Entscheiden](#entscheiden-1)
+    - [Realisieren](#realisieren-1)
+    - [Kontrollieren](#kontrollieren-1)
+    - [Auswerten](#auswerten-1)
   - [Einleitung](#einleitung)
     - [Technologien](#technologien)
+    - [Ergänzungsprojekt](#ergänzungsprojekt)
   - [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
     - [Ein Mockup mit draw.io erstellen.](#ein-mockup-mit-drawio-erstellen)
   - [Lokale Entwicklungsumgebung einrichten](#lokale-entwicklungsumgebung-einrichten)
@@ -22,6 +37,10 @@
     - [Code Reviews](#code-reviews)
     - [Workflows](#workflows)
   - [Anforderungen](#anforderungen)
+  - [Testen](#testen)
+    - [Testfälle](#testfälle)
+    - [Testprotokoll](#testprotokoll)
+    - [Testbericht / Fazit](#testbericht--fazit)
   - [Components](#components)
     - [Komponenten für die Seiten](#komponenten-für-die-seiten)
       - [Logo.tsx](#logotsx)
@@ -45,7 +64,72 @@
     - [Sonstiges / Unsichtbares](#sonstiges--unsichtbares)
       - [index.tsx](#indextsx)
       - [Router.tsx](#routertsx)
+  - [Ergänzungsprojekt](#ergänzungsprojekt-1)
+    - [Anforderungen](#anforderungen-1)
+    - [Testen](#testen-1)
+      - [Testfälle](#testfälle-1)
+    - [Einführung Deta](#einführung-deta)
+      - [CLI & Features](#cli--features)
   - [Rechtliches](#rechtliches)
+
+## IPERKA
+
+### Informieren
+
+- [Einleitung](#einleitung)
+- [README auf der Startseite des Repos](../README.md)
+- [Lokale Entwicklungsumgebung einrichten](#lokale-entwicklungsumgebung-einrichten)
+
+### Planen
+
+- [Einleitung](#einleitung)
+- [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
+
+### Entscheiden
+
+- [Erstellung des Mockups mit dem Kunden](#erstellung-des-mockups-mit-dem-kunden)
+- [Auftragsbeschreibungen vom Kunden](./kundenauftrag/)
+- [Anforderungen](#anforderungen)
+- [Testfälle](#testfälle)
+
+### Realisieren
+
+- [Kontribution](#kontribution)
+- [Components](#components)
+
+### Kontrollieren
+
+- [Testen](#testen)
+
+### Auswerten
+
+- [Testbericht / Fazit](#testbericht--fazit)
+
+## IPERKA Ergänzungsprojekt
+
+### Informieren
+
+- [Ergänzungsprojekt](#ergänzungsprojekt)
+- [README auf der Startseite des Repos](../README.md)
+- [deta Dokumenation](https://docs.deta.sh/docs/home/)
+
+### Planen
+
+- [Ergänzungsprojekt](#ergänzungsprojekt)
+
+### Entscheiden
+
+- [Ergänzungsprojekt](#ergänzungsprojekt)
+- [Anforderungen](#anforderungen-1)
+- [Testfälle](#testfälle-1)
+
+### Realisieren
+
+- [Kontribution](#kontribution)
+
+### Kontrollieren
+
+### Auswerten
 
 ## Einleitung
 
@@ -57,9 +141,21 @@ Die Seite ist unter [usginfo.ch](https://usginfo.ch/) erreichbar.
 
 Wir erstellen eine dynamische Webseite mit React und Typescript. NodeJS verwenden wir als Runtime für den Reactserver und JEST für das Unit Testing.
 
-[NodeJS](https://nodejjs.org/en/about/), [React](https://reactjs.org), [TypeScript(tsx)](https://www.typescriptlang.org) und [JEST](https://jestjs.io)
+[Node](https://nodejjs.org/en/about/), [React](https://reactjs.org), [TypeScript(tsx)](https://www.typescriptlang.org) und [JEST](https://jestjs.io)
 
 Unter anderem werden wir vorübergehend eine Art von Forms für alles (Bewerbungsformular, Kontaktformular, etc.) verwenden. Je nach Bedarf und Wachstum der Seite wird eventuell ein Backend für die API und Datenbank hinzugefügt.
+
+### Ergänzungsprojekt
+
+Nachdem das grundlegende Frontend fertig gestellt wurde haben wir uns dafür entschieden diese Seite mit einem Backend zu ergänzen. Wir haben diesen Vorschlag an den Kunden gemacht und er war einverstanden.
+
+Diese Ergänzung der soll die Seite in eine Art CRUD verwandeln. Bisher ist der Inhalt statisch. Administratoren werden Mitglieder hinzufügen oder löschen können. Dies benötigt ein Login-System und eine Nutzerverwaltung mit Rollen.
+
+Um das alles zu realisieren, braucht das Backend eine API und eine Datenbank.
+
+Dafür werden wir folgende Technologien verwenden:
+
+[deta(Cloudhost)](https://www.deta.sh/) und [Express.js(API)](https://expressjs.com/de/) in Kombination mit [Node](https://nodejjs.org/en/about/)
 
 ## Erstellung des Mockups mit dem Kunden
 
@@ -196,31 +292,90 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
+
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
-| :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und erfüllen ihren Zweck.                                                                                                     |
-| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt.                                                                                                                    |
+| :--------- | ----------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und sind an den richtigen Ort verlinkt                                                                                       |
+| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                             |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt. Jede Komponente ist dokumentiert.                                                                                |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
-| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet.<br />Somit wirkt die Seite nicht monoton auf den User.                                          |
+| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                       |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet. Somit wirkt die Seite nicht monoton auf den User.                                              |
 | 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />**_(Gestaltung in Zusammenarbeit mit dem Kunden)_**                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
-| 9        | M               | funk.             | Eine Homepage ist vorhanden.                                                                                                                                   |
-| 10       | M               | funk.             | Die Homepage soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Homepage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                          |
-| 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Homepage vorhanden.                                                                                               |
-| 13       | M               | funk.             | Es ist überall eine Navigationsleiste vorhanden,                                                                                                               |
-| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Homepage.                                                                                                                      |
-| 16       | M               | funk.             | Auf der Kontaktseite sollen die Kontaktdaten des Teambesitzers stehen.                                                                                         |
-| 17       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 18       | K               | qual.             | Sonstige Kontakte, falls gewünscht.                                                                                                                            |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument<br />vom Kunden) vorzufinden Sein.                                                          |
+| 9        | M               | funk.             | Eine Homepage ist vorhanden und sie fürht zu den jeweiligen Unterseiten.                                                                                      |
+| 10       | M               | funk.             | Die Webseite soll dunkel (farbe) gestaltet sein.                                                                                                               |
+| 11       | M               | qual.             | Auf der Landingpage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                      |
+| 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Landingpage vorhanden.                                                                                            |
+| 13       | M               | funk.             | Es ist auf jeder Seite eine Navigationsleiste vorhanden.                                                                                                       |
+| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                               |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Landingpage.                                                                                                                 |
+| 16       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
+| 17       | M               | funk.             | Auf der Kontaktseite sind die jeweiligen Formulare für Scrims und Bewerbungen verlinkt.                                                                       |
+| 18       | K               | qual.             | Sonstige Kontaktmethoden sind eingebaut, falls gewünscht. (kein Wunsch, Stand 01.11.2022)                                                                     |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument mit dem Antrag des Kunden) vorzufinden sein.                                              |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
-| 21       | M               | funk.             | Die entsprechenden Sozialen Medien sind verlinkt                                                                                                               |
-| 22       | M               | funk.             | Ein simpler Feed soll für jüngere Benutzer vorhanden sein.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                       |
-| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden.<br />**_(Genaue Umsetzung no zu Besprechen mit dem Kunden)_**                                        |
+| 21       | M               | funk.             | Twitter und Discordserver (Community) von USG sind auf der Seite verlinkt.                                                                                     |
+| 22       | M               | funk.             | Ein simpler Feed in Form von einem Twitter-Embed soll vorhanden sein.                                                                                          |
+| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden. Dies wird über das Twitter-Embed ermöglicht.                                                       |
+
+## Testen
+
+### Testfälle
+
+
+| Testf.-Nr. | Anf-Nr. | Vorbereitung                                           | Testumgebung                                              | Eingabe                                                         | Erw. Ausgabe                                                                                                                               |
+| :----------: | --------- | :------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+|    1.1    | 1       |                                                        | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                         | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                  |
+|    2.1    | 3       |                                                        | Deployte Webseite im BrowserDeployte Webseit              | Für jede Komponente überprüfen, ob Doku vorhanden ist.       | Jede Komponente ist mit einem Codeblock und einer simplen Beschreibung dokumentiert und ist ganz am Anfang dieser verlinkt (File).         |
+|    3.1    | 4       | Tool für Responsivetests oder Smartphone vorbereiten. | Deployte Webseite im Browser oder Responsive-Testing-Tool | Seite in Mobil-Ansicht öffnen.                                 | Alle Komponenten passen sich so an, dass die Seite übersichtlich bleibt in der Mobilansicht.                                              |
+|    4.1    | 5       |                                                        | Lo-Fi Mockup oder Deployte Webseite im Browser            | Einem Tester den Auftrag geben ein Scrim zu beantragen.         | Auftrag soll ohne Probleme ausgeführt werden können. Der Tester darf nicht zögern oder sich beschweren.                                 |
+|    5.1    | 6       |                                                        | Deployte Webseite im Browser                              | Alle Seiten miteinander vergleichen.                            | Nicht alle Schriftarten und -grössen sind gleich. Es gibt ab und zu Unterschiede, die Sinn machen. (z.B. Überschrift, Bemerkungen, etc.) |
+|    6.1    | 7, 10   |                                                        | Deployte Webseite im Browser                              | -                                                               | Alle Seiten haben einen eher Dunklen Hintergrund und eine helle Schrift.                                                                   |
+|    7.1    | 8       |                                                        | Deployte Webseite im Browser                              | -                                                               | Die angewendete Sprache ist Deutsch.                                                                                                       |
+|    8.1    | 9       |                                                        | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird.   | Auf der Homepage sind Buttons und eine Navigationsleiste vorzufinden.                                                                      |
+|    9.1    | 11      |                                                        | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird.   | Es soll ein Text mit einer Begrüssung und einem Logo vorzufinden sein.                                                                    |
+|    10.1    | 12      |                                                        | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird.   | Auf der Homepage soll das Motto "We are United. We are Swiss. We are Gamers." vorzufinden sein.                                            |
+|    11.1    | 13      |                                                        | Deployte Webseite im Browser                              | Jede erreichbare unterseite öffnen.                            | Es muss überall eine Navigationsleiste haben.                                                                                             |
+|    12.1    | 14      |                                                        | Deployte Webseite im Browser                              | -                                                               | Es sind mindestens die Buttons "Über Uns", "Unser Team" und "Kontakt" in der Navigationsleiste vorhanden.                                 |
+|    13.1    | 15      |                                                        | Deployte Webseite im Browser                              | Logo in der Navigationsleiste anklicken.                        | Der Nutzer wird wieder auf die Landingpage gebracht.                                                                                       |
+|    14.1    | 16      |                                                        | Deployte Webseite im Browser                              | Formular auf Kontaktseite ausfüllen und daten Absenden.        | Testdaten wurden erfolgreich abgeschickt.                                                                                                  |
+|    15.1    | 17      |                                                        | Deployte Webseite im Browser                              | Buttons auf der Kontaktseite anklicken.                         | Es öffnet sich je eine Seite mit entsprechendem Formular.                                                                                 |
+|    16.1    | 19      |                                                        | Deployte Webseite im Browser                              | Über-Uns-Seite öffnen.                                        | Auf der Über-Uns-Seite ist das bereitgestellte Zitat eingefügt.                                                                          |
+|    17.1    | 20      |                                                        | Deployte Webseite im Browser                              | Unser-Team-Seite öffnen und über eine beliebige Karte hovern. | Auf der Rückseite dieser Karte sind Name und Stelle im Team der entsprechenden Person vorzufinden.                                        |
+|    18.1    | 21      |                                                        | Deployte Webseite im Browser                              | Feed und Über-Uns öffnen.                                     | Twitter ist im Feed eingebettet und ein Einladungslink zum Discordserver ist unter Über-Uns hinterlegt.                                   |
+|    19.1    | 22, 23  |                                                        | Deployte Webseite im Browser                              | Feed öffnen.                                                   | Twitter-Embed mit den aktuellen Tweets wird angezeigt.                                                                                     |
+
+### Testprotokoll
+
+
+| Testf.-Nr. | Bericht                                  | Tester            |
+| ------------ | :----------------------------------------- | :------------------ |
+| 1.1        | OK                                       | @h0peRL, @m_naray |
+| 2.1        | N/OK, es fehlt Team.tsx.                 | @h0peRL, @m_naray |
+| 3.1        | N/OK, Responsive nicht vorhanden.        | @h0peRL, @m_naray |
+| 4.1        | OK                                       | @h0peRL, @m_naray |
+| 5.1        | teilweise OK, überall der geliche Font. | @h0peRL, @m_naray |
+| 6.1        | OK                                       | @h0peRL, @m_naray |
+| 7.1        | OK                                       | @h0peRL, @m_naray |
+| 8.1        | OK                                       | @h0peRL, @m_naray |
+| 9.1        | OK                                       | @h0peRL, @m_naray |
+| 10.1       | OK                                       | @h0peRL, @m_naray |
+| 11.1       | OK                                       | @h0peRL, @m_naray |
+| 12.1       | OK                                       | @h0peRL, @m_naray |
+| 13.1       | OK                                       | @h0peRL, @m_naray |
+| 14.1       | OK                                       | @h0peRL, @m_naray |
+| 15.1       | OK                                       | @h0peRL, @m_naray |
+| 16.1       | OK                                       | @h0peRL, @m_naray |
+| 17.1       | OK                                       | @h0peRL, @m_naray |
+| 18.1       | OK (Braucht lange zum laden)             | @h0peRL, @m_naray |
+| 19.1       | OK (Braucht lange zum laden)             | @h0peRL, @m_naray |
+
+### Testbericht / Fazit
+
+Die entwickelte Applikation erfüllt die meisten Anforderungen (Stand 02.22.2022), die gestellt worden sind.
+
+Diese Anforderungen hätten alle innerhalb der 4 Wochen im Lernatelier (exkl. 2 Wochen Ferien) erfüllt werden können. Wir haben manche übersehen, da wir am Anfang keine Issues zu den jeweiligen Anforderungen erstellt haben.
 
 ## Components
 
@@ -231,14 +386,13 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 ```ts
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../css/App.css";
-import LogoImage from "../../logos/USG_Logo_Transparent_PNG.png";
+import LogoImage from "../../logos/cropped_logo.png";
 
 function Logo() {
   return (
     <div>
       <Link to="/">
-        <img src={LogoImage} alt="Logo" className="App-logo"></img>
+        <img src={LogoImage} alt="Logo" className="h-72"></img>
       </Link>
     </div>
   );
@@ -261,7 +415,11 @@ export default Logo;
 import React from "react";
 
 function Slogan() {
-  return <p>We are United. We are Swiss. We are Gamers</p>;
+  return (
+    <p className="text-2xl font-bold my-8">
+      We are United. We are Swiss. We are Gamers
+    </p>
+  );
 }
 
 export default Slogan;
@@ -272,17 +430,17 @@ export default Slogan;
 #### Title.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 interface TitleType {
-  title: string
+  title: string;
 }
 
 function Title(text: TitleType) {
-  return <h1 className="text-3xl pb-8">{text.title}</h1>
+  return <h1 className="text-3xl pb-8">{text.title}</h1>;
 }
 
-export default Title
+export default Title;
 ```
 
 [Title.tsx](../usg-website/src/pages/components/Title.tsx) ist eine kleine Komponente, welche benutzt wird, um einen einheitlichen Titel auf jeder Seite zu gestalten. Mit dem "title" Attribut, kann die Nachrit individualisiert werden.
@@ -330,9 +488,10 @@ interface Source {
 function GoogleForms(source: Source) {
   return (
     <iframe
+      title="Google Forms embed"
       src={source.url}
       width="640"
-      height="595"
+      height="820"
       frameBorder="0"
       marginHeight={0}
       marginWidth={0}
@@ -355,20 +514,17 @@ Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Ba
 #### TwitterFeed
 
 ```ts
-ts;
 import React from "react";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
-import "../../css/tailwind.css";
 
 function TwitterFeed() {
   return (
     <>
-      <h1 className="pb-24">Unser Feed</h1>
-      <div className="feed-container">
+      <div className="w-3/5">
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="usg_esports"
-          options={{ height: 600 }}
+          options={{ height: 2000 }}
         />
       </div>
     </>
@@ -384,8 +540,8 @@ export default TwitterFeed;
 
 ```ts
 import React from "react";
-import logo from "../../logos/cropped_logo.png";
 import { Link } from "react-router-dom";
+import logo from "../../logos/cropped_logo.png";
 import Button from "./Button";
 
 function Navbar() {
@@ -406,33 +562,34 @@ function Navbar() {
                                 divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
                                 child:child:px-2 child:child:rounded child:child:text-center
                                 child:child-hover:bg-white child:child-hover:text-black
-                                child:child:transition-all child:child:duration-200"
+   
+                       child:child:transition-all child:child:duration-200"
         >
-          <li>
-            <div>
-              <Link to="/">Home</Link>
-            </div>
-          </li>
-          <li>
-            <div>
-              <Link to="feed">Feed</Link>
-            </div>
-          </li>
-          <li>
-            <div>
-              <Link to="kontakt">Kontakt</Link>
-            </div>
-          </li>
-          <li>
-            <div>
-              <Link to="ueber-uns">Über Uns</Link>
-            </div>
-          </li>
-          <li>
-            <div>
-              <Link to="unser-team">Unser Team</Link>
-            </div>
-          </li>
+          <Link to="/">
+            <li>
+              <div>Home</div>
+            </li>
+          </Link>
+          <Link to="feed">
+            <li>
+              <div>Feed</div>
+            </li>
+          </Link>
+          <Link to="kontakt">
+            <li>
+              <div>Kontakt</div>
+            </li>
+          </Link>
+          <Link to="ueber-uns">
+            <li>
+              <div>Über Uns</div>
+            </li>
+          </Link>
+          <Link to="unser-team">
+            <li>
+              <div>Unser Team</div>
+            </li>
+          </Link>
         </ul>
       </nav>
       <Button text="Mitglied werden" destination="kontakt/bewerben" />
@@ -450,14 +607,14 @@ Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden.
 #### Membercard.tsx
 
 ```ts
-import React from "react"
-import "../../css/index.css"
+import React from "react";
 
 interface membercard {
-  mbr: string
-  name: string
-  function: string
-  comment?: string
+  mbr: string;
+  name: string;
+  function: string;
+  about?: string;
+  comment?: string;
 }
 
 function Membercard(source: membercard) {
@@ -470,20 +627,21 @@ function Membercard(source: membercard) {
             src={source.mbr}
             alt={"Picture of " + source.name}
           />
-          <p className=" align-text-bottom ">{source.name}</p>
+          <p className="align-text-bottom text-2xl font-bold">{source.name}</p>
         </div>
-        <div className="flip-card-back">
+        <div className="flip-card-back rounded py-5 px-3 bg-slate-700">
           <h1 className="text-4xl">"{source.name}"</h1>
           <p className="text-xl">{source.function}</p>
-          <p>About: </p>
-          <p className="text-lg">{source.comment}</p>
+          <p className="pt-2 font-medium">Teamrolle:</p>
+          <p className="pb-1 font-medium">{source.about}</p>
+          <p className="text-lg py-2">IG-Rolle: {source.comment}</p>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Membercard
+export default Membercard;
 ```
 
 [Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
@@ -507,42 +665,87 @@ comment?: string; // Das Fragezeichen macht das property nullable.
 #### MembercardGrid.tsx
 
 ```ts
-import React from "react"
-import Membercard from "./Membercard"
-import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png"
+import React from "react";
+import Membercard from "./Membercard";
+import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
 
 function MembercardGrid() {
   return (
-    <div className="flex flex-row">
-      <Membercard
-        mbr={MemberFoto}
-        name="Nikknez"
-        function="Mitglied"
-        comment="Er ist toll"
-      />
-      <Membercard
-        mbr={MemberFoto}
-        name="Pseudonym"
-        function="Mitglied"
-        comment="Comment"
-      />
-      <Membercard
-        mbr={MemberFoto}
-        name="Pseudonym"
-        function="Mitglied"
-        comment="Comment"
-      />
-      <Membercard
-        mbr={MemberFoto}
-        name="Pseudonym"
-        function="Mitglied"
-        comment="Comment"
-      />
+    <div className="flex flex-col">
+      <div className="flex flex-row">
+        <Membercard
+          mbr={MemberFoto}
+          name="Nikknez"
+          function="Inhaber, Teamleiter"
+          about="Leitet das Team, organisiert Trainings"
+          comment="Ingame-Leader / Support / Soft-Breach / Site-Set-Up"
+        />
+        <Membercard
+          mbr={MemberFoto}
+          name="LuschenHaur"
+          function="Moderator"
+          about="Teamleiter"
+          comment="Entry-Frag / Anti-Breach"
+        />
+        <Membercard
+          mbr={MemberFoto}
+          name="Evody"
+          function="Management, Informatiker, Eventleiter, Ersatzspieler"
+          about="Leitet Events, Server und programmiert für das Team."
+          comment="Entry-Frag / Hard-Breacher / Traps"
+        />
+      </div>
+      <div className="flex flex-row">
+        <Membercard
+          mbr={MemberFoto}
+          name="dissle"
+          function="Teamspieler"
+          about="Spielt für das Team als Hauptspieler."
+          comment="Hard-Breach-Support / Disruptor / Anti-Intel"
+        />
+        <Membercard
+          mbr={MemberFoto}
+          name="Sky"
+          function="Teamspieler"
+          about="Spielt für das Team als Hauptspieler."
+          comment="Support / Intel-Gatherer / Roamer"
+        />
+        <Membercard
+          mbr={MemberFoto}
+          name="zGruener"
+          function="Teamspieler"
+          about="Spielt für das Team als Hauptspieler."
+          comment="Support / Intel-Gatherer"
+        />
+      </div>
+      <div className="flex flex-row">
+        <Membercard
+          mbr={MemberFoto}
+          name="MIgel"
+          function="Ersatzspieler"
+          about="Spielt für das Team als Ersatzspieler."
+          comment="Shield / Disruptor"
+        />
+        <Membercard
+          mbr={MemberFoto}
+          name="SemiColon"
+          function="Ersatzspieler"
+          about="Spielt für das Team als Ersatzspieler."
+          comment="Angle-Watcher / Site-Set-Up"
+        />
+        <Membercard
+          mbr={MemberFoto}
+          name="BroBrot"
+          function="Ersatzspieler"
+          about="Spielt für das Team als Ersatzspieler."
+          comment="Intel / Disruptor"
+        />
+      </div>
     </div>
-  )
+  );
 }
 
-export default MembercardGrid
+export default MembercardGrid;
 ```
 
 [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
@@ -581,13 +784,11 @@ import Logo from "./components/Logo";
 
 function PageNotFound() {
   return (
-    <div className="App">
-      <header className="app-header">
-        <h1 className="text-red-600">Error 404: Page not found!</h1>
-        <p>Bitte eine valide URL eingeben.</p>
-        <Logo />
-      </header>
-    </div>
+    <main>
+      <h1 className="text-red-600">Error 404: Page not found!</h1>
+      <p>Bitte eine valide URL eingeben.</p>
+      <Logo />
+    </main>
   );
 }
 
@@ -603,10 +804,10 @@ Diese geschieht wenn der Nutzer eine ungültige URL angibt. Wenn der [Router](#r
 ```ts
 import React from "react";
 import "../css/tailwind.css";
+import Button from "./components/Button";
 import Logo from "./components/Logo";
 import Slogan from "./components/Slogan";
 import Willkommenstext from "./components/Willkommenstext";
-import Button from "./components/Button";
 
 function Home() {
   return (
@@ -615,9 +816,9 @@ function Home() {
       <Slogan />
       <Willkommenstext />
       <div className="flex flex-row justify-evenly min-w-fit py-8">
-        <Button text="Bewirb Dich!" destination="kontakt/bewerben" />
+        <Button text="Bewirb Dich!" destination="../../kontakt/bewerben" />
         <p className="text-2xl px-2">,</p>
-        <Button text="Scrim Us!" destination="kontakt/scrim-us" />
+        <Button text="Scrim Us!" destination="../../kontakt/scrim-us" />
         <p className="text-2xl px-2">oder</p>
         <Button text="Über Uns" destination="ueber-uns" />
       </div>
@@ -636,11 +837,17 @@ Diesem werden seine Optionen durch einen kleinen Text vorgestellt und dann kann 
 
 ```ts
 import React from "react";
+import Title from "./components/Title";
 import TwitterFeed from "./components/TwitterFeed";
 
 function Feed() {
   return (
-    <main className="app-header justify-start pt-36">
+    <main>
+      <Title title="Unser Feed" />
+      <p className="p-12 text-2xl">
+        In unserem Feed wirst du immer auf dem laufenden gehalten, was gerade so
+        ansteht.
+      </p>
       <TwitterFeed />
     </main>
   );
@@ -654,14 +861,15 @@ export default Feed;
 #### Kontakt.tsx
 
 ```ts
-import React from "react"
-import GoogleForms from "./components/GoogleForms"
-import Button from "./components/Button"
+import React from "react";
+import Button from "./components/Button";
+import GoogleForms from "./components/GoogleForms";
+import Title from "./components/Title";
 
 function Kontakt() {
   return (
     <main>
-      <h1 className="text-3xl">Kontakt</h1>
+      <Title title="Kontakt" />
       <p className="text-xl text-justify w-1/3 py-8">
         Du kannst uns auf verschiedene Arten und Weisen kontaktieren. Um dich
         bei uns zu bewerben, kannst du nach unten scrollen und unser Formular
@@ -677,7 +885,7 @@ function Kontakt() {
       <h1 className="text-2xl pt-5">Kontakformular allgemein</h1>
       <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLSes1z9E7D4g9afB-2oP27qLo1iv_mKeahRVAIIiJFQzR-JKmw/viewform?embedded=true" />
     </main>
-  )
+  );
 }
 
 export default Kontakt;
@@ -699,8 +907,8 @@ function Bewerben() {
     <main>
       <Title title="Bewerben" />
       <p className="text-xl text-justify w-1/3 py-8">
-        Wenn du Lust hast bei unserem Team mitzuwirken, dann kannst du
-        dich gerne mit dem Formular unten bei uns bewerben.
+        Wenn du Lust hast bei unserem Team mitzuwirken, dann kannst du dich
+        gerne mit dem Formular unten bei uns bewerben.
       </p>
       <h1 className="text-2xl pt-5">Bewerbungsformular</h1>
       <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLSf28NG92Ewt_RPfbBKdgmjTVSSyHpBZYSuxnhvuKw3XzxNHow/viewform?embedded=true" />
@@ -708,8 +916,7 @@ function Bewerben() {
   );
 }
 
-export default Bewerben
-
+export default Bewerben;
 ```
 
 [Bewerben.tsx](../usg-website/src/pages/Bewerben.tsx) ermöglicht es dem Nutzer sich für das Team zu bewerben. Dies geschieht durch ein eingebettetes [Google Forms](#googleformstsx).
@@ -717,32 +924,31 @@ export default Bewerben
 #### Scrims.tsx
 
 ```ts
-import React from 'react';
-import GoogleForms from './components/GoogleForms';
+import React from "react";
+import GoogleForms from "./components/GoogleForms";
 
 function Scrims() {
   return (
     <main>
       <h1 className="text-3xl pb-4">Scrim Us!</h1>
       <p className="text-xl text-justify w-1/3 pb-8">
-        Wir sind gerne für Scrims verfügbar! Stelle uns einen Antrag mit
-        dem unteren Formular. Wir werden dann auf dich zukommen, um
-        genauere Details zu besprechen.
+        Wir sind gerne für Scrims verfügbar! Stelle uns einen Antrag mit dem
+        unteren Formular. Wir werden dann auf dich zukommen, um genauere Details
+        zu besprechen.
       </p>
       <h1 className="text-3xl pb-4">Was ist ein Scrim?</h1>
       <p className="text-xl text-justify w-1/3 pb-8">
-        Ein Scrim ist eine Art kleines Turnier zwischen zwei Teams. Es
-        gibt keinen Preis, der einzige Zweck ist das Team zu trainieren
-        und neue Strategien zu testen.
+        Ein Scrim ist eine Art kleines Turnier zwischen zwei Teams. Es gibt
+        keinen Preis, der einzige Zweck ist das Team zu trainieren und neue
+        Strategien zu testen.
       </p>
-      <h1 className='text-2xl pt-5'>Scrim Beantragen</h1>
-      <GoogleForms url='https://docs.google.com/forms/d/e/1FAIpQLScUOb_E594BYsa4Vt5SzJ98VBiXxk5qnwZLluo0RwCQPRlv_g/viewform?embedded=true' />
+      <h1 className="text-2xl pt-5">Scrim Beantragen</h1>
+      <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLScUOb_E594BYsa4Vt5SzJ98VBiXxk5qnwZLluo0RwCQPRlv_g/viewform?embedded=true" />
     </main>
   );
 }
 
-export default Scrims
-
+export default Scrims;
 ```
 
 [Scrims.tsx](../usg-website/src/pages/Scrims.tsx) ist die Seite, welche zuständig für das Buchen von Scrims ist. Die Grundidee ist es, dem Nutzer die Möglichkeit zu geben mit uns in Kontakt zu treten, um ein Scrim festzulegen.
@@ -753,8 +959,6 @@ Was genau ein Scrim ist, wird auch auf dieser Seite in einem Paragraphen beschri
 
 ```ts
 import React from "react";
-import Logo from "./components/Logo";
-import Slogan from "./components/Slogan";
 import Button from "./components/Button";
 
 function UeberUns() {
@@ -777,15 +981,14 @@ function UeberUns() {
           dem schweizerdeutschen Sprachraum.
         </p>
         <div className="flex flex-column">
-          <Button text="Bewirb Dich!" destination="kontakt/bewerben" />
+          <Button text="Bewirb Dich!" destination="../../../kontakt/bewerben" />
           <p className="text-2xl px-2">oder</p>
-          <Button text="Scrim Us!" destination="kontakt/scrim-us" />
+          <Button text="Scrim Us!" destination="../../../kontakt/scrim-us" />
         </div>
       </div>
     </main>
   );
 }
-
 export default UeberUns;
 ```
 
@@ -831,6 +1034,7 @@ Diese Methode wird nach der Entwicklungsphase entfernt.
 ```ts
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./Layout";
 import Bewerben from "./Bewerben";
 import Feed from "./Feed";
 import Home from "./Home";
@@ -844,17 +1048,17 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="feed" element={<Feed />} />
-          <Route path="ueber-uns" element={<UeberUns />} />
-          <Route path="unser-team" element={<Team />} />
-          <Route path="*" element={<PageNotFound />} />
           <Route path="kontakt">
             <Route index element={<Kontakt />} />
             <Route path="bewerben" element={<Bewerben />} />
             <Route path="scrim-us" element={<Scrims />} />
           </Route>
+          <Route path="ueber-uns" element={<UeberUns />} />
+          <Route path="unser-team" element={<Team />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -879,6 +1083,69 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 > Ein Beispiel ist [hier](https://isotropic.co/react-multiple-pages/) zu finden. (gemeint ist Punkt 4. und 5.)
 
 `path="*"` sind alle Pfade, welche nicht existieren. In unserem Fall laden wir [PageNotFound.tsx](#pagenotfoundtsx), um dem User eine 404-Meldung zu geben.
+
+## Ergänzungsprojekt
+
+> - Die Einleitung für dieses Projekt ist unter [Ergänzungsprojekt](#ergänzungsprojekt) zu finden.
+> - Das IPERKA ist unter [IPERKA Ergänzungsprojekt](#iperka-ergänzungsprojekt) zu finden.
+
+### Anforderungen
+
+
+| Anf.-Nr. | Muss/Kann | funk./qual. | Beschreibung                                                                         |
+| ---------- | ----------- | ------------- | -------------------------------------------------------------------------------------- |
+| 1        | Muss      | funk.       | Ein funktionales Loginsystem muss vorhanden sein                                     |
+| 2        | Muss      | funk.       | Datenbank mit Nutzern muss vorhanden sein                                            |
+| 3        | Muss      | funk.       | Nutzer sollen eine Rollen haben                                                      |
+| 4        | Muss      | funk.       | Ein GUI zur Bearbeitung der Daten soll vorhanden sein                                |
+| 5        | Muss      | funk.       | Nur Administratoren können dieses GUI bedienen                                      |
+| 6        | Muss      | funk.       | Mit dem GUI kann man neue Teammitglieder hinzufügen                                 |
+| 7        | Muss      | qual.       | Die Daten der Teammitglieder sollen per GUI bearbeitbar sein                         |
+| 8        | Muss      | funk.       | Man soll mit dem GUI einzelne Teammitglieder löschen können                        |
+| 9        | Muss      | funk.       | Es muss eine Datenbank vorhanden sein, die über die API zugänglich ist.            |
+| 10       | Muss      | funk.       | Das Frontend soll Daten aus dieser DB fetchen und sie in die Seite einbauen (mappen) |
+| 11       | Kann      | qual.       | Es sind keine statische Daten mehr im Frontend. (z.B. Anzahl Mitglieder)             |
+| 12       | Muss      | funk.       | Die Login-Datenbank ist nur für den Express-Server zugänglich. (mit API-Key)       |
+| 13       | Kann      | qual.       | Das Frontend soll neu ein Mobile-View haben (responsive)                             |
+| 14       | Muss      | qual.       | Die Teammitglieder sollen Bilder anstatt Logos auf den Karten bekommen               |
+| 15       | Kann      | qual.       | Alles Lorem Ipsum Text wird ersetzt.                                                 |
+| 16       | Muss      | funk.       | Alle Bilder sind auf einem Fileserver in der Cloud gespeichert                       |
+
+### Testen
+
+#### Testfälle
+
+
+| Tetf.-Nr. | Anf.-Nr.  | Vorbereitung                                           | Testumgebung                            | Eingabe                                           | Erw. Ausgabe                                                                             |
+| ----------- | ----------- | -------------------------------------------------------- | ----------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| 1.1       | 1, 9      | Testnutzer auf DB erstellt                             | Loginseite                              | Logindaten                                        | Nutzer wird eingeloggt                                                                   |
+| 2.1       | 2, 9      | Testnutzer auf DB erstellt                             | API-Testumgebung (z.B. Postman)         | Get-Request für alle Nutzer                      | Array mit Nutzern wird zurückgegeben von der API                                        |
+| 3.1       | 3, 9      | Testnutzer auf DB erstellt mit Rolle                   | API-Testumgebung (z.B. Postman)         | Get-Request für spezifischen Nutzer              | Nutzer mit detaillierten Daten wird ausgegeben (keine Personendaten)                     |
+| 4.1       | 4, 9      | Admin auf DB erstellt und eingeloggt                   | Adminzone auf der Seite                 | -                                                 | GUI wird angezeigt                                                                       |
+| 5.1       | 5         | Nicht anmelden                                         | Webseite                                | Adminzone aufrufen                                | keine Berechtigung oder 404                                                              |
+| 6.1       | 6, 9      | Admin auf DB erstellt und eingeloggt                   | Adminzone, Mitgliederverwaltung         | Daten eingeben und Teammitglied hinzufügen       | Mitglieder erscheint auf der Unser-Team Seite                                            |
+| 7.1       | 7, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied bearbeiten                               | Änderungen erscheinen auf der Unser-Team Seite                                          |
+| 8.1       | 8, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied entfernen/löschen                       | Mitglied verschwindet von der Unser-Team Seite                                           |
+| 9.1       | 10, 9     | Datenbank & API existieren                             | Webseite                                | Unser-Team Seite öffnen                          | Alle Mitglieder erscheinen                                                               |
+| 9.2       | 9, 10, 11 | Datenbank & API existieren                             | Webseite                                | Über Uns Seite öffnen                           | Anzahl Mitglieder unter dem Text stimmt immer.                                           |
+| 10.1      | 12        | Login-DB existiert                                     | API-Testumgebung (z.B. Postman)         | ohne Schlüssel die DB direkt abfragen (ohne API) | keine Berechtigung oder 404                                                              |
+| 10.2      | 12        | Login-DB existiert und Express-API ist funktionsfähig | API-Testumgebung (z.B. Postman)         | GET auf /login-access Pfad der API                | "true" für Zugriff, "false" für keinen Zugriff                                         |
+| 11.1      | 13        |                                                        | Mobiltelefon (oder Emulator im Browser) | Seite öffnen                                     | Alles ist gut lesbar. Nichts ist überlappend und nichts hat falsche Seitenverhältnisse |
+| 12.1      | 14        |                                                        | Webseite                                | Unser-Team öffnen                                | Bilder erscheinen anstatt Logos auf den Karten.                                          |
+| 13.1      | 15        |                                                        | Webseite                                | Webseite öffnen und jeden Text anschauen         | Kein Lorem Ipsum vorhanden                                                               |
+| 14.1      | 16        | Fileserver in der Cloud ist vorhanden                  | API-Testumgebung (z.B. Postman)         | GET für Bild von einem Teammitglied              | Entsprechendes Bild wird zurückgegeben.                                                 |
+
+### Einführung Deta
+
+[Deta](https://www.deta.sh/) ist ein kostenfreier Cloudanbieter, der es Entwicklern ermöglicht, kleine Microservices und NoSQL-Datenbanken für kleinere Projekte einzusetzen. Ein Datenspeicher von bis zu 10GB wird pro Account auch zur Verfügung gestellt (z.B. für Bilder, Videos oder Audios).
+
+#### CLI & Features
+
+Deta hat ein sehr praktisches [CLI](https://docs.deta.sh/docs/cli/commands#summary), mit dem man diverse Aufgaben im Handumdrehen ausführen kann. Bei der Entwicklung sind auch andere Features in Form von einem GUI aber auch sehr Hilfreich.
+
+Zum Beispiel Visor. Das ist eine Art von kleiner Testumgebung für APIs (ähnlich wie Postman). Man kann mit Visor verschiedene Arten von Requests verschicken und die Responses beobachten. Das ist dann sehr praktisch für das Debugging.
+
+Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwendet werden. Das heisst, nicht jeder muss die Logindaten für den Account haben. Stattdessen kann man einen Access-Token von Deta in de Repo-Secrets bei GitHub verstecken und diesen Token dann in einem Workflow verwenden, um den Code zu deployen.
 
 ## Rechtliches
 
