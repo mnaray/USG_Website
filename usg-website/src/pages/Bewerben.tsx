@@ -5,7 +5,7 @@ import GoogleForms from "./components/GoogleForms";
 function Bewerben() {
   return (
     <main>
-      <Title title="Bewerben" />
+      <Title>Bewerben</Title>
       <p className="text-xl text-justify w-1/3 py-8">
         Wenn du Lust hast bei unserem Team mitzuwirken, dann kannst du
         dich gerne mit dem Formular unten bei uns bewerben.
