@@ -1,11 +1,11 @@
 import React from "react"
 
 interface TitleType {
-  title: string
+  children: string
 }
 
-function Title(text: TitleType) {
-  return <h1 className="text-3xl pb-8">{text.title}</h1>
+function Title(source: TitleType) {
+  return <h1 className="text-3xl pb-8">{source.children}</h1>
 }
 
 export default Title
