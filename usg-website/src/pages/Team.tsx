@@ -5,7 +5,7 @@ import Title from "./components/Title"
 function Team() {
   return (
     <main>
-      <Title title="Unser Team" />
+      <Title>Unser Team</Title>
       <MembercardGrid />
     </main>
   )

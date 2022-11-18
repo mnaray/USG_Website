@@ -6,7 +6,7 @@ import Title from "./components/Title"
 function Kontakt() {
   return (
     <main>
-      <Title title="Kontakt" />
+      <Title>Kontakt</Title>
       <p className="text-xl text-justify w-1/3 py-8">
         Du kannst uns auf verschiedene Arten und Weisen kontaktieren. Um dich
         bei uns zu bewerben, kannst du nach unten scrollen und unser Formular

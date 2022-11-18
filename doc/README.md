@@ -431,20 +431,21 @@ export default Slogan;
 #### Title.tsx
 
 ```ts
-import React from "react";
+import React from "react"
 
 interface TitleType {
-  title: string;
+  children: string
 }
 
-function Title(text: TitleType) {
-  return <h1 className="text-3xl pb-8">{text.title}</h1>;
+function Title(source: TitleType) {
+  return <h1 className="text-3xl pb-8">{source.children}</h1>
 }
 
-export default Title;
+export default Title
+
 ```
 
-[Title.tsx](../usg-website/src/pages/components/Title.tsx) ist eine kleine Komponente, welche benutzt wird, um einen einheitlichen Titel auf jeder Seite zu gestalten. Mit dem "title" Attribut, kann die Nachrit individualisiert werden.
+[Title.tsx](../usg-website/src/pages/components/Title.tsx) ist eine kleine Komponente, welche benutzt wird, um einen einheitlichen Titel auf jeder Seite zu gestalten. Dafür muss man den gewünschten Content einfach in die Component schreiben.
 
 #### Button.tsx
 
