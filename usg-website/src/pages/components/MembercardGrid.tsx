@@ -28,7 +28,6 @@ function MembercardGrid() {
 
     try {
       const responseJson = await response.json();
-      console.log(responseJson);
       setPeopleData(responseJson.items)
     } catch (err) {
       console.error(err);
@@ -38,8 +37,6 @@ function MembercardGrid() {
   useEffect(() => {
     getPeopleData();
   }, [])
-
-  console.table(peopleData);
 
   const cardsArray = peopleData.map((person) => {
     return (
