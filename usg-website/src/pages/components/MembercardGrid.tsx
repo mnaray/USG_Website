@@ -3,13 +3,13 @@ import Membercard from "./Membercard";
 import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
 
 interface member {
-  // name: string,
-  // funktion: string,
-  // about: string,
-  // comment: string
-  age: number,
   key: string,
-  name: string
+  name: string,
+  funktion: string,
+  about: string,
+  comment: string
+  // age: number,
+  // name: string
 }
 
 interface membersArray {
@@ -19,7 +19,13 @@ interface membersArray {
 
 function MembercardGrid() {
 
-  const [peopleData, setPeopleData] = useState<member[]>([{ age: 0, key: "", name: "Loading . . ." }])
+  const [peopleData, setPeopleData] = useState<member[]>([{
+    key: "",
+    name: "",
+    funktion: "",
+    about: "",
+    comment: ""
+  }])
 
   const getPeopleData = async () => {
     const response = await fetch("https://ejb1h9.deta.dev/db", {
