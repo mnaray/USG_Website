@@ -8,8 +8,6 @@ interface member {
   funktion: string,
   about: string,
   comment: string
-  // age: number,
-  // name: string
 }
 
 interface membersArray {
