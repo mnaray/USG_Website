@@ -19,7 +19,7 @@ function MembercardGrid() {
 
   const [peopleData, setPeopleData] = useState<member[]>([{
     key: "",
-    name: "",
+    name: "Loading...",
     funktion: "",
     about: "",
     comment: ""
@@ -47,9 +47,9 @@ function MembercardGrid() {
       <Membercard
         mbr={MemberFoto}
         name={person.name}
-        function="Inhaber, Teamleiter"
-        about="Leitet das Team, organisiert Trainings"
-        comment="Ingame-Leader / Support / Soft-Breach / Site-Set-Up"
+        function={person.funktion}
+        about={person.about}
+        comment={person.comment}
       />
     )
   })
