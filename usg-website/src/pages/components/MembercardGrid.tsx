@@ -5,8 +5,8 @@ import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
 interface member {
   key: string,
   name: string,
-  funktion: string,
-  about: string,
+  funktionIG: string,
+  teamrolle: string,
   comment: string
 }
 
@@ -20,8 +20,8 @@ function MembercardGrid() {
   const [peopleData, setPeopleData] = useState<member[]>([{
     key: "",
     name: "Loading...",
-    funktion: "",
-    about: "",
+    funktionIG: "",
+    teamrolle: "",
     comment: ""
   }])
 
@@ -47,8 +47,8 @@ function MembercardGrid() {
       <Membercard
         mbr={MemberFoto}
         name={person.name}
-        function={person.funktion}
-        about={person.about}
+        functionIG={person.funktionIG}
+        teamrolle={person.teamrolle}
         comment={person.comment}
       />
     )
