@@ -70,7 +70,7 @@
     - [Testen](#testen-1)
       - [Testfälle](#testfälle-1)
     - [Einführung Deta](#einführung-deta)
-      - [CLI & Features](#cli--features)
+      - [CLI \& Features](#cli--features)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -667,82 +667,65 @@ comment?: string; // Das Fragezeichen macht das property nullable.
 #### MembercardGrid.tsx
 
 ```ts
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Membercard from "./Membercard";
 import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
 
+interface member {
+  key: string,
+  name: string,
+  funktionIG: string,
+  teamrolle: string,
+  comment: string
+}
+
+interface membersResponse {
+  items: member[],
+  count: number
+}
+
 function MembercardGrid() {
+
+  const [peopleData, setPeopleData] = useState<member[]>([{
+    key: "",
+    name: "Loading...",
+    funktionIG: "",
+    teamrolle: "",
+    comment: ""
+  }])
+
+  const getPeopleData = async () => {
+    const response = await fetch("https://ejb1h9.deta.dev/db", {
+      method: "GET"
+    });
+
+    try {
+      const responseJson: membersResponse = await response.json();
+      setPeopleData(responseJson.items)
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    getPeopleData();
+  }, [])
+
+  const cardsArray = peopleData.map((person) => {
+    return (
+      <Membercard
+        mbr={MemberFoto}
+        name={person.name}
+        functionIG={person.funktionIG}
+        teamrolle={person.teamrolle}
+        comment={person.comment}
+      />
+    )
+  })
+
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-row">
-        <Membercard
-          mbr={MemberFoto}
-          name="Nikknez"
-          function="Inhaber, Teamleiter"
-          about="Leitet das Team, organisiert Trainings"
-          comment="Ingame-Leader / Support / Soft-Breach / Site-Set-Up"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="LuschenHaur"
-          function="Moderator"
-          about="Teamleiter"
-          comment="Entry-Frag / Anti-Breach"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="Evody"
-          function="Management, Informatiker, Eventleiter, Ersatzspieler"
-          about="Leitet Events, Server und programmiert für das Team."
-          comment="Entry-Frag / Hard-Breacher / Traps"
-        />
-      </div>
-      <div className="flex flex-row">
-        <Membercard
-          mbr={MemberFoto}
-          name="dissle"
-          function="Teamspieler"
-          about="Spielt für das Team als Hauptspieler."
-          comment="Hard-Breach-Support / Disruptor / Anti-Intel"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="Sky"
-          function="Teamspieler"
-          about="Spielt für das Team als Hauptspieler."
-          comment="Support / Intel-Gatherer / Roamer"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="zGruener"
-          function="Teamspieler"
-          about="Spielt für das Team als Hauptspieler."
-          comment="Support / Intel-Gatherer"
-        />
-      </div>
-      <div className="flex flex-row">
-        <Membercard
-          mbr={MemberFoto}
-          name="MIgel"
-          function="Ersatzspieler"
-          about="Spielt für das Team als Ersatzspieler."
-          comment="Shield / Disruptor"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="SemiColon"
-          function="Ersatzspieler"
-          about="Spielt für das Team als Ersatzspieler."
-          comment="Angle-Watcher / Site-Set-Up"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="BroBrot"
-          function="Ersatzspieler"
-          about="Spielt für das Team als Ersatzspieler."
-          comment="Intel / Disruptor"
-        />
-      </div>
+    <div className="flex flex-row flex-wrap justify-evenly max-w-screen-lg px-3">
+      {cardsArray}
     </div>
   );
 }
@@ -750,7 +733,9 @@ function MembercardGrid() {
 export default MembercardGrid;
 ```
 
-[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
+[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) fetcht die momentanen Mitglieder des Teams von der API und stellt diese dann tabular mit flex-wrap dar. Das macht es mehr oder weniger responsive und anpassungsfähig an die momentane Menge an Mitgliedern.
+
+Die Daten kommen von der API im Format von dem `membersResponse` Interface, welches einen Count hat und ein Array an Objekten mit dem `member` Interface. Diese Daten werden dann mit der [map-Methode von React](https://reactjs.org/docs/lists-and-keys.html) in die jeweiligen [Membercard.tsx](#membercardtsx) Komponenten als Props eingefügt. Zurück bekommen wir ein Array an [Membercard.tsx](#membercardtsx) Komponenten, die wir ganz einfach in ein `<div>` setzen.
 
 #### Willkommenstext.tsx
 
