@@ -614,8 +614,8 @@ import React from "react";
 interface membercard {
   mbr: string;
   name: string;
-  function: string;
-  about?: string;
+  functionIG?: string;
+  teamrolle: string;
   comment?: string;
 }
 
@@ -632,11 +632,11 @@ function Membercard(source: membercard) {
           <p className="align-text-bottom text-2xl font-bold">{source.name}</p>
         </div>
         <div className="flip-card-back rounded py-5 px-3 bg-slate-700">
-          <h1 className="text-4xl">"{source.name}"</h1>
-          <p className="text-xl">{source.function}</p>
-          <p className="pt-2 font-medium">Teamrolle:</p>
-          <p className="pb-1 font-medium">{source.about}</p>
-          <p className="text-lg py-2">IG-Rolle: {source.comment}</p>
+          <h1 className="text-4xl">{source.name}</h1>
+          <p className="text-xl">{source.functionIG}</p>
+          <p className="pt-2">Teamrolle:</p>
+          <p className="pb-1 text-lg font-medium">{source.teamrolle}</p>
+          <p className="text-lg py-2">{source.comment}</p>
         </div>
       </div>
     </div>
@@ -646,22 +646,24 @@ function Membercard(source: membercard) {
 export default Membercard;
 ```
 
-[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
+[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rollen und einen kleinen Kommentar zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern damit sie sich umdreht und die Informationen präsentiert.
 
 Eine Membercard fordert folgende Properties:
 
-`mbr= {Foto.png}` Foto des Mitglieds.
+`mbr = {Foto.png}` Foto des Mitglieds.
 
-`name= "Pseudonym"` Pseudonym des Mitglieds.
+`name = "Pseudonym"` Pseudonym des Mitglieds.
 
-`function= "Mitglied"` Rolle des Mitglieds.
+`functionIG = "Rolle"` Rolle im Spiel. (z.B. Support, Fragger, Intel, etc.)
 
-`comment= "text..."` Kommentar über das Mitglied.
+`teamrolle = "Rolle"` Rolle in der Organisation.
 
-Bei dem comment property ist noch speziell, dass es nullable(Man kann auch keinen Wert angeben) ist:
+`comment = "Kommentar"` Kommentar über das Mitglied.
+
+Beim `comment` und `functionIG` Property ist noch speziell, dass sie optional sind:
 
 ```ts
-comment?: string; // Das Fragezeichen macht das property nullable.
+comment?: string; // Ein Fragezeichen macht das property nullable.
 ```
 
 #### MembercardGrid.tsx
