@@ -995,7 +995,7 @@ import Title from "./components/Title"
 function Team() {
   return (
     <main>
-      <Title title="Unser Team" />
+      <Title>Unser Team</Title>
       <MembercardGrid />
     </main>
   )
@@ -1004,7 +1004,7 @@ function Team() {
 export default Team
 ```
 
-[Team.tsx](../usg-website/src/pages/Team.tsx) ist zuständig für das Zeigen vom [MembercardGrid](#membercardgridtsx).
+[Team.tsx](../usg-website/src/pages/Team.tsx) ist zuständig für das Anzeigen vom [MembercardGrid](#membercardgridtsx).
 
 ### Sonstiges / Unsichtbares
 
