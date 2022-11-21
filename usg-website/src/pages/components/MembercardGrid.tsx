@@ -10,7 +10,7 @@ interface member {
   comment: string
 }
 
-interface membersArray {
+interface membersResponse {
   items: member[],
   count: number
 }
@@ -31,7 +31,7 @@ function MembercardGrid() {
     });
 
     try {
-      const responseJson = await response.json();
+      const responseJson: membersResponse = await response.json();
       setPeopleData(responseJson.items)
     } catch (err) {
       console.error(err);
