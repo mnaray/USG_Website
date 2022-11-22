@@ -70,7 +70,7 @@
     - [Testen](#testen-1)
       - [Testfälle](#testfälle-1)
     - [Einführung Deta](#einführung-deta)
-      - [CLI & Features](#cli--features)
+      - [CLI \& Features](#cli--features)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -614,8 +614,8 @@ import React from "react";
 interface membercard {
   mbr: string;
   name: string;
-  function: string;
-  about?: string;
+  functionIG?: string;
+  teamrolle: string;
   comment?: string;
 }
 
@@ -632,11 +632,11 @@ function Membercard(source: membercard) {
           <p className="align-text-bottom text-2xl font-bold">{source.name}</p>
         </div>
         <div className="flip-card-back rounded py-5 px-3 bg-slate-700">
-          <h1 className="text-4xl">"{source.name}"</h1>
-          <p className="text-xl">{source.function}</p>
-          <p className="pt-2 font-medium">Teamrolle:</p>
-          <p className="pb-1 font-medium">{source.about}</p>
-          <p className="text-lg py-2">IG-Rolle: {source.comment}</p>
+          <h1 className="text-4xl">{source.name}</h1>
+          <p className="text-xl">{source.functionIG}</p>
+          <p className="pt-2">Teamrolle:</p>
+          <p className="pb-1 text-lg font-medium">{source.teamrolle}</p>
+          <p className="text-lg py-2">{source.comment}</p>
         </div>
       </div>
     </div>
@@ -646,103 +646,88 @@ function Membercard(source: membercard) {
 export default Membercard;
 ```
 
-[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
+[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rollen und einen kleinen Kommentar zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern damit sie sich umdreht und die Informationen präsentiert.
 
 Eine Membercard fordert folgende Properties:
 
-`mbr= {Foto.png}` Foto des Mitglieds.
+`mbr = {Foto.png}` Foto des Mitglieds.
 
-`name= "Pseudonym"` Pseudonym des Mitglieds.
+`name = "Pseudonym"` Pseudonym des Mitglieds.
 
-`function= "Mitglied"` Rolle des Mitglieds.
+`functionIG = "Rolle"` Rolle im Spiel. (z.B. Support, Fragger, Intel, etc.)
 
-`comment= "text..."` Kommentar über das Mitglied.
+`teamrolle = "Rolle"` Rolle in der Organisation.
 
-Bei dem comment property ist noch speziell, dass es nullable(Man kann auch keinen Wert angeben) ist:
+`comment = "Kommentar"` Kommentar über das Mitglied.
+
+Beim `comment` und `functionIG` Property ist noch speziell, dass sie optional sind:
 
 ```ts
-comment?: string; // Das Fragezeichen macht das property nullable.
+comment?: string; // Ein Fragezeichen macht das property nullable.
 ```
 
 #### MembercardGrid.tsx
 
 ```ts
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Membercard from "./Membercard";
 import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
 
+interface member {
+  key: string,
+  name: string,
+  funktionIG: string,
+  teamrolle: string,
+  comment: string
+}
+
+interface membersResponse {
+  items: member[],
+  count: number
+}
+
 function MembercardGrid() {
+
+  const [peopleData, setPeopleData] = useState<member[]>([{
+    key: "",
+    name: "Loading...",
+    funktionIG: "",
+    teamrolle: "",
+    comment: ""
+  }])
+
+  const getPeopleData = async () => {
+    const response = await fetch("https://ejb1h9.deta.dev/db", {
+      method: "GET"
+    });
+
+    try {
+      const responseJson: membersResponse = await response.json();
+      setPeopleData(responseJson.items)
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    getPeopleData();
+  }, [])
+
+  const cardsArray = peopleData.map((person) => {
+    return (
+      <Membercard
+        mbr={MemberFoto}
+        name={person.name}
+        functionIG={person.funktionIG}
+        teamrolle={person.teamrolle}
+        comment={person.comment}
+      />
+    )
+  })
+
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-row">
-        <Membercard
-          mbr={MemberFoto}
-          name="Nikknez"
-          function="Inhaber, Teamleiter"
-          about="Leitet das Team, organisiert Trainings"
-          comment="Ingame-Leader / Support / Soft-Breach / Site-Set-Up"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="LuschenHaur"
-          function="Moderator"
-          about="Teamleiter"
-          comment="Entry-Frag / Anti-Breach"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="Evody"
-          function="Management, Informatiker, Eventleiter, Ersatzspieler"
-          about="Leitet Events, Server und programmiert für das Team."
-          comment="Entry-Frag / Hard-Breacher / Traps"
-        />
-      </div>
-      <div className="flex flex-row">
-        <Membercard
-          mbr={MemberFoto}
-          name="dissle"
-          function="Teamspieler"
-          about="Spielt für das Team als Hauptspieler."
-          comment="Hard-Breach-Support / Disruptor / Anti-Intel"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="Sky"
-          function="Teamspieler"
-          about="Spielt für das Team als Hauptspieler."
-          comment="Support / Intel-Gatherer / Roamer"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="zGruener"
-          function="Teamspieler"
-          about="Spielt für das Team als Hauptspieler."
-          comment="Support / Intel-Gatherer"
-        />
-      </div>
-      <div className="flex flex-row">
-        <Membercard
-          mbr={MemberFoto}
-          name="MIgel"
-          function="Ersatzspieler"
-          about="Spielt für das Team als Ersatzspieler."
-          comment="Shield / Disruptor"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="SemiColon"
-          function="Ersatzspieler"
-          about="Spielt für das Team als Ersatzspieler."
-          comment="Angle-Watcher / Site-Set-Up"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="BroBrot"
-          function="Ersatzspieler"
-          about="Spielt für das Team als Ersatzspieler."
-          comment="Intel / Disruptor"
-        />
-      </div>
+    <div className="flex flex-row flex-wrap justify-evenly max-w-screen-lg px-3">
+      {cardsArray}
     </div>
   );
 }
@@ -750,7 +735,9 @@ function MembercardGrid() {
 export default MembercardGrid;
 ```
 
-[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
+[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) fetcht die momentanen Mitglieder des Teams von der API und stellt diese dann tabular mit flex-wrap dar. Das macht es mehr oder weniger responsive und anpassungsfähig an die momentane Menge an Mitgliedern.
+
+Die Daten kommen von der API im Format von dem `membersResponse` Interface, welches einen Count hat und ein Array an Objekten mit dem `member` Interface. Diese Daten werden dann mit der [map-Methode von React](https://reactjs.org/docs/lists-and-keys.html) in die jeweiligen [Membercard.tsx](#membercardtsx) Komponenten als Props eingefügt. Zurück bekommen wir ein Array an [Membercard.tsx](#membercardtsx) Komponenten, die wir ganz einfach in ein `<div>` setzen.
 
 #### Willkommenstext.tsx
 
@@ -1008,7 +995,7 @@ import Title from "./components/Title"
 function Team() {
   return (
     <main>
-      <Title title="Unser Team" />
+      <Title>Unser Team</Title>
       <MembercardGrid />
     </main>
   )
@@ -1017,7 +1004,7 @@ function Team() {
 export default Team
 ```
 
-[Team.tsx](../usg-website/src/pages/Team.tsx) ist zuständig für das Zeigen vom [MembercardGrid](#membercardgridtsx).
+[Team.tsx](../usg-website/src/pages/Team.tsx) ist zuständig für das Anzeigen vom [MembercardGrid](#membercardgridtsx).
 
 ### Sonstiges / Unsichtbares
 
