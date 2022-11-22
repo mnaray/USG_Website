@@ -47,7 +47,7 @@ function MembercardGrid() {
       <Membercard
         mbr={MemberFoto}
         name={person.name}
-        functionIG={person.funktionIG}
+        funktionIG={person.funktionIG}
         teamrolle={person.teamrolle}
         comment={person.comment}
       />
