@@ -3,11 +3,6 @@ const upload = require("express-fileupload");
 const { Deta } = require("deta");
 const cors = require("cors");
 
-// deta
-const deta = Deta();
-const peopleDB = deta.Base("people");
-const imageFiles = deta.Drive("images");
-
 // express
 const app = express();
 app.use(express.json()); // !!| ESSENTIAL FOR req |!!
