@@ -71,6 +71,10 @@
       - [Testfälle](#testfälle-1)
     - [Einführung Deta](#einführung-deta)
       - [CLI \& Features](#cli--features)
+    - [Express Router](#express-router)
+    - [API Routen](#api-routen)
+      - [/](#)
+      - [/members](#members)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -1156,6 +1160,35 @@ Deta hat ein sehr praktisches [CLI](https://docs.deta.sh/docs/cli/commands#summa
 Zum Beispiel Visor. Das ist eine Art von kleiner Testumgebung für APIs (ähnlich wie Postman). Man kann mit Visor verschiedene Arten von Requests verschicken und die Responses beobachten. Das ist dann sehr praktisch für das Debugging.
 
 Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwendet werden. Das heisst, nicht jeder muss die Logindaten für den Account haben. Stattdessen kann man einen Access-Token von Deta in de Repo-Secrets bei GitHub verstecken und diesen Token dann in einem Workflow verwenden, um den Code zu deployen.
+
+### Express Router
+
+*Doku ist noch zu führen.*
+
+### API Routen
+
+#### [/](../api-server/index.js)
+
+`GET` gibt auf dieser Route einen String mit der hauptdomain für die Webseite (usginfo.ch) zurück.
+
+#### [/members](../api-server/routes/members.js)
+
+`GET` gibt auf dieser Route die ganze Datenbank an Teammitgliedern zurück.
+
+`POST` nimmt einen Request-Body in folgendem Format an und fügt es in die entsprechende Datenbank ein.
+
+```json
+{
+    name: string,
+    funktionIG: string,
+    teamrolle: string,
+    comment: string
+}  
+```
+
+`DELETE` *Doku ist noch zu führen.*
+
+`PATCH` *Doku ist noch zu führen.*
 
 ## Rechtliches
 
