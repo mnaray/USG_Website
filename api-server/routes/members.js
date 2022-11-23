@@ -33,4 +33,20 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.put("/", async (req, res) => {
+    try {
+        const { key, name, funktionIG, teamrolle, comment } = req.body;
+        const toAlter = await membersDB.put(
+            key,
+            name,
+            funktionIG,
+            teamrolle,
+            comment
+        );
+        res.status(200).json(toAlter);
+    } catch (error) {
+        res.status(503).json({ error: "Databese Error" });
+    }
+});
+
 module.exports = router;
