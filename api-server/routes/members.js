@@ -22,6 +22,19 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/:key", async (req, res) => {
+    try {
+        const key = req.params.key;
+        const value = membersDB.get(key);
+        if (value === null) {
+            res.status(404).json({ error: "No value found at " + key });
+        }
+        res.status(200).json(value);
+    } catch (error) {
+        res.status(503).json({ error: "Databese Error" });
+    }
+});
+
 router.post("/", async (req, res) => {
     try {
         const { name, funktionIG, teamrolle, comment } = req.body;
