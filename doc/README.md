@@ -1199,7 +1199,7 @@ Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwende
 }
 ```
 
-`DELETE` *Doku ist noch zu führen.*
+`DELETE` nimmt einen einfachen Key als string im JSON-Format entgegen und löscht den entsprechenden Eintrag. Es wird immer `null` zurückgegeben.
 
 ##### [/members/:key](../api-server/routes/members.js)
 
