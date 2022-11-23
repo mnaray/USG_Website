@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
 router.get("/:key", async (req, res) => {
     try {
         const key = req.params.key;
-        const value = membersDB.get(key);
+        const value = await membersDB.get(key);
         if (value === null) {
             res.status(404).json({ error: "No value found at " + key });
         }
