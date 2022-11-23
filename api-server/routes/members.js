@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
     try {
         const { name, funktionIG, teamrolle, comment } = req.body;
         const toCreate = { name, funktionIG, teamrolle, comment };
-        const toInsert = await membersDB.put(toCreate);
+        const toInsert = await membersDB.insert(toCreate);
         res.status(201).json(toInsert);
     } catch (error) {
         res.status(400).json({ error: "Bad Request" });
