@@ -54,12 +54,14 @@ router.post("/", async (req, res) => {
 router.put("/", async (req, res) => {
     try {
         const { key, name, funktionIG, teamrolle, comment } = req.body;
-        const toAlter = await membersDB.put(
-            key,
-            name,
-            funktionIG,
-            teamrolle,
-            comment
+        const toAlter = await membersDB.update(
+            {
+                name,
+                funktionIG,
+                teamrolle,
+                comment,
+            },
+            key
         );
         res.status(200).json(toAlter);
     } catch (error) {
