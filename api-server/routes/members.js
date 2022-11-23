@@ -13,6 +13,15 @@ router.get("/info", (req, res) => {
     );
 });
 
+router.get("/", async (req, res) => {
+    try {
+        const members = await membersDB.fetch();
+        res.status(200).json(members);
+    } catch (error) {
+        res.status(503).json({ error: "Database Error" });
+    }
+});
+
 router.post("/", async (req, res) => {
     try {
         const { name, funktionIG, teamrolle, comment } = req.body;
@@ -21,15 +30,6 @@ router.post("/", async (req, res) => {
         res.status(201).json(toInsert);
     } catch (error) {
         res.status(400).json({ error: "Bad Request" });
-    }
-});
-
-router.get("/", async (req, res) => {
-    try {
-        const members = await membersDB.fetch();
-        res.status(200).json(members);
-    } catch (error) {
-        res.status(503).json({ error: "Database Error" });
     }
 });
 
