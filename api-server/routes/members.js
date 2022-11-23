@@ -69,4 +69,15 @@ router.put("/", async (req, res) => {
     }
 });
 
+// delete object in DB by string
+router.delete("/", async (req, res) => {
+    try {
+        const key = req.body.key;
+        const toDelete = await membersDB.delete(key);
+        res.status(200).json(toDelete);
+    } catch {
+        res.status(503).json({ error: "Database Error" });
+    }
+});
+
 module.exports = router;
