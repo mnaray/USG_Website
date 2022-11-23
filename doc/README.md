@@ -75,6 +75,7 @@
     - [API Routen](#api-routen)
       - [/](#)
       - [/members](#members)
+        - [/members/:key](#memberskey)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -1186,9 +1187,23 @@ Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwende
 }  
 ```
 
+`PUT` updatet mit der [update Methode von Deta](https://docs.deta.sh/docs/base/sdk#update) einen Eintrag in der Datenbank. Dazu nimmt es folgendes JSON-Format an. Wenn alles richtig lauft, wird `null` als Response geschickt.
+
+```json
+{
+    key: string,
+    name: string,
+    funktionIG: string,
+    teamrolle: string,
+    comment: string
+}
+```
+
 `DELETE` *Doku ist noch zu führen.*
 
-`PATCH` *Doku ist noch zu führen.*
+##### [/members/:key](../api-server/routes/members.js)
+
+`GET` sucht in der Datenbank nach dem Objekt mit dem Key, der über `req.params.key` in der URL durchgegeben wird. Falls es dieses Objekt gibt, wird es per Response an den Client geschickt, sonst wird ein Error mit dem Statuscode 404 zurückgegeben.
 
 ## Rechtliches
 
