@@ -7,12 +7,14 @@ const deta = Deta();
 const membersDB = deta.Base("members");
 const memberImages = deta.Drive("memberImages");
 
+// info about this route
 router.get("/info", (req, res) => {
     res.status(200).send(
         "This route is reserved for everything related to team members."
     );
 });
 
+// get all objects in DB
 router.get("/", async (req, res) => {
     try {
         const members = await membersDB.fetch();
@@ -22,6 +24,7 @@ router.get("/", async (req, res) => {
     }
 });
 
+// get single object by key from DB
 router.get("/:key", async (req, res) => {
     try {
         const key = req.params.key;
@@ -35,6 +38,7 @@ router.get("/:key", async (req, res) => {
     }
 });
 
+// insert new object into DB
 router.post("/", async (req, res) => {
     try {
         const { name, funktionIG, teamrolle, comment } = req.body;
@@ -46,6 +50,7 @@ router.post("/", async (req, res) => {
     }
 });
 
+// alter exisiting object in DB
 router.put("/", async (req, res) => {
     try {
         const { key, name, funktionIG, teamrolle, comment } = req.body;
