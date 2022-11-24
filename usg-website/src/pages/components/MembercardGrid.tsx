@@ -26,7 +26,7 @@ function MembercardGrid() {
   }])
 
   const getPeopleData = async () => {
-    const response = await fetch("https://ejb1h9.deta.dev/db", {
+    const response = await fetch("https://api.usginfo.ch/members", {
       method: "GET"
     });
 
@@ -47,7 +47,7 @@ function MembercardGrid() {
       <Membercard
         mbr={MemberFoto}
         name={person.name}
-        functionIG={person.funktionIG}
+        funktionIG={person.funktionIG}
         teamrolle={person.teamrolle}
         comment={person.comment}
       />

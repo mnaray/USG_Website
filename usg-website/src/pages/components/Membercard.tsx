@@ -3,7 +3,7 @@ import React from "react";
 interface membercard {
   mbr: string;
   name: string;
-  functionIG?: string;
+  funktionIG?: string;
   teamrolle: string;
   comment?: string;
 }
@@ -22,7 +22,7 @@ function Membercard(source: membercard) {
         </div>
         <div className="flip-card-back rounded py-5 px-3 bg-slate-700">
           <h1 className="text-4xl">{source.name}</h1>
-          <p className="text-xl">{source.functionIG}</p>
+          <p className="text-xl">{source.funktionIG}</p>
           <p className="pt-2">Teamrolle:</p>
           <p className="pb-1 text-lg font-medium">{source.teamrolle}</p>
           <p className="text-lg py-2">{source.comment}</p>
