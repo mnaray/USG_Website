@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./components/Button";
 
-
 function UeberUns() {
+  const [count, setCount] = useState<number | string>("...");
+
+  const getCount = async () => {
+    const response = await fetch("https://api.usginfo.ch/members", {
+      method: "GET",
+    });
+    try {
+      const responseJson = await response.json();
+      setCount(responseJson.count);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getCount();
+  }, []);
+
   return (
     <main>
       <div className="flex flex-col items-center w-1/3">
@@ -18,8 +35,8 @@ function UeberUns() {
           Gesucht sind Leute wie du!
         </p>
         <p className="py-3 justify-center text-center text-lg">
-          Das Team besteht derzeit aus 6 Personen. Wir suchen noch Personen aus
-          dem schweizerdeutschen Sprachraum.
+          Das Team besteht derzeit aus {count} Personen. Wir suchen noch
+          Personen aus dem schweizerdeutschen Sprachraum.
         </p>
         <div className="flex flex-column">
           <Button text="Bewirb Dich!" destination="../../../kontakt/bewerben" />
@@ -30,4 +47,4 @@ function UeberUns() {
     </main>
   );
 }
-export default UeberUns
+export default UeberUns;
