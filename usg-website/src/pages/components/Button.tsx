@@ -14,7 +14,7 @@ function Button(props: ButtonProps) {
       <button className="bg-blue-600 text-white text-lg px-3 py-1 rounded
       hover:bg-blue-200 hover:text-black transition-all
       duration-200">
-        <a target={"_blank"} href={props.destination} >{props.text}</a>
+        <a target="_blank" href={props.destination} >{props.text}</a>
       </button>
     )
   }
