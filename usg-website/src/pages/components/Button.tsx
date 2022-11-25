@@ -8,8 +8,6 @@ interface ButtonProps {
 
 function Button(props: ButtonProps) {
   if (props.destination.startsWith("http")) {
-    console.log("test")
-    // window.location.replace(props.destination)
     return (
       <button className="bg-blue-600 text-white text-lg px-3 py-1 rounded
       hover:bg-blue-200 hover:text-black transition-all
