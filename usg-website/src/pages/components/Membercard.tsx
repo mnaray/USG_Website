@@ -1,7 +1,7 @@
 import React from "react";
 
 interface membercard {
-  mbr: string;
+  img: string;
   name: string;
   funktionIG?: string;
   teamrolle: string;
@@ -15,7 +15,7 @@ function Membercard(source: membercard) {
         <div className="flip-card-front rounded">
           <img
             className="h-full w-full aspect-7/9"
-            src={source.mbr}
+            src={source.img}
             alt={"Picture of " + source.name}
           />
           <p className="align-text-bottom text-2xl font-bold">{source.name}</p>
