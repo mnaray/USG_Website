@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Membercard from "./Membercard";
-import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
+import DefaultImage from "../../logos/USG_Logo_Transparent_PNG.png";
 
 interface member {
   key: string,
@@ -45,7 +45,7 @@ function MembercardGrid() {
   const cardsArray = peopleData.map((person) => {
     return (
       <Membercard
-        mbr={MemberFoto}
+        mbr={DefaultImage}
         name={person.name}
         funktionIG={person.funktionIG}
         teamrolle={person.teamrolle}
