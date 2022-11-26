@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Membercard from "./Membercard";
-import DefaultImage from "../../logos/USG_Logo_Transparent_PNG.png";
 
 interface member {
   key: string,
   name: string,
   funktionIG: string,
   teamrolle: string,
-  comment: string
+  comment: string,
+  imgPath: string
 }
 
 interface membersResponse {
@@ -22,7 +22,8 @@ function MembercardGrid() {
     name: "Loading...",
     funktionIG: "",
     teamrolle: "",
-    comment: ""
+    comment: "",
+    imgPath: "",
   }])
 
   const getPeopleData = async () => {
@@ -45,7 +46,7 @@ function MembercardGrid() {
   const cardsArray = peopleData.map((person) => {
     return (
       <Membercard
-        mbr={DefaultImage}
+        img={person.imgPath}
         name={person.name}
         funktionIG={person.funktionIG}
         teamrolle={person.teamrolle}
