@@ -16,7 +16,7 @@ router.get("/info", (req, res) => {
 // send upload forms to client
 router.get("/upload", (req, res) => {
     res.send(`
-    <form action="/upload" enctype="multipart/form-data" method="post">
+    <form action="/files/upload" enctype="multipart/form-data" method="post">
       <input type="file" name="file">
       <input type="submit" value="Upload">
     </form>`);
