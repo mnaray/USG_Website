@@ -1,6 +1,6 @@
-var express = require("express");
+const express = require("express");
 const { Deta } = require("deta");
-var router = express.Router();
+const router = express.Router();
 
 // deta
 const deta = Deta();
