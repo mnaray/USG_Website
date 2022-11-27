@@ -1285,7 +1285,7 @@ Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwende
 
 ##### /files/delete/:name
 
-`DELETE` *Ist noch nicht ausprogrammiert.*
+`DELETE` löscht das File mit dem angegebenen Namen im Pfad. Falls kein solches File gefunden wird, gibt der Server einen 404 Code zurück.
 
 ## Rechtliches
 
