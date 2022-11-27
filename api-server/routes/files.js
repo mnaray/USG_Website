@@ -24,19 +24,32 @@ router.get("/upload", (req, res) => {
 
 // upload content of post req to fileserver
 router.post("/upload", async (req, res) => {
-    const fileName = req.files.file.name;
-    const fileContents = req.files.file.data;
-    const img = await memberImages.put(fileName, { data: fileContents });
-    res.send(img);
+    try {
+        const fileName = req.files.file.name;
+        const fileContents = req.files.file.data;
+        const img = await memberImages.put(fileName, { data: fileContents });
+        res.status(201).send(
+            "Successfully uploaded " + fileName + "to the Fileserver!"
+        );
+    } catch (error) {
+        res.status(400).json({ error: "Bad Request or ran out of diskspace." });
+    }
 });
 
 // download file with specific name
 // responds with an Array of Uint8
 router.get("/download/:name", async (req, res) => {
-    const name = req.params.name;
-    const img = await memberImages.get(name);
-    const buffer = await img.arrayBuffer();
-    res.json(Buffer.from(buffer)); // MUST BE JSON!
+    try {
+        const name = req.params.name;
+        const img = await memberImages.get(name);
+        if (img == null) {
+            res.status(404).json({ error: "No file found with name " + name });
+        }
+        const buffer = await img.arrayBuffer();
+        res.json(Buffer.from(buffer)); // MUST BE JSON!
+    } catch (error) {
+        res.status(500).json({ error: "Fileserver Error" });
+    }
 });
 
 module.exports = router;
