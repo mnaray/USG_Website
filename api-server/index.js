@@ -7,10 +7,12 @@ const cors = require("cors");
 const app = express();
 app.use(express.json()); // !!| ESSENTIAL FOR req |!!
 app.use(cors()); // Cors
+app.use(upload()); // Fileupload
 app.disable("etag"); // disables automatic caching
 
 // routes
 app.use("/members", require("./routes/members"));
+app.use("/files", require("./routes/files"));
 
 // root
 app.get("/", (req, res) => res.send("This is the API for usginfo.ch"));

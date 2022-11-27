@@ -1,11 +1,10 @@
-var express = require("express");
+const express = require("express");
 const { Deta } = require("deta");
-var router = express.Router();
+const router = express.Router();
 
 // deta
 const deta = Deta();
 const membersDB = deta.Base("members");
-const memberImages = deta.Drive("memberImages");
 
 // info about this route
 router.get("/info", (req, res) => {
@@ -41,8 +40,8 @@ router.get("/:key", async (req, res) => {
 // insert new object into DB
 router.post("/", async (req, res) => {
     try {
-        const { name, funktionIG, teamrolle, comment } = req.body;
-        const toCreate = { name, funktionIG, teamrolle, comment };
+        const { name, funktionIG, teamrolle, comment, imgPath } = req.body;
+        const toCreate = { name, funktionIG, teamrolle, comment, imgPath };
         const toInsert = await membersDB.insert(toCreate);
         res.status(201).json(toInsert);
     } catch (error) {
@@ -53,13 +52,14 @@ router.post("/", async (req, res) => {
 // alter exisiting object in DB
 router.put("/", async (req, res) => {
     try {
-        const { key, name, funktionIG, teamrolle, comment } = req.body;
+        const { key, name, funktionIG, teamrolle, comment, imgPath } = req.body;
         const toAlter = await membersDB.update(
             {
                 name,
                 funktionIG,
                 teamrolle,
                 comment,
+                imgPath,
             },
             key
         );
