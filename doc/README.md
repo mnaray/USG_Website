@@ -3,7 +3,7 @@
 ### Inhaltsverzeichnis
 
 - [USG Homepage Docs](#usg-homepage-docs)
-    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [IPERKA](#iperka)
     - [Informieren](#informieren)
     - [Planen](#planen)
@@ -298,7 +298,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
-
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
 | :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1        | M               | funk.             | Alle Buttons sind funktionsfähig und sind an den richtigen Ort verlinkt                                                                                        |
@@ -329,7 +328,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ### Testfälle
 
-
 | Testf.-Nr. | Anf-Nr. | Vorbereitung                                          | Testumgebung                                              | Eingabe                                                       | Erw. Ausgabe                                                                                                                             |
 | :--------: | ------- | :---------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 |    1.1     | 1       |                                                       | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                       | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                |
@@ -353,7 +351,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 |    19.1    | 22, 23  |                                                       | Deployte Webseite im Browser                              | Feed öffnen.                                                  | Twitter-Embed mit den aktuellen Tweets wird angezeigt.                                                                                   |
 
 ### Testprotokoll
-
 
 | Testf.-Nr. | Bericht                                 | Tester            |
 | ---------- | :-------------------------------------- | :---------------- |
@@ -436,18 +433,17 @@ export default Slogan;
 #### Title.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 interface TitleType {
-  children: string
+  children: string;
 }
 
 function Title(source: TitleType) {
-  return <h1 className="text-3xl pb-8">{source.children}</h1>
+  return <h1 className="text-3xl pb-8">{source.children}</h1>;
 }
 
-export default Title
-
+export default Title;
 ```
 
 [Title.tsx](../usg-website/src/pages/components/Title.tsx) ist eine kleine Komponente, welche benutzt wird, um einen einheitlichen Titel auf jeder Seite zu gestalten. Dafür muss man den gewünschten Content einfach in die Component schreiben.
@@ -522,23 +518,23 @@ Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Ba
 
 ```ts
 import React from "react";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
+import Title from "./components/Title";
+import TwitterFeed from "./components/TwitterFeed";
 
-function TwitterFeed() {
+function Feed() {
   return (
-    <>
-      <div className="w-3/5">
-        <TwitterTimelineEmbed
-          sourceType="profile"
-          screenName="usg_esports"
-          options={{ height: 2000 }}
-        />
-      </div>
-    </>
+    <main>
+      <Title>Unser Feed</Title>
+      <p className="p-12 text-2xl text-justify">
+        In unserem Feed wirst du immer auf dem laufenden gehalten, was gerade so
+        ansteht.
+      </p>
+      <TwitterFeed />
+    </main>
   );
 }
 
-export default TwitterFeed;
+export default Feed;
 ```
 
 [TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
@@ -679,44 +675,45 @@ import Membercard from "./Membercard";
 import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
 
 interface member {
-  key: string,
-  name: string,
-  funktionIG: string,
-  teamrolle: string,
-  comment: string
+  key: string;
+  name: string;
+  funktionIG: string;
+  teamrolle: string;
+  comment: string;
 }
 
 interface membersResponse {
-  items: member[],
-  count: number
+  items: member[];
+  count: number;
 }
 
 function MembercardGrid() {
-
-  const [peopleData, setPeopleData] = useState<member[]>([{
-    key: "",
-    name: "Loading...",
-    funktionIG: "",
-    teamrolle: "",
-    comment: ""
-  }])
+  const [peopleData, setPeopleData] = useState<member[]>([
+    {
+      key: "",
+      name: "Loading...",
+      funktionIG: "",
+      teamrolle: "",
+      comment: "",
+    },
+  ]);
 
   const getPeopleData = async () => {
     const response = await fetch("https://ejb1h9.deta.dev/db", {
-      method: "GET"
+      method: "GET",
     });
 
     try {
       const responseJson: membersResponse = await response.json();
-      setPeopleData(responseJson.items)
+      setPeopleData(responseJson.items);
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   useEffect(() => {
     getPeopleData();
-  }, [])
+  }, []);
 
   const cardsArray = peopleData.map((person) => {
     return (
@@ -727,8 +724,8 @@ function MembercardGrid() {
         teamrolle={person.teamrolle}
         comment={person.comment}
       />
-    )
-  })
+    );
+  });
 
   return (
     <div className="flex flex-row flex-wrap justify-evenly max-w-screen-lg px-3">
@@ -952,15 +949,33 @@ Was genau ein Scrim ist, wird auch auf dieser Seite in einem Paragraphen beschri
 #### UeberUns.tsx
 
 ```ts
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./components/Button";
 
 function UeberUns() {
+  const [count, setCount] = useState<number | string>("...");
+
+  const getCount = async () => {
+    const response = await fetch("https://api.usginfo.ch/members", {
+      method: "GET",
+    });
+    try {
+      const responseJson = await response.json();
+      setCount(responseJson.count);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getCount();
+  }, []);
+
   return (
     <main>
       <div className="flex flex-col items-center w-1/3">
         <p className="justify-center text-5xl m-5">Über Uns</p>
-        <p className="py-5 justify-center text-center text-lg">
+        <p className="py-5 justify-center text-justify text-lg">
           Wir sind ein neues Schweizer E-Sport-Team, welches Rainbow Six Siege
           spielt. Wir suchen gerade aktiv nach Mitgliedern. Also falls ihr
           Interesse an einem Anfang in der E-Sportszene habt, seid ihr hier
@@ -971,8 +986,8 @@ function UeberUns() {
           Gesucht sind Leute wie du!
         </p>
         <p className="py-3 justify-center text-center text-lg">
-          Das Team besteht derzeit aus 6 Personen. Wir suchen noch Personen aus
-          dem schweizerdeutschen Sprachraum.
+          Das Team besteht derzeit aus {count} Personen. Wir suchen noch
+          Personen aus dem schweizerdeutschen Sprachraum.
         </p>
         <div className="flex flex-column">
           <Button text="Bewirb Dich!" destination="../../../kontakt/bewerben" />
@@ -993,9 +1008,9 @@ Zusätzlich gibt es noch zwei [Buttons](#buttontsx), welche zu den zwei Untersei
 #### Team.tsx
 
 ```ts
-import React from "react"
-import MembercardGrid from "./components/MembercardGrid"
-import Title from "./components/Title"
+import React from "react";
+import MembercardGrid from "./components/MembercardGrid";
+import Title from "./components/Title";
 
 function Team() {
   return (
@@ -1003,10 +1018,10 @@ function Team() {
       <Title>Unser Team</Title>
       <MembercardGrid />
     </main>
-  )
+  );
 }
 
-export default Team
+export default Team;
 ```
 
 [Team.tsx](../usg-website/src/pages/Team.tsx) ist zuständig für das Anzeigen vom [MembercardGrid](#membercardgridtsx).
@@ -1106,7 +1121,6 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 
 ### Anforderungen
 
-
 | Anf.-Nr. | Muss/Kann | funk./qual. | Beschreibung                                                                         |
 | -------- | --------- | ----------- | ------------------------------------------------------------------------------------ |
 | 1        | Muss      | funk.       | Ein funktionales Loginsystem muss vorhanden sein                                     |
@@ -1129,7 +1143,6 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 ### Testen
 
 #### Testfälle
-
 
 | Tetf.-Nr. | Anf.-Nr.  | Vorbereitung                                          | Testumgebung                            | Eingabe                                          | Erw. Ausgabe                                                                           |
 | --------- | --------- | ----------------------------------------------------- | --------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------- |
@@ -1164,7 +1177,7 @@ Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwende
 
 ### Express Router
 
-*Doku ist noch zu führen.*
+_Doku ist noch zu führen._
 
 ### API Routen
 
@@ -1184,7 +1197,7 @@ Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwende
     funktionIG: string,
     teamrolle: string,
     comment: string
-}  
+}
 ```
 
 `PUT` updatet mit der [update Methode von Deta](https://docs.deta.sh/docs/base/sdk#update) einen Eintrag in der Datenbank. Dazu nimmt es folgendes JSON-Format an. Wenn alles richtig lauft, wird `null` als Response geschickt.
