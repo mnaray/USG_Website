@@ -51,7 +51,11 @@ function Navbar() {
           </Link>
         </ul>
       </nav>
-      <Button text="Mitglied werden" destination="kontakt/bewerben" />
+      <div className="flex flex-row">
+        <div className="m-2"><Button text="GitHub-Repository" destination="https://github.com/mnaray/USG_Website" /></div>
+        <div className="m-2"><Button text="Mitglied werden" destination="kontakt/bewerben" /></div>
+      </div>
+
     </header>
   )
 }

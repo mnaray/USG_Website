@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 function Willkommenstext() {
   return (
@@ -9,7 +9,7 @@ function Willkommenstext() {
         aber auch ein wenig mehr über uns und unser Team herausfinden.
       </p>
     </div>
-  )
+  );
 }
 
-export default Willkommenstext
+export default Willkommenstext;
