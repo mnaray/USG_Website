@@ -53,9 +53,9 @@ router.get("/download/:name", async (req, res) => {
 });
 
 // delete file with specific name
-router.delete("delete/:name", async (req, res) => {
+router.delete("/delete", async (req, res) => {
     try {
-        const name = req.params.name;
+        const name = req.body.name;
         const list = await memberImages.list();
         if (!list.names.includes(name)) {
             res.status(404).json({ error: "No file found with name " + name });

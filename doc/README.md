@@ -79,7 +79,7 @@
       - [/files](#files)
         - [/files/upload](#filesupload)
         - [/files/download/:name](#filesdownloadname)
-        - [/files/delete/:name](#filesdeletename)
+        - [/files/delete](#filesdelete)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -1283,9 +1283,9 @@ Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwende
 
 `GET` gibt das File mit dem angegebenen Namen im Pfad zurück. Das JSON enthält `type: "Buffer"` und `data: [0..9999]` mit dem Inhalt des Buffers. `data` ist in Form von einem Uint8Array. Dieses Array muess zuerst im Frontend konvertiert werden, bevor es als Bild angezeigt werden kann.
 
-##### /files/delete/:name
+##### /files/delete
 
-`DELETE` löscht das File mit dem angegebenen Namen im Pfad. Falls kein solches File gefunden wird, gibt der Server einen 404 Code zurück.
+`DELETE` löscht das File mit dem angegebenen `name` im body. Falls kein solches File gefunden wird, gibt der Server einen 404 Code zurück.
 
 ## Rechtliches
 
