@@ -62,7 +62,7 @@ function Membercard(source: membercard) {
       <div className="flip-card-inner rounded">
         <div className="flip-card-front rounded">
           <img
-            className="h-full w-full aspect-7/9"
+            className="h-full w-full aspect-7/9 rounded overflow-hidden"
             src={memberImage}
             alt={"Picture of " + source.name}
           />
