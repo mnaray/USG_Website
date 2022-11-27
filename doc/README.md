@@ -76,6 +76,10 @@
       - [/](#)
       - [/members](#members)
         - [/members/:key](#memberskey)
+      - [/files](#files)
+        - [/files/upload](#filesupload)
+        - [/files/download/:name](#filesdownloadname)
+        - [/files/delete/:name](#filesdeletename)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -1264,6 +1268,24 @@ Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwende
 ##### [/members/:key](../api-server/routes/members.js)
 
 `GET` sucht in der Datenbank nach dem Objekt mit dem Key, der über `req.params.key` in der URL durchgegeben wird. Falls es dieses Objekt gibt, wird es per Response an den Client geschickt, sonst wird ein Error mit dem Statuscode 404 zurückgegeben.
+
+#### /files
+
+##### /files/upload
+
+`GET` gibt ein temporäres Forms für den Upload von Files zurück. Das File wird beim Submitten per POST-Request an den Server geschickt.
+
+`POST` nimmt das File im Anhang der Request und ladet es auf den Fileserver in der Cloud.
+
+> NOTIZ: Es gibt ein Limit von 10 GB Speicherplatz auf dem Fileserver. Möglichst komprimierte/reduzierte Bilder verwenden!
+
+##### /files/download/:name
+
+`GET` gibt das File mit dem angegebenen Namen im Pfad zurück. Das JSON enthält `type: "Buffer"` und `data: [0..9999]` mit dem Inhalt des Buffers. `data` ist in Form von einem Uint8Array. Dieses Array muess zuerst im Frontend konvertiert werden, bevor es als Bild angezeigt werden kann.
+
+##### /files/delete/:name
+
+`DELETE` *Ist noch nicht ausprogrammiert.*
 
 ## Rechtliches
 
