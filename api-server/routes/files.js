@@ -52,4 +52,19 @@ router.get("/download/:name", async (req, res) => {
     }
 });
 
+// delete file with specific name
+router.delete("delete/:name", async (req, res) => {
+    try {
+        const name = req.params.name;
+        const list = await memberImages.list();
+        if (!list.names.includes(name)) {
+            res.status(404).json({ error: "No file found with name " + name });
+        }
+        const toDelete = await memberImages.delete(name);
+        res.status(200).json({ deleted: toDelete });
+    } catch (error) {
+        res.status(500).json({ error: "Fileserver Error" });
+    }
+});
+
 module.exports = router;
