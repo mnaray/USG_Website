@@ -733,14 +733,14 @@ comment?: string; // Ein Fragezeichen macht das property nullable.
 ```ts
 import React, { useEffect, useState } from "react";
 import Membercard from "./Membercard";
-import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
 
 interface member {
   key: string,
   name: string,
   funktionIG: string,
   teamrolle: string,
-  comment: string
+  comment: string,
+  imgPath: string
 }
 
 interface membersResponse {
@@ -755,11 +755,12 @@ function MembercardGrid() {
     name: "Loading...",
     funktionIG: "",
     teamrolle: "",
-    comment: ""
+    comment: "",
+    imgPath: "",
   }])
 
   const getPeopleData = async () => {
-    const response = await fetch("https://ejb1h9.deta.dev/db", {
+    const response = await fetch("https://api.usginfo.ch/members", {
       method: "GET"
     });
 
@@ -778,9 +779,9 @@ function MembercardGrid() {
   const cardsArray = peopleData.map((person) => {
     return (
       <Membercard
-        mbr={MemberFoto}
+        img={person.imgPath}
         name={person.name}
-        functionIG={person.funktionIG}
+        funktionIG={person.funktionIG}
         teamrolle={person.teamrolle}
         comment={person.comment}
       />
@@ -800,6 +801,8 @@ export default MembercardGrid;
 [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) fetcht die momentanen Mitglieder des Teams von der API und stellt diese dann tabular mit flex-wrap dar. Das macht es mehr oder weniger responsive und anpassungsfähig an die momentane Menge an Mitgliedern.
 
 Die Daten kommen von der API im Format von dem `membersResponse` Interface, welches einen Count hat und ein Array an Objekten mit dem `member` Interface. Diese Daten werden dann mit der [map-Methode von React](https://reactjs.org/docs/lists-and-keys.html) in die jeweiligen [Membercard.tsx](#membercardtsx) Komponenten als Props eingefügt. Zurück bekommen wir ein Array an [Membercard.tsx](#membercardtsx) Komponenten, die wir ganz einfach in ein `<div>` setzen.
+
+> NOTIZ: Die Bilder werden in [Membercard.tsx](#membercardtsx) gefetcht und gerendert.
 
 #### Willkommenstext.tsx
 
