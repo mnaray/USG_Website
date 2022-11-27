@@ -3,7 +3,7 @@
 ### Inhaltsverzeichnis
 
 - [USG Homepage Docs](#usg-homepage-docs)
-  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [IPERKA](#iperka)
     - [Informieren](#informieren)
     - [Planen](#planen)
@@ -76,6 +76,10 @@
       - [/](#)
       - [/members](#members)
         - [/members/:key](#memberskey)
+      - [/files](#files)
+        - [/files/upload](#filesupload)
+        - [/files/download/:name](#filesdownloadname)
+        - [/files/delete](#filesdelete)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -610,31 +614,79 @@ Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden.
 #### Membercard.tsx
 
 ```ts
-import React from "react";
+import React, { useEffect, useState } from "react";
+import DefaultImage from "../../logos/USG_Logo_Transparent_PNG.png";
 
 interface membercard {
-  mbr: string;
+  img: string;
   name: string;
-  functionIG?: string;
+  funktionIG?: string;
   teamrolle: string;
   comment?: string;
 }
 
+interface filesResponse {
+  type: string,
+  data: Buffer
+}
+
 function Membercard(source: membercard) {
+
+  const [memberImage, setMemberImage] = useState<string>(DefaultImage)
+
+  const bufferToArrayBuffer = (buf: Buffer) => {
+    const ab = new ArrayBuffer(buf.length);
+    const view = new Uint8Array(ab);
+    for (let i = 0; i < buf.length; ++i) {
+      view[i] = buf[i];
+    }
+    return ab;
+  };
+
+  const arrayBufferToBase64 = async (arrayBuffer: ArrayBuffer) => {
+    return new Promise<string | any>((resolve, reject) => {
+      var blob = new Blob([arrayBuffer]);
+      var reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(blob);
+    });
+  };
+
+  const getMemberImage = async (path: string) => {
+
+    const response = await fetch("https://api.usginfo.ch/files/download/" + path, {
+      method: "GET"
+    })
+
+    try {
+      const responseJson: filesResponse = await response.json();
+      const arrayBuffer: ArrayBuffer = await bufferToArrayBuffer(responseJson.data);
+      const base64: string = await arrayBufferToBase64(arrayBuffer);
+      setMemberImage(base64);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    getMemberImage(source.img);
+  })
+
   return (
     <div className="flip-card m-10 rounded">
       <div className="flip-card-inner rounded">
         <div className="flip-card-front rounded">
           <img
-            className="h-full w-full aspect-7/9"
-            src={source.mbr}
+            className="h-full w-full aspect-7/9 rounded overflow-hidden"
+            src={memberImage}
             alt={"Picture of " + source.name}
           />
           <p className="align-text-bottom text-2xl font-bold">{source.name}</p>
         </div>
         <div className="flip-card-back rounded py-5 px-3 bg-slate-700">
           <h1 className="text-4xl">{source.name}</h1>
-          <p className="text-xl">{source.functionIG}</p>
+          <p className="text-xl">{source.funktionIG}</p>
           <p className="pt-2">Teamrolle:</p>
           <p className="pb-1 text-lg font-medium">{source.teamrolle}</p>
           <p className="text-lg py-2">{source.comment}</p>
@@ -647,11 +699,11 @@ function Membercard(source: membercard) {
 export default Membercard;
 ```
 
-[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rollen und einen kleinen Kommentar zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern damit sie sich umdreht und die Informationen präsentiert.
+[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein einzelnes Mitglied aus dem USG-Team dar. Um die Informationen wie Pseudonym, die Rollen und einen kleinen Kommentar zum Mitglied zu erhalten, muss man über die Membercard des Mitglieds hovern damit sie sich umdreht und die Informationen präsentiert.
 
 Eine Membercard fordert folgende Properties:
 
-`mbr = {Foto.png}` Foto des Mitglieds.
+`img = "Foto [base64 oder Module]"` Foto des Mitglieds.
 
 `name = "Pseudonym"` Pseudonym des Mitglieds.
 
@@ -667,19 +719,28 @@ Beim `comment` und `functionIG` Property ist noch speziell, dass sie optional si
 comment?: string; // Ein Fragezeichen macht das property nullable.
 ```
 
+**Rendern vom Bild:**
+
+1. Zuerst wird die Komponente mit dem Logo als das `img` gerendert.
+2. Währenddessen schickt der Client eine GET-Request an den Server für das Bild mit dem Entsprechenden Pfad.
+3. Der Server schickt ein JSON mit einem Buffer (BLOB in ein Array an Uint8 aufgeteilt) zurück.
+4. Der Client verwandelt das dann mit `bufferToArrayBuffer()` wieder in einen ArrayBuffer (grundsätzlich ein Uint8 Array).
+5. Den ArrayBuffer geben wir dann durch die Funktion `arrayBufferToBase64()` und erhalten einen String an base64.
+6. Wir setzen diesen String mit `setMemberImage` als den Source für das Bild. Das DOM wird manipuliert und somit das Bild angezeigt.
+
 #### MembercardGrid.tsx
 
 ```ts
 import React, { useEffect, useState } from "react";
 import Membercard from "./Membercard";
-import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
 
 interface member {
-  key: string;
-  name: string;
-  funktionIG: string;
-  teamrolle: string;
-  comment: string;
+  key: string,
+  name: string,
+  funktionIG: string,
+  teamrolle: string,
+  comment: string,
+  imgPath: string
 }
 
 interface membersResponse {
@@ -688,19 +749,19 @@ interface membersResponse {
 }
 
 function MembercardGrid() {
-  const [peopleData, setPeopleData] = useState<member[]>([
-    {
-      key: "",
-      name: "Loading...",
-      funktionIG: "",
-      teamrolle: "",
-      comment: "",
-    },
-  ]);
+
+  const [peopleData, setPeopleData] = useState<member[]>([{
+    key: "",
+    name: "Loading...",
+    funktionIG: "",
+    teamrolle: "",
+    comment: "",
+    imgPath: "",
+  }])
 
   const getPeopleData = async () => {
-    const response = await fetch("https://ejb1h9.deta.dev/db", {
-      method: "GET",
+    const response = await fetch("https://api.usginfo.ch/members", {
+      method: "GET"
     });
 
     try {
@@ -718,9 +779,9 @@ function MembercardGrid() {
   const cardsArray = peopleData.map((person) => {
     return (
       <Membercard
-        mbr={MemberFoto}
+        img={person.imgPath}
         name={person.name}
-        functionIG={person.funktionIG}
+        funktionIG={person.funktionIG}
         teamrolle={person.teamrolle}
         comment={person.comment}
       />
@@ -740,6 +801,8 @@ export default MembercardGrid;
 [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) fetcht die momentanen Mitglieder des Teams von der API und stellt diese dann tabular mit flex-wrap dar. Das macht es mehr oder weniger responsive und anpassungsfähig an die momentane Menge an Mitgliedern.
 
 Die Daten kommen von der API im Format von dem `membersResponse` Interface, welches einen Count hat und ein Array an Objekten mit dem `member` Interface. Diese Daten werden dann mit der [map-Methode von React](https://reactjs.org/docs/lists-and-keys.html) in die jeweiligen [Membercard.tsx](#membercardtsx) Komponenten als Props eingefügt. Zurück bekommen wir ein Array an [Membercard.tsx](#membercardtsx) Komponenten, die wir ganz einfach in ein `<div>` setzen.
+
+> NOTIZ: Die Bilder werden in [Membercard.tsx](#membercardtsx) gefetcht und gerendert.
 
 #### Willkommenstext.tsx
 
@@ -1217,6 +1280,24 @@ _Doku ist noch zu führen._
 ##### [/members/:key](../api-server/routes/members.js)
 
 `GET` sucht in der Datenbank nach dem Objekt mit dem Key, der über `req.params.key` in der URL durchgegeben wird. Falls es dieses Objekt gibt, wird es per Response an den Client geschickt, sonst wird ein Error mit dem Statuscode 404 zurückgegeben.
+
+#### /files
+
+##### /files/upload
+
+`GET` gibt ein temporäres Forms für den Upload von Files zurück. Das File wird beim Submitten per POST-Request an den Server geschickt.
+
+`POST` nimmt das File im Anhang der Request und ladet es auf den Fileserver in der Cloud.
+
+> NOTIZ: Es gibt ein Limit von 10 GB Speicherplatz auf dem Fileserver. Möglichst komprimierte/reduzierte Bilder verwenden!
+
+##### /files/download/:name
+
+`GET` gibt das File mit dem angegebenen Namen im Pfad zurück. Das JSON enthält `type: "Buffer"` und `data: [0..9999]` mit dem Inhalt des Buffers. `data` ist in Form von einem Uint8Array. Dieses Array muess zuerst im Frontend konvertiert werden, bevor es als Bild angezeigt werden kann.
+
+##### /files/delete
+
+`DELETE` löscht das File mit dem angegebenen `name` im body. Falls kein solches File gefunden wird, gibt der Server einen 404 Code zurück.
 
 ## Rechtliches
 
