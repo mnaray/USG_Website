@@ -39,9 +39,16 @@ function Membercard(source: membercard) {
 
   const getMemberImage = async (path: string) => {
 
+    // unnötige Request bei leerem Pfad vermeiden
+    if (path.trim() === "") return;
+
     const response = await fetch("https://api.usginfo.ch/files/download/" + path, {
       method: "GET"
     })
+
+    // wenn nichts gefunden, dann die
+    // Konvertierung überspringen
+    if (response.status === 404) return;
 
     try {
       const responseJson: filesResponse = await response.json();
