@@ -1,13 +1,13 @@
-import React from "react"
-import Button from "./components/Button"
-import GoogleForms from "./components/GoogleForms"
-import Title from "./components/Title"
+import React from "react";
+import Button from "./components/Button";
+import GoogleForms from "./components/GoogleForms";
+import Title from "./components/Title";
 
 function Kontakt() {
   return (
     <main>
       <Title>Kontakt</Title>
-      <p className="text-xl text-justify w-1/3 py-8">
+      <p className="text-xl text-justify w-1/3 py-8 sm:w-3/4">
         Du kannst uns auf verschiedene Arten und Weisen kontaktieren. Um dich
         bei uns zu bewerben, kannst du nach unten scrollen und unser Formular
         ausfüllen. Wenn du gegen uns scrimmen willst, klickst du auf den
@@ -22,7 +22,7 @@ function Kontakt() {
       <h1 className="text-2xl pt-5">Kontakformular allgemein</h1>
       <GoogleForms url="https://docs.google.com/forms/d/e/1FAIpQLSes1z9E7D4g9afB-2oP27qLo1iv_mKeahRVAIIiJFQzR-JKmw/viewform?embedded=true" />
     </main>
-  )
+  );
 }
 
-export default Kontakt
+export default Kontakt;
