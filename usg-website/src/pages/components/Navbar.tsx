@@ -6,7 +6,7 @@ import NavLinks from "./NavLinks";
 
 function Navbar() {
   return (
-    <header className="flex flex-row justify-between w-full p-5 items-center sm:hidden bg-black">
+    <header className="flex flex-row justify-between w-full p-5 items-center md:hidden bg-black">
       <nav className="flex flex-row justify-start items-center">
         <div className="h-20 mr-10">
           <Link to="/">
@@ -20,10 +20,16 @@ function Navbar() {
         <NavLinks />
       </nav>
       <div className="flex flex-row">
-        <div className="m-2"><Button text="GitHub-Repository" destination="https://github.com/mnaray/USG_Website" /></div>
-        <div className="m-2"><Button text="Mitglied werden" destination="kontakt/bewerben" /></div>
+        <div className="m-2">
+          <Button
+            text="GitHub-Repository"
+            destination="https://github.com/mnaray/USG_Website"
+          />
+        </div>
+        <div className="m-2">
+          <Button text="Mitglied werden" destination="kontakt/bewerben" />
+        </div>
       </div>
-
     </header>
   );
 }
