@@ -6,7 +6,7 @@ function NavLinksBurger() {
   return (
     <main className="bg-black">
       <ul
-        className="flex flex-col align-middle text-white text-xl justify-center child:pl-5 child:child:py-1 child:child:px-2 child:child:rounded child:child:text-center
+        className="flex flex-col align-middle text-white text-xl justify-center child:child:py-1 child:child:rounded child:child:text-center
        child:child-hover:bg-white child:child-hover:text-black child:child:transition-all child:child:duration-200 child:child:child:bg-slate-500 child:child:child:rounded"
       >
         <Button text="Mitglied werden" destination="kontakt/bewerben" />
