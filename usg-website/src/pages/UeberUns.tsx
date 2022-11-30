@@ -22,7 +22,7 @@ function UeberUns() {
 
   return (
     <main>
-      <div className="flex flex-col items-center w-1/3 sm:w-3/4">
+      <div className="flex flex-col items-center w-1/3 sm:w-4/5">
         <p className="justify-center text-5xl m-5">Über Uns</p>
         <p className="py-5 justify-center text-justify text-lg sm:w-3/4">
           Wir sind ein neues Schweizer E-Sport-Team, welches Rainbow Six Siege
