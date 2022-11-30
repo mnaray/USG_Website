@@ -49,7 +49,10 @@
       - [Button.tsx](#buttontsx)
       - [GoogleForms.tsx](#googleformstsx)
       - [TwitterFeed](#twitterfeed)
+      - [NavLinks.tsx](#navlinkstsx)
+      - [NavLinksBurger.tsx](#navlinksburgertsx)
       - [Navbar.tsx](#navbartsx)
+      - [BurgerMenu.tsx](#burgermenutsx)
       - [Membercard.tsx](#membercardtsx)
       - [MembercardGrid.tsx](#membercardgridtsx)
       - [Willkommenstext.tsx](#willkommenstexttsx)
@@ -497,7 +500,7 @@ function GoogleForms(source: Source) {
     <iframe
       title="Google Forms embed"
       src={source.url}
-      width="640"
+      width="360"
       height="820"
       frameBorder="0"
       marginHeight={0}
@@ -510,6 +513,7 @@ function GoogleForms(source: Source) {
 }
 
 export default GoogleForms;
+
 ```
 
 [GoogleForms.tsx](../usg-website/src/pages/components/GoogleForms.tsx) ist die Komponente, die verwendet wird, um Forms (Umfragen) von Google auf der Website einzubetten. Mit dem `url` Attribut kann eine URL zu der jeweiligen Forms von Google in die Komponente eingefügt werden. Dieses Formular wird dann auf der Webseite angezeigt. Jeder Nutzer kann sofort das Formular auf der Seite ausfüllen, ohne Redirects.
@@ -543,6 +547,105 @@ export default Feed;
 
 [TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
 
+#### NavLinks.tsx
+```ts
+import { Link } from "react-router-dom";
+import logo from "../../logos/cropped_logo.png";
+import Button from "./Button";
+
+function NavLinks() {
+  return (
+    <main className="bg-black">
+      <ul
+        className=" flex flex-row align-middle space-x-5 text-white text-xl
+                      divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
+                      child:child:px-2 child:child:rounded child:child:text-center
+                      child:child-hover:bg-white child:child-hover:text-black
+             
+             child:child:transition-all child:child:duration-200 "
+      >
+        <Link to="/">
+          <li>
+            <div>Home</div>
+          </li>
+        </Link>
+        <Link to="feed">
+          <li>
+            <div>Feed</div>
+          </li>
+        </Link>
+        <Link to="kontakt">
+          <li>
+            <div>Kontakt</div>
+          </li>
+        </Link>
+        <Link to="ueber-uns">
+          <li>
+            <div>Über Uns</div>
+          </li>
+        </Link>
+        <Link to="unser-team">
+          <li>
+            <div>Unser Team</div>
+          </li>
+        </Link>
+      </ul>
+    </main>
+  );
+}
+
+export default NavLinks;
+```
+[NavLinks.tsx](../usg-website/src/pages/components/NavLinks.tsx) ist zuständig für die Verlinkung der Seiten der Navleiste. Diese Komponente wurde erstellt um das Responsivedesign der Webpage zu realisieren.
+
+#### NavLinksBurger.tsx
+```ts
+import { Link } from "react-router-dom";
+import logo from "../../logos/cropped_logo.png";
+import Button from "./Button";
+
+function NavLinksBurger() {
+  return (
+    <main className="bg-black">
+      <ul
+        className="flex flex-col align-middle text-white text-xl justify-center child:pl-5 child:child:py-1 child:child:px-2 child:child:rounded child:child:text-center
+       child:child-hover:bg-white child:child-hover:text-black child:child:transition-all child:child:duration-200 child:child:child:bg-slate-500 child:child:child:rounded"
+      >
+        <Button text="Mitglied werden" destination="kontakt/bewerben" />
+        <Link to="/">
+          <li>
+            <div>Home</div>
+          </li>
+        </Link>
+        <Link to="feed">
+          <li>
+            <div>Feed</div>
+          </li>
+        </Link>
+        <Link to="kontakt">
+          <li>
+            <div>Kontakt</div>
+          </li>
+        </Link>
+        <Link to="ueber-uns">
+          <li>
+            <div>Über Uns</div>
+          </li>
+        </Link>
+        <Link to="unser-team">
+          <li>
+            <div>Unser Team</div>
+          </li>
+        </Link>
+      </ul>
+    </main>
+  );
+}
+
+export default NavLinksBurger;
+```
+[NavLinksBurger.tsx](../usg-website/src/pages/components/NavLinksBurger.tsx) ist zuständig für die Verlinkung der Seiten der Burger-Navleiste. Diese Komponente wurde erstellt um das Responsivedesign der Webpage zu realisieren. Sie unterscheidet sich hauptsächlich im CSS zu der normalen [NavLinks.tsx](../usg-website/src/pages/components/NavLinks.tsx). Diese Navlinks sind nur für die Anzeige von kleineren Screens zuständig.
+
 #### Navbar.tsx
 
 ```ts
@@ -550,10 +653,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../logos/cropped_logo.png";
 import Button from "./Button";
+import NavLinks from "./NavLinks";
 
 function Navbar() {
   return (
-    <header className="flex flex-row justify-between w-full p-5 items-center bg-black">
+    <header className="flex flex-row justify-between w-full p-5 items-center md:hidden bg-black">
       <nav className="flex flex-row justify-start items-center">
         <div className="h-20 mr-10">
           <Link to="/">
@@ -564,52 +668,64 @@ function Navbar() {
             />
           </Link>
         </div>
-        <ul
-          className="flex flex-row align-middle space-x-5 text-white text-xl
-                                divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
-                                child:child:px-2 child:child:rounded child:child:text-center
-                                child:child-hover:bg-white child:child-hover:text-black
-   
-                       child:child:transition-all child:child:duration-200"
-        >
-          <Link to="/">
-            <li>
-              <div>Home</div>
-            </li>
-          </Link>
-          <Link to="feed">
-            <li>
-              <div>Feed</div>
-            </li>
-          </Link>
-          <Link to="kontakt">
-            <li>
-              <div>Kontakt</div>
-            </li>
-          </Link>
-          <Link to="ueber-uns">
-            <li>
-              <div>Über Uns</div>
-            </li>
-          </Link>
-          <Link to="unser-team">
-            <li>
-              <div>Unser Team</div>
-            </li>
-          </Link>
-        </ul>
+        <NavLinks />
       </nav>
-      <Button text="Mitglied werden" destination="kontakt/bewerben" />
+      <div className="flex flex-row">
+        <div className="m-2">
+          <Button
+            text="GitHub-Repository"
+            destination="https://github.com/mnaray/USG_Website"
+          />
+        </div>
+        <div className="m-2">
+          <Button text="Mitglied werden" destination="kontakt/bewerben" />
+        </div>
+      </div>
     </header>
   );
 }
 
 export default Navbar;
+
 ```
 
 [Navbar.tsx](../usg-website/src/pages/components/Navbar.tsx) ist die Navigationsleiste der Seite. Alle grösseren Unterseiten sind durch sie erreichbar. Zusätzlich ist noch ein Knopf eingebaut, der direkt zum Bewerbungsformular führt.
 
 Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf _alle_ `<li>`, welche sich drin befinden.
+
+#### BurgerMenu.tsx
+
+```ts
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../logos/cropped_logo.png";
+import Button from "./Button";
+import { CgMenuRound } from "react-icons/cg";
+import { useState } from "react";
+import NavLinksBurger from "./NavLinksBurger";
+
+function BurgerMenu() {
+  const [open, setOpen] = useState(false);
+  return (
+    <header className="flex flex-col justify-center w-full p-5 hidden md:flex items-center bg-black">
+      <nav className="flex flex-col justify-start items-center">
+        <CgMenuRound
+          className="text-5xl text-start cursor-pointer"
+          onClick={() => setOpen(!open)}
+          color="white"
+        />
+        {open && <NavLinksBurger />}
+      </nav>
+    </header>
+  );
+}
+
+export default BurgerMenu;
+```
+
+[BurgerMenu.tsx](../usg-website/src/pages/components/BurgerMenu.tsx) ist die Navigationsleiste der Seite auf kleinen Bildschirmen. Alle grösseren Unterseiten sind durch sie erreichbar. Zusätzlich ist noch ein Knopf eingebaut, der direkt zum Bewerbungsformular führt.
+
+Hier wurde eine Funktion funktion geschrieben die es ermöglicht das Menu auszufahren, wenn das Menu-Icon betätigt wird. Wenn sich die seite öffnet ist der Standartwert false. Sobald aber das Menu geöffnet wird, wird der Wert immer umgekehrt. Das heisst wenn der Wert true ist und man nochmal auf das Menu-Icon klickt, dann wird der Wert wieder auf false gestellt.
 
 #### Membercard.tsx
 

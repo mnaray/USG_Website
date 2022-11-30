@@ -6,7 +6,7 @@ import { CgMenuRound } from "react-icons/cg";
 import { useState } from "react";
 import NavLinksBurger from "./NavLinksBurger";
 
-function Willkommenstext() {
+function BurgerMenu() {
   const [open, setOpen] = useState(false);
   return (
     <header className="flex flex-col justify-center w-full p-5 hidden md:flex items-center bg-black">
@@ -22,4 +22,4 @@ function Willkommenstext() {
   );
 }
 
-export default Willkommenstext;
+export default BurgerMenu;
