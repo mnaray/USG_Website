@@ -6,7 +6,7 @@ function Bewerben() {
   return (
     <main>
       <Title>Bewerben</Title>
-      <p className="text-xl text-justify w-1/3 py-8">
+      <p className="text-xl text-justify w-1/3 py-8 sm:w-3/4">
         Wenn du Lust hast bei unserem Team mitzuwirken, dann kannst du
         dich gerne mit dem Formular unten bei uns bewerben.
       </p>
