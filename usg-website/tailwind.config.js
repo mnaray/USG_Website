@@ -15,6 +15,9 @@ module.exports = {
                 "90v": "90vh",
                 "100v": "100vh",
             },
+            aspectRatio: {
+                "7/9": "7 / 9",
+            },
         },
     },
     plugins: [
