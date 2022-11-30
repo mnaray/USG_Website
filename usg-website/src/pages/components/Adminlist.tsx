@@ -57,7 +57,7 @@ function Adminlist() {
     })
 
     return (
-        <ul className='flex flex-col justify-start child:flex-grow max-w-screen-lg'>
+        <ul className='flex flex-col justify-start w-4/6'>
             {itemArray}
         </ul>
     )

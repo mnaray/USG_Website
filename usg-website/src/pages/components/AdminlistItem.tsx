@@ -67,22 +67,39 @@ function AdminlistItem(source: adminListItem) {
     })
 
     return (
-        <div className='flex flex-row justify-between child:flex child:flex-col h-80'>
-            <div>
-                <div>Name: {source.name}</div>
-                <div>DB-Key: {source.id}</div>
-                <div>Teamrolle: {source.teamrolle}</div>
+        <div className='flex flex-row justify-between h-72 bg-slate-700 border border-slate-400 rounded-xl p-8 mb-5
+                        child:flex child:flex-col child:justify-between child:child:first-line:font-bold
+                        hover:border-cyan-400 hover:border-2 hover:scale-105 transition-all duration-300'>
+            <div className='w-1/4 pr-3'>
+                <div>
+                    <div>Name:</div>
+                    <div>{source.name}</div>
+                </div>
+                <div>
+                    <div>Teamrolle:</div>
+                    <div>{source.teamrolle}</div>
+                </div>
+                <div>
+                    <div>DB-Key:</div>
+                    <div>{source.id}</div>
+                </div>
             </div>
-            <div>
-                <div>Funktion-IG: {source.funktionIG}</div>
-                <div>Kommentar: {source.comment}</div>
+            <div className='w-1/4 pr-3'>
+                <div>
+                    <div>Funktion-IG:</div>
+                    <div>{source.funktionIG}</div>
+                </div>
+                <div>
+                    <div>Kommentar:</div>
+                    <div>{source.comment}</div>
+                </div>
+                <Button destination='/update' text='Bearbeiten' />
             </div>
             <div>
                 <img src={memberImage}
                     alt="Profilbild des Mitglieds"
-                    className='h-full w-full aspect-7/9 rounded overflow-hidden mb-2'
+                    className='h-full w-full aspect-7/9 rounded overflow-hidden'
                 />
-                <Button destination='/update' text='Bearbeiten' />
             </div>
         </div>
     )
