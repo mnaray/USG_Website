@@ -1,7 +1,4 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import logo from "../../logos/cropped_logo.png";
-import Button from "./Button";
 import { CgMenuRound } from "react-icons/cg";
 import { useState } from "react";
 import NavLinksBurger from "./NavLinksBurger";

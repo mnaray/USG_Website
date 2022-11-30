@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logo from "../../logos/cropped_logo.png";
 import Button from "./Button";
 
 function NavLinksBurger() {
