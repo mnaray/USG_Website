@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 interface Source {
   url: string;
@@ -9,7 +9,7 @@ function GoogleForms(source: Source) {
     <iframe
       title="Google Forms embed"
       src={source.url}
-      width="640"
+      width="360"
       height="820"
       frameBorder="0"
       marginHeight={0}
@@ -18,7 +18,7 @@ function GoogleForms(source: Source) {
     >
       Wird geladen…
     </iframe>
-  )
+  );
 }
 
-export default GoogleForms
+export default GoogleForms;
