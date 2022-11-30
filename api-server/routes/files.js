@@ -44,6 +44,7 @@ router.get("/download/:name", async (req, res) => {
         const list = await memberImages.list();
         if (!list.names.includes(name)) {
             res.status(404).json({ error: "No file found with name " + name });
+            return;
         }
         const img = await memberImages.get(name);
         const buffer = await img.arrayBuffer();
@@ -60,6 +61,7 @@ router.delete("/delete", async (req, res) => {
         const list = await memberImages.list();
         if (!list.names.includes(name)) {
             res.status(404).json({ error: "No file found with name " + name });
+            return;
         }
         const toDelete = await memberImages.delete(name);
         res.status(200).json({ deleted: toDelete });
