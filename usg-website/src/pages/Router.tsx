@@ -10,6 +10,8 @@ import Scrims from './Scrims';
 import Team from './Team';
 import UeberUns from './UeberUns';
 import Adminbereich from './Adminbereich';
+import Bearbeiten from './Bearbeiten';
+import Hinzufuegen from './Hinzufuegen';
 
 function Router() {
     return (
@@ -25,7 +27,11 @@ function Router() {
                     </Route>
                     <Route path="ueber-uns" element={<UeberUns />} />
                     <Route path="unser-team" element={<Team />} />
-                    <Route path="admin" element={<Adminbereich />} />
+                    <Route path="admin">
+                        <Route index element={<Adminbereich />} />
+                        <Route path='bearbeiten' element={<Bearbeiten />} />
+                        <Route path='hinzufuegen' element={<Hinzufuegen />} />
+                    </Route>
                     <Route path='*' element={<PageNotFound />} />
                 </Route>
             </Routes>
