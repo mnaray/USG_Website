@@ -1,8 +1,13 @@
 import React from 'react'
+import Title from './components/Title'
 
 function Hinzufuegen() {
+
+
     return (
-        <main>Hinzufügen</main>
+        <main>
+            <Title>Mitglied Hinzufügen</Title>
+        </main>
     )
 }
 

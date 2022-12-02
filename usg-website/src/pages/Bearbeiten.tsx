@@ -1,8 +1,11 @@
 import React from 'react'
+import Title from './components/Title'
 
 function Bearbeiten() {
     return (
-        <main>Bearbeiten</main>
+        <main>
+            <Title>Mitglied Bearbeiten</Title>
+        </main>
     )
 }
 
