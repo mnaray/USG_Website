@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 interface inputField {
     label: string;
@@ -15,7 +15,7 @@ function AdminInputField(props: inputField) {
                 type="text"
                 id={props.label}
                 placeholder={props.placeholder}
-                value={props.default}
+                defaultValue={props.default}
                 className="h-8 rounded-md px-2 py-1 mt-1 bg-slate-700"
             />
         </label>

@@ -93,7 +93,7 @@ function AdminlistItem(source: adminListItem) {
                     <div>Kommentar:</div>
                     <div>{source.comment}</div>
                 </div>
-                <Button destination='bearbeiten' text='Bearbeiten' />
+                <Button destination='bearbeiten' text='Bearbeiten' state={source.id} />
             </div>
             <div>
                 <img src={memberImage}

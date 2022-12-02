@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputForm from './components/InputForm'
 import Title from './components/Title'
+import { useLocation } from 'react-router-dom'
 
 interface member {
     key: string,
@@ -11,11 +12,7 @@ interface member {
     imgPath: string
 }
 
-interface memberCurrent {
-    memberKey: string;
-}
-
-function Bearbeiten(props: memberCurrent) {
+function Bearbeiten() {
 
     const [member, setMember] = useState<member>({
         key: "-",
@@ -26,8 +23,11 @@ function Bearbeiten(props: memberCurrent) {
         imgPath: "",
     })
 
+    const location = useLocation();
+    const key: string = location.state.id;
+
     const getMemberData = async () => {
-        const response = await fetch("https://api.usginfo.ch/members/" + props.memberKey, {
+        const response = await fetch("https://api.usginfo.ch/members/" + key, {
             method: "GET"
         });
 
@@ -39,6 +39,9 @@ function Bearbeiten(props: memberCurrent) {
         }
     };
 
+    useEffect(() => {
+        getMemberData();
+    }, [])
 
     return (
         <main>
