@@ -14,14 +14,7 @@ interface member {
 
 function Bearbeiten() {
 
-    const [member, setMember] = useState<member>({
-        key: "-",
-        name: "Loading...",
-        funktionIG: "-",
-        teamrolle: "-",
-        comment: "-",
-        imgPath: "",
-    })
+    const [member, setMember] = useState<member | undefined>(undefined)
 
     const location = useLocation();
     const key: string = location.state.id;
