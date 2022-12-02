@@ -9,6 +9,8 @@ import PageNotFound from "./PageNotFound";
 import Scrims from './Scrims';
 import Team from './Team';
 import UeberUns from './UeberUns';
+import Loginpage from "./Loginpage"
+import Registerpage from './Registerpage';
 
 function Router() {
     return (
@@ -24,6 +26,8 @@ function Router() {
                     </Route>
                     <Route path="ueber-uns" element={<UeberUns />} />
                     <Route path="unser-team" element={<Team />} />
+                    <Route path="login" element={<Loginpage />} />
+                    <Route path="register" element={<Registerpage />} />
                     <Route path='*' element={<PageNotFound />} />
                 </Route>
             </Routes>
