@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import AdminInputField from './AdminInputField'
 import SubmitButton from './SubmitButton'
 
@@ -17,8 +17,6 @@ interface inputFormat {
 }
 
 function InputForm(props: inputFormat) {
-
-    console.log(props.memberCurrent)
     return (
         <div className='flex flex-col justify-evenly'>
             <form method={props.method} className='flex flex-col justify-between'>
