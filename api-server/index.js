@@ -13,6 +13,7 @@ app.disable("etag"); // disables automatic caching
 // routes
 app.use("/members", require("./routes/members"));
 app.use("/files", require("./routes/files"));
+app.use("/auth", require("./routes/auth"));
 
 // root
 app.get("/", (req, res) => res.send("This is the API for usginfo.ch"));
