@@ -52,6 +52,12 @@ router.post("/login", async (req, res) => {
             });
         }
 
+        if (existing.isApproved === false) {
+            res.status(403).json({
+                error: "Action fobidden. Contact an administrator for approval.",
+            });
+        }
+
         if (await argon2.verify(existing.passwordHash, pswd)) {
             res.send("Correct password.");
         } else {
