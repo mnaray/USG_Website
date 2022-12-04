@@ -1,5 +1,6 @@
 const express = require("express");
 const upload = require("express-fileupload");
+const session = require("express-session");
 const { Deta } = require("deta");
 const cors = require("cors");
 
@@ -9,6 +10,14 @@ app.use(express.json()); // !!| ESSENTIAL FOR req |!!
 app.use(cors()); // Cors
 app.use(upload()); // Fileupload
 app.disable("etag"); // disables automatic caching
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        // cookie: { secure: true },
+    })
+);
 
 // routes
 app.use("/members", require("./routes/members"));
