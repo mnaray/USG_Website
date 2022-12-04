@@ -15,7 +15,10 @@ app.use(
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
-        // cookie: { secure: true },
+        cookie: {
+            secure: true,
+            maxAge: 900000, // should be 15min (900'000ms) in prod
+        },
     })
 );
 

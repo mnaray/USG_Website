@@ -59,7 +59,11 @@ router.post("/login", async (req, res) => {
         }
 
         if (await argon2.verify(existing.passwordHash, pswd)) {
-            res.send("Correct password.");
+            req.session.views += 1;
+            res.send(
+                "Correct password. Session expires in: " +
+                    req.session.cookie.maxAge
+            );
         } else {
             res.send("Wrong password!");
         }
