@@ -44,9 +44,10 @@ function InputForm(props: inputFormat) {
         })
 
         try {
-            if (response.status === 200) {
+            if ([200, 201].includes(response.status)) {
                 setStatus(["text-green-500", "Änderungen wurden gespeichert."])
             } else {
+                console.log("The server responded with a status of: " + response.status);
                 setStatus(["text-red-500", "Es ist ein Fehler aufgetreten. Bitte kontaktiere einen Entwickler dieser Seite."])
             }
         } catch (err) {
