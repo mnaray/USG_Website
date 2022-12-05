@@ -28,8 +28,6 @@ function InputForm(props: inputFormat) {
         const teamrolleValue = (document.getElementById("Teamrolle") as HTMLInputElement).value;
         const commentValue = (document.getElementById("Kommentar") as HTMLInputElement).value;
 
-        console.log(nameValue, funktionIGValue, teamrolleValue, commentValue)
-
         const response = await fetch("https://api.usginfo.ch/members", {
             method: props.method,
             headers: {
