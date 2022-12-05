@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
 import AdminInputField from './AdminInputField'
 import SubmitButton from './SubmitButton'
 
@@ -17,14 +17,54 @@ interface inputFormat {
 }
 
 function InputForm(props: inputFormat) {
+
+    const [status, setStatus] = useState<string[]>(["color-white", "Noch keine Änderungen vorgenommen,"])
+
+    const submitData = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const nameValue = (document.getElementById("Name") as HTMLInputElement).value;
+        const funktionIGValue = (document.getElementById("Funktion-IG") as HTMLInputElement).value;
+        const teamrolleValue = (document.getElementById("Teamrolle") as HTMLInputElement).value;
+        const commentValue = (document.getElementById("Kommentar") as HTMLInputElement).value;
+
+        console.log(nameValue, funktionIGValue, teamrolleValue, commentValue)
+
+        const response = await fetch("https://api.usginfo.ch/members", {
+            method: props.method,
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: nameValue,
+                funktionIG: funktionIGValue,
+                teamrolle: teamrolleValue,
+                comment: commentValue,
+                key: props.memberCurrent?.key,
+            }),
+        })
+
+        try {
+            if (response.status === 200) {
+                setStatus(["text-green-500", "Änderungen wurden gespeichert."])
+            } else {
+                setStatus(["text-red-500", "Es ist ein Fehler aufgetreten. Bitte kontaktiere einen Entwickler dieser Seite."])
+            }
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return (
         <div className='flex flex-col justify-evenly'>
-            <form method={props.method} className='flex flex-col justify-between'>
+            <form onSubmit={submitData} className='flex flex-col justify-between'>
                 <AdminInputField label='Name' placeholder='Pseudonym/Namen eingeben' optional={false} default={props.memberCurrent?.name} />
                 <AdminInputField label='Teamrolle' placeholder='Teamrollen eingeben' optional={false} default={props.memberCurrent?.teamrolle} />
                 <AdminInputField label='Funktion-IG' placeholder='In-Game Funktion eingeben' optional={true} default={props.memberCurrent?.funktionIG} />
                 <AdminInputField label='Kommentar' placeholder='Kommentar eingeben' optional={true} default={props.memberCurrent?.comment} />
                 <SubmitButton>Speichern</SubmitButton>
+                <p className={status[0]}>{status[1]}</p>
             </form>
             <form method={props.method} encType='multipart/form-data' className='flex flex-col justify-between mt-10'>
                 <input type="file" name="file" className='mb-5' />
