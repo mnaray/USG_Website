@@ -40,7 +40,13 @@ function DeleteButton(props: toDelete) {
     }
 
     return (
-        <button onClick={clickHandler}>Löschen</button>
+        <button onClick={clickHandler}
+            className="bg-red-600 text-white text-lg px-3 py-1 mt-3 rounded
+                          hover:bg-blue-200 hover:text-black transition-all
+                          duration-200 w-fit"
+        >
+            Mitglied Löschen
+        </button>
     )
 }
 
