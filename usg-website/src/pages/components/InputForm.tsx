@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from 'react'
 import AdminInputField from './AdminInputField'
 import SubmitButton from './SubmitButton'
+import DeleteButton from './DeleteButton'
 
 interface member {
     key: string,
@@ -55,6 +56,14 @@ function InputForm(props: inputFormat) {
         }
     }
 
+    const button = () => {
+        if (props.memberCurrent) {
+            return (<DeleteButton name={props.memberCurrent.name} id={props.memberCurrent.key} />);
+        } else {
+            return;
+        }
+    }
+
     return (
         <div className='flex flex-col justify-evenly'>
             <form onSubmit={submitData} className='flex flex-col justify-between'>
@@ -69,6 +78,7 @@ function InputForm(props: inputFormat) {
                 <input type="file" name="file" className='mb-5' />
                 <SubmitButton redirect={false} >Update</SubmitButton>
             </form>
+            {button()}
         </div>
     )
 }
