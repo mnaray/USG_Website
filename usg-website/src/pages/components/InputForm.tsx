@@ -68,13 +68,6 @@ function InputForm(props: inputFormat) {
         }
 
         const fileName = (document.getElementById("fileInput") as HTMLInputElement).value;
-        console.log(fileName);
-
-        const formData = new FormData();
-        formData.append("name", fileName);
-        formData.append("file", file);
-
-        console.log(formData);
 
         const response = await fetch("https://api.usginfo.ch/files/upload", {
             method: "POST",
@@ -82,7 +75,10 @@ function InputForm(props: inputFormat) {
                 "Content-Type": "multipart/form-data"
             },
             body: JSON.stringify({
-                file: formData
+                file: {
+                    name: fileName,
+                    data: file
+                }
             })
         })
     }
