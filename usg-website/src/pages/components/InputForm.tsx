@@ -56,6 +56,11 @@ function InputForm(props: inputFormat) {
         }
     }
 
+    const uploadImage = async (event: FormEvent<HTMLFormElement>) => {
+        const fileName = (document.getElementById("fileInput") as HTMLInputElement).value;
+        console.log(fileName);
+    }
+
     const button = () => {
         if (props.memberCurrent) {
             return (<DeleteButton name={props.memberCurrent.name} id={props.memberCurrent.key} />);
@@ -74,8 +79,8 @@ function InputForm(props: inputFormat) {
                 <SubmitButton redirect={true} >Speichern</SubmitButton>
                 <p className={status[0]}>{status[1]}</p>
             </form>
-            <form method={props.method} encType='multipart/form-data' className='flex flex-col justify-between mt-10'>
-                <input type="file" name="file" className='mb-5' />
+            <form action="https://api.usginfo.ch/files/upload" encType="multipart/form-data" method="post" onSubmit={uploadImage} className='flex flex-col justify-between mt-10'>
+                <input type="file" id='fileInput' name="file" className='mb-5' />
                 <SubmitButton redirect={false} >Update</SubmitButton>
             </form>
             {button()}
