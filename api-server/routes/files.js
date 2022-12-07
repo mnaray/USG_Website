@@ -28,9 +28,7 @@ router.post("/upload", async (req, res) => {
         const fileName = req.files.file.name;
         const fileContents = req.files.file.data;
         const img = await memberImages.put(fileName, { data: fileContents });
-        res.status(201).send(
-            "Successfully uploaded " + img + " to the Fileserver!"
-        );
+        res.status(201).json({ success: true, fileName: fileName });
     } catch (error) {
         res.status(400).json({ error: "Bad Request or ran out of diskspace." });
     }
