@@ -25,8 +25,8 @@ router.get("/upload", (req, res) => {
 // upload content of post req to fileserver
 router.post("/upload", async (req, res) => {
     try {
-        const fileName = req.files.file.name;
-        const fileContents = req.files.file.data;
+        const fileName = req.body.file.name;
+        const fileContents = req.body.file.data;
         const img = await memberImages.put(fileName, { data: fileContents });
         res.status(201).json({ success: true, fileName: fileName });
     } catch (error) {
