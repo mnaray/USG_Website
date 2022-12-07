@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import AdminInputField from './AdminInputField'
 import SubmitButton from './SubmitButton'
 import DeleteButton from './DeleteButton'
@@ -29,6 +29,7 @@ function InputForm(props: inputFormat) {
         const teamrolleValue = (document.getElementById("Teamrolle") as HTMLInputElement).value;
         const commentValue = (document.getElementById("Kommentar") as HTMLInputElement).value;
 
+
         const response = await fetch("https://api.usginfo.ch/members", {
             method: props.method,
             headers: {
@@ -56,9 +57,42 @@ function InputForm(props: inputFormat) {
         }
     }
 
+    const [file, setFile] = useState<File | string>("");
+
     const uploadImage = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        if (file === "") {
+            console.error("No File selected!");
+            return;
+        }
+
         const fileName = (document.getElementById("fileInput") as HTMLInputElement).value;
         console.log(fileName);
+
+        const formData = new FormData();
+        formData.append("name", fileName);
+        formData.append("file", file);
+
+        console.log(formData);
+
+        const response = await fetch("https://api.usginfo.ch/files/upload", {
+            method: "POST",
+            headers: {
+                "Content-Type": "multipart/form-data"
+            },
+            body: JSON.stringify({
+                file: formData
+            })
+        })
+    }
+
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        const newFile = Array.from(event.target.files as Iterable<File>)[0];
+        console.log(newFile);
+        setFile(newFile);
+        console.log(file);
+
     }
 
     const button = () => {
@@ -79,8 +113,8 @@ function InputForm(props: inputFormat) {
                 <SubmitButton redirect={true} >Speichern</SubmitButton>
                 <p className={status[0]}>{status[1]}</p>
             </form>
-            <form action="https://api.usginfo.ch/files/upload" encType="multipart/form-data" method="post" onSubmit={uploadImage} className='flex flex-col justify-between mt-10'>
-                <input type="file" id='fileInput' name="file" className='mb-5' />
+            <form action="https://api.usginfo.ch/files/upload" encType="multipart/form-data" method="POST" onSubmit={uploadImage} className='flex flex-col justify-between mt-10'>
+                <input onChange={changeHandler} type="file" id='fileInput' name="file" className='mb-5' />
                 <SubmitButton redirect={false} >Update</SubmitButton>
             </form>
             {button()}
