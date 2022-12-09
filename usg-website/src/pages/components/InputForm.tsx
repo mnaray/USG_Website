@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import AdminInputField from './AdminInputField'
 import SubmitButton from './SubmitButton'
 import DeleteButton from './DeleteButton'
+import { Buffer } from 'buffer';
 
 interface member {
     key: string,
@@ -15,6 +16,11 @@ interface member {
 interface inputFormat {
     memberCurrent?: member,
     method: string
+}
+
+interface uploadResponse {
+    success: boolean,
+    fileName: string,
 }
 
 function InputForm(props: inputFormat) {
@@ -67,19 +73,42 @@ function InputForm(props: inputFormat) {
             return;
         }
 
-        const fileName = (document.getElementById("fileInput") as HTMLInputElement).value;
+        const dataBuffer = await (file as File).arrayBuffer()
 
         const response = await fetch("https://api.usginfo.ch/files/upload", {
             method: "POST",
             headers: {
-                "Content-Type": "multipart/form-data"
+                "Accept": "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 file: {
-                    name: fileName,
-                    data: file
+                    name: (file as File).name,
+                    buffer: Buffer.from(dataBuffer)
                 }
             })
+        })
+
+        try {
+            const responseJson: uploadResponse = await response.json();
+            console.log(responseJson);
+            if (responseJson.success) updateImgPath(responseJson.fileName);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    const updateImgPath = async (fileName: string) => {
+        const response = await fetch("https://api.usginfo.ch/members", {
+            method: "PUT",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                imgPath: fileName,
+                key: props.memberCurrent?.key,
+            }),
         })
     }
 
@@ -87,8 +116,6 @@ function InputForm(props: inputFormat) {
         const newFile = Array.from(event.target.files as Iterable<File>)[0];
         console.log(newFile);
         setFile(newFile);
-        console.log(file);
-
     }
 
     const button = () => {
@@ -109,7 +136,7 @@ function InputForm(props: inputFormat) {
                 <SubmitButton redirect={true} >Speichern</SubmitButton>
                 <p className={status[0]}>{status[1]}</p>
             </form>
-            <form action="https://api.usginfo.ch/files/upload" encType="multipart/form-data" method="POST" onSubmit={uploadImage} className='flex flex-col justify-between mt-10'>
+            <form onSubmit={uploadImage} className='flex flex-col justify-between mt-10'>
                 <input onChange={changeHandler} type="file" id='fileInput' name="file" className='mb-5' />
                 <SubmitButton redirect={false} >Update</SubmitButton>
             </form>
