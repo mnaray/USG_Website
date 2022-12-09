@@ -29,8 +29,8 @@ router.post("/upload", async (req, res) => {
         const fileContents = req.body.file.data;
         const img = await memberImages.put(fileName, { data: fileContents });
         res.status(201).json({ success: true, fileName: fileName });
-    } catch (error) {
-        res.status(400).json({ error: "Bad Request or ran out of diskspace." });
+    } catch (err) {
+        res.status(400).json({ error: "Bad Request or ran out of diskspace.", msg: err });
     }
 });
 
