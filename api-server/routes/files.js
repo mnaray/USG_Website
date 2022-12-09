@@ -34,7 +34,7 @@ router.post("/upload", async (req, res) => {
         res.status(400).json({
             error: "Bad Request or ran out of diskspace.",
             msg: err.message,
-            reqContents: req.body.file.buffer,
+            reqContents: req.body,
         });
     }
 });
