@@ -42,7 +42,7 @@ function AdminlistItem(source: adminListItem) {
     const getMemberImage = async (path: string) => {
 
         // unnötige Request bei leerem Pfad vermeiden
-        if (path.trim() === "") return;
+        if (path === undefined || path.trim() === "") return;
 
         const response = await fetch("https://api.usginfo.ch/files/download/" + path, {
             method: "GET"

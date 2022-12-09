@@ -13,7 +13,7 @@ function CircularButton(props: ButtonProps) {
                 <button className="bg-blue-600 text-lg rounded-full hover:bg-blue-200 transition-all
                                     duration-200 overflow-hidden leading-tight scale-105 hover:scale-125"
                     tabIndex={-1}>
-                    <img src={plusIcon} />
+                    <img src={plusIcon} alt="Plus-Icon für neues Mitglied hinzufügen" />
                 </button>
             </Link>
         </div>
