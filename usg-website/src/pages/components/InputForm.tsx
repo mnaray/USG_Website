@@ -68,7 +68,7 @@ function InputForm(props: inputFormat) {
     const uploadImage = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (file === "") {
+        if (file === "" || file === undefined) {
             console.error("No File selected!");
             return;
         }
@@ -110,6 +110,13 @@ function InputForm(props: inputFormat) {
                 key: props.memberCurrent?.key,
             }),
         })
+
+        try {
+            const responseJson = await response.json();
+            console.log(responseJson);
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
