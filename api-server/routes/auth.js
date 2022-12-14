@@ -1,6 +1,7 @@
 const express = require("express");
 const { Deta } = require("deta");
 const argon2 = require("argon2");
+const { rawListeners } = require("..");
 const router = express.Router();
 
 // deta
@@ -55,17 +56,26 @@ router.post("/login", async (req, res) => {
         if (existing.isApproved === false) {
             res.status(403).json({
                 error: "Action fobidden. Contact an administrator for approval.",
+                success: false,
             });
         }
 
+        // response if user is already authenticated
+        // if (req.session.authenticated) {
+        //     res.json(req.session);
+        // }
+
         if (await argon2.verify(existing.passwordHash, pswd)) {
-            req.session.views += 1;
-            res.send(
-                "Correct password. Session expires in: " +
-                    req.session.cookie.maxAge
-            );
+            req.session.authenticated = true;
+            req.session.user = uname;
+            res.json({
+                success: true,
+            });
         } else {
-            res.send("Wrong password!");
+            res.json({
+                error: "Wrong password!",
+                success: false,
+            });
         }
     } catch (error) {
         res.status(503).json({ error: "Database Error" });
