@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
 
         const existing = await loginDB.get(uname);
         if (existing === null) {
-            res.status(404).json({
+            res.status(401).json({
                 error: "Didn't find user with this username.",
                 success: false,
             });
