@@ -60,11 +60,6 @@ router.post("/login", async (req, res) => {
             });
         }
 
-        // response if user is already authenticated
-        // if (req.session.authenticated) {
-        //     res.json(req.session);
-        // }
-
         if (await argon2.verify(existing.passwordHash, pswd)) {
             req.session.authenticated = true;
             req.session.user = uname;
