@@ -38,7 +38,7 @@ function Register() {
     if (pwagainbefore.length <= 8) {
       alert("mind 8 Zeichen");
     }
-    if (pwloginbefore.search(/[@~`!#$%^&*()-\+=-{}[]|:;"'<$>,.?]/) === -1) {
+    if (pwloginbefore.search(/[@~`!#$%^&*()-+=-{}[]|:;"'<$>,.?]/) === -1) {
       alert("No Special Number");
     }
   };
