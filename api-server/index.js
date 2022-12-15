@@ -8,7 +8,12 @@ const cors = require("cors");
 // express
 const app = express();
 app.use(express.json()); // !!| ESSENTIAL FOR req |!!
-app.use(cors()); // Cors
+app.use(
+    cors({
+        credentials: true,
+        origin: ["http://localhost:3000", "https://usginfo.ch"],
+    })
+); // Cors
 app.use(upload()); // Fileupload
 app.disable("etag"); // disables automatic caching
 app.use(
@@ -17,6 +22,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
+            sameSite: "none",
             secure: true,
             maxAge: 900000, // should be 15min (900'000ms) in prod
         },

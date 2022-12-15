@@ -37,6 +37,7 @@ function InputForm(props: inputFormat) {
 
 
         const response = await fetch("https://api.usginfo.ch/members", {
+            credentials: "include",
             method: props.method,
             headers: {
                 "Accept": "application/json",
@@ -76,6 +77,7 @@ function InputForm(props: inputFormat) {
         const dataBuffer = await (file as File).arrayBuffer()
 
         const response = await fetch("https://api.usginfo.ch/files/upload", {
+            credentials: "include",
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -100,6 +102,7 @@ function InputForm(props: inputFormat) {
 
     const updateImgPath = async (fileName: string) => {
         const response = await fetch("https://api.usginfo.ch/members", {
+            credentials: "include",
             method: "PUT",
             headers: {
                 "Accept": "application/json",
