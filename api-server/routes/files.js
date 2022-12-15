@@ -14,15 +14,6 @@ router.get("/info", (req, res) => {
     );
 });
 
-// send upload forms to client
-router.get("/upload", (req, res) => {
-    res.send(`
-    <form action="/files/upload" enctype="multipart/form-data" method="post">
-      <input type="file" name="file">
-      <input type="submit" value="Upload">
-    </form>`);
-});
-
 // upload content of post req to fileserver
 router.post("/upload", checkAuth, async (req, res) => {
     try {
