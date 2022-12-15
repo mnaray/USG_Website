@@ -1,4 +1,6 @@
 import React, { FormEvent, useState } from "react"
+import { CgWindows } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button"
 
 interface authResponse {
@@ -7,6 +9,8 @@ interface authResponse {
 }
 
 function Login() {
+    const navigate = useNavigate();
+
     const [uname, setUname] = useState("");
     const [pswd, setPswd] = useState("");
 
@@ -29,7 +33,8 @@ function Login() {
         try {
             const responseJson: authResponse = await response.json();
             if (responseJson.success) {
-                console.log("successfully logged in!");
+                sessionStorage.setItem('loggedIn', 'true');
+                navigate("/admin")
             } else {
                 console.log(responseJson)
             }
