@@ -1,10 +1,12 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import Button from "./Button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [pwloginbefore, setpwloginbefore] = useState<string>("");
   const [pwagainbefore, setpwagainbefore] = useState<string>("");
+  const navigate = useNavigate();
 
   // setpwloginbefore((document.getElementById("pw-login") as HTMLInputElement).value)
   // setpwagainbefore((document.getElementById("pw-again-login") as HTMLInputElement).value)
@@ -51,13 +53,18 @@ function Register() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: document.getElementById("username"),
+        username: (document.getElementById("username") as HTMLInputElement)
+          .value,
         password: pwloginbefore,
       }),
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-      .catch((error) => console.log(error));
+    });
+
+    try {
+      const responseJson = await response.json();
+      if (responseJson.success) {
+        navigate("/login");
+      }
+    } catch (err) {}
   };
   return (
     <div className="">
@@ -104,7 +111,7 @@ function Register() {
         </button>
       </form>
       <p className="m-5">
-        Breits ein Konto? <Button text="Anmelden" destination="../login" />
+        Breits ein Konto? <Button text="Anmelden" destination="/login" />
       </p>
     </div>
   );
