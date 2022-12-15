@@ -1,6 +1,7 @@
 const express = require("express");
 const { Deta } = require("deta");
 const router = express.Router();
+const { checkAuth } = require("../middleware/checkAuth");
 
 // deta
 const deta = Deta();
@@ -13,26 +14,20 @@ router.get("/info", (req, res) => {
     );
 });
 
-// send upload forms to client
-router.get("/upload", (req, res) => {
-    res.send(`
-    <form action="/files/upload" enctype="multipart/form-data" method="post">
-      <input type="file" name="file">
-      <input type="submit" value="Upload">
-    </form>`);
-});
-
 // upload content of post req to fileserver
-router.post("/upload", async (req, res) => {
+router.post("/upload", checkAuth, async (req, res) => {
     try {
-        const fileName = req.files.file.name;
-        const fileContents = req.files.file.data;
-        const img = await memberImages.put(fileName, { data: fileContents });
-        res.status(201).send(
-            "Successfully uploaded " + img + " to the Fileserver!"
-        );
-    } catch (error) {
-        res.status(400).json({ error: "Bad Request or ran out of diskspace." });
+        const fileName = req.body.file.name;
+        const fileContents = req.body.file.buffer.data;
+        const buffer = Buffer.from(new Uint8Array(fileContents));
+        const img = await memberImages.put(fileName, { data: buffer });
+        res.status(201).json({ success: true, fileName: fileName });
+    } catch (err) {
+        res.status(400).json({
+            error: "Bad Request or ran out of diskspace.",
+            msg: err.message,
+            reqContents: req.body,
+        });
     }
 });
 
@@ -55,7 +50,7 @@ router.get("/download/:name", async (req, res) => {
 });
 
 // delete file with specific name
-router.delete("/delete", async (req, res) => {
+router.delete("/delete", checkAuth, async (req, res) => {
     try {
         const name = req.body.name;
         const list = await memberImages.list();

@@ -83,6 +83,9 @@
         - [/files/upload](#filesupload)
         - [/files/download/:name](#filesdownloadname)
         - [/files/delete](#filesdelete)
+      - [/auth](#auth)
+        - [/auth/registration](#authregistration)
+        - [/auth/login](#authlogin)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -305,81 +308,84 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ## Anforderungen
 
+
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
-| :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und sind an den richtigen Ort verlinkt                                                                                        |
-| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt. Jede Komponente ist dokumentiert.                                                                                  |
+| :--------- | ----------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und sind an den richtigen Ort verlinkt                                                                                       |
+| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                             |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt. Jede Komponente ist dokumentiert.                                                                                |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
-| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet. Somit wirkt die Seite nicht monoton auf den User.                                               |
+| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                       |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet. Somit wirkt die Seite nicht monoton auf den User.                                              |
 | 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />**_(Gestaltung in Zusammenarbeit mit dem Kunden)_**                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
-| 9        | M               | funk.             | Eine Homepage ist vorhanden und sie fürht zu den jeweiligen Unterseiten.                                                                                       |
+| 9        | M               | funk.             | Eine Homepage ist vorhanden und sie fürht zu den jeweiligen Unterseiten.                                                                                      |
 | 10       | M               | funk.             | Die Webseite soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Landingpage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                       |
+| 11       | M               | qual.             | Auf der Landingpage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                      |
 | 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Landingpage vorhanden.                                                                                            |
 | 13       | M               | funk.             | Es ist auf jeder Seite eine Navigationsleiste vorhanden.                                                                                                       |
-| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Landingpage.                                                                                                                   |
+| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                               |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Landingpage.                                                                                                                 |
 | 16       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 17       | M               | funk.             | Auf der Kontaktseite sind die jeweiligen Formulare für Scrims und Bewerbungen verlinkt.                                                                        |
-| 18       | K               | qual.             | Sonstige Kontaktmethoden sind eingebaut, falls gewünscht. (kein Wunsch, Stand 01.11.2022)                                                                      |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument mit dem Antrag des Kunden) vorzufinden sein.                                                |
+| 17       | M               | funk.             | Auf der Kontaktseite sind die jeweiligen Formulare für Scrims und Bewerbungen verlinkt.                                                                       |
+| 18       | K               | qual.             | Sonstige Kontaktmethoden sind eingebaut, falls gewünscht. (kein Wunsch, Stand 01.11.2022)                                                                     |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument mit dem Antrag des Kunden) vorzufinden sein.                                              |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
 | 21       | M               | funk.             | Twitter und Discordserver (Community) von USG sind auf der Seite verlinkt.                                                                                     |
 | 22       | M               | funk.             | Ein simpler Feed in Form von einem Twitter-Embed soll vorhanden sein.                                                                                          |
-| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden. Dies wird über das Twitter-Embed ermöglicht.                                                         |
+| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden. Dies wird über das Twitter-Embed ermöglicht.                                                       |
 
 ## Testen
 
 ### Testfälle
 
-| Testf.-Nr. | Anf-Nr. | Vorbereitung                                          | Testumgebung                                              | Eingabe                                                       | Erw. Ausgabe                                                                                                                             |
-| :--------: | ------- | :---------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-|    1.1     | 1       |                                                       | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                       | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                |
-|    2.1     | 3       |                                                       | Deployte Webseite im BrowserDeployte Webseit              | Für jede Komponente überprüfen, ob Doku vorhanden ist.        | Jede Komponente ist mit einem Codeblock und einer simplen Beschreibung dokumentiert und ist ganz am Anfang dieser verlinkt (File).       |
-|    3.1     | 4       | Tool für Responsivetests oder Smartphone vorbereiten. | Deployte Webseite im Browser oder Responsive-Testing-Tool | Seite in Mobil-Ansicht öffnen.                                | Alle Komponenten passen sich so an, dass die Seite übersichtlich bleibt in der Mobilansicht.                                             |
-|    4.1     | 5       |                                                       | Lo-Fi Mockup oder Deployte Webseite im Browser            | Einem Tester den Auftrag geben ein Scrim zu beantragen.       | Auftrag soll ohne Probleme ausgeführt werden können. Der Tester darf nicht zögern oder sich beschweren.                                  |
-|    5.1     | 6       |                                                       | Deployte Webseite im Browser                              | Alle Seiten miteinander vergleichen.                          | Nicht alle Schriftarten und -grössen sind gleich. Es gibt ab und zu Unterschiede, die Sinn machen. (z.B. Überschrift, Bemerkungen, etc.) |
-|    6.1     | 7, 10   |                                                       | Deployte Webseite im Browser                              | -                                                             | Alle Seiten haben einen eher Dunklen Hintergrund und eine helle Schrift.                                                                 |
-|    7.1     | 8       |                                                       | Deployte Webseite im Browser                              | -                                                             | Die angewendete Sprache ist Deutsch.                                                                                                     |
-|    8.1     | 9       |                                                       | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird. | Auf der Homepage sind Buttons und eine Navigationsleiste vorzufinden.                                                                    |
-|    9.1     | 11      |                                                       | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird. | Es soll ein Text mit einer Begrüssung und einem Logo vorzufinden sein.                                                                   |
-|    10.1    | 12      |                                                       | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird. | Auf der Homepage soll das Motto "We are United. We are Swiss. We are Gamers." vorzufinden sein.                                          |
-|    11.1    | 13      |                                                       | Deployte Webseite im Browser                              | Jede erreichbare unterseite öffnen.                           | Es muss überall eine Navigationsleiste haben.                                                                                            |
-|    12.1    | 14      |                                                       | Deployte Webseite im Browser                              | -                                                             | Es sind mindestens die Buttons "Über Uns", "Unser Team" und "Kontakt" in der Navigationsleiste vorhanden.                                |
-|    13.1    | 15      |                                                       | Deployte Webseite im Browser                              | Logo in der Navigationsleiste anklicken.                      | Der Nutzer wird wieder auf die Landingpage gebracht.                                                                                     |
-|    14.1    | 16      |                                                       | Deployte Webseite im Browser                              | Formular auf Kontaktseite ausfüllen und daten Absenden.       | Testdaten wurden erfolgreich abgeschickt.                                                                                                |
-|    15.1    | 17      |                                                       | Deployte Webseite im Browser                              | Buttons auf der Kontaktseite anklicken.                       | Es öffnet sich je eine Seite mit entsprechendem Formular.                                                                                |
-|    16.1    | 19      |                                                       | Deployte Webseite im Browser                              | Über-Uns-Seite öffnen.                                        | Auf der Über-Uns-Seite ist das bereitgestellte Zitat eingefügt.                                                                          |
-|    17.1    | 20      |                                                       | Deployte Webseite im Browser                              | Unser-Team-Seite öffnen und über eine beliebige Karte hovern. | Auf der Rückseite dieser Karte sind Name und Stelle im Team der entsprechenden Person vorzufinden.                                       |
-|    18.1    | 21      |                                                       | Deployte Webseite im Browser                              | Feed und Über-Uns öffnen.                                     | Twitter ist im Feed eingebettet und ein Einladungslink zum Discordserver ist unter Über-Uns hinterlegt.                                  |
-|    19.1    | 22, 23  |                                                       | Deployte Webseite im Browser                              | Feed öffnen.                                                  | Twitter-Embed mit den aktuellen Tweets wird angezeigt.                                                                                   |
+
+| Testf.-Nr. | Anf-Nr. | Vorbereitung                                           | Testumgebung                                              | Eingabe                                                         | Erw. Ausgabe                                                                                                                               |
+| :----------: | --------- | :------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+|    1.1    | 1       |                                                        | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                         | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                  |
+|    2.1    | 3       |                                                        | Deployte Webseite im BrowserDeployte Webseit              | Für jede Komponente überprüfen, ob Doku vorhanden ist.       | Jede Komponente ist mit einem Codeblock und einer simplen Beschreibung dokumentiert und ist ganz am Anfang dieser verlinkt (File).         |
+|    3.1    | 4       | Tool für Responsivetests oder Smartphone vorbereiten. | Deployte Webseite im Browser oder Responsive-Testing-Tool | Seite in Mobil-Ansicht öffnen.                                 | Alle Komponenten passen sich so an, dass die Seite übersichtlich bleibt in der Mobilansicht.                                              |
+|    4.1    | 5       |                                                        | Lo-Fi Mockup oder Deployte Webseite im Browser            | Einem Tester den Auftrag geben ein Scrim zu beantragen.         | Auftrag soll ohne Probleme ausgeführt werden können. Der Tester darf nicht zögern oder sich beschweren.                                 |
+|    5.1    | 6       |                                                        | Deployte Webseite im Browser                              | Alle Seiten miteinander vergleichen.                            | Nicht alle Schriftarten und -grössen sind gleich. Es gibt ab und zu Unterschiede, die Sinn machen. (z.B. Überschrift, Bemerkungen, etc.) |
+|    6.1    | 7, 10   |                                                        | Deployte Webseite im Browser                              | -                                                               | Alle Seiten haben einen eher Dunklen Hintergrund und eine helle Schrift.                                                                   |
+|    7.1    | 8       |                                                        | Deployte Webseite im Browser                              | -                                                               | Die angewendete Sprache ist Deutsch.                                                                                                       |
+|    8.1    | 9       |                                                        | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird.   | Auf der Homepage sind Buttons und eine Navigationsleiste vorzufinden.                                                                      |
+|    9.1    | 11      |                                                        | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird.   | Es soll ein Text mit einer Begrüssung und einem Logo vorzufinden sein.                                                                    |
+|    10.1    | 12      |                                                        | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird.   | Auf der Homepage soll das Motto "We are United. We are Swiss. We are Gamers." vorzufinden sein.                                            |
+|    11.1    | 13      |                                                        | Deployte Webseite im Browser                              | Jede erreichbare unterseite öffnen.                            | Es muss überall eine Navigationsleiste haben.                                                                                             |
+|    12.1    | 14      |                                                        | Deployte Webseite im Browser                              | -                                                               | Es sind mindestens die Buttons "Über Uns", "Unser Team" und "Kontakt" in der Navigationsleiste vorhanden.                                 |
+|    13.1    | 15      |                                                        | Deployte Webseite im Browser                              | Logo in der Navigationsleiste anklicken.                        | Der Nutzer wird wieder auf die Landingpage gebracht.                                                                                       |
+|    14.1    | 16      |                                                        | Deployte Webseite im Browser                              | Formular auf Kontaktseite ausfüllen und daten Absenden.        | Testdaten wurden erfolgreich abgeschickt.                                                                                                  |
+|    15.1    | 17      |                                                        | Deployte Webseite im Browser                              | Buttons auf der Kontaktseite anklicken.                         | Es öffnet sich je eine Seite mit entsprechendem Formular.                                                                                 |
+|    16.1    | 19      |                                                        | Deployte Webseite im Browser                              | Über-Uns-Seite öffnen.                                        | Auf der Über-Uns-Seite ist das bereitgestellte Zitat eingefügt.                                                                          |
+|    17.1    | 20      |                                                        | Deployte Webseite im Browser                              | Unser-Team-Seite öffnen und über eine beliebige Karte hovern. | Auf der Rückseite dieser Karte sind Name und Stelle im Team der entsprechenden Person vorzufinden.                                        |
+|    18.1    | 21      |                                                        | Deployte Webseite im Browser                              | Feed und Über-Uns öffnen.                                     | Twitter ist im Feed eingebettet und ein Einladungslink zum Discordserver ist unter Über-Uns hinterlegt.                                   |
+|    19.1    | 22, 23  |                                                        | Deployte Webseite im Browser                              | Feed öffnen.                                                   | Twitter-Embed mit den aktuellen Tweets wird angezeigt.                                                                                     |
 
 ### Testprotokoll
 
-| Testf.-Nr. | Bericht                                 | Tester            |
-| ---------- | :-------------------------------------- | :---------------- |
-| 1.1        | OK                                      | @h0peRL, @m_naray |
-| 2.1        | N/OK, es fehlt Team.tsx.                | @h0peRL, @m_naray |
-| 3.1        | N/OK, Responsive nicht vorhanden.       | @h0peRL, @m_naray |
-| 4.1        | OK                                      | @h0peRL, @m_naray |
+
+| Testf.-Nr. | Bericht                                  | Tester            |
+| ------------ | :----------------------------------------- | :------------------ |
+| 1.1        | OK                                       | @h0peRL, @m_naray |
+| 2.1        | N/OK, es fehlt Team.tsx.                 | @h0peRL, @m_naray |
+| 3.1        | N/OK, Responsive nicht vorhanden.        | @h0peRL, @m_naray |
+| 4.1        | OK                                       | @h0peRL, @m_naray |
 | 5.1        | teilweise OK, überall der geliche Font. | @h0peRL, @m_naray |
-| 6.1        | OK                                      | @h0peRL, @m_naray |
-| 7.1        | OK                                      | @h0peRL, @m_naray |
-| 8.1        | OK                                      | @h0peRL, @m_naray |
-| 9.1        | OK                                      | @h0peRL, @m_naray |
-| 10.1       | OK                                      | @h0peRL, @m_naray |
-| 11.1       | OK                                      | @h0peRL, @m_naray |
-| 12.1       | OK                                      | @h0peRL, @m_naray |
-| 13.1       | OK                                      | @h0peRL, @m_naray |
-| 14.1       | OK                                      | @h0peRL, @m_naray |
-| 15.1       | OK                                      | @h0peRL, @m_naray |
-| 16.1       | OK                                      | @h0peRL, @m_naray |
-| 17.1       | OK                                      | @h0peRL, @m_naray |
-| 18.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
-| 19.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
+| 6.1        | OK                                       | @h0peRL, @m_naray |
+| 7.1        | OK                                       | @h0peRL, @m_naray |
+| 8.1        | OK                                       | @h0peRL, @m_naray |
+| 9.1        | OK                                       | @h0peRL, @m_naray |
+| 10.1       | OK                                       | @h0peRL, @m_naray |
+| 11.1       | OK                                       | @h0peRL, @m_naray |
+| 12.1       | OK                                       | @h0peRL, @m_naray |
+| 13.1       | OK                                       | @h0peRL, @m_naray |
+| 14.1       | OK                                       | @h0peRL, @m_naray |
+| 15.1       | OK                                       | @h0peRL, @m_naray |
+| 16.1       | OK                                       | @h0peRL, @m_naray |
+| 17.1       | OK                                       | @h0peRL, @m_naray |
+| 18.1       | OK (Braucht lange zum laden)             | @h0peRL, @m_naray |
+| 19.1       | OK (Braucht lange zum laden)             | @h0peRL, @m_naray |
 
 ### Testbericht / Fazit
 
@@ -548,6 +554,7 @@ export default Feed;
 [TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
 
 #### NavLinks.tsx
+
 ```ts
 import { Link } from "react-router-dom";
 import logo from "../../logos/cropped_logo.png";
@@ -561,7 +568,7 @@ function NavLinks() {
                       divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
                       child:child:px-2 child:child:rounded child:child:text-center
                       child:child-hover:bg-white child:child-hover:text-black
-             
+       
              child:child:transition-all child:child:duration-200 "
       >
         <Link to="/">
@@ -596,9 +603,11 @@ function NavLinks() {
 
 export default NavLinks;
 ```
+
 [NavLinks.tsx](../usg-website/src/pages/components/NavLinks.tsx) ist zuständig für die Verlinkung der Seiten der Navleiste. Diese Komponente wurde erstellt um das Responsivedesign der Webpage zu realisieren.
 
 #### NavLinksBurger.tsx
+
 ```ts
 import { Link } from "react-router-dom";
 import logo from "../../logos/cropped_logo.png";
@@ -644,6 +653,7 @@ function NavLinksBurger() {
 
 export default NavLinksBurger;
 ```
+
 [NavLinksBurger.tsx](../usg-website/src/pages/components/NavLinksBurger.tsx) ist zuständig für die Verlinkung der Seiten der Burger-Navleiste. Diese Komponente wurde erstellt um das Responsivedesign der Webpage zu realisieren. Sie unterscheidet sich hauptsächlich im CSS zu der normalen [NavLinks.tsx](../usg-website/src/pages/components/NavLinks.tsx). Diese Navlinks sind nur für die Anzeige von kleineren Screens zuständig.
 
 #### Navbar.tsx
@@ -1307,20 +1317,21 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 
 ### Anforderungen
 
+
 | Anf.-Nr. | Muss/Kann | funk./qual. | Beschreibung                                                                         |
-| -------- | --------- | ----------- | ------------------------------------------------------------------------------------ |
+| ---------- | ----------- | ------------- | -------------------------------------------------------------------------------------- |
 | 1        | Muss      | funk.       | Ein funktionales Loginsystem muss vorhanden sein                                     |
 | 2        | Muss      | funk.       | Datenbank mit Nutzern muss vorhanden sein                                            |
 | 3        | Muss      | funk.       | Nutzer sollen eine Rollen haben                                                      |
 | 4        | Muss      | funk.       | Ein GUI zur Bearbeitung der Daten soll vorhanden sein                                |
-| 5        | Muss      | funk.       | Nur Administratoren können dieses GUI bedienen                                       |
-| 6        | Muss      | funk.       | Mit dem GUI kann man neue Teammitglieder hinzufügen                                  |
+| 5        | Muss      | funk.       | Nur Administratoren können dieses GUI bedienen                                      |
+| 6        | Muss      | funk.       | Mit dem GUI kann man neue Teammitglieder hinzufügen                                 |
 | 7        | Muss      | qual.       | Die Daten der Teammitglieder sollen per GUI bearbeitbar sein                         |
-| 8        | Muss      | funk.       | Man soll mit dem GUI einzelne Teammitglieder löschen können                          |
-| 9        | Muss      | funk.       | Es muss eine Datenbank vorhanden sein, die über die API zugänglich ist.              |
+| 8        | Muss      | funk.       | Man soll mit dem GUI einzelne Teammitglieder löschen können                        |
+| 9        | Muss      | funk.       | Es muss eine Datenbank vorhanden sein, die über die API zugänglich ist.            |
 | 10       | Muss      | funk.       | Das Frontend soll Daten aus dieser DB fetchen und sie in die Seite einbauen (mappen) |
 | 11       | Kann      | qual.       | Es sind keine statische Daten mehr im Frontend. (z.B. Anzahl Mitglieder)             |
-| 12       | Muss      | funk.       | Die Login-Datenbank ist nur für den Express-Server zugänglich. (mit API-Key)         |
+| 12       | Muss      | funk.       | Die Login-Datenbank ist nur für den Express-Server zugänglich. (mit API-Key)       |
 | 13       | Kann      | qual.       | Das Frontend soll neu ein Mobile-View haben (responsive)                             |
 | 14       | Muss      | qual.       | Die Teammitglieder sollen Bilder anstatt Logos auf den Karten bekommen               |
 | 15       | Kann      | qual.       | Alles Lorem Ipsum Text wird ersetzt.                                                 |
@@ -1330,24 +1341,25 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 
 #### Testfälle
 
-| Tetf.-Nr. | Anf.-Nr.  | Vorbereitung                                          | Testumgebung                            | Eingabe                                          | Erw. Ausgabe                                                                           |
-| --------- | --------- | ----------------------------------------------------- | --------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| 1.1       | 1, 9      | Testnutzer auf DB erstellt                            | Loginseite                              | Logindaten                                       | Nutzer wird eingeloggt                                                                 |
-| 2.1       | 2, 9      | Testnutzer auf DB erstellt                            | API-Testumgebung (z.B. Postman)         | Get-Request für alle Nutzer                      | Array mit Nutzern wird zurückgegeben von der API                                       |
-| 3.1       | 3, 9      | Testnutzer auf DB erstellt mit Rolle                  | API-Testumgebung (z.B. Postman)         | Get-Request für spezifischen Nutzer              | Nutzer mit detaillierten Daten wird ausgegeben (keine Personendaten)                   |
-| 4.1       | 4, 9      | Admin auf DB erstellt und eingeloggt                  | Adminzone auf der Seite                 | -                                                | GUI wird angezeigt                                                                     |
-| 5.1       | 5         | Nicht anmelden                                        | Webseite                                | Adminzone aufrufen                               | keine Berechtigung oder 404                                                            |
-| 6.1       | 6, 9      | Admin auf DB erstellt und eingeloggt                  | Adminzone, Mitgliederverwaltung         | Daten eingeben und Teammitglied hinzufügen       | Mitglieder erscheint auf der Unser-Team Seite                                          |
-| 7.1       | 7, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied bearbeiten                              | Änderungen erscheinen auf der Unser-Team Seite                                         |
-| 8.1       | 8, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied entfernen/löschen                       | Mitglied verschwindet von der Unser-Team Seite                                         |
-| 9.1       | 10, 9     | Datenbank & API existieren                            | Webseite                                | Unser-Team Seite öffnen                          | Alle Mitglieder erscheinen                                                             |
-| 9.2       | 9, 10, 11 | Datenbank & API existieren                            | Webseite                                | Über Uns Seite öffnen                            | Anzahl Mitglieder unter dem Text stimmt immer.                                         |
-| 10.1      | 12        | Login-DB existiert                                    | API-Testumgebung (z.B. Postman)         | ohne Schlüssel die DB direkt abfragen (ohne API) | keine Berechtigung oder 404                                                            |
-| 10.2      | 12        | Login-DB existiert und Express-API ist funktionsfähig | API-Testumgebung (z.B. Postman)         | GET auf /login-access Pfad der API               | "true" für Zugriff, "false" für keinen Zugriff                                         |
-| 11.1      | 13        |                                                       | Mobiltelefon (oder Emulator im Browser) | Seite öffnen                                     | Alles ist gut lesbar. Nichts ist überlappend und nichts hat falsche Seitenverhältnisse |
-| 12.1      | 14        |                                                       | Webseite                                | Unser-Team öffnen                                | Bilder erscheinen anstatt Logos auf den Karten.                                        |
-| 13.1      | 15        |                                                       | Webseite                                | Webseite öffnen und jeden Text anschauen         | Kein Lorem Ipsum vorhanden                                                             |
-| 14.1      | 16        | Fileserver in der Cloud ist vorhanden                 | API-Testumgebung (z.B. Postman)         | GET für Bild von einem Teammitglied              | Entsprechendes Bild wird zurückgegeben.                                                |
+
+| Tetf.-Nr. | Anf.-Nr.  | Vorbereitung                                           | Testumgebung                            | Eingabe                                           | Erw. Ausgabe                                                                             |
+| ----------- | ----------- | -------------------------------------------------------- | ----------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| 1.1       | 1, 9      | Testnutzer auf DB erstellt                             | Loginseite                              | Logindaten                                        | Nutzer wird eingeloggt                                                                   |
+| 2.1       | 2, 9      | Testnutzer auf DB erstellt                             | API-Testumgebung (z.B. Postman)         | Get-Request für alle Nutzer                      | Array mit Nutzern wird zurückgegeben von der API                                        |
+| 3.1       | 3, 9      | Testnutzer auf DB erstellt mit Rolle                   | API-Testumgebung (z.B. Postman)         | Get-Request für spezifischen Nutzer              | Nutzer mit detaillierten Daten wird ausgegeben (keine Personendaten)                     |
+| 4.1       | 4, 9      | Admin auf DB erstellt und eingeloggt                   | Adminzone auf der Seite                 | -                                                 | GUI wird angezeigt                                                                       |
+| 5.1       | 5         | Nicht anmelden                                         | Webseite                                | Adminzone aufrufen                                | keine Berechtigung oder 404                                                              |
+| 6.1       | 6, 9      | Admin auf DB erstellt und eingeloggt                   | Adminzone, Mitgliederverwaltung         | Daten eingeben und Teammitglied hinzufügen       | Mitglieder erscheint auf der Unser-Team Seite                                            |
+| 7.1       | 7, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied bearbeiten                               | Änderungen erscheinen auf der Unser-Team Seite                                          |
+| 8.1       | 8, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied entfernen/löschen                       | Mitglied verschwindet von der Unser-Team Seite                                           |
+| 9.1       | 10, 9     | Datenbank & API existieren                             | Webseite                                | Unser-Team Seite öffnen                          | Alle Mitglieder erscheinen                                                               |
+| 9.2       | 9, 10, 11 | Datenbank & API existieren                             | Webseite                                | Über Uns Seite öffnen                           | Anzahl Mitglieder unter dem Text stimmt immer.                                           |
+| 10.1      | 12        | Login-DB existiert                                     | API-Testumgebung (z.B. Postman)         | ohne Schlüssel die DB direkt abfragen (ohne API) | keine Berechtigung oder 404                                                              |
+| 10.2      | 12        | Login-DB existiert und Express-API ist funktionsfähig | API-Testumgebung (z.B. Postman)         | GET auf /login-access Pfad der API                | "true" für Zugriff, "false" für keinen Zugriff                                         |
+| 11.1      | 13        |                                                        | Mobiltelefon (oder Emulator im Browser) | Seite öffnen                                     | Alles ist gut lesbar. Nichts ist überlappend und nichts hat falsche Seitenverhältnisse |
+| 12.1      | 14        |                                                        | Webseite                                | Unser-Team öffnen                                | Bilder erscheinen anstatt Logos auf den Karten.                                          |
+| 13.1      | 15        |                                                        | Webseite                                | Webseite öffnen und jeden Text anschauen         | Kein Lorem Ipsum vorhanden                                                               |
+| 14.1      | 16        | Fileserver in der Cloud ist vorhanden                  | API-Testumgebung (z.B. Postman)         | GET für Bild von einem Teammitglied              | Entsprechendes Bild wird zurückgegeben.                                                 |
 
 ### Einführung Deta
 
@@ -1400,15 +1412,13 @@ _Doku ist noch zu führen._
 
 `DELETE` nimmt einen einfachen Key als string im JSON-Format entgegen und löscht den entsprechenden Eintrag. Es wird immer `null` zurückgegeben.
 
-##### [/members/:key](../api-server/routes/members.js)
+##### /members/:key
 
 `GET` sucht in der Datenbank nach dem Objekt mit dem Key, der über `req.params.key` in der URL durchgegeben wird. Falls es dieses Objekt gibt, wird es per Response an den Client geschickt, sonst wird ein Error mit dem Statuscode 404 zurückgegeben.
 
-#### /files
+#### [/files](../api-server/routes/files.js)
 
 ##### /files/upload
-
-`GET` gibt ein temporäres Forms für den Upload von Files zurück. Das File wird beim Submitten per POST-Request an den Server geschickt.
 
 `POST` nimmt das File im Anhang der Request und ladet es auf den Fileserver in der Cloud.
 
@@ -1421,6 +1431,24 @@ _Doku ist noch zu führen._
 ##### /files/delete
 
 `DELETE` löscht das File mit dem angegebenen `name` im body. Falls kein solches File gefunden wird, gibt der Server einen 404 Code zurück.
+
+#### [/auth](../api-server/routes/auth.js)
+
+##### /auth/registration
+
+`POST` nimmt im Body `username` und `password` an und fügt dann nach folgendem Prinzip einen Nutzer der Datenbank hinzu:
+
+Zuerst wird nachgeschaut, ob dieser Nutzername schon existiert. Wenn dies der Fall ist, wird der Statuscode 409 zurückgegeben. Sobald Man einen validen Nutzernamen eingibt, wird dieser als unique Key für den Datensatz des Nutzers verwendet. Danach wird das Passwort mit [argon2](https://www.npmjs.com/package/argon2) gehasht und so gespeichert. Die Datenbank beinhaltet keine Passwörter in Klartext. Es wird zusätzlich ein "isApproved" Attribut zu "false" gesetzt, damit nicht jeder einfach ein Adminkonto erstellen kann. Dieser Wert muss zuerst von Hand in der Datenbank zu "true" geändert werden, bevor sich der neue Nutzer einloggen kann.
+
+##### /auth/login
+
+`POST` nimmt auf dieser Route im Body `username` und `password` an und sucht zuerst in der Datenbank nach dem Nutzer mit dem angegebenen Nutzernamen.
+
+Wenn der Nutzer nicht gefunden wird, gibt der Server einen Statuscode von 401 zurück. Wenn der Nutzer existiert, wird als nächstes geschaut, ob er überhaupt schon approved wurde, indem das "isApproved" Attribut kontrolliert wird. Falls dies nicht der Fall ist wird ein Statuscode von 403 zurückgegeben.
+
+Wenn der Nutzer existiert und approved ist, kontrolliert der Server mit [argon2](https://www.npmjs.com/package/argon2), ob der Hashwert des Passworts mit dem in der Datenbank gespeicherten Hash überinstimmt. Wenn das wahr ist, erstellt der Server eine Session und schickt die SessionID per Cookie an den Client mit. Wenn das Passwort falsch ist, bekommt der Client einen Statuscode von 401 zurück.
+
+Damit bei jeder Request, welche Daten verändern würde, geprüft werden kann, ob sich der Nutzer schon eingeloggt hat, speichern wir bei einem erfolgreichen Login den Nutzernamen und `authenticated = true` in einer Session auf dem Server. Bei solchen Requests überprüft die Middleware [checkAuth](../api-server/middleware/checkAuth.js), ob der Nutzer schon `authenticated` ist. Wenn das nicht der Fall ist, wird ein Statuscode von 401 zurückgeschickt und die Request abgebrochen. Wenn es aber der Fall ist, fahrt der Server ganz normal mit der Requestbearbeitung fort.
 
 ## Rechtliches
 
