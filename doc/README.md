@@ -83,6 +83,9 @@
         - [/files/upload](#filesupload)
         - [/files/download/:name](#filesdownloadname)
         - [/files/delete](#filesdelete)
+      - [/auth](#auth)
+        - [/auth/registration](#authregistration)
+        - [/auth/login](#authlogin)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -565,7 +568,7 @@ function NavLinks() {
                       divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
                       child:child:px-2 child:child:rounded child:child:text-center
                       child:child-hover:bg-white child:child-hover:text-black
-           
+       
              child:child:transition-all child:child:duration-200 "
       >
         <Link to="/">
@@ -1409,11 +1412,11 @@ _Doku ist noch zu führen._
 
 `DELETE` nimmt einen einfachen Key als string im JSON-Format entgegen und löscht den entsprechenden Eintrag. Es wird immer `null` zurückgegeben.
 
-##### [/members/:key](../api-server/routes/members.js)
+##### /members/:key
 
 `GET` sucht in der Datenbank nach dem Objekt mit dem Key, der über `req.params.key` in der URL durchgegeben wird. Falls es dieses Objekt gibt, wird es per Response an den Client geschickt, sonst wird ein Error mit dem Statuscode 404 zurückgegeben.
 
-#### /files
+#### [/files](../api-server/routes/files.js)
 
 ##### /files/upload
 
@@ -1428,6 +1431,24 @@ _Doku ist noch zu führen._
 ##### /files/delete
 
 `DELETE` löscht das File mit dem angegebenen `name` im body. Falls kein solches File gefunden wird, gibt der Server einen 404 Code zurück.
+
+#### [/auth](../api-server/routes/auth.js)
+
+##### /auth/registration
+
+`POST` nimmt im Body `username` und `password` an und fügt dann nach folgendem Prinzip einen Nutzer der Datenbank hinzu:
+
+Zuerst wird nachgeschaut, ob dieser Nutzername schon existiert. Wenn dies der Fall ist, wird der Statuscode 409 zurückgegeben. Sobald Man einen validen Nutzernamen eingibt, wird dieser als unique Key für den Datensatz des Nutzers verwendet. Danach wird das Passwort mit [argon2](https://www.npmjs.com/package/argon2) gehasht und so gespeichert. Die Datenbank beinhaltet keine Passwörter in Klartext. Es wird zusätzlich ein "isApproved" Attribut zu "false" gesetzt, damit nicht jeder einfach ein Adminkonto erstellen kann. Dieser Wert muss zuerst von Hand in der Datenbank zu "true" geändert werden, bevor sich der neue Nutzer einloggen kann.
+
+##### /auth/login
+
+`POST` nimmt auf dieser Route im Body `username` und `password` an und sucht zuerst in der Datenbank nach dem Nutzer mit dem angegebenen Nutzernamen.
+
+Wenn der Nutzer nicht gefunden wird, gibt der Server einen Statuscode von 401 zurück. Wenn der Nutzer existiert, wird als nächstes geschaut, ob er überhaupt schon approved wurde, indem das "isApproved" Attribut kontrolliert wird. Falls dies nicht der Fall ist wird ein Statuscode von 403 zurückgegeben.
+
+Wenn der Nutzer existiert und approved ist, kontrolliert der Server mit [argon2](https://www.npmjs.com/package/argon2), ob der Hashwert des Passworts mit dem in der Datenbank gespeicherten Hash überinstimmt. Wenn das wahr ist, erstellt der Server eine Session und schickt die SessionID per Cookie an den Client mit. Wenn das Passwort falsch ist, bekommt der Client einen Statuscode von 401 zurück.
+
+Damit bei jeder Request, welche Daten verändern würde, geprüft werden kann, ob sich der Nutzer schon eingeloggt hat, speichern wir bei einem erfolgreichen Login den Nutzernamen und `authenticated = true` in einer Session auf dem Server. Bei solchen Requests überprüft die Middleware [checkAuth](../api-server/middleware/checkAuth.js), ob der Nutzer schon `authenticated` ist. Wenn das nicht der Fall ist, wird ein Statuscode von 401 zurückgeschickt und die Request abgebrochen. Wenn es aber der Fall ist, fahrt der Server ganz normal mit der Requestbearbeitung fort.
 
 ## Rechtliches
 
