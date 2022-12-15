@@ -1,7 +1,6 @@
 const express = require("express");
 const { Deta } = require("deta");
 const argon2 = require("argon2");
-const { rawListeners } = require("..");
 const router = express.Router();
 
 // deta
