@@ -1,6 +1,7 @@
 const express = require("express");
 const { Deta } = require("deta");
 const router = express.Router();
+const { checkAuth } = require("../middleware/checkAuth");
 
 // deta
 const deta = Deta();
@@ -38,7 +39,7 @@ router.get("/:key", async (req, res) => {
 });
 
 // insert new object into DB
-router.post("/", async (req, res) => {
+router.post("/", checkAuth, async (req, res) => {
     try {
         const { name, funktionIG, teamrolle, comment, imgPath } = req.body;
         const toCreate = { name, funktionIG, teamrolle, comment, imgPath };
@@ -50,7 +51,7 @@ router.post("/", async (req, res) => {
 });
 
 // alter exisiting object in DB
-router.put("/", async (req, res) => {
+router.put("/", checkAuth, async (req, res) => {
     try {
         const { key, name, funktionIG, teamrolle, comment, imgPath } = req.body;
         const toAlter = await membersDB.update(
@@ -70,7 +71,7 @@ router.put("/", async (req, res) => {
 });
 
 // delete object in DB by string
-router.delete("/", async (req, res) => {
+router.delete("/", checkAuth, async (req, res) => {
     try {
         const key = req.body.key;
         const toDelete = await membersDB.delete(key);
