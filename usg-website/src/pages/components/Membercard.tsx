@@ -62,7 +62,7 @@ function Membercard(source: membercard) {
 
   useEffect(() => {
     getMemberImage(source.img);
-  })
+  }, [])
 
   return (
     <div className="flip-card m-10 rounded">

@@ -64,7 +64,7 @@ function AdminlistItem(source: adminListItem) {
 
     useEffect(() => {
         getMemberImage(source.img);
-    })
+    }, [])
 
     return (
         <div className='flex flex-row justify-between h-72 bg-slate-700 border border-slate-400 rounded-xl p-8 mb-5
