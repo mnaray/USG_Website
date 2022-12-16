@@ -73,6 +73,7 @@
     - [Testen](#testen-1)
       - [Testfälle](#testfälle-1)
       - [Testprotokoll](#testprotokoll-1)
+      - [Testbericht / Fazit](#testbericht--fazit-1)
     - [Einführung Deta](#einführung-deta)
       - [CLI \& Features](#cli--features)
     - [Express Router](#express-router)
@@ -1379,6 +1380,11 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 | 12.1       | OK                                           | @h0peRL, @mnaray |
 | 13.1       | OK                                           | @h0peRL, @mnaray |
 | 14.1       | OK (Bufferinhalt)                            | @h0peRL, @mnaray |
+
+#### Testbericht / Fazit
+
+Es wurden praktisch alle Anforderungen bis zum 16.12.22 umgesetzt, ausser das Login.  
+Das Login hat Probleme mit Cookies, da diese nicht über CORS übertragen werden können. Dieser Bug muss noch vor dem nächsten Deploy gefixt werden.
 
 ### Einführung Deta
 
