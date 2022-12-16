@@ -33,8 +33,8 @@ function Login() {
         try {
             const responseJson: authResponse = await response.json();
             if (responseJson.success) {
-                sessionStorage.setItem('loggedIn', 'true');
-                navigate("/admin")
+                // sessionStorage.setItem('loggedIn', 'true');
+                // navigate("/admin")
             } else {
                 console.log(responseJson)
             }

@@ -10,8 +10,8 @@ const app = express();
 app.use(express.json()); // !!| ESSENTIAL FOR req |!!
 app.use(
     cors({
-        credentials: true,
-        origin: ["http://localhost:3000", "https://usginfo.ch"],
+        // credentials: true,
+        // origin: ["http://localhost:3000", "https://usginfo.ch"],
     })
 ); // Cors
 app.use(upload()); // Fileupload
@@ -22,6 +22,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
+            httpOnly: false, // Cookies were a bad idea for CORS . . .
             sameSite: "none",
             secure: true,
             maxAge: 900000, // should be 15min (900'000ms) in prod
