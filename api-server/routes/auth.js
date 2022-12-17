@@ -64,7 +64,7 @@ router.post("/login", async (req, res) => {
             const token = jwt.sign(
                 { username: uname }, // payload
                 process.env.SESSION_SECRET, // private key
-                { expiresIn: "900000s" } // expiration after 15min
+                { expiresIn: "900s" } // expiration after 15min
             );
             res.status(200).json({ success: true, token });
         } else {
