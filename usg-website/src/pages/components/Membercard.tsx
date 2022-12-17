@@ -52,7 +52,7 @@ function Membercard(source: membercard) {
 
     try {
       const responseJson: filesResponse = await response.json();
-      const arrayBuffer: ArrayBuffer = await bufferToArrayBuffer(responseJson.data);
+      const arrayBuffer: ArrayBuffer = bufferToArrayBuffer(responseJson.data);
       const base64: string = await arrayBufferToBase64(arrayBuffer);
       setMemberImage(base64);
     } catch (err) {
@@ -62,7 +62,7 @@ function Membercard(source: membercard) {
 
   useEffect(() => {
     getMemberImage(source.img);
-  }, [])
+  })
 
   return (
     <div className="flip-card m-10 rounded">
