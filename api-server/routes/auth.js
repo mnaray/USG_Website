@@ -2,6 +2,7 @@ const express = require("express");
 const { Deta } = require("deta");
 const argon2 = require("argon2");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 // deta
 const deta = Deta();
@@ -60,14 +61,15 @@ router.post("/login", async (req, res) => {
         }
 
         if (await argon2.verify(existing.passwordHash, pswd)) {
-            req.session.authenticated = true;
-            req.session.user = uname;
-            res.json({
-                success: true,
-            });
+            const token = jwt.sign(
+                { username: uname }, // payload
+                process.env.SESSION_SECRET, // private key
+                { expiresIn: "900000s" } // expiration after 15min
+            );
+            res.status(200).json({ success: true, token });
         } else {
             res.status(401).json({
-                error: "Wrong password!",
+                error: "Wrong Credentials!",
                 success: false,
             });
         }
