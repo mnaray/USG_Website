@@ -14,6 +14,7 @@ import Registerpage from './Registerpage';
 import Adminbereich from './Adminbereich';
 import Bearbeiten from './Bearbeiten';
 import Hinzufuegen from './Hinzufuegen';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 function Router() {
     return (
@@ -31,10 +32,12 @@ function Router() {
                     <Route path="unser-team" element={<Team />} />
                     <Route path="login" element={<Loginpage />} />
                     <Route path="register" element={<Registerpage />} />
-                    <Route path="admin"> {/*Muss noch geschützt werden!!!*/}
-                        <Route index element={<Adminbereich />} />
-                        <Route path='bearbeiten' element={<Bearbeiten />} />
-                        <Route path='hinzufuegen' element={<Hinzufuegen />} />
+                    <Route element={<ProtectedRoutes />} >
+                        <Route path="admin"> {/*Muss noch geschützt werden!!!*/}
+                            <Route index element={<Adminbereich />} />
+                            <Route path='bearbeiten' element={<Bearbeiten />} />
+                            <Route path='hinzufuegen' element={<Hinzufuegen />} />
+                        </Route>
                     </Route>
                     <Route path='*' element={<PageNotFound />} />
                 </Route>

@@ -4,6 +4,7 @@ import Button from "./Button"
 
 interface authResponse {
     error?: string;
+    token?: string;
     success: boolean;
 }
 
@@ -19,7 +20,6 @@ function Login() {
         const response = await fetch("https://api.usginfo.ch/auth/login", {
             mode: "cors",
             method: "POST",
-            credentials: 'include',
             headers: {
                 "Content-Type": "application/json",
             },
@@ -31,9 +31,9 @@ function Login() {
 
         try {
             const responseJson: authResponse = await response.json();
-            if (responseJson.success) {
-                // sessionStorage.setItem('loggedIn', 'true');
-                // navigate("/admin")
+            if (responseJson.success && responseJson.token) {
+                sessionStorage.setItem('token', responseJson.token);
+                navigate("/admin")
             } else {
                 console.log(responseJson)
             }
