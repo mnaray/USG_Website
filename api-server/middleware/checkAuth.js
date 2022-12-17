@@ -17,6 +17,6 @@ exports.checkAuth = async function checkAuth(req, res, next) {
         // continue processing the request if authorized
         next();
     } catch (err) {
-        res.json({ error: err.message });
+        res.status(401).json({ error: err.message });
     }
 };
