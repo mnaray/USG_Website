@@ -21,6 +21,7 @@ function Bearbeiten() {
 
     const getMemberData = async () => {
         const response = await fetch("https://api.usginfo.ch/members/" + key, {
+            mode: "cors",
             method: "GET"
         });
 

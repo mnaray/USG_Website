@@ -43,6 +43,7 @@ function Membercard(source: membercard) {
     if (path.trim() === "") return;
 
     const response = await fetch("https://api.usginfo.ch/files/download/" + path, {
+      mode: "cors",
       method: "GET"
     })
 
