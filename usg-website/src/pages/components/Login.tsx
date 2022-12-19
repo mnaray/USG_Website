@@ -11,8 +11,9 @@ interface authResponse {
 function Login() {
     const navigate = useNavigate();
 
-    const [uname, setUname] = useState("");
-    const [pswd, setPswd] = useState("");
+    const [uname, setUname] = useState<string>("");
+    const [pswd, setPswd] = useState<string>("");
+    const [wrongLoginMsg, setWrongLoginMsg] = useState<string>("");
 
     const submitLogin = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -33,12 +34,12 @@ function Login() {
             const responseJson: authResponse = await response.json();
             if (responseJson.success && responseJson.token) {
                 sessionStorage.setItem('token', responseJson.token);
-                navigate("/admin")
+                navigate("/admin");
             } else {
-                console.log(responseJson)
+                setWrongLoginMsg("Passwort oder Nutzername ungültig!");
             }
-        } catch (err) {
-            console.error(err)
+        } catch (err: any) {
+            console.error(err.msg);
         }
     }
 
@@ -65,6 +66,7 @@ function Login() {
                 />
                 <button type="submit" className='bg-gray-900 p-2 rounded'>Submit</button>
             </form>
+            <p className="text-red-600">{wrongLoginMsg}</p>
             <div className="flex flex-row mt-5 items-center">
                 <p className="m-5">Kein Konto?</p>
                 <Button text="Registrieren" destination="../register" />
