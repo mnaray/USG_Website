@@ -1,47 +1,44 @@
-import React, { ChangeEvent, FormEvent } from "react";
+import React, { FormEvent } from "react";
 import Button from "./Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SubmitButton from "./SubmitButton";
 
 function Register() {
-  const [pwloginbefore, setpwloginbefore] = useState<string>("");
-  const [pwagainbefore, setpwagainbefore] = useState<string>("");
   const navigate = useNavigate();
 
-  // setpwloginbefore((document.getElementById("pw-login") as HTMLInputElement).value)
-  // setpwagainbefore((document.getElementById("pw-again-login") as HTMLInputElement).value)
-
-  // const pwlogin = (document.getElementById("pw-login") as HTMLInputElement).value
-  // const pwagain = (document.getElementById("pw-again-login") as HTMLInputElement).value
-
-  const changeHandler = async (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setpwloginbefore(
-      (document.getElementById("pw-login") as HTMLInputElement).value
-    );
-    setpwagainbefore(
-      (document.getElementById("pw-again-login") as HTMLInputElement).value
-    );
-  };
+  const [uname, setUname] = useState<string>("");
+  const [pw, setPw] = useState<string>("");
+  const [pwAgain, setPwAgain] = useState<string>("");
+  const [badCredMsg, setBadCredMsg] = useState<string>("");
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (pwloginbefore !== pwagainbefore) {
-      console.log("Passwort stimmt nicht überein");
-      alert("Passwort stimmt nicht überein");
+
+    if (!verifyInputs()) return;
+    addUser();
+  };
+
+  const verifyInputs = () => {
+    class InvalidLoginData {
+      msg: string;
+      name: string;
+
+      constructor(msg: string) {
+        this.msg = msg;
+        this.name = 'Invalid Login Data';
+      }
     }
-    if (pwloginbefore === pwagainbefore) {
-      console.log("Passwort stimmt überein");
-      addUser();
-    }
-    if (pwloginbefore.length < 8) {
-      alert("mind 8 Zeichen");
-    }
-    if (pwagainbefore.length <= 8) {
-      alert("mind 8 Zeichen");
-    }
-    if (pwloginbefore.search(/[@~`!#$%^&*()-+=-{}[]|:;"'<$>,.?]/) === -1) {
-      alert("No Special Number");
+
+    try {
+      if (uname.length < 1) throw new InvalidLoginData('Bitte Nutzernamen eingeben.');
+      if (pw.length < 8) throw new InvalidLoginData('Bitte mind. 8 Zeichen fürs Passwort eingeben.');
+      if (pw.search(/[@~`!#$%^&*()-+=-{}[]|:;"'<$>,.?]/) === -1) throw new InvalidLoginData('Kein Sonderzeichen im Passwort');
+      if (pwAgain !== pw) throw new InvalidLoginData('Passwörter stimmen nicht überein!');
+      return true;
+    } catch (err: any) {
+      alert(err.msg);
+      return false;
     }
   };
 
@@ -53,65 +50,60 @@ function Register() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: (document.getElementById("username") as HTMLInputElement)
-          .value,
-        password: pwloginbefore,
+        username: uname,
+        password: pw
       }),
     });
 
     try {
       const responseJson = await response.json();
       if (responseJson.success) {
+        alert(`WICHTIG: Es wurde ein Nutzer mit dem Nutzernamen ${uname} erstellt. ` +
+          `Dieser muss vor dem ersten Login noch von einem Administrator bewilligt werden. ` +
+          `Bitte Kontaktiere einen Administrator, damit dies geschehen kann.`)
         navigate("/login");
+      } else {
+        setBadCredMsg("Es gab einen Fehler bei der Registration.")
       }
-    } catch (err) {}
+    } catch (err: any) {
+      console.error(err.message);
+    }
   };
+
   return (
     <div className="">
       <form className="flex flex-col items-center " onSubmit={submitHandler}>
-        <label htmlFor="name">Username: </label>
+        <label htmlFor="name">Nutzername:</label>
         <input
           type="text"
           name="username"
           className="text-neutral-800 m-2 p-2 bg-slate-500 rounded"
           id="username"
-          placeholder="username"
-          required
-          minLength={4}
+          placeholder="Nutzername"
+          onChange={(e) => setUname(e.target.value)}
         />
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="password">Passwort:</label>
         <input
           type="password"
           id="pw-login"
           className="text-neutral-800 m-2 p-2 bg-slate-500 rounded"
           name="password"
-          placeholder="password"
-          defaultValue={pwloginbefore}
-          onChange={changeHandler}
+          placeholder="Passwort"
+          onChange={(e) => setPw(e.target.value)}
         />
         <input
           type="password"
           id="pw-again-login"
           className="text-neutral-800 m-2 p-2 bg-slate-500 rounded"
           name="passwordagain"
-          placeholder="password wiederholen"
-          required
-          defaultValue={pwagainbefore}
-          onChange={changeHandler}
+          placeholder="Passwort bestätigen"
+          onChange={(e) => setPwAgain(e.target.value)}
         />
-        <button
-          type="submit"
-          onSubmit={function (e) {
-            e.preventDefault();
-            return false;
-          }}
-          className="bg-gray-900 p-2 rounded"
-        >
-          Submit
-        </button>
+        <SubmitButton redirect={false} >Registrieren</SubmitButton>
       </form>
-      <p className="m-5">
-        Breits ein Konto? <Button text="Anmelden" destination="/login" />
+      <p className="text-red-600">{badCredMsg}</p>
+      <p className="mt-5">
+        Breits ein Konto? <Button text="Login" destination="/login" />
       </p>
     </div>
   );

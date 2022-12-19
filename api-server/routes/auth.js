@@ -46,21 +46,17 @@ router.post("/login", async (req, res) => {
         const pswd = req.body.password;
 
         const existing = await loginDB.get(uname);
-        if (existing === null) {
+        if (!existing) {
             res.status(401).json({
                 error: "Didn't find user with this username.",
                 success: false,
             });
-        }
-
-        if (existing.isApproved === false) {
+        } else if (existing.isApproved === false) {
             res.status(403).json({
                 error: "Action fobidden. Contact an administrator for approval.",
                 success: false,
             });
-        }
-
-        if (await argon2.verify(existing.passwordHash, pswd)) {
+        } else if (await argon2.verify(existing.passwordHash, pswd)) {
             const token = jwt.sign(
                 { username: uname }, // payload
                 process.env.SESSION_SECRET, // private key
@@ -74,7 +70,9 @@ router.post("/login", async (req, res) => {
             });
         }
     } catch (error) {
-        res.status(503).json({ error: "Database Error" });
+        res.status(503).json({
+            error: "Database Error",
+        });
     }
 });
 

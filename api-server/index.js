@@ -5,12 +5,7 @@ const cors = require("cors");
 // express
 const app = express();
 app.use(express.json()); // !!| ESSENTIAL FOR req |!!
-app.use(
-    cors({
-        // credentials: true,
-        // origin: ["http://localhost:3000", "https://usginfo.ch"],
-    })
-); // Cors
+app.use(cors()); // Cors
 app.use(upload()); // Fileupload
 app.disable("etag"); // disables automatic caching
 

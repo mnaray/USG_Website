@@ -12,7 +12,12 @@ exports.checkAuth = async function checkAuth(req, res, next) {
 
         // check if user exists
         const existing = await loginDB.get(jwtData.username);
-        if (existing === null) throw new Error();
+        if (existing === null) throw new Error("No such user found");
+
+        // check approval
+        if (!existing.isApproved) {
+            throw new Error("No approval for this action");
+        }
 
         // continue processing the request if authorized
         next();

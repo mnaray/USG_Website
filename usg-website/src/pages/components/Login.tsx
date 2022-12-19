@@ -1,6 +1,7 @@
-import React, { FormEvent, useState } from "react"
+import React, { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button"
+import Button from "./Button";
+import SubmitButton from "./SubmitButton";
 
 interface authResponse {
     error?: string;
@@ -11,11 +12,14 @@ interface authResponse {
 function Login() {
     const navigate = useNavigate();
 
-    const [uname, setUname] = useState("");
-    const [pswd, setPswd] = useState("");
+    const [uname, setUname] = useState<string>("");
+    const [pswd, setPswd] = useState<string>("");
+    const [wrongLoginMsg, setWrongLoginMsg] = useState<string>("");
 
     const submitLogin = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if (!verifyInputs()) return;
 
         const response = await fetch("https://api.usginfo.ch/auth/login", {
             mode: "cors",
@@ -33,38 +37,64 @@ function Login() {
             const responseJson: authResponse = await response.json();
             if (responseJson.success && responseJson.token) {
                 sessionStorage.setItem('token', responseJson.token);
-                navigate("/admin")
+                navigate("/admin");
             } else {
-                console.log(responseJson)
+                if (response.status === 403) {
+                    setWrongLoginMsg("Noch nicht bewilligt. Bitte einen Administrator kontaktieren!");
+                } else {
+                    setWrongLoginMsg("Passwort oder Nutzername ungültig!");
+                }
             }
-        } catch (err) {
-            console.error(err)
+        } catch (err: any) {
+            console.error(err.msg);
         }
     }
 
+    const verifyInputs = () => {
+        class InvalidLoginData {
+            msg: string;
+            name: string;
+
+            constructor(msg: string) {
+                this.msg = msg;
+                this.name = 'Invalid Login Data';
+            }
+        }
+
+        try {
+            if (uname.length < 1) throw new InvalidLoginData("Bitte Nutzernamen eingeben!")
+            if (pswd.length < 1) throw new InvalidLoginData("Bitte Passwort eingeben!");
+            return true;
+        } catch (err: any) {
+            alert(err.msg);
+            return false;
+        }
+    };
+
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center">
             <form className='flex flex-col items-center' onSubmit={submitLogin}>
-                <label htmlFor="name">Username: </label>
+                <label htmlFor="name">Nutzername: </label>
                 <input
                     type="text"
                     id="username"
                     name="username"
-                    placeholder='Username'
+                    placeholder='Nutzername'
                     onChange={(e) => setUname(e.target.value)}
                     className='text-neutral-800 m-2 p-2 bg-slate-500 rounded'
                 />
-                <label htmlFor="password">Password: </label>
+                <label htmlFor="password">Passwort: </label>
                 <input
                     type="password"
                     id="password"
-                    name='Password'
+                    name='Passwort'
                     placeholder='password'
                     onChange={(e) => setPswd(e.target.value)}
                     className='text-neutral-800 m-2 p-2 bg-slate-500 rounded'
                 />
-                <button type="submit" className='bg-gray-900 p-2 rounded'>Submit</button>
+                <SubmitButton redirect={false} >Login</SubmitButton>
             </form>
+            <p className="text-red-600">{wrongLoginMsg}</p>
             <div className="flex flex-row mt-5 items-center">
                 <p className="m-5">Kein Konto?</p>
                 <Button text="Registrieren" destination="../register" />
