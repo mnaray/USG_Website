@@ -2,6 +2,7 @@ import React, { FormEvent } from "react";
 import Button from "./Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SubmitButton from "./SubmitButton";
 
 function Register() {
   const navigate = useNavigate();
@@ -57,6 +58,9 @@ function Register() {
     try {
       const responseJson = await response.json();
       if (responseJson.success) {
+        alert(`WICHTIG: Es wurde ein Nutzer mit dem Nutzernamen ${uname} erstellt. ` +
+          `Dieser muss vor dem ersten Login noch von einem Administrator bewilligt werden. ` +
+          `Bitte Kontaktiere einen Administrator, damit dies geschehen kann.`)
         navigate("/login");
       } else {
         setBadCredMsg("Es gab einen Fehler bei der Registration.")
@@ -69,22 +73,22 @@ function Register() {
   return (
     <div className="">
       <form className="flex flex-col items-center " onSubmit={submitHandler}>
-        <label htmlFor="name">Username: </label>
+        <label htmlFor="name">Nutzername:</label>
         <input
           type="text"
           name="username"
           className="text-neutral-800 m-2 p-2 bg-slate-500 rounded"
           id="username"
-          placeholder="username"
+          placeholder="Nutzername"
           onChange={(e) => setUname(e.target.value)}
         />
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="password">Passwort:</label>
         <input
           type="password"
           id="pw-login"
           className="text-neutral-800 m-2 p-2 bg-slate-500 rounded"
           name="password"
-          placeholder="password"
+          placeholder="Passwort"
           onChange={(e) => setPw(e.target.value)}
         />
         <input
@@ -92,17 +96,14 @@ function Register() {
           id="pw-again-login"
           className="text-neutral-800 m-2 p-2 bg-slate-500 rounded"
           name="passwordagain"
-          placeholder="password wiederholen"
+          placeholder="Passwort bestätigen"
           onChange={(e) => setPwAgain(e.target.value)}
         />
-        <button
-          type="submit" className="bg-gray-900 p-2 rounded" >
-          Submit
-        </button>
+        <SubmitButton redirect={false} >Registrieren</SubmitButton>
       </form>
       <p className="text-red-600">{badCredMsg}</p>
       <p className="mt-5">
-        Breits ein Konto? <Button text="Anmelden" destination="/login" />
+        Breits ein Konto? <Button text="Login" destination="/login" />
       </p>
     </div>
   );

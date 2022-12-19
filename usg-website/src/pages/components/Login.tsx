@@ -1,6 +1,7 @@
-import React, { FormEvent, useState } from "react"
+import React, { FormEvent, useState } from "react";
 import { unstable_HistoryRouter, useNavigate } from "react-router-dom";
-import Button from "./Button"
+import Button from "./Button";
+import SubmitButton from "./SubmitButton";
 
 interface authResponse {
     error?: string;
@@ -38,7 +39,11 @@ function Login() {
                 sessionStorage.setItem('token', responseJson.token);
                 navigate("/admin");
             } else {
-                setWrongLoginMsg("Passwort oder Nutzername ungültig!");
+                if (response.status == 403) {
+                    setWrongLoginMsg("Noch nicht bewilligt. Bitte einen Administrator kontaktieren!");
+                } else {
+                    setWrongLoginMsg("Passwort oder Nutzername ungültig!");
+                }
             }
         } catch (err: any) {
             console.error(err.msg);
@@ -69,25 +74,25 @@ function Login() {
     return (
         <div className="flex flex-col">
             <form className='flex flex-col items-center' onSubmit={submitLogin}>
-                <label htmlFor="name">Username: </label>
+                <label htmlFor="name">Nutzername: </label>
                 <input
                     type="text"
                     id="username"
                     name="username"
-                    placeholder='Username'
+                    placeholder='Nutzername'
                     onChange={(e) => setUname(e.target.value)}
                     className='text-neutral-800 m-2 p-2 bg-slate-500 rounded'
                 />
-                <label htmlFor="password">Password: </label>
+                <label htmlFor="password">Passwort: </label>
                 <input
                     type="password"
                     id="password"
-                    name='Password'
+                    name='Passwort'
                     placeholder='password'
                     onChange={(e) => setPswd(e.target.value)}
                     className='text-neutral-800 m-2 p-2 bg-slate-500 rounded'
                 />
-                <button type="submit" className='bg-gray-900 p-2 rounded'>Submit</button>
+                <SubmitButton redirect={false} >Login</SubmitButton>
             </form>
             <p className="text-red-600">{wrongLoginMsg}</p>
             <div className="flex flex-row mt-5 items-center">

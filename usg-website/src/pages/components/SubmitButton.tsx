@@ -18,7 +18,7 @@ function SubmitButton(props: submitButton) {
             type="submit"
             value={props.children}
             onClick={redirectUser}
-            className='bg-blue-600 rounded-md w-1/2 p-1 text-lg hover:bg-blue-200
+            className='bg-blue-600 rounded-md w-fit py-1 px-3 text-lg hover:bg-blue-200
                     hover:text-black transition-all duration-200'
         />
     )
