@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import { unstable_HistoryRouter, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import SubmitButton from "./SubmitButton";
 
@@ -39,7 +39,7 @@ function Login() {
                 sessionStorage.setItem('token', responseJson.token);
                 navigate("/admin");
             } else {
-                if (response.status == 403) {
+                if (response.status === 403) {
                     setWrongLoginMsg("Noch nicht bewilligt. Bitte einen Administrator kontaktieren!");
                 } else {
                     setWrongLoginMsg("Passwort oder Nutzername ungültig!");
