@@ -18,6 +18,7 @@ function DeleteButton(props: toDelete) {
 
     const deleteMember = async () => {
         const response = await fetch("https://api.usginfo.ch/members", {
+            mode: "cors",
             method: "DELETE",
             headers: {
                 "Authorization": "Bearer " + authToken,

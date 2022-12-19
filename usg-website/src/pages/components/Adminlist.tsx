@@ -28,6 +28,7 @@ function Adminlist() {
 
     const getPeopleData = async () => {
         const response = await fetch("https://api.usginfo.ch/members", {
+            mode: "cors",
             method: "GET"
         });
 

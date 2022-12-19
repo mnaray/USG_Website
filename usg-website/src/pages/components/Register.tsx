@@ -44,6 +44,7 @@ function Register() {
 
   const addUser = async () => {
     const response = await fetch("https://api.usginfo.ch/auth/registration", {
+      mode: "cors",
       method: "POST",
       headers: {
         Accept: "application/json",

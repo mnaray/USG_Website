@@ -37,6 +37,7 @@ function InputForm(props: inputFormat) {
         const commentValue = (document.getElementById("Kommentar") as HTMLInputElement).value;
 
         const response = await fetch("https://api.usginfo.ch/members", {
+            mode: "cors",
             method: props.method,
             headers: {
                 "Authorization": "Bearer " + authToken,
@@ -77,6 +78,7 @@ function InputForm(props: inputFormat) {
         const dataBuffer = await (file as File).arrayBuffer()
 
         const response = await fetch("https://api.usginfo.ch/files/upload", {
+            mode: "cors",
             method: "POST",
             headers: {
                 "Authorization": "Bearer " + authToken,
@@ -102,6 +104,7 @@ function InputForm(props: inputFormat) {
 
     const updateImgPath = async (fileName: string) => {
         const response = await fetch("https://api.usginfo.ch/members", {
+            mode: "cors",
             method: "PUT",
             headers: {
                 "Authorization": "Bearer " + authToken,
