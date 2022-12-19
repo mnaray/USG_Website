@@ -72,7 +72,7 @@ function Login() {
     };
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center">
             <form className='flex flex-col items-center' onSubmit={submitLogin}>
                 <label htmlFor="name">Nutzername: </label>
                 <input
