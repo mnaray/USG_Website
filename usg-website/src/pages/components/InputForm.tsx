@@ -25,6 +25,7 @@ interface uploadResponse {
 
 function InputForm(props: inputFormat) {
 
+    const authToken = sessionStorage.getItem("token");
     const [status, setStatus] = useState<string[]>(["color-white", "Noch keine Änderungen vorgenommen,"])
 
     const submitData = async (event: FormEvent<HTMLFormElement>) => {
@@ -35,10 +36,10 @@ function InputForm(props: inputFormat) {
         const teamrolleValue = (document.getElementById("Teamrolle") as HTMLInputElement).value;
         const commentValue = (document.getElementById("Kommentar") as HTMLInputElement).value;
 
-
         const response = await fetch("https://api.usginfo.ch/members", {
             method: props.method,
             headers: {
+                "Authorization": "Bearer " + authToken,
                 "Accept": "application/json",
                 "Content-Type": "application/json",
             },
@@ -78,6 +79,7 @@ function InputForm(props: inputFormat) {
         const response = await fetch("https://api.usginfo.ch/files/upload", {
             method: "POST",
             headers: {
+                "Authorization": "Bearer " + authToken,
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
@@ -102,6 +104,7 @@ function InputForm(props: inputFormat) {
         const response = await fetch("https://api.usginfo.ch/members", {
             method: "PUT",
             headers: {
+                "Authorization": "Bearer " + authToken,
                 "Accept": "application/json",
                 "Content-Type": "application/json",
             },

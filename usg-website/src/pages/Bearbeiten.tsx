@@ -34,7 +34,8 @@ function Bearbeiten() {
 
     useEffect(() => {
         getMemberData();
-    })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <main>

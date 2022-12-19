@@ -7,7 +7,7 @@ interface toDelete {
 }
 
 function DeleteButton(props: toDelete) {
-
+    const authToken = sessionStorage.getItem("token");
     const navigate = useNavigate();
 
     const clickHandler = (event: MouseEvent<HTMLButtonElement>) => {
@@ -20,6 +20,7 @@ function DeleteButton(props: toDelete) {
         const response = await fetch("https://api.usginfo.ch/members", {
             method: "DELETE",
             headers: {
+                "Authorization": "Bearer " + authToken,
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
