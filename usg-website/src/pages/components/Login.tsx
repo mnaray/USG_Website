@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { unstable_HistoryRouter, useNavigate } from "react-router-dom";
 import Button from "./Button"
 
 interface authResponse {
@@ -17,6 +17,8 @@ function Login() {
 
     const submitLogin = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if (!verifyInputs()) return;
 
         const response = await fetch("https://api.usginfo.ch/auth/login", {
             mode: "cors",
@@ -42,6 +44,27 @@ function Login() {
             console.error(err.msg);
         }
     }
+
+    const verifyInputs = () => {
+        class InvalidLoginData {
+            msg: string;
+            name: string;
+
+            constructor(msg: string) {
+                this.msg = msg;
+                this.name = 'Invalid Login Data';
+            }
+        }
+
+        try {
+            if (uname.length < 1) throw new InvalidLoginData("Bitte Nutzernamen eingeben!")
+            if (pswd.length < 1) throw new InvalidLoginData("Bitte Passwort eingeben!");
+            return true;
+        } catch (err: any) {
+            alert(err.msg);
+            return false;
+        }
+    };
 
     return (
         <div className="flex flex-col">
