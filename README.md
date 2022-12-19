@@ -3,6 +3,7 @@
 ## Dokumentation
 
 Eine genaue Dokumentation des Projekts ist [hier](./doc/README.md) zu finden.
+> DISCLAIMER: Die Doku ist zur Zeit nicht bei jeder Komponente im Frontend aktuell!
 
 ## Kontributionen
 
