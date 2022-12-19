@@ -34,7 +34,7 @@ function Bearbeiten() {
 
     useEffect(() => {
         getMemberData();
-    }, [key])
+    }, [])
 
     return (
         <main>
