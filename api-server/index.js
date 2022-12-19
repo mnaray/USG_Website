@@ -1,6 +1,5 @@
 const express = require("express");
 const upload = require("express-fileupload");
-const { Deta } = require("deta");
 const cors = require("cors");
 
 // express
