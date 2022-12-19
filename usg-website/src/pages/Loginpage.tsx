@@ -1,10 +1,12 @@
 import React from 'react';
 import Login from './components/Login';
+import Logout from './components/Logout';
 
 function Loginpage() {
+    let authToken = sessionStorage.getItem("token");
     return (
         <main>
-            <Login />
+            {authToken ? <Logout /> : <Login />}
         </main>
     );
 }
