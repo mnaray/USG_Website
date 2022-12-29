@@ -3,7 +3,7 @@
 ### Inhaltsverzeichnis
 
 - [USG Homepage Docs](#usg-homepage-docs)
-  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [IPERKA](#iperka)
     - [Informieren](#informieren)
     - [Planen](#planen)
@@ -1432,7 +1432,7 @@ _Doku ist noch zu führen._
 }
 ```
 
-`PUT` updatet mit der [update Methode von Deta](https://docs.deta.sh/docs/base/sdk#update) einen Eintrag in der Datenbank. Dazu nimmt es folgendes JSON-Format an. Wenn alles richtig lauft, wird `null` als Response geschickt.
+`PUT` updatet mit der [update Methode von Deta](https://docs.deta.sh/docs/base/sdk#update) einen Eintrag in der Datenbank. Dazu nimmt es folgendes JSON-Format an. Wenn alles richtig lauft, wird `null` als Response zurückgeschickt.
 
 ```json
 {
@@ -1472,7 +1472,7 @@ _Doku ist noch zu führen._
 
 `POST` nimmt im Body `username` und `password` an und fügt dann nach folgendem Prinzip einen Nutzer der Datenbank hinzu:
 
-Zuerst wird nachgeschaut, ob dieser Nutzername schon existiert. Wenn dies der Fall ist, wird der Statuscode 409 zurückgegeben. Sobald Man einen validen Nutzernamen eingibt, wird dieser als unique Key für den Datensatz des Nutzers verwendet. Danach wird das Passwort mit [argon2](https://www.npmjs.com/package/argon2) gehasht und so gespeichert. Die Datenbank beinhaltet keine Passwörter in Klartext. Es wird zusätzlich ein "isApproved" Attribut zu "false" gesetzt, damit nicht jeder einfach ein Adminkonto erstellen kann. Dieser Wert muss zuerst von Hand in der Datenbank zu "true" geändert werden, bevor sich der neue Nutzer einloggen kann.
+Zuerst wird nachgeschaut, ob dieser Nutzername schon existiert. Wenn dies der Fall ist, wird der Statuscode 409 zurückgegeben. Sobald Man einen validen Nutzernamen eingibt, wird dieser als unique Key für den Datensatz des Nutzers verwendet. Danach wird das Passwort mit [argon2](https://www.npmjs.com/package/argon2) gehasht und als Hash gespeichert. Die Datenbank beinhaltet keine Passwörter in Klartext. Es wird zusätzlich ein "isApproved" Attribut zu "false" gesetzt, damit nicht jeder einfach ein Adminkonto erstellen kann. Dieser Wert muss zuerst von Hand in der Datenbank zu "true" geändert werden, bevor sich der neue Nutzer einloggen kann. Das kann momentan nur jemand machen, der direkten Zugriff auf die Datenbank hat.
 
 ##### /auth/login
 
@@ -1480,9 +1480,9 @@ Zuerst wird nachgeschaut, ob dieser Nutzername schon existiert. Wenn dies der Fa
 
 Wenn der Nutzer nicht gefunden wird, gibt der Server einen Statuscode von 401 zurück. Wenn der Nutzer existiert, wird als nächstes geschaut, ob er überhaupt schon approved wurde, indem das "isApproved" Attribut kontrolliert wird. Falls dies nicht der Fall ist wird ein Statuscode von 403 zurückgegeben.
 
-Wenn der Nutzer existiert und approved ist, kontrolliert der Server mit [argon2](https://www.npmjs.com/package/argon2), ob der Hashwert des Passworts mit dem in der Datenbank gespeicherten Hash überinstimmt. Wenn das wahr ist, erstellt der Server eine Session und schickt die SessionID per Cookie an den Client mit. Wenn das Passwort falsch ist, bekommt der Client einen Statuscode von 401 zurück.
+Wenn der Nutzer existiert und approved ist, kontrolliert der Server mit [argon2](https://www.npmjs.com/package/argon2), ob der Hashwert des Passworts mit dem in der Datenbank gespeicherten Hash überinstimmt. Wenn das wahr ist, erstellt der Server eine Session und schickt einen JSON Web Token an den Nutzer. Momenatan ist es noch nicht möglich mit HTTP-Only Cookies, da wir zwei verschiedene Hosts haben für das Frontend und das Backend (Cross-Origin).
 
-Damit bei jeder Request, welche Daten verändern würde, geprüft werden kann, ob sich der Nutzer schon eingeloggt hat, speichern wir bei einem erfolgreichen Login den Nutzernamen und `authenticated = true` in einer Session auf dem Server. Bei solchen Requests überprüft die Middleware [checkAuth](../api-server/middleware/checkAuth.js), ob der Nutzer schon `authenticated` ist. Wenn das nicht der Fall ist, wird ein Statuscode von 401 zurückgeschickt und die Request abgebrochen. Wenn es aber der Fall ist, fahrt der Server ganz normal mit der Requestbearbeitung fort.
+Damit bei jeder Request, welche Daten verändern würde, geprüft werden kann, ob sich der Nutzer schon eingeloggt hat, speichern wir bei einem erfolgreichen Login den Nutzernamen im Token. Bei solchen Requests überprüft die Middleware [checkAuth](../api-server/middleware/checkAuth.js), ob der Nutzer schon einen gültigen Token hat. Wenn das nicht der Fall ist, wird ein Statuscode von 401 zurückgeschickt und die Request abgebrochen. Wenn es aber der Fall ist, fahrt der Server ganz normal mit der Requestbearbeitung fort.
 
 ## Rechtliches
 
