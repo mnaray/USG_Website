@@ -49,7 +49,10 @@
       - [Button.tsx](#buttontsx)
       - [GoogleForms.tsx](#googleformstsx)
       - [TwitterFeed](#twitterfeed)
+      - [NavLinks.tsx](#navlinkstsx)
+      - [NavLinksBurger.tsx](#navlinksburgertsx)
       - [Navbar.tsx](#navbartsx)
+      - [BurgerMenu.tsx](#burgermenutsx)
       - [Membercard.tsx](#membercardtsx)
       - [MembercardGrid.tsx](#membercardgridtsx)
       - [Willkommenstext.tsx](#willkommenstexttsx)
@@ -69,8 +72,22 @@
     - [Anforderungen](#anforderungen-1)
     - [Testen](#testen-1)
       - [Testfälle](#testfälle-1)
+      - [Testprotokoll](#testprotokoll-1)
+      - [Testbericht / Fazit](#testbericht--fazit-1)
     - [Einführung Deta](#einführung-deta)
-      - [CLI & Features](#cli--features)
+      - [CLI \& Features](#cli--features)
+    - [Express Router](#express-router)
+    - [API Routen](#api-routen)
+      - [/](#)
+      - [/members](#members)
+        - [/members/:key](#memberskey)
+      - [/files](#files)
+        - [/files/upload](#filesupload)
+        - [/files/download/:name](#filesdownloadname)
+        - [/files/delete](#filesdelete)
+      - [/auth](#auth)
+        - [/auth/registration](#authregistration)
+        - [/auth/login](#authlogin)
   - [Rechtliches](#rechtliches)
 
 ## IPERKA
@@ -100,7 +117,7 @@
 
 ### Kontrollieren
 
-- [Testen](#testen)
+- [Testen](#testen)§
 
 ### Auswerten
 
@@ -127,14 +144,17 @@
 ### Realisieren
 
 - [Kontribution](#kontribution)
+- [API Routen](#api-routen)
 
 ### Kontrollieren
 
+- [Testprotokoll](#testprotokoll-1)
+
 ### Auswerten
 
-## Einleitung
+- [Testbericht / Fazit](#testbericht--fazit-1)
 
-Die Seite soll über die Organisation und deren Mitglieder informieren und via einem Webhook für Twitter die Leser auf dem neusten Stand halten. Das Ziel ist dem Nutzer möglichst leicht, möglichst viel Übersicht zu geben. Dieser soll auch das Team kontaktieren und sich bewerben können.
+## Einleitung
 
 Die Seite ist unter [usginfo.ch](https://usginfo.ch/) erreichbar.
 
@@ -295,82 +315,82 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 
 | Anf.-Nr. | Muss/<br />Kann | funk./<br />qual. | Beschreibung                                                                                                                                                   |
-| :------- | --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und sind an den richtigen Ort verlinkt                                                                                        |
-| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                              |
-| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt. Jede Komponente ist dokumentiert.                                                                                  |
+| :--------- | ----------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | M               | funk.             | Alle Buttons sind funktionsfähig und sind an den richtigen Ort verlinkt                                                                                       |
+| 2        | M               | qual.             | Strukturierte Folderstruktur soll vorhanden sein. (übersichtlich)                                                                                             |
+| 3        | M               | qual.             | Die Dokumentation wird ausführlich geführt. Jede Komponente ist dokumentiert.                                                                                |
 | 4        | M               | funk.             | Die Seite ist responsive (Text und Bilder passen sich an den Bildschirm an)                                                                                    |
-| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                         |
-| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet. Somit wirkt die Seite nicht monoton auf den User.                                               |
+| 5        | M               | qual.             | Die Seite ist strukturiert und übersichtlich aufgebaut.<br />Der Benutzer soll nicht überfordert sein.                                                       |
+| 6        | K               | qual.             | Es wird nicht immer dieselbe Schriftgrösse und -art verwendet. Somit wirkt die Seite nicht monoton auf den User.                                              |
 | 7        | M               | qual.             | Ein Dunkles, kreatives und modernes Design ist vorhanden.<br />**_(Gestaltung in Zusammenarbeit mit dem Kunden)_**                                             |
 | 8        | M               | funk.             | Die Hauptsprache der Seite ist Deutsch.                                                                                                                        |
-| 9        | M               | funk.             | Eine Homepage ist vorhanden und sie fürht zu den jeweiligen Unterseiten.                                                                                       |
+| 9        | M               | funk.             | Eine Homepage ist vorhanden und sie fürht zu den jeweiligen Unterseiten.                                                                                      |
 | 10       | M               | funk.             | Die Webseite soll dunkel (farbe) gestaltet sein.                                                                                                               |
-| 11       | M               | qual.             | Auf der Landingpage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                       |
+| 11       | M               | qual.             | Auf der Landingpage wird der Benutzer mit einem Willkomenstext begrüsst.                                                                                      |
 | 12       | M               | qual.             | Ein Text mit dem Motto des Teams ist auf der Landingpage vorhanden.                                                                                            |
 | 13       | M               | funk.             | Es ist auf jeder Seite eine Navigationsleiste vorhanden.                                                                                                       |
-| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                                 |
-| 15       | K               | funk.             | Das Logo führt immer zurück zur Landingpage.                                                                                                                   |
+| 14       | M               | funk.             | Die Navigationsleiste hat mindestens 3 Buttons, welche<br />zum "Über uns", "Kontakt" und "Unser Team" führen.                                               |
+| 15       | K               | funk.             | Das Logo führt immer zurück zur Landingpage.                                                                                                                 |
 | 16       | M               | funk.             | Auf der Kontaktseite ist ein Kontaktformular vorhanden.                                                                                                        |
-| 17       | M               | funk.             | Auf der Kontaktseite sind die jeweiligen Formulare für Scrims und Bewerbungen verlinkt.                                                                        |
-| 18       | K               | qual.             | Sonstige Kontaktmethoden sind eingebaut, falls gewünscht. (kein Wunsch, Stand 01.11.2022)                                                                      |
-| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument mit dem Antrag des Kunden) vorzufinden sein.                                                |
+| 17       | M               | funk.             | Auf der Kontaktseite sind die jeweiligen Formulare für Scrims und Bewerbungen verlinkt.                                                                       |
+| 18       | K               | qual.             | Sonstige Kontaktmethoden sind eingebaut, falls gewünscht. (kein Wunsch, Stand 01.11.2022)                                                                     |
+| 19       | M               | funk.             | Auf der Über-Uns-Seite soll das bereitgestellte Zitat (im Dokument mit dem Antrag des Kunden) vorzufinden sein.                                              |
 | 20       | M               | funk.             | Die Teammitglieder sollen Tabular auf der Unser-Team-Seite<br />vorgestellt werden. Die Stelle im Team soll dabei auch unter <br />den Namen geschrieben sein. |
 | 21       | M               | funk.             | Twitter und Discordserver (Community) von USG sind auf der Seite verlinkt.                                                                                     |
 | 22       | M               | funk.             | Ein simpler Feed in Form von einem Twitter-Embed soll vorhanden sein.                                                                                          |
-| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden. Dies wird über das Twitter-Embed ermöglicht.                                                         |
+| 23       | M               | funk.             | Es soll auf aufkommende Scrims aufmerksam gemacht werden. Dies wird über das Twitter-Embed ermöglicht.                                                       |
 
 ## Testen
 
 ### Testfälle
 
 
-| Testf.-Nr. | Anf-Nr. | Vorbereitung                                          | Testumgebung                                              | Eingabe                                                       | Erw. Ausgabe                                                                                                                             |
-| :--------: | ------- | :---------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-|    1.1     | 1       |                                                       | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                       | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                |
-|    2.1     | 3       |                                                       | Deployte Webseite im BrowserDeployte Webseit              | Für jede Komponente überprüfen, ob Doku vorhanden ist.        | Jede Komponente ist mit einem Codeblock und einer simplen Beschreibung dokumentiert und ist ganz am Anfang dieser verlinkt (File).       |
-|    3.1     | 4       | Tool für Responsivetests oder Smartphone vorbereiten. | Deployte Webseite im Browser oder Responsive-Testing-Tool | Seite in Mobil-Ansicht öffnen.                                | Alle Komponenten passen sich so an, dass die Seite übersichtlich bleibt in der Mobilansicht.                                             |
-|    4.1     | 5       |                                                       | Lo-Fi Mockup oder Deployte Webseite im Browser            | Einem Tester den Auftrag geben ein Scrim zu beantragen.       | Auftrag soll ohne Probleme ausgeführt werden können. Der Tester darf nicht zögern oder sich beschweren.                                  |
-|    5.1     | 6       |                                                       | Deployte Webseite im Browser                              | Alle Seiten miteinander vergleichen.                          | Nicht alle Schriftarten und -grössen sind gleich. Es gibt ab und zu Unterschiede, die Sinn machen. (z.B. Überschrift, Bemerkungen, etc.) |
-|    6.1     | 7, 10   |                                                       | Deployte Webseite im Browser                              | -                                                             | Alle Seiten haben einen eher Dunklen Hintergrund und eine helle Schrift.                                                                 |
-|    7.1     | 8       |                                                       | Deployte Webseite im Browser                              | -                                                             | Die angewendete Sprache ist Deutsch.                                                                                                     |
-|    8.1     | 9       |                                                       | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird. | Auf der Homepage sind Buttons und eine Navigationsleiste vorzufinden.                                                                    |
-|    9.1     | 11      |                                                       | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird. | Es soll ein Text mit einer Begrüssung und einem Logo vorzufinden sein.                                                                   |
-|    10.1    | 12      |                                                       | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird. | Auf der Homepage soll das Motto "We are United. We are Swiss. We are Gamers." vorzufinden sein.                                          |
-|    11.1    | 13      |                                                       | Deployte Webseite im Browser                              | Jede erreichbare unterseite öffnen.                           | Es muss überall eine Navigationsleiste haben.                                                                                            |
-|    12.1    | 14      |                                                       | Deployte Webseite im Browser                              | -                                                             | Es sind mindestens die Buttons "Über Uns", "Unser Team" und "Kontakt" in der Navigationsleiste vorhanden.                                |
-|    13.1    | 15      |                                                       | Deployte Webseite im Browser                              | Logo in der Navigationsleiste anklicken.                      | Der Nutzer wird wieder auf die Landingpage gebracht.                                                                                     |
-|    14.1    | 16      |                                                       | Deployte Webseite im Browser                              | Formular auf Kontaktseite ausfüllen und daten Absenden.       | Testdaten wurden erfolgreich abgeschickt.                                                                                                |
-|    15.1    | 17      |                                                       | Deployte Webseite im Browser                              | Buttons auf der Kontaktseite anklicken.                       | Es öffnet sich je eine Seite mit entsprechendem Formular.                                                                                |
-|    16.1    | 19      |                                                       | Deployte Webseite im Browser                              | Über-Uns-Seite öffnen.                                        | Auf der Über-Uns-Seite ist das bereitgestellte Zitat eingefügt.                                                                          |
-|    17.1    | 20      |                                                       | Deployte Webseite im Browser                              | Unser-Team-Seite öffnen und über eine beliebige Karte hovern. | Auf der Rückseite dieser Karte sind Name und Stelle im Team der entsprechenden Person vorzufinden.                                       |
-|    18.1    | 21      |                                                       | Deployte Webseite im Browser                              | Feed und Über-Uns öffnen.                                     | Twitter ist im Feed eingebettet und ein Einladungslink zum Discordserver ist unter Über-Uns hinterlegt.                                  |
-|    19.1    | 22, 23  |                                                       | Deployte Webseite im Browser                              | Feed öffnen.                                                  | Twitter-Embed mit den aktuellen Tweets wird angezeigt.                                                                                   |
+| Testf.-Nr. | Anf-Nr. | Vorbereitung                                           | Testumgebung                                              | Eingabe                                                         | Erw. Ausgabe                                                                                                                               |
+| :----------: | --------- | :------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+|    1.1    | 1       |                                                        | Deployte Webseite im Browser                              | Alle Buttons anklicken.                                         | Man wird immer auf die ensprechende Seite weitergeleitet.                                                                                  |
+|    2.1    | 3       |                                                        | Deployte Webseite im BrowserDeployte Webseit              | Für jede Komponente überprüfen, ob Doku vorhanden ist.       | Jede Komponente ist mit einem Codeblock und einer simplen Beschreibung dokumentiert und ist ganz am Anfang dieser verlinkt (File).         |
+|    3.1    | 4       | Tool für Responsivetests oder Smartphone vorbereiten. | Deployte Webseite im Browser oder Responsive-Testing-Tool | Seite in Mobil-Ansicht öffnen.                                 | Alle Komponenten passen sich so an, dass die Seite übersichtlich bleibt in der Mobilansicht.                                              |
+|    4.1    | 5       |                                                        | Lo-Fi Mockup oder Deployte Webseite im Browser            | Einem Tester den Auftrag geben ein Scrim zu beantragen.         | Auftrag soll ohne Probleme ausgeführt werden können. Der Tester darf nicht zögern oder sich beschweren.                                 |
+|    5.1    | 6       |                                                        | Deployte Webseite im Browser                              | Alle Seiten miteinander vergleichen.                            | Nicht alle Schriftarten und -grössen sind gleich. Es gibt ab und zu Unterschiede, die Sinn machen. (z.B. Überschrift, Bemerkungen, etc.) |
+|    6.1    | 7, 10   |                                                        | Deployte Webseite im Browser                              | -                                                               | Alle Seiten haben einen eher Dunklen Hintergrund und eine helle Schrift.                                                                   |
+|    7.1    | 8       |                                                        | Deployte Webseite im Browser                              | -                                                               | Die angewendete Sprache ist Deutsch.                                                                                                       |
+|    8.1    | 9       |                                                        | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird.   | Auf der Homepage sind Buttons und eine Navigationsleiste vorzufinden.                                                                      |
+|    9.1    | 11      |                                                        | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird.   | Es soll ein Text mit einer Begrüssung und einem Logo vorzufinden sein.                                                                    |
+|    10.1    | 12      |                                                        | Deployte Webseite im Browser**(https://usginfo.ch/)**     | Zur Homepage wechseln, falls diese noch nicht angezeigt wird.   | Auf der Homepage soll das Motto "We are United. We are Swiss. We are Gamers." vorzufinden sein.                                            |
+|    11.1    | 13      |                                                        | Deployte Webseite im Browser                              | Jede erreichbare unterseite öffnen.                            | Es muss überall eine Navigationsleiste haben.                                                                                             |
+|    12.1    | 14      |                                                        | Deployte Webseite im Browser                              | -                                                               | Es sind mindestens die Buttons "Über Uns", "Unser Team" und "Kontakt" in der Navigationsleiste vorhanden.                                 |
+|    13.1    | 15      |                                                        | Deployte Webseite im Browser                              | Logo in der Navigationsleiste anklicken.                        | Der Nutzer wird wieder auf die Landingpage gebracht.                                                                                       |
+|    14.1    | 16      |                                                        | Deployte Webseite im Browser                              | Formular auf Kontaktseite ausfüllen und daten Absenden.        | Testdaten wurden erfolgreich abgeschickt.                                                                                                  |
+|    15.1    | 17      |                                                        | Deployte Webseite im Browser                              | Buttons auf der Kontaktseite anklicken.                         | Es öffnet sich je eine Seite mit entsprechendem Formular.                                                                                 |
+|    16.1    | 19      |                                                        | Deployte Webseite im Browser                              | Über-Uns-Seite öffnen.                                        | Auf der Über-Uns-Seite ist das bereitgestellte Zitat eingefügt.                                                                          |
+|    17.1    | 20      |                                                        | Deployte Webseite im Browser                              | Unser-Team-Seite öffnen und über eine beliebige Karte hovern. | Auf der Rückseite dieser Karte sind Name und Stelle im Team der entsprechenden Person vorzufinden.                                        |
+|    18.1    | 21      |                                                        | Deployte Webseite im Browser                              | Feed und Über-Uns öffnen.                                     | Twitter ist im Feed eingebettet und ein Einladungslink zum Discordserver ist unter Über-Uns hinterlegt.                                   |
+|    19.1    | 22, 23  |                                                        | Deployte Webseite im Browser                              | Feed öffnen.                                                   | Twitter-Embed mit den aktuellen Tweets wird angezeigt.                                                                                     |
 
 ### Testprotokoll
 
 
-| Testf.-Nr. | Bericht                                 | Tester            |
-| ---------- | :-------------------------------------- | :---------------- |
-| 1.1        | OK                                      | @h0peRL, @m_naray |
-| 2.1        | N/OK, es fehlt Team.tsx.                | @h0peRL, @m_naray |
-| 3.1        | N/OK, Responsive nicht vorhanden.       | @h0peRL, @m_naray |
-| 4.1        | OK                                      | @h0peRL, @m_naray |
+| Testf.-Nr. | Bericht                                  | Tester            |
+| ------------ | :----------------------------------------- | :------------------ |
+| 1.1        | OK                                       | @h0peRL, @m_naray |
+| 2.1        | N/OK, es fehlt Team.tsx.                 | @h0peRL, @m_naray |
+| 3.1        | N/OK, Responsive nicht vorhanden.        | @h0peRL, @m_naray |
+| 4.1        | OK                                       | @h0peRL, @m_naray |
 | 5.1        | teilweise OK, überall der geliche Font. | @h0peRL, @m_naray |
-| 6.1        | OK                                      | @h0peRL, @m_naray |
-| 7.1        | OK                                      | @h0peRL, @m_naray |
-| 8.1        | OK                                      | @h0peRL, @m_naray |
-| 9.1        | OK                                      | @h0peRL, @m_naray |
-| 10.1       | OK                                      | @h0peRL, @m_naray |
-| 11.1       | OK                                      | @h0peRL, @m_naray |
-| 12.1       | OK                                      | @h0peRL, @m_naray |
-| 13.1       | OK                                      | @h0peRL, @m_naray |
-| 14.1       | OK                                      | @h0peRL, @m_naray |
-| 15.1       | OK                                      | @h0peRL, @m_naray |
-| 16.1       | OK                                      | @h0peRL, @m_naray |
-| 17.1       | OK                                      | @h0peRL, @m_naray |
-| 18.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
-| 19.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
+| 6.1        | OK                                       | @h0peRL, @m_naray |
+| 7.1        | OK                                       | @h0peRL, @m_naray |
+| 8.1        | OK                                       | @h0peRL, @m_naray |
+| 9.1        | OK                                       | @h0peRL, @m_naray |
+| 10.1       | OK                                       | @h0peRL, @m_naray |
+| 11.1       | OK                                       | @h0peRL, @m_naray |
+| 12.1       | OK                                       | @h0peRL, @m_naray |
+| 13.1       | OK                                       | @h0peRL, @m_naray |
+| 14.1       | OK                                       | @h0peRL, @m_naray |
+| 15.1       | OK                                       | @h0peRL, @m_naray |
+| 16.1       | OK                                       | @h0peRL, @m_naray |
+| 17.1       | OK                                       | @h0peRL, @m_naray |
+| 18.1       | OK (Braucht lange zum laden)             | @h0peRL, @m_naray |
+| 19.1       | OK (Braucht lange zum laden)             | @h0peRL, @m_naray |
 
 ### Testbericht / Fazit
 
@@ -431,18 +451,17 @@ export default Slogan;
 #### Title.tsx
 
 ```ts
-import React from "react"
+import React from "react";
 
 interface TitleType {
-  children: string
+  children: string;
 }
 
 function Title(source: TitleType) {
-  return <h1 className="text-3xl pb-8">{source.children}</h1>
+  return <h1 className="text-3xl pb-8">{source.children}</h1>;
 }
 
-export default Title
-
+export default Title;
 ```
 
 [Title.tsx](../usg-website/src/pages/components/Title.tsx) ist eine kleine Komponente, welche benutzt wird, um einen einheitlichen Titel auf jeder Seite zu gestalten. Dafür muss man den gewünschten Content einfach in die Component schreiben.
@@ -492,7 +511,7 @@ function GoogleForms(source: Source) {
     <iframe
       title="Google Forms embed"
       src={source.url}
-      width="640"
+      width="360"
       height="820"
       frameBorder="0"
       marginHeight={0}
@@ -517,26 +536,129 @@ Es erleichtert unter anderem auch die Entwicklung, da wir als Entwickler kein Ba
 
 ```ts
 import React from "react";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
+import Title from "./components/Title";
+import TwitterFeed from "./components/TwitterFeed";
 
-function TwitterFeed() {
+function Feed() {
   return (
-    <>
-      <div className="w-3/5">
-        <TwitterTimelineEmbed
-          sourceType="profile"
-          screenName="usg_esports"
-          options={{ height: 2000 }}
-        />
-      </div>
-    </>
+    <main>
+      <Title>Unser Feed</Title>
+      <p className="p-12 text-2xl text-justify">
+        In unserem Feed wirst du immer auf dem laufenden gehalten, was gerade so
+        ansteht.
+      </p>
+      <TwitterFeed />
+    </main>
   );
 }
 
-export default TwitterFeed;
+export default Feed;
 ```
 
 [TwitterFeed.tsx](../usg-website/src/pages/components/TwitterFeed.tsx) ist die Komponente, die verwendet wird, um die Timeline eines Twitterprofils als Embed auf der Webseite darzustellen. Jeder Besucher kann dann direkt sehen, was aktuelles ansteht und kann auch direkt auf Twitter gehen, um mehr zu erfahren. Der Feed wird jedes mal wenn man auf dem verlinkten Account tweetet sofort aktualisiert. Um dies möglich zu machen, benutzen wir das "react-twitter-embed" Package aus dem Node Package Manager.
+
+#### NavLinks.tsx
+
+```ts
+import { Link } from "react-router-dom";
+import logo from "../../logos/cropped_logo.png";
+import Button from "./Button";
+
+function NavLinks() {
+  return (
+    <main className="bg-black">
+      <ul
+        className=" flex flex-row align-middle space-x-5 text-white text-xl
+                      divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
+                      child:child:px-2 child:child:rounded child:child:text-center
+                      child:child-hover:bg-white child:child-hover:text-black
+   
+             child:child:transition-all child:child:duration-200 "
+      >
+        <Link to="/">
+          <li>
+            <div>Home</div>
+          </li>
+        </Link>
+        <Link to="feed">
+          <li>
+            <div>Feed</div>
+          </li>
+        </Link>
+        <Link to="kontakt">
+          <li>
+            <div>Kontakt</div>
+          </li>
+        </Link>
+        <Link to="ueber-uns">
+          <li>
+            <div>Über Uns</div>
+          </li>
+        </Link>
+        <Link to="unser-team">
+          <li>
+            <div>Unser Team</div>
+          </li>
+        </Link>
+      </ul>
+    </main>
+  );
+}
+
+export default NavLinks;
+```
+
+[NavLinks.tsx](../usg-website/src/pages/components/NavLinks.tsx) ist zuständig für die Verlinkung der Seiten der Navleiste. Diese Komponente wurde erstellt um das Responsivedesign der Webpage zu realisieren.
+
+#### NavLinksBurger.tsx
+
+```ts
+import { Link } from "react-router-dom";
+import logo from "../../logos/cropped_logo.png";
+import Button from "./Button";
+
+function NavLinksBurger() {
+  return (
+    <main className="bg-black">
+      <ul
+        className="flex flex-col align-middle text-white text-xl justify-center child:pl-5 child:child:py-1 child:child:px-2 child:child:rounded child:child:text-center
+       child:child-hover:bg-white child:child-hover:text-black child:child:transition-all child:child:duration-200 child:child:child:bg-slate-500 child:child:child:rounded"
+      >
+        <Button text="Mitglied werden" destination="kontakt/bewerben" />
+        <Link to="/">
+          <li>
+            <div>Home</div>
+          </li>
+        </Link>
+        <Link to="feed">
+          <li>
+            <div>Feed</div>
+          </li>
+        </Link>
+        <Link to="kontakt">
+          <li>
+            <div>Kontakt</div>
+          </li>
+        </Link>
+        <Link to="ueber-uns">
+          <li>
+            <div>Über Uns</div>
+          </li>
+        </Link>
+        <Link to="unser-team">
+          <li>
+            <div>Unser Team</div>
+          </li>
+        </Link>
+      </ul>
+    </main>
+  );
+}
+
+export default NavLinksBurger;
+```
+
+[NavLinksBurger.tsx](../usg-website/src/pages/components/NavLinksBurger.tsx) ist zuständig für die Verlinkung der Seiten der Burger-Navleiste. Diese Komponente wurde erstellt um das Responsivedesign der Webpage zu realisieren. Sie unterscheidet sich hauptsächlich im CSS zu der normalen [NavLinks.tsx](../usg-website/src/pages/components/NavLinks.tsx). Diese Navlinks sind nur für die Anzeige von kleineren Screens zuständig.
 
 #### Navbar.tsx
 
@@ -545,10 +667,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../logos/cropped_logo.png";
 import Button from "./Button";
+import NavLinks from "./NavLinks";
 
 function Navbar() {
   return (
-    <header className="flex flex-row justify-between w-full p-5 items-center bg-black">
+    <header className="flex flex-row justify-between w-full p-5 items-center md:hidden bg-black">
       <nav className="flex flex-row justify-start items-center">
         <div className="h-20 mr-10">
           <Link to="/">
@@ -559,42 +682,19 @@ function Navbar() {
             />
           </Link>
         </div>
-        <ul
-          className="flex flex-row align-middle space-x-5 text-white text-xl
-                                divide-x-2 divide-gray-600 child:pl-5 child:child:py-1
-                                child:child:px-2 child:child:rounded child:child:text-center
-                                child:child-hover:bg-white child:child-hover:text-black
-   
-                       child:child:transition-all child:child:duration-200"
-        >
-          <Link to="/">
-            <li>
-              <div>Home</div>
-            </li>
-          </Link>
-          <Link to="feed">
-            <li>
-              <div>Feed</div>
-            </li>
-          </Link>
-          <Link to="kontakt">
-            <li>
-              <div>Kontakt</div>
-            </li>
-          </Link>
-          <Link to="ueber-uns">
-            <li>
-              <div>Über Uns</div>
-            </li>
-          </Link>
-          <Link to="unser-team">
-            <li>
-              <div>Unser Team</div>
-            </li>
-          </Link>
-        </ul>
+        <NavLinks />
       </nav>
-      <Button text="Mitglied werden" destination="kontakt/bewerben" />
+      <div className="flex flex-row">
+        <div className="m-2">
+          <Button
+            text="GitHub-Repository"
+            destination="https://github.com/mnaray/USG_Website"
+          />
+        </div>
+        <div className="m-2">
+          <Button text="Mitglied werden" destination="kontakt/bewerben" />
+        </div>
+      </div>
     </header>
   );
 }
@@ -606,37 +706,129 @@ export default Navbar;
 
 Hier ist das Styling mit Tailwind ein wenig speziell, da wir "child:" verwenden. Dafür haben wir ein kurzes Plugin in die [Tailwinds-Konfiguration](../usg-website/tailwind.config.js) geschrieben. Dies ermöglicht Childitems des momentan behandelten Containers anzusprechen. Da wir eine Liste haben, und es keinen zusätzlichen Komponenten für die Listitems gibt, ist dies sehr hilfreich und spart viel Arbeit. So können wir das ganze Styling nur ein einziges mal bei `<ul>` machen und es bezieht sich dann auf _alle_ `<li>`, welche sich drin befinden.
 
-#### Membercard.tsx
+#### BurgerMenu.tsx
 
 ```ts
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../logos/cropped_logo.png";
+import Button from "./Button";
+import { CgMenuRound } from "react-icons/cg";
+import { useState } from "react";
+import NavLinksBurger from "./NavLinksBurger";
+
+function BurgerMenu() {
+  const [open, setOpen] = useState(false);
+  return (
+    <header className="flex flex-col justify-center w-full p-5 hidden md:flex items-center bg-black">
+      <nav className="flex flex-col justify-start items-center">
+        <CgMenuRound
+          className="text-5xl text-start cursor-pointer"
+          onClick={() => setOpen(!open)}
+          color="white"
+        />
+        {open && <NavLinksBurger />}
+      </nav>
+    </header>
+  );
+}
+
+export default BurgerMenu;
+```
+
+[BurgerMenu.tsx](../usg-website/src/pages/components/BurgerMenu.tsx) ist die Navigationsleiste der Seite auf kleinen Bildschirmen. Alle grösseren Unterseiten sind durch sie erreichbar. Zusätzlich ist noch ein Knopf eingebaut, der direkt zum Bewerbungsformular führt.
+
+Hier wurde eine Funktion funktion geschrieben die es ermöglicht das Menu auszufahren, wenn das Menu-Icon betätigt wird. Wenn sich die seite öffnet ist der Standartwert false. Sobald aber das Menu geöffnet wird, wird der Wert immer umgekehrt. Das heisst wenn der Wert true ist und man nochmal auf das Menu-Icon klickt, dann wird der Wert wieder auf false gestellt.
+
+#### Membercard.tsx
+
+```ts
+import React, { useEffect, useState } from "react";
+import DefaultImage from "../../logos/USG_Logo_Transparent_PNG.png";
 
 interface membercard {
-  mbr: string;
+  img: string;
   name: string;
-  function: string;
-  about?: string;
+  funktionIG?: string;
+  teamrolle: string;
   comment?: string;
 }
 
+interface filesResponse {
+  type: string;
+  data: Buffer;
+}
+
 function Membercard(source: membercard) {
+  const [memberImage, setMemberImage] = useState<string>(DefaultImage);
+
+  const bufferToArrayBuffer = (buf: Buffer) => {
+    const ab = new ArrayBuffer(buf.length);
+    const view = new Uint8Array(ab);
+    for (let i = 0; i < buf.length; ++i) {
+      view[i] = buf[i];
+    }
+    return ab;
+  };
+
+  const arrayBufferToBase64 = async (arrayBuffer: ArrayBuffer) => {
+    return new Promise<string | any>((resolve, reject) => {
+      var blob = new Blob([arrayBuffer]);
+      var reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(blob);
+    });
+  };
+
+  const getMemberImage = async (path: string) => {
+    // unnötige Request bei leerem Pfad vermeiden
+    if (path.trim() === "") return;
+
+    const response = await fetch(
+      "https://api.usginfo.ch/files/download/" + path,
+      {
+        method: "GET",
+      }
+    );
+
+    // wenn nichts gefunden, dann die
+    // Konvertierung überspringen
+    if (response.status === 404) return;
+
+    try {
+      const responseJson: filesResponse = await response.json();
+      const arrayBuffer: ArrayBuffer = await bufferToArrayBuffer(
+        responseJson.data
+      );
+      const base64: string = await arrayBufferToBase64(arrayBuffer);
+      setMemberImage(base64);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getMemberImage(source.img);
+  });
+
   return (
     <div className="flip-card m-10 rounded">
       <div className="flip-card-inner rounded">
         <div className="flip-card-front rounded">
           <img
-            className="h-full w-full aspect-7/9"
-            src={source.mbr}
+            className="h-full w-full aspect-7/9 rounded overflow-hidden"
+            src={memberImage}
             alt={"Picture of " + source.name}
           />
           <p className="align-text-bottom text-2xl font-bold">{source.name}</p>
         </div>
         <div className="flip-card-back rounded py-5 px-3 bg-slate-700">
-          <h1 className="text-4xl">"{source.name}"</h1>
-          <p className="text-xl">{source.function}</p>
-          <p className="pt-2 font-medium">Teamrolle:</p>
-          <p className="pb-1 font-medium">{source.about}</p>
-          <p className="text-lg py-2">IG-Rolle: {source.comment}</p>
+          <h1 className="text-4xl">{source.name}</h1>
+          <p className="text-xl">{source.funktionIG}</p>
+          <p className="pt-2">Teamrolle:</p>
+          <p className="pb-1 text-lg font-medium">{source.teamrolle}</p>
+          <p className="text-lg py-2">{source.comment}</p>
         </div>
       </div>
     </div>
@@ -646,103 +838,99 @@ function Membercard(source: membercard) {
 export default Membercard;
 ```
 
-[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein Mitglied im USG-Team dar. Um einzelne Informationen wie Pseudonym, die Rolle und einen kleinen Infotext zum Mitglied zu erhalten, muss man über die Membercard des gewählten Mitglieds hovern, um diese Informationen zu erhalten.
+[Membercard.tsx](../usg-website/src/pages/components/Membercard.tsx) stellt ein einzelnes Mitglied aus dem USG-Team dar. Um die Informationen wie Pseudonym, die Rollen und einen kleinen Kommentar zum Mitglied zu erhalten, muss man über die Membercard des Mitglieds hovern damit sie sich umdreht und die Informationen präsentiert.
 
 Eine Membercard fordert folgende Properties:
 
-`mbr= {Foto.png}` Foto des Mitglieds.
+`img = "Foto [base64 oder Module]"` Foto des Mitglieds.
 
-`name= "Pseudonym"` Pseudonym des Mitglieds.
+`name = "Pseudonym"` Pseudonym des Mitglieds.
 
-`function= "Mitglied"` Rolle des Mitglieds.
+`functionIG = "Rolle"` Rolle im Spiel. (z.B. Support, Fragger, Intel, etc.)
 
-`comment= "text..."` Kommentar über das Mitglied.
+`teamrolle = "Rolle"` Rolle in der Organisation.
 
-Bei dem comment property ist noch speziell, dass es nullable(Man kann auch keinen Wert angeben) ist:
+`comment = "Kommentar"` Kommentar über das Mitglied.
+
+Beim `comment` und `functionIG` Property ist noch speziell, dass sie optional sind:
 
 ```ts
-comment?: string; // Das Fragezeichen macht das property nullable.
+comment?: string; // Ein Fragezeichen macht das property nullable.
 ```
+
+**Rendern vom Bild:**
+
+1. Zuerst wird die Komponente mit dem Logo als das `img` gerendert.
+2. Währenddessen schickt der Client eine GET-Request an den Server für das Bild mit dem Entsprechenden Pfad.
+3. Der Server schickt ein JSON mit einem Buffer (BLOB in ein Array an Uint8 aufgeteilt) zurück.
+4. Der Client verwandelt das dann mit `bufferToArrayBuffer()` wieder in einen ArrayBuffer (grundsätzlich ein Uint8 Array).
+5. Den ArrayBuffer geben wir dann durch die Funktion `arrayBufferToBase64()` und erhalten einen String an base64.
+6. Wir setzen diesen String mit `setMemberImage` als den Source für das Bild. Das DOM wird manipuliert und somit das Bild angezeigt.
 
 #### MembercardGrid.tsx
 
 ```ts
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Membercard from "./Membercard";
-import MemberFoto from "../../logos/USG_Logo_Transparent_PNG.png";
+
+interface member {
+  key: string;
+  name: string;
+  funktionIG: string;
+  teamrolle: string;
+  comment: string;
+  imgPath: string;
+}
+
+interface membersResponse {
+  items: member[];
+  count: number;
+}
 
 function MembercardGrid() {
+  const [peopleData, setPeopleData] = useState<member[]>([
+    {
+      key: "",
+      name: "Loading...",
+      funktionIG: "",
+      teamrolle: "",
+      comment: "",
+      imgPath: "",
+    },
+  ]);
+
+  const getPeopleData = async () => {
+    const response = await fetch("https://api.usginfo.ch/members", {
+      method: "GET",
+    });
+
+    try {
+      const responseJson: membersResponse = await response.json();
+      setPeopleData(responseJson.items);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getPeopleData();
+  }, []);
+
+  const cardsArray = peopleData.map((person) => {
+    return (
+      <Membercard
+        img={person.imgPath}
+        name={person.name}
+        funktionIG={person.funktionIG}
+        teamrolle={person.teamrolle}
+        comment={person.comment}
+      />
+    );
+  });
+
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-row">
-        <Membercard
-          mbr={MemberFoto}
-          name="Nikknez"
-          function="Inhaber, Teamleiter"
-          about="Leitet das Team, organisiert Trainings"
-          comment="Ingame-Leader / Support / Soft-Breach / Site-Set-Up"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="LuschenHaur"
-          function="Moderator"
-          about="Teamleiter"
-          comment="Entry-Frag / Anti-Breach"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="Evody"
-          function="Management, Informatiker, Eventleiter, Ersatzspieler"
-          about="Leitet Events, Server und programmiert für das Team."
-          comment="Entry-Frag / Hard-Breacher / Traps"
-        />
-      </div>
-      <div className="flex flex-row">
-        <Membercard
-          mbr={MemberFoto}
-          name="dissle"
-          function="Teamspieler"
-          about="Spielt für das Team als Hauptspieler."
-          comment="Hard-Breach-Support / Disruptor / Anti-Intel"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="Sky"
-          function="Teamspieler"
-          about="Spielt für das Team als Hauptspieler."
-          comment="Support / Intel-Gatherer / Roamer"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="zGruener"
-          function="Teamspieler"
-          about="Spielt für das Team als Hauptspieler."
-          comment="Support / Intel-Gatherer"
-        />
-      </div>
-      <div className="flex flex-row">
-        <Membercard
-          mbr={MemberFoto}
-          name="MIgel"
-          function="Ersatzspieler"
-          about="Spielt für das Team als Ersatzspieler."
-          comment="Shield / Disruptor"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="SemiColon"
-          function="Ersatzspieler"
-          about="Spielt für das Team als Ersatzspieler."
-          comment="Angle-Watcher / Site-Set-Up"
-        />
-        <Membercard
-          mbr={MemberFoto}
-          name="BroBrot"
-          function="Ersatzspieler"
-          about="Spielt für das Team als Ersatzspieler."
-          comment="Intel / Disruptor"
-        />
-      </div>
+    <div className="flex flex-row flex-wrap justify-evenly max-w-screen-lg px-3">
+      {cardsArray}
     </div>
   );
 }
@@ -750,7 +938,11 @@ function MembercardGrid() {
 export default MembercardGrid;
 ```
 
-[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) stellt mehrere Mitlgieder als Membercard in einer Reihe angegliedert dar. Wir stellen einfach die [Membercard.tsx](#membercardtsx) in einem Grid dar. Beim fertigstellen der Webseite vereinfacht uns [MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) die Arbeit, indem es bereits mehrere Mitglieder in einer Reihe zusammenfasst und wir somit nicht einzeln angeben müssen, dass diese in einer Reihe abgebildet werden müssen.
+[MembercardGrid.tsx](../usg-website/src/pages/components/MembercardGrid.tsx) fetcht die momentanen Mitglieder des Teams von der API und stellt diese dann tabular mit flex-wrap dar. Das macht es mehr oder weniger responsive und anpassungsfähig an die momentane Menge an Mitgliedern.
+
+Die Daten kommen von der API im Format von dem `membersResponse` Interface, welches einen Count hat und ein Array an Objekten mit dem `member` Interface. Diese Daten werden dann mit der [map-Methode von React](https://reactjs.org/docs/lists-and-keys.html) in die jeweiligen [Membercard.tsx](#membercardtsx) Komponenten als Props eingefügt. Zurück bekommen wir ein Array an [Membercard.tsx](#membercardtsx) Komponenten, die wir ganz einfach in ein `<div>` setzen.
+
+> NOTIZ: Die Bilder werden in [Membercard.tsx](#membercardtsx) gefetcht und gerendert.
 
 #### Willkommenstext.tsx
 
@@ -960,15 +1152,33 @@ Was genau ein Scrim ist, wird auch auf dieser Seite in einem Paragraphen beschri
 #### UeberUns.tsx
 
 ```ts
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./components/Button";
 
 function UeberUns() {
+  const [count, setCount] = useState<number | string>("...");
+
+  const getCount = async () => {
+    const response = await fetch("https://api.usginfo.ch/members", {
+      method: "GET",
+    });
+    try {
+      const responseJson = await response.json();
+      setCount(responseJson.count);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getCount();
+  }, []);
+
   return (
     <main>
       <div className="flex flex-col items-center w-1/3">
         <p className="justify-center text-5xl m-5">Über Uns</p>
-        <p className="py-5 justify-center text-center text-lg">
+        <p className="py-5 justify-center text-justify text-lg">
           Wir sind ein neues Schweizer E-Sport-Team, welches Rainbow Six Siege
           spielt. Wir suchen gerade aktiv nach Mitgliedern. Also falls ihr
           Interesse an einem Anfang in der E-Sportszene habt, seid ihr hier
@@ -979,8 +1189,8 @@ function UeberUns() {
           Gesucht sind Leute wie du!
         </p>
         <p className="py-3 justify-center text-center text-lg">
-          Das Team besteht derzeit aus 6 Personen. Wir suchen noch Personen aus
-          dem schweizerdeutschen Sprachraum.
+          Das Team besteht derzeit aus {count} Personen. Wir suchen noch
+          Personen aus dem schweizerdeutschen Sprachraum.
         </p>
         <div className="flex flex-column">
           <Button text="Bewirb Dich!" destination="../../../kontakt/bewerben" />
@@ -1001,23 +1211,23 @@ Zusätzlich gibt es noch zwei [Buttons](#buttontsx), welche zu den zwei Untersei
 #### Team.tsx
 
 ```ts
-import React from "react"
-import MembercardGrid from "./components/MembercardGrid"
-import Title from "./components/Title"
+import React from "react";
+import MembercardGrid from "./components/MembercardGrid";
+import Title from "./components/Title";
 
 function Team() {
   return (
     <main>
-      <Title title="Unser Team" />
+      <Title>Unser Team</Title>
       <MembercardGrid />
     </main>
-  )
+  );
 }
 
-export default Team
+export default Team;
 ```
 
-[Team.tsx](../usg-website/src/pages/Team.tsx) ist zuständig für das Zeigen vom [MembercardGrid](#membercardgridtsx).
+[Team.tsx](../usg-website/src/pages/Team.tsx) ist zuständig für das Anzeigen vom [MembercardGrid](#membercardgridtsx).
 
 ### Sonstiges / Unsichtbares
 
@@ -1116,19 +1326,19 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 
 
 | Anf.-Nr. | Muss/Kann | funk./qual. | Beschreibung                                                                         |
-| -------- | --------- | ----------- | ------------------------------------------------------------------------------------ |
+| ---------- | ----------- | ------------- | -------------------------------------------------------------------------------------- |
 | 1        | Muss      | funk.       | Ein funktionales Loginsystem muss vorhanden sein                                     |
 | 2        | Muss      | funk.       | Datenbank mit Nutzern muss vorhanden sein                                            |
 | 3        | Muss      | funk.       | Nutzer sollen eine Rollen haben                                                      |
 | 4        | Muss      | funk.       | Ein GUI zur Bearbeitung der Daten soll vorhanden sein                                |
-| 5        | Muss      | funk.       | Nur Administratoren können dieses GUI bedienen                                       |
-| 6        | Muss      | funk.       | Mit dem GUI kann man neue Teammitglieder hinzufügen                                  |
+| 5        | Muss      | funk.       | Nur Administratoren können dieses GUI bedienen                                      |
+| 6        | Muss      | funk.       | Mit dem GUI kann man neue Teammitglieder hinzufügen                                 |
 | 7        | Muss      | qual.       | Die Daten der Teammitglieder sollen per GUI bearbeitbar sein                         |
-| 8        | Muss      | funk.       | Man soll mit dem GUI einzelne Teammitglieder löschen können                          |
-| 9        | Muss      | funk.       | Es muss eine Datenbank vorhanden sein, die über die API zugänglich ist.              |
+| 8        | Muss      | funk.       | Man soll mit dem GUI einzelne Teammitglieder löschen können                        |
+| 9        | Muss      | funk.       | Es muss eine Datenbank vorhanden sein, die über die API zugänglich ist.            |
 | 10       | Muss      | funk.       | Das Frontend soll Daten aus dieser DB fetchen und sie in die Seite einbauen (mappen) |
 | 11       | Kann      | qual.       | Es sind keine statische Daten mehr im Frontend. (z.B. Anzahl Mitglieder)             |
-| 12       | Muss      | funk.       | Die Login-Datenbank ist nur für den Express-Server zugänglich. (mit API-Key)         |
+| 12       | Muss      | funk.       | Die Login-Datenbank ist nur für den Express-Server zugänglich. (mit API-Key)       |
 | 13       | Kann      | qual.       | Das Frontend soll neu ein Mobile-View haben (responsive)                             |
 | 14       | Muss      | qual.       | Die Teammitglieder sollen Bilder anstatt Logos auf den Karten bekommen               |
 | 15       | Kann      | qual.       | Alles Lorem Ipsum Text wird ersetzt.                                                 |
@@ -1139,24 +1349,51 @@ Eine Routenkomponente braucht einen `path="Pfad"` und ein `element={tsx-Komponen
 #### Testfälle
 
 
-| Tetf.-Nr. | Anf.-Nr.  | Vorbereitung                                          | Testumgebung                            | Eingabe                                          | Erw. Ausgabe                                                                           |
-| --------- | --------- | ----------------------------------------------------- | --------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| 1.1       | 1, 9      | Testnutzer auf DB erstellt                            | Loginseite                              | Logindaten                                       | Nutzer wird eingeloggt                                                                 |
-| 2.1       | 2, 9      | Testnutzer auf DB erstellt                            | API-Testumgebung (z.B. Postman)         | Get-Request für alle Nutzer                      | Array mit Nutzern wird zurückgegeben von der API                                       |
-| 3.1       | 3, 9      | Testnutzer auf DB erstellt mit Rolle                  | API-Testumgebung (z.B. Postman)         | Get-Request für spezifischen Nutzer              | Nutzer mit detaillierten Daten wird ausgegeben (keine Personendaten)                   |
-| 4.1       | 4, 9      | Admin auf DB erstellt und eingeloggt                  | Adminzone auf der Seite                 | -                                                | GUI wird angezeigt                                                                     |
-| 5.1       | 5         | Nicht anmelden                                        | Webseite                                | Adminzone aufrufen                               | keine Berechtigung oder 404                                                            |
-| 6.1       | 6, 9      | Admin auf DB erstellt und eingeloggt                  | Adminzone, Mitgliederverwaltung         | Daten eingeben und Teammitglied hinzufügen       | Mitglieder erscheint auf der Unser-Team Seite                                          |
-| 7.1       | 7, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied bearbeiten                              | Änderungen erscheinen auf der Unser-Team Seite                                         |
-| 8.1       | 8, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied entfernen/löschen                       | Mitglied verschwindet von der Unser-Team Seite                                         |
-| 9.1       | 10, 9     | Datenbank & API existieren                            | Webseite                                | Unser-Team Seite öffnen                          | Alle Mitglieder erscheinen                                                             |
-| 9.2       | 9, 10, 11 | Datenbank & API existieren                            | Webseite                                | Über Uns Seite öffnen                            | Anzahl Mitglieder unter dem Text stimmt immer.                                         |
-| 10.1      | 12        | Login-DB existiert                                    | API-Testumgebung (z.B. Postman)         | ohne Schlüssel die DB direkt abfragen (ohne API) | keine Berechtigung oder 404                                                            |
-| 10.2      | 12        | Login-DB existiert und Express-API ist funktionsfähig | API-Testumgebung (z.B. Postman)         | GET auf /login-access Pfad der API               | "true" für Zugriff, "false" für keinen Zugriff                                         |
-| 11.1      | 13        |                                                       | Mobiltelefon (oder Emulator im Browser) | Seite öffnen                                     | Alles ist gut lesbar. Nichts ist überlappend und nichts hat falsche Seitenverhältnisse |
-| 12.1      | 14        |                                                       | Webseite                                | Unser-Team öffnen                                | Bilder erscheinen anstatt Logos auf den Karten.                                        |
-| 13.1      | 15        |                                                       | Webseite                                | Webseite öffnen und jeden Text anschauen         | Kein Lorem Ipsum vorhanden                                                             |
-| 14.1      | 16        | Fileserver in der Cloud ist vorhanden                 | API-Testumgebung (z.B. Postman)         | GET für Bild von einem Teammitglied              | Entsprechendes Bild wird zurückgegeben.                                                |
+| Tetf.-Nr. | Anf.-Nr.  | Vorbereitung                                           | Testumgebung                            | Eingabe                                           | Erw. Ausgabe                                                                             |
+| ----------- | ----------- | -------------------------------------------------------- | ----------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| 1.1       | 1, 9      | Testnutzer auf DB erstellt                             | Loginseite                              | Logindaten                                        | Nutzer wird eingeloggt                                                                   |
+| 2.1       | 2, 9      | Testnutzer auf DB erstellt                             | API-Testumgebung (z.B. Postman)         | Get-Request für alle Nutzer                      | Array mit Nutzern wird zurückgegeben von der API                                        |
+| 3.1       | 3, 9      | Testnutzer auf DB erstellt mit Rolle                   | API-Testumgebung (z.B. Postman)         | Get-Request für spezifischen Nutzer              | Nutzer mit detaillierten Daten wird ausgegeben (keine Personendaten)                     |
+| 4.1       | 4, 9      | Admin auf DB erstellt und eingeloggt                   | Adminzone auf der Seite                 | -                                                 | GUI wird angezeigt                                                                       |
+| 5.1       | 5         | Nicht anmelden                                         | Webseite                                | Adminzone aufrufen                                | keine Berechtigung oder 404                                                              |
+| 6.1       | 6, 9      | Admin auf DB erstellt und eingeloggt                   | Adminzone, Mitgliederverwaltung         | Daten eingeben und Teammitglied hinzufügen       | Mitglieder erscheint auf der Unser-Team Seite                                            |
+| 7.1       | 7, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied bearbeiten                               | Änderungen erscheinen auf der Unser-Team Seite                                          |
+| 8.1       | 8, 9      | Teammitglieder wurden hinzugefügt                     | Adminzone, Mitgliederverwaltung         | Mitglied entfernen/löschen                       | Mitglied verschwindet von der Unser-Team Seite                                           |
+| 9.1       | 10, 9     | Datenbank & API existieren                             | Webseite                                | Unser-Team Seite öffnen                          | Alle Mitglieder erscheinen                                                               |
+| 9.2       | 9, 10, 11 | Datenbank & API existieren                             | Webseite                                | Über Uns Seite öffnen                           | Anzahl Mitglieder unter dem Text stimmt immer.                                           |
+| 10.1      | 12        | Login-DB existiert                                     | API-Testumgebung (z.B. Postman)         | ohne Schlüssel die DB direkt abfragen (ohne API) | keine Berechtigung oder 404                                                              |
+| 10.2      | 12        | Login-DB existiert und Express-API ist funktionsfähig | API-Testumgebung (z.B. Postman)         | GET auf /login-access Pfad der API                | "true" für Zugriff, "false" für keinen Zugriff                                         |
+| 11.1      | 13        |                                                        | Mobiltelefon (oder Emulator im Browser) | Seite öffnen                                     | Alles ist gut lesbar. Nichts ist überlappend und nichts hat falsche Seitenverhältnisse |
+| 12.1      | 14        |                                                        | Webseite                                | Unser-Team öffnen                                | Bilder erscheinen anstatt Logos auf den Karten.                                          |
+| 13.1      | 15        |                                                        | Webseite                                | Webseite öffnen und jeden Text anschauen         | Kein Lorem Ipsum vorhanden                                                               |
+| 14.1      | 16        | Fileserver in der Cloud ist vorhanden                  | API-Testumgebung (z.B. Postman)         | GET für Bild von einem Teammitglied              | Entsprechendes Bild wird zurückgegeben.                                                 |
+
+#### Testprotokoll
+
+
+| Testf.-Nr. | Bericht                                      | Tester           |
+| ------------ | ---------------------------------------------- | ------------------ |
+| 1.1        | NOK, Login noch nicht korrekt implementiert. | @h0peRL, @mnaray |
+| 2.1        | OK                                           | @h0peRL, @mnaray |
+| 3.1        | OK                                           | @h0peRL, @mnaray |
+| 4.1        | OK                                           | @h0peRL, @mnaray |
+| 5.1        | NOK, Login noch nicht korrekt implementiert. | @h0peRL, @mnaray |
+| 6.1        | OK                                           | @h0peRL, @mnaray |
+| 7.1        | OK                                           | @h0peRL, @mnaray |
+| 8.1        | OK                                           | @h0peRL, @mnaray |
+| 9.1        | OK                                           | @h0peRL, @mnaray |
+| 9.2        | OK                                           | @h0peRL, @mnaray |
+| 10.1       |                                              | @h0peRL, @mnaray |
+| 10.2       | OK (Nicht ganz genau wie im Testfall)        | @h0peRL, @mnaray |
+| 11.1       | OK                                           | @h0peRL, @mnaray |
+| 12.1       | OK                                           | @h0peRL, @mnaray |
+| 13.1       | OK                                           | @h0peRL, @mnaray |
+| 14.1       | OK (Bufferinhalt)                            | @h0peRL, @mnaray |
+
+#### Testbericht / Fazit
+
+Es wurden praktisch alle Anforderungen bis zum 16.12.22 umgesetzt, ausser das Login.
+Das Login hat Probleme mit Cookies, da diese nicht über CORS übertragen werden können. Dieser Bug muss noch vor dem nächsten Deploy gefixt werden.
 
 ### Einführung Deta
 
@@ -1169,6 +1406,83 @@ Deta hat ein sehr praktisches [CLI](https://docs.deta.sh/docs/cli/commands#summa
 Zum Beispiel Visor. Das ist eine Art von kleiner Testumgebung für APIs (ähnlich wie Postman). Man kann mit Visor verschiedene Arten von Requests verschicken und die Responses beobachten. Das ist dann sehr praktisch für das Debugging.
 
 Das CLI kann unter anderem auch in den GitHub-Actions in einem Workflow verwendet werden. Das heisst, nicht jeder muss die Logindaten für den Account haben. Stattdessen kann man einen Access-Token von Deta in de Repo-Secrets bei GitHub verstecken und diesen Token dann in einem Workflow verwenden, um den Code zu deployen.
+
+### Express Router
+
+_Doku ist noch zu führen._
+
+### API Routen
+
+#### [/](../api-server/index.js)
+
+`GET` gibt auf dieser Route einen String mit der Hauptdomain für die Webseite [usginfo.ch](usginfo.ch) zurück.
+
+#### [/members](../api-server/routes/members.js)
+
+`GET` gibt auf dieser Route die ganze Datenbank an Teammitgliedern zurück.
+
+`POST` nimmt einen Request-Body in folgendem Format an und fügt es in die entsprechende Datenbank ein.
+
+```json
+{
+    name: string,
+    funktionIG: string,
+    teamrolle: string,
+    comment: string
+}
+```
+
+`PUT` updatet mit der [update Methode von Deta](https://docs.deta.sh/docs/base/sdk#update) einen Eintrag in der Datenbank. Dazu nimmt es folgendes JSON-Format an. Wenn alles richtig lauft, wird `null` als Response zurückgeschickt.
+
+```json
+{
+    key: string,
+    name: string,
+    funktionIG: string,
+    teamrolle: string,
+    comment: string
+}
+```
+
+`DELETE` nimmt einen einfachen Key als string im JSON-Format entgegen und löscht den entsprechenden Eintrag. Es wird immer `null` zurückgegeben.
+
+##### /members/:key
+
+`GET` sucht in der Datenbank nach dem Objekt mit dem Key, der über `req.params.key` in der URL durchgegeben wird. Falls es dieses Objekt gibt, wird es per Response an den Client geschickt, sonst wird ein Error mit dem Statuscode 404 zurückgegeben.
+
+#### [/files](../api-server/routes/files.js)
+
+##### /files/upload
+
+`POST` nimmt das File im Anhang der Request und ladet es auf den Fileserver in der Cloud.
+
+> NOTIZ: Es gibt ein Limit von 10 GB Speicherplatz auf dem Fileserver. Möglichst komprimierte/reduzierte Bilder verwenden!
+
+##### /files/download/:name
+
+`GET` gibt das File mit dem angegebenen Namen im Pfad zurück. Das JSON enthält `type: "Buffer"` und `data: [0..9999]` mit dem Inhalt des Buffers. `data` ist in Form von einem Uint8Array. Dieses Array muess zuerst im Frontend konvertiert werden, bevor es als Bild angezeigt werden kann.
+
+##### /files/delete
+
+`DELETE` löscht das File mit dem angegebenen `name` im body. Falls kein solches File gefunden wird, gibt der Server einen 404 Statuscode zurück.
+
+#### [/auth](../api-server/routes/auth.js)
+
+##### /auth/registration
+
+`POST` nimmt im Body `username` und `password` an und fügt dann nach folgendem Prinzip einen Nutzer der Datenbank hinzu:
+
+Zuerst wird nachgeschaut, ob dieser Nutzername schon existiert. Wenn dies der Fall ist, wird der Statuscode 409 zurückgegeben. Sobald Man einen validen Nutzernamen eingibt, wird dieser als unique Key für den Datensatz des Nutzers verwendet. Danach wird das Passwort mit [argon2](https://www.npmjs.com/package/argon2) gehasht und als Hash gespeichert. Die Datenbank beinhaltet keine Passwörter in Klartext. Es wird zusätzlich ein "isApproved" Attribut zu "false" gesetzt, damit nicht jeder einfach ein Adminkonto erstellen kann. Dieser Wert muss zuerst von Hand in der Datenbank zu "true" geändert werden, bevor sich der neue Nutzer einloggen kann. Das kann momentan nur jemand machen, der direkten Zugriff auf die Datenbank hat.
+
+##### /auth/login
+
+`POST` nimmt auf dieser Route im Body `username` und `password` an und sucht zuerst in der Datenbank nach dem Nutzer mit dem angegebenen Nutzernamen.
+
+Wenn der Nutzer nicht gefunden wird, gibt der Server einen Statuscode von 401 zurück. Wenn der Nutzer existiert, wird als nächstes geschaut, ob er überhaupt schon approved wurde, indem das "isApproved" Attribut kontrolliert wird. Falls dies nicht der Fall ist wird ein Statuscode von 403 zurückgegeben.
+
+Wenn der Nutzer existiert und approved ist, kontrolliert der Server mit [argon2](https://www.npmjs.com/package/argon2), ob der Hashwert des Passworts mit dem in der Datenbank gespeicherten Hash überinstimmt. Wenn das wahr ist, erstellt der Server eine Session und schickt einen JSON Web Token an den Nutzer. Momenatan ist es noch nicht möglich mit HTTP-Only Cookies, da wir zwei verschiedene Hosts haben für das Frontend und das Backend (Cross-Origin).
+
+Damit bei jeder Request, welche Daten verändern würde, geprüft werden kann, ob sich der Nutzer schon eingeloggt hat, speichern wir bei einem erfolgreichen Login den Nutzernamen im Token. Bei solchen Requests überprüft die Middleware [checkAuth](../api-server/middleware/checkAuth.js), ob der Nutzer schon einen gültigen Token hat. Wenn das nicht der Fall ist, wird ein Statuscode von 401 zurückgeschickt und die Request abgebrochen. Wenn es aber der Fall ist, fahrt der Server ganz normal mit der Requestbearbeitung fort.
 
 ## Rechtliches
 

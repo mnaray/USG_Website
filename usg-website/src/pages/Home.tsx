@@ -7,7 +7,7 @@ import Willkommenstext from "./components/Willkommenstext";
 
 function Home() {
   return (
-    <main>
+    <main className="p-5">
       <Logo />
       <Slogan />
       <Willkommenstext />

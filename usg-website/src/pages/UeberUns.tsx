@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./components/Button";
 
-
 function UeberUns() {
+  const [count, setCount] = useState<number | string>("...");
+
+  const getCount = async () => {
+    const response = await fetch("https://api.usginfo.ch/members", {
+      mode: "cors",
+      method: "GET",
+    });
+    try {
+      const responseJson = await response.json();
+      setCount(responseJson.count);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getCount();
+  }, []);
+
   return (
     <main>
-      <div className="flex flex-col items-center w-1/3">
+      <div className="flex flex-col items-center w-1/3 sm:w-4/5">
         <p className="justify-center text-5xl m-5">Über Uns</p>
-        <p className="py-5 justify-center text-center text-lg">
+        <p className="py-5 justify-center text-justify text-lg sm:w-3/4">
           Wir sind ein neues Schweizer E-Sport-Team, welches Rainbow Six Siege
           spielt. Wir suchen gerade aktiv nach Mitgliedern. Also falls ihr
           Interesse an einem Anfang in der E-Sportszene habt, seid ihr hier
@@ -18,8 +36,8 @@ function UeberUns() {
           Gesucht sind Leute wie du!
         </p>
         <p className="py-3 justify-center text-center text-lg">
-          Das Team besteht derzeit aus 6 Personen. Wir suchen noch Personen aus
-          dem schweizerdeutschen Sprachraum.
+          Das Team besteht derzeit aus {count} Personen. Wir suchen noch
+          Personen aus dem schweizerdeutschen Sprachraum.
         </p>
         <div className="flex flex-column">
           <Button text="Bewirb Dich!" destination="../../../kontakt/bewerben" />
@@ -30,4 +48,4 @@ function UeberUns() {
     </main>
   );
 }
-export default UeberUns
+export default UeberUns;
