@@ -117,7 +117,7 @@
 
 ### Kontrollieren
 
-- [Testen](#testen)§
+- [Testen](#testen)
 
 ### Auswerten
 
