@@ -376,7 +376,7 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 | 2.1        | N/OK, es fehlt Team.tsx.                 | @h0peRL, @m_naray |
 | 3.1        | N/OK, Responsive nicht vorhanden.        | @h0peRL, @m_naray |
 | 4.1        | OK                                       | @h0peRL, @m_naray |
-| 5.1        | teilweise OK, überall der geliche Font. | @h0peRL, @m_naray |
+| 5.1        | teilweise OK, überall der gleiche Font. | @h0peRL, @m_naray |
 | 6.1        | OK                                       | @h0peRL, @m_naray |
 | 7.1        | OK                                       | @h0peRL, @m_naray |
 | 8.1        | OK                                       | @h0peRL, @m_naray |
