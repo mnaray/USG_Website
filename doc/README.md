@@ -369,7 +369,6 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 
 ### Testprotokoll
 
-
 | Testf.-Nr. | Bericht                                 | Tester           |
 | ---------- | :-------------------------------------- | :--------------- |
 | 1.1        | OK                                      | @h0peRL, @mnaray |
