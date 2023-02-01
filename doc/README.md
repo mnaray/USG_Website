@@ -370,27 +370,27 @@ Unit tests können auch lokal, noch vor dem Committen ausgeführt werden. Dies i
 ### Testprotokoll
 
 
-| Testf.-Nr. | Bericht                                 | Tester            |
-| ---------- | :-------------------------------------- | :---------------- |
-| 1.1        | OK                                      | @h0peRL, @m_naray |
-| 2.1        | N/OK, es fehlt Team.tsx.                | @h0peRL, @m_naray |
-| 3.1        | N/OK, Responsive nicht vorhanden.       | @h0peRL, @m_naray |
-| 4.1        | OK                                      | @h0peRL, @m_naray |
-| 5.1        | teilweise OK, überall der geliche Font. | @h0peRL, @m_naray |
-| 6.1        | OK                                      | @h0peRL, @m_naray |
-| 7.1        | OK                                      | @h0peRL, @m_naray |
-| 8.1        | OK                                      | @h0peRL, @m_naray |
-| 9.1        | OK                                      | @h0peRL, @m_naray |
-| 10.1       | OK                                      | @h0peRL, @m_naray |
-| 11.1       | OK                                      | @h0peRL, @m_naray |
-| 12.1       | OK                                      | @h0peRL, @m_naray |
-| 13.1       | OK                                      | @h0peRL, @m_naray |
-| 14.1       | OK                                      | @h0peRL, @m_naray |
-| 15.1       | OK                                      | @h0peRL, @m_naray |
-| 16.1       | OK                                      | @h0peRL, @m_naray |
-| 17.1       | OK                                      | @h0peRL, @m_naray |
-| 18.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
-| 19.1       | OK (Braucht lange zum laden)            | @h0peRL, @m_naray |
+| Testf.-Nr. | Bericht                                 | Tester           |
+| ---------- | :-------------------------------------- | :--------------- |
+| 1.1        | OK                                      | @h0peRL, @mnaray |
+| 2.1        | N/OK, es fehlt Team.tsx.                | @h0peRL, @mnaray |
+| 3.1        | N/OK, Responsive nicht vorhanden.       | @h0peRL, @mnaray |
+| 4.1        | OK                                      | @h0peRL, @mnaray |
+| 5.1        | teilweise OK, überall der geliche Font. | @h0peRL, @mnaray |
+| 6.1        | OK                                      | @h0peRL, @mnaray |
+| 7.1        | OK                                      | @h0peRL, @mnaray |
+| 8.1        | OK                                      | @h0peRL, @mnaray |
+| 9.1        | OK                                      | @h0peRL, @mnaray |
+| 10.1       | OK                                      | @h0peRL, @mnaray |
+| 11.1       | OK                                      | @h0peRL, @mnaray |
+| 12.1       | OK                                      | @h0peRL, @mnaray |
+| 13.1       | OK                                      | @h0peRL, @mnaray |
+| 14.1       | OK                                      | @h0peRL, @mnaray |
+| 15.1       | OK                                      | @h0peRL, @mnaray |
+| 16.1       | OK                                      | @h0peRL, @mnaray |
+| 17.1       | OK                                      | @h0peRL, @mnaray |
+| 18.1       | OK (Braucht lange zum laden)            | @h0peRL, @mnaray |
+| 19.1       | OK (Braucht lange zum laden)            | @h0peRL, @mnaray |
 
 ### Testbericht / Fazit
 
