@@ -1,5 +1,9 @@
 # [USG Website](https://usginfo.ch/)
 
+## Bemerkung:
+> Dieses Repo ist nicht up-to-date mit der deployten Version der Webanwendung. Das hat mit einem grösseren Update des Cloudproviders zu tun.
+> Siehe [Migration Hub](https://deta.space/migration/introduction) für mehr Informationen zu den Änderungen.
+
 ## Dokumentation
 
 Eine genaue Dokumentation des Projekts ist [hier](./doc/README.md) zu finden.
