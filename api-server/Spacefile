@@ -12,3 +12,4 @@ micros:
               - name: DB_DATA_KEY
                 description: Key to the tables for usginfo.ch
                 default: ""
+      dev: node index.js
