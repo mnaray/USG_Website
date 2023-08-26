@@ -17,5 +17,11 @@ app.use("/auth", require("./routes/auth"));
 // root
 app.get("/", (req, res) => res.send("This is the API for usginfo.ch"));
 
-// export 'app'
-module.exports = app;
+// export 'app'             |DEPRECATED => Deta Cloud (Legacy)|
+// module.exports = app;
+
+// set listening port       |NEW => Deta Space|
+const port = process.env.PORT || 443;
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});

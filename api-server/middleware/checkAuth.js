@@ -7,7 +7,7 @@ exports.checkAuth = async function checkAuth(req, res, next) {
         const jwtData = jwt.verify(token, process.env.SESSION_SECRET);
 
         // deta
-        const deta = Deta();
+        const deta = Deta(process.env.DB_DATA_KEY);
         const loginDB = deta.Base("login");
 
         // check if user exists
