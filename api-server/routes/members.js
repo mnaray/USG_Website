@@ -4,7 +4,7 @@ const router = express.Router();
 const { checkAuth } = require("../middleware/checkAuth");
 
 // deta
-const deta = Deta();
+const deta = Deta(process.env.DB_DATA_KEY);
 const membersDB = deta.Base("members");
 
 // info about this route

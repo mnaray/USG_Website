@@ -5,7 +5,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 
 // deta
-const deta = Deta();
+const deta = Deta(process.env.DB_DATA_KEY);
 const loginDB = deta.Base("login");
 
 // info about this route
