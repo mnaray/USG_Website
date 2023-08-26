@@ -14,5 +14,6 @@ jobs:
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           project_id: ${{ secrets.PROJECT_ID }}
+          project_directory: ./api-server
           space_push: true
           list_on_discovery: false
